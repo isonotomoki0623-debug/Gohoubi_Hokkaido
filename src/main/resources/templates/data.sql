@@ -1,3 +1,4 @@
+/*ユーザー情報*/
 INSERT INTO users(name, password  , email , job_id,level, prefecture_id,  role) VALUES
 ('尊さん',Takeru123,Takeru123takeru@example.com , 1 , 1, 1 , 'User');
 
@@ -12,3 +13,21 @@ INSERT INTO users(name, password , email , job_id, level, prefecture_id, role) V
 
 INSERT INTO users(name, password , email , job_id, level, prefecture_id, role) VALUES
 ('しゅん', Shun123,shun@example.com , 1, 2, 2 , 'User');
+
+/*職業*/
+INSERT INTO jobs(name, image_path) VALUES
+('農家','aaa');
+
+INSERT INTO jobs(name, image_path) VALUES
+('漁師','aaa');
+
+INSERT INTO jobs(name, image_path) VALUES
+('牧場主','aaa');
+
+/*都道府県*/
+INSERT INTO prefecture(name) VALUES
+('北海道');
+INSERT INTO prefecture(name) VALUES
+('東京');
+
+
