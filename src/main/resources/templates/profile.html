@@ -1,190 +1,155 @@
 <!DOCTYPE html>
 <html lang="ja">
+<html xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>マイページ | ごほうびほっかいどう</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" th:href="@{/css/profile.css}">
 </head>
 
 <body>
-	テスト
 
-<!--    <main>-->
+<main class="mypage-container">
 
-<!--         ページタイトル -->
-<!--        <section>-->
-<!--            <h2>マイページ</h2>-->
-<!--            <p>あなたの冒険状況を確認できます。</p>-->
-<!--        </section>-->
+    <!-- 上段 -->
+    <section class="top-area">
 
-<!--         プレイヤー情報 -->
-<!--        <section>-->
+        <!-- 左 -->
+        <div class="left-area">
 
-<!--            <div>-->
+            <!-- レベル -->
+            <div class="level-box">
+                <span>動物使い</span>
+                <span>Lv.4</span>
+            </div>
 
-<!--                 レベル -->
-<!--                <div>-->
-<!--                    <h3>レベル</h3>-->
-<!--                     DBから参照 -->
-<!--                    <p th:text="${profile.level}">Lv.12</p>-->
-<!--                </div>-->
+            <!-- 職業 -->
+            <div class="job-area">
 
-<!--                 職業 -->
-<!--                <div>-->
-<!--                    <h3>職業</h3>-->
+                <div class="job-icon">
+                    <img src="/images/jobs/fisherman.png"
+                         alt="職業アイコン">
+                </div>
 
-<!--                    <div>-->
-<!--                         DBの画像パス -->
-<!--                        <img th:src="@{${profile.jobImagePath}}"-->
-<!--                             alt="職業画像"-->
-<!--                             width="120">-->
+            </div>
 
-<!--                         DBから職業名 -->
-<!--                        <p th:text="${profile.jobName}">海鮮ハンター</p>-->
-<!--                    </div>-->
-<!--                </div>-->
+            <!-- 次レベル -->
+            <div class="next-level-box">
 
-<!--                 累計購入金額 -->
-<!--                <div>-->
-<!--                    <h3>累計購入金額</h3>-->
+                <div class="next-level-text">
+                    次のレベルまであと
+                    <strong>5000円</strong>
+                </div>
 
-<!--                    <p>-->
-<!--                        <span th:text="${#numbers.formatInteger(profile.totalPurchaseAmount, 3, 'COMMA')}">-->
-<!--                            128000-->
-<!--                        </span> 円-->
-<!--                    </p>-->
-<!--                </div>-->
+                <div class="progress-bar">
+                    <div class="progress-fill"></div>
+                </div>
 
-<!--                 ランキング -->
-<!--                <div>-->
-<!--                    <h3>購入金額ランキング</h3>-->
+            </div>
 
-<!--                    <p>-->
-<!--                        <span th:text="${profile.rank}">37</span>-->
-<!--                        /-->
-<!--                        <span th:text="${profile.totalUsers}">800</span>-->
-<!--                    </p>-->
-<!--                </div>-->
+        </div>
 
-<!--            </div>-->
+        <!-- 右 -->
+        <div class="right-area">
 
-<!--        </section>-->
+            <!-- ステータス -->
+            <div class="status-row">
 
-<!--         クーポン -->
-<!--        <section>-->
+                <div class="status-card">
+                    購入金額ランキング
+                    <strong>13/199</strong>
+                </div>
 
-<!--            <h3>所持クーポン</h3>-->
+                <div class="status-card">
+                    累計購入金額
+                    <strong>30000円</strong>
+                </div>
 
-<!--             couponList をDBから取得 -->
-<!--            <div th:if="${couponList != null && !couponList.isEmpty()}">-->
+            </div>
 
-<!--                <div th:each="coupon : ${couponList}">-->
+            <!-- メニュー -->
+            <div class="menu-column">
 
-<!--                    <h4 th:text="${coupon.name}">-->
-<!--                        北海道応援クーポン-->
-<!--                    </h4>-->
+                <a href="/achievements" class="menu-btn">
+                    実績一覧
+                </a>
 
-<!--                    <p>-->
-<!--                        割引額：-->
-<!--                        <span th:text="${coupon.discountAmount}">-->
-<!--                            500-->
-<!--                        </span>-->
-<!--                        円-->
-<!--                    </p>-->
+                <a href="/orders" class="menu-btn">
+                    購入履歴
+                </a>
 
-<!--                    <p>-->
-<!--                        有効期限：-->
-<!--                        <span th:text="${coupon.expireDate}">-->
-<!--                            2026-06-30-->
-<!--                        </span>-->
-<!--                    </p>-->
+                <a href="/profile/edit" class="menu-btn">
+                    登録情報の編集
+                </a>
 
-<!--                </div>-->
+            </div>
 
-<!--            </div>-->
+        </div>
 
-<!--             クーポンがない場合 -->
-<!--            <div th:if="${couponList == null || couponList.isEmpty()}">-->
-<!--                <p>所持しているクーポンはありません。</p>-->
-<!--            </div>-->
+    </section>
 
-<!--        </section>-->
+    <!-- クーポン -->
+    <section class="coupon-section">
 
-<!--         登録情報 -->
-<!--        <section>-->
+        <h2>所持クーポン</h2>
 
-<!--            <h3>登録情報</h3>-->
+        <div class="coupon-list">
 
-<!--            <table>-->
+            <div class="coupon-card">
+                <h3>北海道応援クーポン</h3>
+                <p>500円OFF</p>
+            </div>
 
-<!--                <tr>-->
-<!--                    <th>ユーザー名</th>-->
-<!--                    <td th:text="${profile.userName}">-->
-<!--                        シエル-->
-<!--                    </td>-->
-<!--                </tr>-->
+            <div class="coupon-card">
+                <h3>送料無料クーポン</h3>
+                <p>送料0円</p>
+            </div>
 
-<!--                <tr>-->
-<!--                    <th>メールアドレス</th>-->
-<!--                    <td th:text="${profile.email}">-->
-<!--                        sample@example.com-->
-<!--                    </td>-->
-<!--                </tr>-->
+            <div class="coupon-card">
+                <h3>海鮮フェアクーポン</h3>
+                <p>1000円OFF</p>
+            </div>
 
-<!--                <tr>-->
-<!--                    <th>電話番号</th>-->
-<!--                    <td th:text="${profile.phone}">-->
-<!--                        090-1234-5678-->
-<!--                    </td>-->
-<!--                </tr>-->
+        </div>
 
-<!--                <tr>-->
-<!--                    <th>住所</th>-->
-<!--                    <td th:text="${profile.address}">-->
-<!--                        北海道札幌市-->
-<!--                    </td>-->
-<!--                </tr>-->
+    </section>
 
-<!--            </table>-->
+    <!-- 登録情報 -->
+    <section class="profile-section">
 
-<!--        </section>-->
+        <h2>登録情報</h2>
 
-<!--         メニュー -->
-<!--        <section>-->
+        <table>
 
-<!--            <h3>メニュー</h3>-->
+            <tr>
+                <th>ユーザー名</th>
+                <td>シエル</td>
+            </tr>
 
-<!--            <ul>-->
+            <tr>
+                <th>メールアドレス</th>
+                <td>sample@example.com</td>
+            </tr>
 
-<!--                <li>-->
-<!--                    <a href="/achievements">-->
-<!--                        実績一覧を見る-->
-<!--                    </a>-->
-<!--                </li>-->
+            <tr>
+                <th>電話番号</th>
+                <td>090-1234-5678</td>
+            </tr>
 
-<!--                <li>-->
-<!--                    <a href="/orders">-->
-<!--                        購入履歴を確認する-->
-<!--                    </a>-->
-<!--                </li>-->
+            <tr>
+                <th>住所</th>
+                <td>北海道札幌市中央区〇〇1-2-3</td>
+            </tr>
 
-<!--                <li>-->
-<!--                    <a href="/profile/edit">-->
-<!--                        登録情報を編集する-->
-<!--                    </a>-->
-<!--                </li>-->
+        </table>
 
-<!--            </ul>-->
+    </section>
 
-<!--        </section>-->
-
-<!--    </main>-->
-
-<!--     フッター -->
-<!--    <footer>-->
-<!--        <p>&copy; 2026 ごほうびほっかいどう</p>-->
-<!--    </footer>-->
+</main>
 
 </body>
 
