@@ -14,6 +14,6 @@ public interface UserMapper {
 	User findByEmail(String email);
 
 	@Insert("INSERT INTO users(name, password , email, job_id, level,prefecture_id, role)"
-			+ " VALUSE(#{name}, #{password}, #{email}, #{job_id}, #{level}, #{prefecture_id}, #{role})")
+			+ " VALUES(#{name}, #{password}, #{email}, #{job_id}, #{level}, #{prefecture_id}, #{role})")
 	void insert(User user);
 }
