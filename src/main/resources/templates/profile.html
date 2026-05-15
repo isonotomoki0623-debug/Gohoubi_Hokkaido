@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ja">
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>マイページ | ごほうびほっかいどう</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" th:href="@{/css/profile.css}">
+	<link rel="stylesheet" th:href="@{/css/_header.css}">
+
+</head>
+
+<body>
+	<header th:replace="layout/_header :: header"></header>
+<main class="mypage-container">
+
+    <!-- 上段 -->
+    <section class="top-area">
+
+        <!-- 左 -->
+        <div class="left-area">
+
+            <!-- レベル -->
+            <div class="level-box">
+                <span>動物使い</span>
+                <span>Lv.4</span>
+            </div>
+
+            <!-- 職業 -->
+            <div class="job-area">
+
+                <div class="job-icon">
+                    <img src="/images/jobs/fisherman.png"
+                         alt="職業アイコン">
+                </div>
+
+            </div>
+
+            <!-- 次レベル -->
+            <div class="next-level-box">
+
+                <div class="next-level-text">
+                    次のレベルまであと
+                    <strong>5000円</strong>
+                </div>
+
+                <div class="progress-bar">
+                    <div class="progress-fill"></div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- 右 -->
+        <div class="right-area">
+
+            <!-- ステータス -->
+            <div class="status-row">
+
+                <div class="status-card">
+                    購入金額ランキング
+                    <strong>13/199</strong>
+                </div>
+
+                <div class="status-card">
+                    累計購入金額
+                    <strong>30000円</strong>
+                </div>
+
+            </div>
+
+            <!-- メニュー -->
+            <div class="menu-column">
+
+                <a href="/achievements" class="menu-btn">
+                    実績一覧
+                </a>
+
+                <a href="/orders" class="menu-btn">
+                    購入履歴
+                </a>
+
+                <a href="/profile/edit" class="menu-btn">
+                    登録情報の編集
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- クーポン -->
+    <section class="coupon-section">
+
+        <h2>所持クーポン</h2>
+
+        <div class="coupon-list">
+
+            <div class="coupon-card">
+                <h3>北海道応援クーポン</h3>
+                <p>500円OFF</p>
+            </div>
+
+            <div class="coupon-card">
+                <h3>送料無料クーポン</h3>
+                <p>送料0円</p>
+            </div>
+
+            <div class="coupon-card">
+                <h3>海鮮フェアクーポン</h3>
+                <p>1000円OFF</p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- 登録情報 -->
+    <section class="profile-section">
+
+        <h2>登録情報</h2>
+
+        <table>
+
+            <tr>
+                <th>ユーザー名</th>
+                <td>シエル</td>
+            </tr>
+
+            <tr>
+                <th>メールアドレス</th>
+                <td>sample@example.com</td>
+            </tr>
+
+            <tr>
+                <th>電話番号</th>
+                <td>090-1234-5678</td>
+            </tr>
+
+            <tr>
+                <th>住所</th>
+                <td>北海道札幌市中央区〇〇1-2-3</td>
+            </tr>
+
+        </table>
+
+    </section>
+
+</main>
+
+</body>
+
+</html>

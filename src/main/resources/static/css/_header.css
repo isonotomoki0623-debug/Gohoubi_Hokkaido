@@ -1,7 +1,23 @@
+@charset "UTF-8";
+
 body {
     font-family: 'Sawarabi Gothic', sans-serif;
     background-color: #f5faf4;
     color: #222;
+}
+
+/* =========================
+   共通コンテナ
+========================= */
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+
+    margin: 0 auto;
+    padding: 0 24px;
+
+    box-sizing: border-box;
 }
 
 /* =========================
@@ -24,7 +40,9 @@ body {
         1px solid rgba(0, 0, 0, 0.04);
 }
 
-/* 上段 */
+/* =========================
+   上段
+========================= */
 
 .header-top {
     height: 92px;
@@ -34,14 +52,18 @@ body {
     gap: 32px;
 }
 
-/* ロゴ */
+/* =========================
+   ロゴ
+========================= */
 
 .site-logo img {
     width: 120px;
     object-fit: contain;
 }
 
-/* ナビ */
+/* =========================
+   ナビ
+========================= */
 
 .main-nav {
     display: flex;
@@ -415,6 +437,10 @@ body {
 }
 
 @media (max-width: 768px) {
+
+    .container {
+        padding: 0 16px;
+    }
 
     .main-nav {
         gap: 14px;
