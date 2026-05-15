@@ -1,138 +1,97 @@
-<!--<!DOCTYPE html>-->
-<!--<html>-->
-
-<!--<head>-->
-<!--    <meta charset="UTF-8">-->
-<!--    <title>商品詳細</title>-->
-<!--</head>-->
-
-<!--<body>-->
-    
-<!--    <h1>商品詳細ページ</h1>-->
-<!--    <p>商品ID : <span th:text="${product.id}"></span></p>-->
-<!--    <p>商品名 : <span th:text="${product.name}"></span></p>-->
-<!--    <p>☆レビュー : <span th:text="${product.reviewStar}"></span></p>-->
-<!--    <p>価格 : <span th:text="${product.price}"></span><p>-->
-<!--    <p>在庫数 : <span th:text="${product.stock}"></span></p>-->
-
-<!--</body>-->
-
-<!--</html>-->
-
-
-<!DOCTYPE html>
-<html lang="ja">
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>商品詳細</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>商品詳細</title>
 
-    <!-- Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<!-- Bootstrap -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Sawarabi+Gothic&display=swap"
-        rel="stylesheet">
+	<!-- Google Fonts -->
+	<link href="https://fonts.googleapis.com/css2?family=Sawarabi+Gothic&display=swap" rel="stylesheet">
 
-    <link href="https://fonts.googleapis.com/css2?family=Yusei+Magic&display=swap"
-        rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Yusei+Magic&display=swap" rel="stylesheet">
 
-    <!-- CSS -->
-    <link rel="stylesheet" th:href="@{/css/detail.css}">
+	<!-- CSS -->
+	<link rel="stylesheet" th:href="@{/css/detail.css}">
 </head>
 
 <body>
 
-    <main class="main-container">
+	<div class="product-page">
 
-        <div class="container">
+		<!-- 左：サムネイル -->
+		<div class="thumbnail-column">
 
-            <!-- 戻る -->
-            <a href="/products" class="back-link">
-                ← 商品一覧へ戻る
-            </a>
+			<img th:each="image : ${productImages}" th:src="@{${image.imagePath}}"
+				th:data-image-path="@{${image.imagePath}}" class="thumbnail-image">
 
-            <!-- 商品カード -->
-            <div class="detail-card">
+		</div>
 
-                <!-- 商品画像 -->
-                <img src="https://images.unsplash.com/photo-1563245372-f21724e3856d?q=80&w=1200"
-                    class="detail-image">
+		<!-- 中央：メイン画像 -->
+		<div class="main-image-area">
 
-                <!-- 商品情報 -->
-                <div class="detail-body">
+			<img id="mainImage" th:src="@{${productImages[0].imagePath}}" class="main-image" alt="">
 
-                    <div class="product-tag">
-                        北海道グルメ
-                    </div>
+		</div>
 
-                    <!-- 商品名 -->
-                    <h1 class="product-title"
-                        th:text="${product.name}">
-                        商品名
-                    </h1>
+		<!-- 右：商品情報 -->
+		<div class="product-info">
 
-                    <!-- 価格 -->
-                    <div class="product-price">
-                        ¥<span th:text="${product.price}"></span>
-                    </div>
+			<h1 class="product-title" th:text="${product.name}">
+				商品名
+			</h1>
 
-                    <!-- 詳細情報 -->
-                    <div class="info-box">
+			<!-- レビュー -->
+			<div class="review-area">
 
-                        <div class="info-item">
+				<span class="star">
+					★★★★☆
+				</span>
 
-                            <div class="info-label">
-                                商品ID
-                            </div>
+				<span th:text="${product.reviewStar}">
+				</span>
 
-                            <div class="info-value"
-                                th:text="${product.id}">
-                            </div>
+			</div>
 
-                        </div>
+			<!-- 価格 -->
+			<div class="price-area">
 
-                        <div class="info-item">
+				¥<span th:text="${product.price}"></span>
 
-                            <div class="info-label">
-                                レビュー
-                            </div>
+			</div>
 
-                            <div class="info-value">
-                                ⭐ <span th:text="${product.reviewStar}"></span>
-                            </div>
+			<!-- 在庫 -->
+			<div class="stock-area">
 
-                        </div>
+				在庫数 :
+				<span th:text="${product.stock}"></span>
 
-                        <div class="info-item">
+			</div>
 
-                            <div class="info-label">
-                                在庫数
-                            </div>
+			<!-- ボタン -->
+			<button class="cart-button">
 
-                            <div class="info-value"
-                                th:text="${product.stock}">
-                            </div>
+				カートに追加
 
-                        </div>
+			</button>
 
-                    </div>
+			<!-- 商品説明 -->
+			<div class="description-box">
 
-                    <!-- ボタン -->
-                    <button class="btn btn-warning buy-btn">
-                        カートに追加する
-                    </button>
+				北海道の厳選素材を使用した人気商品です。
 
-                </div>
+			</div>
 
-            </div>
+		</div>
 
-        </div>
+	</div>
 
-    </main>
-
+<script th:src="@{/javascript/productdetail.js}"></script>
+	
+</script>
+	
 </body>
 
 </html>
