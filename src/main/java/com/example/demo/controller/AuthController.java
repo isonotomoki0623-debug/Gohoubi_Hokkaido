@@ -29,6 +29,11 @@ public class AuthController {
 	//ログイン画面を表示
 	@GetMapping("/login")
 	public String showLoginForm(Model model) {
+		//		System.out.println(passwordEncoder.encode("Takeru123"));
+		//		System.out.println(passwordEncoder.encode("Yuki123"));
+		//		System.out.println(passwordEncoder.encode("Yurika123"));
+		//		System.out.println(passwordEncoder.encode("Tomoki123"));
+		//		System.out.println(passwordEncoder.encode("Shun123"));
 		model.addAttribute("form", new LoginForm());
 		return "auth/login";
 	}
@@ -55,7 +60,7 @@ public class AuthController {
 
 		//ログイン成功：セッションにユーザ情報を保存する
 		session.setAttribute("loginUser", user);
-		return "redirect;/products";
+		return "redirect:/";
 	}
 
 	//ログアウト処理を行う
