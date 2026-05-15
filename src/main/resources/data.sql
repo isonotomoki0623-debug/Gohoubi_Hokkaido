@@ -68,6 +68,48 @@ VALUES
 (4,4,'美味しかった',4.0),(5,5,'最高です',5.0),
 (1,6,'よきかな',4.0),(2,7,'サイズ選びが難しい',4.0);
 
+/* 商品画像の追加 */
+INSERT INTO product_images(image_path, image_description, product_id)
+VALUES
+('/images/poteto1.jpg', 'いも1', 1),
+('/images/poteto2.jpg', 'いも2', 1),
+('/images/poteto3.jpg', 'いも3', 1);
+
+INSERT INTO product_images(image_path, image_description, product_id)
+VALUES
+('/images/poteto1.jpg', 'いも1', 2),
+('/images/poteto2.jpg', 'いも2', 2),
+('/images/poteto3.jpg', 'いも3', 2);
+
+INSERT INTO product_images(image_path, image_description, product_id)
+VALUES
+('/images/poteto1.jpg', 'いも1', 3),
+('/images/poteto2.jpg', 'いも2', 3),
+('/images/poteto3.jpg', 'いも3', 3);
+
+INSERT INTO product_images(image_path, image_description, product_id)
+VALUES
+('/images/poteto1.jpg', 'いも1', 4),
+('/images/poteto2.jpg', 'いも2', 4),
+('/images/poteto3.jpg', 'いも3', 4);
+
+INSERT INTO product_images(image_path, image_description, product_id)
+VALUES
+('/images/poteto1.jpg', 'いも1', 5),
+('/images/poteto2.jpg', 'いも2', 5),
+('/images/poteto3.jpg', 'いも3', 5);
+
+INSERT INTO product_images(image_path, image_description, product_id)
+VALUES
+('/images/poteto1.jpg', 'いも1', 6),
+('/images/poteto2.jpg', 'いも2', 6),
+('/images/poteto3.jpg', 'いも3', 6);
+
+INSERT INTO product_images(image_path, image_description, product_id)
+VALUES
+('/images/poteto1.jpg', 'いも1', 7),
+('/images/poteto2.jpg', 'いも2', 7),
+('/images/poteto3.jpg', 'いも3', 7);
 
 
 
