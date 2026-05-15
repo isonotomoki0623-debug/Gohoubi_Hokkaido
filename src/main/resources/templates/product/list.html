@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>商品一覧 | ごほうびほっかいどう</title>
+
+	<!-- CSS -->
+	<link rel="stylesheet" th:href="@{/css/style.css}">
+	<link rel="stylesheet" th:href="@{/css/product/list.css}">
+
+	<!-- Google Font -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+	<link href="https://fonts.googleapis.com/css2?family=Sawarabi+Gothic&display=swap" rel="stylesheet">
+	<link rel="stylesheet" th:href="@{/css/_header.css}">
+
+</head>
+
+<body>
+
+	<!-- =========================
+    HEADER
+========================== -->
+	<header th:replace="layout/_header :: header"></header>
+
+	<!-- =========================
+    MAIN
+========================== -->
+	<main class="product-list-page">
+
+		<div class="container">
+
+			<!-- タイトル -->
+			<div class="page-title-area">
+				<h1>商品一覧</h1>
+				<p>
+					北海道の美味しいごほうびを見つけよう
+				</p>
+			</div>
+
+			<!-- 商品一覧 -->
+			<div class="product-grid">
+
+				<!-- 商品カード -->
+				<div class="product-card" th:each="product : ${productList}">
+
+					<!-- 商品画像 -->
+					<a th:href="@{/product/detail/{id}(id=${product.id})}" class="product-image-wrap">
+
+						<img th:src="@{${product.imagePath}}" th:alt="${product.name}">
+
+					</a>
+
+					<!-- 商品情報 -->
+					<div class="product-info">
+
+						<!-- カテゴリ -->
+						<div class="product-category" th:text="${product.category}">
+							海産物
+						</div>
+
+						<!-- 商品名 -->
+						<h2 class="product-name" th:text="${product.name}">
+							商品名
+						</h2>
+
+						<!-- 説明 -->
+						<p class="product-description" th:text="${product.description}">
+							商品説明
+						</p>
+
+						<!-- 下部 -->
+						<div class="product-bottom">
+
+							<!-- 価格 -->
+							<div class="product-price">
+								¥<span th:text="${#numbers.formatInteger(product.price, 1, 'COMMA')}">
+									0
+								</span>
+							</div>
+
+							<!-- 詳細ボタン -->
+							<a th:href="@{/product/detail/{id}(id=${product.id})}" class="detail-button">
+								詳細を見る
+							</a>
+
+						</div>
+
+					</div>
+
+				</div>
+
+			</div>
+
+			<!-- 商品が0件 -->
+			<div class="empty-message" th:if="${#lists.isEmpty(productList)}">
+
+				<p>現在、商品が登録されていません。</p>
+
+			</div>
+
+		</div>
+
+	</main>
+
+</body>
+
+</html>

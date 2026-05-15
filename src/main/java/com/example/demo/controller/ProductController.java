@@ -23,6 +23,7 @@ public class ProductController {
 		this.productImagesMapper = productImagesMapper;
 	}
 
+	//商品詳細
 	@GetMapping("/products/{id}")
 	public String showDetail(@PathVariable("id") int id, Model model) {
 
@@ -32,6 +33,14 @@ public class ProductController {
 		List<ProductImages> productImages = productImagesMapper.findByProductId(id);
 		model.addAttribute("productImages", productImages);
 		return "product/detail";
+	}
+
+	//商品一覧
+	@GetMapping("/products")
+	public String showList(Model model) {
+		List<Product> products = productMapper.findAll();
+		model.addAttribute("products", products);
+		return "product/list";
 	}
 
 }

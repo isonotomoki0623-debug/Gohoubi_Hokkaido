@@ -1,11 +1,16 @@
 package com.example.demo.mapper;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 
 import com.example.demo.entity.Product;
 
 @Mapper
 public interface ProductMapper {
-	// idから商品を1件取得する
+	/** IDで商品を1件取得する */
 	Product findById(int id);
+
+	/** 全商品を取得する */
+	List<Product> findAll();
 }
