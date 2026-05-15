@@ -133,6 +133,7 @@ a {
     font-size: 0.95rem;
 }
 
+/* ログボ */
 .bonus-box {
     margin-top: 22px;
     background: #f5fff7;
@@ -147,6 +148,7 @@ a {
     margin-bottom: 8px;
 }
 
+/* 実績 */
 .achievement-alert {
     margin-top: 22px;
     background:
@@ -174,6 +176,7 @@ a {
 .product-image {
     height: 220px;
     object-fit: cover;
+    width: 100%;
 }
 
 .product-body {
@@ -216,6 +219,65 @@ a {
     padding: 10px 18px;
 }
 
+/* ランキング */
+.ranking-card {
+    padding: 22px;
+}
+
+.rank-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 14px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.rank-item:last-child {
+    border-bottom: none;
+}
+
+.rank-number {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: #ffe49a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: #7d5b00;
+}
+
+.rank-name {
+    font-weight: bold;
+    color: #222;
+}
+
+.rank-sales {
+    font-size: 0.85rem;
+    color: #777;
+}
+
+/* 新着 */
+.news-card {
+    padding: 22px;
+}
+
+.news-item {
+    padding: 14px 0;
+    border-bottom: 1px solid #f1f1f1;
+}
+
+.news-item:last-child {
+    border-bottom: none;
+}
+
+.news-date {
+    color: #4e86d8;
+    font-size: 0.82rem;
+    font-weight: bold;
+}
+
 @media(max-width: 768px) {
 
     .hero-title {
@@ -230,4 +292,3 @@ a {
         padding: 32px;
     }
 }
- 
