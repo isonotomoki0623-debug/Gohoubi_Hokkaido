@@ -1,650 +1,252 @@
 <!DOCTYPE html>
 <html lang="ja">
+<html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ごほうびほっかいどう</title>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>ごほうびほっかいどう</title>
 
-    <!-- Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+ <!-- Bootstrap -->
+ <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- 本文フォント -->
-    <link href="https://fonts.googleapis.com/css2?family=Sawarabi+Gothic&display=swap"
-        rel="stylesheet">
+ <!-- Google Fonts -->
+ <link href="https://fonts.googleapis.com/css2?family=Sawarabi+Gothic&display=swap" rel="stylesheet">
 
-    <!-- タイトル用 -->
-    <link href="https://fonts.googleapis.com/css2?family=Yusei+Magic&display=swap"
-        rel="stylesheet">
+ <link href="https://fonts.googleapis.com/css2?family=Yusei+Magic&display=swap" rel="stylesheet">
 
-    <style>
-        body {
-            font-family: 'Sawarabi Gothic', sans-serif;
-            color: #222;
-            min-height: 100vh;
-            overflow-x: hidden;
-
-            background-color: #f5faf4;
-
-            background-image:
-                url("data:image/svg+xml,%3Csvg width='220' height='220' viewBox='0 0 220 220' xmlns='http://www.w3.org/2000/svg'%3E%3Cg opacity='0.07'%3E%3Ctext x='20' y='70' font-size='42'%3E🍃%3C/text%3E%3Ctext x='140' y='180' font-size='36'%3E🐄%3C/text%3E%3Ctext x='90' y='110' font-size='38'%3E⭐%3C/text%3E%3Ctext x='25' y='190' font-size='34'%3E🌽%3C/text%3E%3C/g%3E%3C/svg%3E"),
-                linear-gradient(to bottom,
-                    #eef7ef 0%,
-                    #f7fbf6 45%,
-                    #fcfdfb 100%);
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        .main-container {
-            padding: 42px 0 90px;
-        }
-
-        .section-title {
-            font-size: 1.9rem;
-            font-weight: bold;
-            margin-bottom: 24px;
-            color: #222;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        /* ヒーロー */
-        .hero-card {
-            background:
-                linear-gradient(135deg,
-                    #7cbf8c,
-                    #98d3a5);
-            border-radius: 34px;
-            padding: 44px;
-            color: white;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 20px 40px rgba(60, 110, 70, 0.15);
-        }
-
-        .hero-card::before {
-            content: "";
-            position: absolute;
-            width: 340px;
-            height: 340px;
-            background: rgba(255, 255, 255, 0.12);
-            border-radius: 50%;
-            top: -120px;
-            right: -120px;
-        }
-
-        .hero-card::after {
-            content: "🐄";
-            position: absolute;
-            bottom: 18px;
-            right: 24px;
-            font-size: 4rem;
-            opacity: 0.12;
-        }
-
-        .hero-title {
-            font-family: 'Yusei Magic', sans-serif;
-            font-size: 2.9rem;
-            line-height: 1.5;
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero-text {
-            margin-top: 18px;
-            line-height: 1.9;
-            opacity: 0.96;
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero-btn {
-            margin-top: 28px;
-            border-radius: 999px;
-            padding: 14px 28px;
-            font-weight: bold;
-            position: relative;
-            z-index: 1;
-            border: none;
-            box-shadow: 0 8px 18px rgba(255, 193, 7, 0.25);
-        }
-
-        /* カード共通 */
-        .status-card,
-        .product-card,
-        .ranking-card,
-        .news-card {
-            background: rgba(255, 255, 255, 0.92);
-            backdrop-filter: blur(6px);
-            border-radius: 28px;
-            box-shadow: 0 10px 28px rgba(0, 0, 0, 0.06);
-        }
-
-        /* ステータス */
-        .status-card {
-            padding: 28px;
-            height: 100%;
-        }
-
-        /* レベル */
-        .level-box {
-            background:
-                linear-gradient(135deg,
-                    #ffd67f,
-                    #ffb98f);
-            border-radius: 24px;
-            padding: 24px;
-            color: white;
-            box-shadow: 0 10px 24px rgba(255, 180, 100, 0.2);
-        }
-
-        .level-title {
-            font-size: 1.3rem;
-            font-weight: bold;
-        }
-
-        .money-left {
-            margin-top: 12px;
-            font-size: 0.95rem;
-        }
-
-        /* ログボ */
-        .bonus-box {
-            margin-top: 22px;
-            background: #f5fff7;
-            border: 2px dashed #83c88f;
-            border-radius: 20px;
-            padding: 18px;
-        }
-
-        .bonus-title {
-            color: #3f8c57;
-            font-weight: bold;
-            margin-bottom: 8px;
-        }
-
-        /* 実績 */
-        .achievement-alert {
-            margin-top: 22px;
-            background:
-                linear-gradient(135deg,
-                    #eef4ff,
-                    #f7f9ff);
-            border-left: 6px solid #7aa6ff;
-            border-radius: 20px;
-            padding: 18px;
-        }
-
-        /* 商品カード */
-        .product-card {
-            overflow: hidden;
-            border: none;
-            transition: 0.25s;
-            height: 100%;
-        }
-
-        .product-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 16px 34px rgba(0, 0, 0, 0.1);
-        }
-
-        .product-image {
-            height: 220px;
-            object-fit: cover;
-        }
-
-        .product-body {
-            padding: 22px;
-        }
-
-        .tag {
-            display: inline-block;
-            background: #eef8ef;
-            color: #4f8f61;
-            font-size: 0.8rem;
-            font-weight: bold;
-            border-radius: 999px;
-            padding: 6px 12px;
-            margin-bottom: 12px;
-        }
-
-        .product-title {
-            font-weight: bold;
-            font-size: 1.1rem;
-            color: #222;
-        }
-
-        .product-desc {
-            color: #666;
-            font-size: 0.9rem;
-            margin-top: 10px;
-            line-height: 1.7;
-        }
-
-        .price {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #f06b4f;
-        }
-
-        .buy-btn {
-            border-radius: 999px;
-            font-weight: bold;
-            padding: 10px 18px;
-        }
-
-        /* ランキング */
-        .ranking-card {
-            padding: 22px;
-        }
-
-        .rank-item {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            padding: 14px 0;
-            border-bottom: 1px solid #f0f0f0;
-        }
-
-        .rank-item:last-child {
-            border-bottom: none;
-        }
-
-        .rank-number {
-            width: 42px;
-            height: 42px;
-            border-radius: 50%;
-            background: #ffe49a;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            color: #7d5b00;
-        }
-
-        .rank-name {
-            font-weight: bold;
-            color: #222;
-        }
-
-        .rank-sales {
-            font-size: 0.85rem;
-            color: #777;
-        }
-
-        /* 新着 */
-        .news-card {
-            padding: 22px;
-        }
-
-        .news-item {
-            padding: 14px 0;
-            border-bottom: 1px solid #f1f1f1;
-        }
-
-        .news-item:last-child {
-            border-bottom: none;
-        }
-
-        .news-date {
-            color: #4e86d8;
-            font-size: 0.82rem;
-            font-weight: bold;
-        }
-
-        @media(max-width: 768px) {
-            .hero-title {
-                font-size: 2rem;
-            }
-
-            .main-container {
-                padding-top: 20px;
-            }
-
-            .hero-card {
-                padding: 32px;
-            }
-        }
-    </style>
+ <!-- CSS -->
+ <link rel="stylesheet" th:href="@{/css/home.css}">
 </head>
 
 <body>
 
-    <main class="main-container">
+ <main class="main-container">
 
-        <div class="container">
+  <div class="container">
 
-            <!-- 上段 -->
-            <div class="row g-4 align-items-stretch">
+   <!-- 上段 -->
+   <div class="row g-4 align-items-stretch">
 
-                <!-- ヒーロー -->
-                <div class="col-lg-8">
+    <!-- ヒーロー -->
+    <div class="col-lg-8">
 
-                    <div class="hero-card">
+     <div class="hero-card">
 
-                        <h1 class="hero-title">
-                            北海道をめぐって、<br>
-                            ごほうびを集めよう。
-                        </h1>
+      <h1 class="hero-title">
+       北海道をめぐって、
 
-                        <p class="hero-text">
-                            商品を買うたびに実績解除。<br>
-                            エリアを集めて、北海道マスターを目指そう。
-                        </p>
+       ごほうびを集めよう。
+      </h1>
 
-                        <!-- 未ログイン時 -->
-                        <a href="/login" class="btn btn-warning hero-btn">
-                            ログインして冒険を始める
-                        </a>
+      <p class="hero-text">
+       商品を買うたびに実績解除。
 
-                    </div>
+       エリアを集めて、北海道マスターを目指そう。
+      </p>
 
-                </div>
+      <a href="/login" class="btn btn-warning hero-btn">
+       ログインして冒険を始める
+      </a>
 
-                <!-- ステータス -->
-                <div class="col-lg-4">
+     </div>
 
-                    <div class="status-card">
+    </div>
 
-                        <div class="level-box">
+    <!-- ステータス -->
+    <div class="col-lg-4">
 
-                            <div class="level-title">
-                                Lv.12 北海道トラベラー
-                            </div>
+     <div class="status-card">
 
-                            <div class="money-left">
-                                次のレベルまであと
-                                <strong>¥4,800</strong>
-                            </div>
+      <div class="level-box">
 
-                            <div class="progress mt-3" style="height: 12px;">
-                                <div class="progress-bar bg-warning" style="width: 72%;"></div>
-                            </div>
+       <div class="level-title">
+        Lv.12 北海道トラベラー
+       </div>
 
-                        </div>
+       <div class="money-left">
+        次のレベルまであと
+        <strong>¥4,800</strong>
+       </div>
 
-                        <!-- ログインボーナス -->
-                        <div class="bonus-box">
+       <div class="progress mt-3" style="height: 12px;">
+        <div class="progress-bar bg-warning" style="width: 72%;"></div>
+       </div>
 
-                            <div class="bonus-title">
-                                🎁 ログインボーナス
-                            </div>
+      </div>
 
-                            <div class="small">
-                                このセッション限定！<br>
-                                海鮮カテゴリ 全商品5%OFF
-                            </div>
+      <!-- ログインボーナス -->
+      <div class="bonus-box">
 
-                        </div>
+       <div class="bonus-title">
+        🎁 ログインボーナス
+       </div>
 
-                        <!-- 実績通知 -->
-                        <div class="achievement-alert">
+       <div class="small">
+        このセッション限定！
 
-                            <div class="fw-bold mb-2">
-                                🏆 新しい実績を解除！
-                            </div>
+        海鮮カテゴリ 全商品5%OFF
+       </div>
 
-                            <div class="small text-muted">
-                                「スイーツ探検家」<br>
-                                スイーツカテゴリを5回購入
-                            </div>
+      </div>
 
-                        </div>
+      <!-- 実績通知 -->
+      <div class="achievement-alert">
 
-                    </div>
+       <div class="fw-bold mb-2">
+        🏆 新しい実績を解除！
+       </div>
 
-                </div>
+       <div class="small text-muted">
+        「スイーツ探検家」
 
-            </div>
+        スイーツカテゴリを5回購入
+       </div>
 
-            <!-- おすすめ商品 -->
-            <section class="mt-5">
+      </div>
 
-                <h2 class="section-title">
-                    ⭐ おすすめ商品
-                </h2>
+     </div>
 
-                <div class="row g-4">
+    </div>
 
-                    <!-- 商品 -->
-                    <div class="col-md-4">
+   </div>
 
-                        <div class="product-card">
+   <!-- おすすめ商品 -->
+   <section class="mt-5">
 
-                            <img src="https://images.unsplash.com/photo-1563245372-f21724e3856d?q=80&w=1200"
-                                class="product-image">
+    <h2 class="section-title">
+     ⭐ おすすめ商品
+    </h2>
 
-                            <div class="product-body">
+    <div class="row g-4">
 
-                                <div class="tag">
-                                    海鮮マスター対象
-                                </div>
+     <!-- 商品 -->
+     <div class="col-md-4">
 
-                                <div class="product-title">
-                                    北海道いくら醤油漬け
-                                </div>
+      <div class="product-card">
 
-                                <div class="product-desc">
-                                    濃厚な旨味とぷちぷち食感。
-                                </div>
+       <img src="https://images.unsplash.com/photo-1563245372-f21724e3856d?q=80&w=1200"
+        class="product-image">
 
-                                <div class="d-flex justify-content-between align-items-center mt-4">
+       <div class="product-body">
 
-                                    <div class="price">
-                                        ¥4,980
-                                    </div>
+        <div class="tag">
+         海鮮マスター対象
+        </div>
 
-                                    <button class="btn btn-warning buy-btn">
-                                        カート
-                                    </button>
+        <div class="product-title">
+         北海道いくら醤油漬け
+        </div>
 
-                                </div>
+        <div class="product-desc">
+         濃厚な旨味とぷちぷち食感。
+        </div>
 
-                            </div>
+        <div class="d-flex justify-content-between align-items-center mt-4">
 
-                        </div>
+         <div class="price">
+          ¥4,980
+         </div>
 
-                    </div>
-
-                    <!-- 商品 -->
-                    <div class="col-md-4">
-
-                        <div class="product-card">
-
-                            <img src="https://images.unsplash.com/photo-1488477181946-6428a0291777?q=80&w=1200"
-                                class="product-image">
-
-                            <div class="product-body">
-
-                                <div class="tag">
-                                    スイーツ探検家対象
-                                </div>
-
-                                <div class="product-title">
-                                    牧場ミルクチーズケーキ
-                                </div>
-
-                                <div class="product-desc">
-                                    北海道ミルクの濃厚スイーツ。
-                                </div>
-
-                                <div class="d-flex justify-content-between align-items-center mt-4">
-
-                                    <div class="price">
-                                        ¥2,980
-                                    </div>
-
-                                    <button class="btn btn-warning buy-btn">
-                                        カート
-                                    </button>
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                    <!-- 商品 -->
-                    <div class="col-md-4">
-
-                        <div class="product-card">
-
-                            <img src="https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?q=80&w=1200"
-                                class="product-image">
-
-                            <div class="product-body">
-
-                                <div class="tag">
-                                    肉料理ハンター対象
-                                </div>
-
-                                <div class="product-title">
-                                    十勝和牛ハンバーグ
-                                </div>
-
-                                <div class="product-desc">
-                                    肉汁たっぷり本格グルメ。
-                                </div>
-
-                                <div class="d-flex justify-content-between align-items-center mt-4">
-
-                                    <div class="price">
-                                        ¥3,480
-                                    </div>
-
-                                    <button class="btn btn-warning buy-btn">
-                                        カート
-                                    </button>
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </section>
-
-            <!-- 下段 -->
-            <section class="mt-5">
-
-                <div class="row g-4">
-
-                    <!-- ランキング -->
-                    <div class="col-lg-6">
-
-                        <h2 class="section-title">
-                            👑 商品ランキング
-                        </h2>
-
-                        <div class="ranking-card">
-
-                            <div class="rank-item">
-                                <div class="rank-number">1</div>
-
-                                <div>
-                                    <div class="rank-name">
-                                        北海道いくら醤油漬け
-                                    </div>
-
-                                    <div class="rank-sales">
-                                        今週の人気 No.1
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="rank-item">
-                                <div class="rank-number">2</div>
-
-                                <div>
-                                    <div class="rank-name">
-                                        牧場ミルクチーズケーキ
-                                    </div>
-
-                                    <div class="rank-sales">
-                                        スイーツ部門1位
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="rank-item">
-                                <div class="rank-number">3</div>
-
-                                <div>
-                                    <div class="rank-name">
-                                        十勝和牛ハンバーグ
-                                    </div>
-
-                                    <div class="rank-sales">
-                                        リピーター多数
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                    <!-- 新着 -->
-                    <div class="col-lg-6">
-
-                        <h2 class="section-title">
-                            🆕 新着
-                        </h2>
-
-                        <div class="news-card">
-
-                            <div class="news-item">
-                                <div class="news-date">
-                                    2026.05.14
-                                </div>
-
-                                <div class="mt-1">
-                                    春限定「桜ミルクラテセット」販売開始
-                                </div>
-                            </div>
-
-                            <div class="news-item">
-                                <div class="news-date">
-                                    2026.05.13
-                                </div>
-
-                                <div class="mt-1">
-                                    新実績「ラーメンマスター」を追加
-                                </div>
-                            </div>
-
-                            <div class="news-item">
-                                <div class="news-date">
-                                    2026.05.10
-                                </div>
-
-                                <div class="mt-1">
-                                    道東エリア特集ページ公開
-                                </div>
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </section>
+         <button class="btn btn-warning buy-btn">
+          カート
+         </button>
 
         </div>
 
-    </main>
+       </div>
+
+      </div>
+
+     </div>
+
+     <!-- 商品 -->
+     <div class="col-md-4">
+
+      <div class="product-card">
+
+       <img src="https://images.unsplash.com/photo-1488477181946-6428a0291777?q=80&w=1200"
+        class="product-image">
+
+       <div class="product-body">
+
+        <div class="tag">
+         スイーツ探検家対象
+        </div>
+
+        <div class="product-title">
+         牧場ミルクチーズケーキ
+        </div>
+
+        <div class="product-desc">
+         北海道ミルクの濃厚スイーツ。
+        </div>
+
+        <div class="d-flex justify-content-between align-items-center mt-4">
+
+         <div class="price">
+          ¥2,980
+         </div>
+
+         <button class="btn btn-warning buy-btn">
+          カート
+         </button>
+
+        </div>
+
+       </div>
+
+      </div>
+
+     </div>
+
+     <!-- 商品 -->
+     <div class="col-md-4">
+
+      <div class="product-card">
+
+       <img src="https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?q=80&w=1200"
+        class="product-image">
+
+       <div class="product-body">
+
+        <div class="tag">
+         肉料理ハンター対象
+        </div>
+
+        <div class="product-title">
+         十勝和牛ハンバーグ
+        </div>
+
+        <div class="product-desc">
+         肉汁たっぷり本格グルメ。
+        </div>
+
+        <div class="d-flex justify-content-between align-items-center mt-4">
+
+         <div class="price">
+          ¥3,480
+         </div>
+
+         <button class="btn btn-warning buy-btn">
+          カート
+         </button>
+
+        </div>
+
+       </div>
+
+      </div>
+
+     </div>
+
+    </div>
+
+   </section>
+
+  </div>
+
+ </main>
 
 </body>
 

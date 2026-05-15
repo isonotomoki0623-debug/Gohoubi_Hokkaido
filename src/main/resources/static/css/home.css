@@ -1,0 +1,233 @@
+body {
+    font-family: 'Sawarabi Gothic', sans-serif;
+    color: #222;
+    min-height: 100vh;
+    overflow-x: hidden;
+
+    background-color: #f5faf4;
+
+    background-image:
+        url("data:image/svg+xml,%3Csvg width='220' height='220' viewBox='0 0 220 220' xmlns='http://www.w3.org/2000/svg'%3E%3Cg opacity='0.07'%3E%3Ctext x='20' y='70' font-size='42'%3E🍃%3C/text%3E%3Ctext x='140' y='180' font-size='36'%3E🐄%3C/text%3E%3Ctext x='90' y='110' font-size='38'%3E⭐%3C/text%3E%3Ctext x='25' y='190' font-size='34'%3E🌽%3C/text%3E%3C/g%3E%3C/svg%3E"),
+        linear-gradient(to bottom,
+            #eef7ef 0%,
+            #f7fbf6 45%,
+            #fcfdfb 100%);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.main-container {
+    padding: 42px 0 90px;
+}
+
+.section-title {
+    font-size: 1.9rem;
+    font-weight: bold;
+    margin-bottom: 24px;
+    color: #222;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* ヒーロー */
+.hero-card {
+    background:
+        linear-gradient(135deg,
+            #7cbf8c,
+            #98d3a5);
+    border-radius: 34px;
+    padding: 44px;
+    color: white;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(60, 110, 70, 0.15);
+}
+
+.hero-card::before {
+    content: "";
+    position: absolute;
+    width: 340px;
+    height: 340px;
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 50%;
+    top: -120px;
+    right: -120px;
+}
+
+.hero-card::after {
+    content: "🐄";
+    position: absolute;
+    bottom: 18px;
+    right: 24px;
+    font-size: 4rem;
+    opacity: 0.12;
+}
+
+.hero-title {
+    font-family: 'Yusei Magic', sans-serif;
+    font-size: 2.9rem;
+    line-height: 1.5;
+    position: relative;
+    z-index: 1;
+}
+
+.hero-text {
+    margin-top: 18px;
+    line-height: 1.9;
+    opacity: 0.96;
+    position: relative;
+    z-index: 1;
+}
+
+.hero-btn {
+    margin-top: 28px;
+    border-radius: 999px;
+    padding: 14px 28px;
+    font-weight: bold;
+    position: relative;
+    z-index: 1;
+    border: none;
+    box-shadow: 0 8px 18px rgba(255, 193, 7, 0.25);
+}
+
+/* カード共通 */
+.status-card,
+.product-card,
+.ranking-card,
+.news-card {
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(6px);
+    border-radius: 28px;
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.06);
+}
+
+/* ステータス */
+.status-card {
+    padding: 28px;
+    height: 100%;
+}
+
+/* レベル */
+.level-box {
+    background:
+        linear-gradient(135deg,
+            #ffd67f,
+            #ffb98f);
+    border-radius: 24px;
+    padding: 24px;
+    color: white;
+    box-shadow: 0 10px 24px rgba(255, 180, 100, 0.2);
+}
+
+.level-title {
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+.money-left {
+    margin-top: 12px;
+    font-size: 0.95rem;
+}
+
+.bonus-box {
+    margin-top: 22px;
+    background: #f5fff7;
+    border: 2px dashed #83c88f;
+    border-radius: 20px;
+    padding: 18px;
+}
+
+.bonus-title {
+    color: #3f8c57;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.achievement-alert {
+    margin-top: 22px;
+    background:
+        linear-gradient(135deg,
+            #eef4ff,
+            #f7f9ff);
+    border-left: 6px solid #7aa6ff;
+    border-radius: 20px;
+    padding: 18px;
+}
+
+/* 商品カード */
+.product-card {
+    overflow: hidden;
+    border: none;
+    transition: 0.25s;
+    height: 100%;
+}
+
+.product-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 34px rgba(0, 0, 0, 0.1);
+}
+
+.product-image {
+    height: 220px;
+    object-fit: cover;
+}
+
+.product-body {
+    padding: 22px;
+}
+
+.tag {
+    display: inline-block;
+    background: #eef8ef;
+    color: #4f8f61;
+    font-size: 0.8rem;
+    font-weight: bold;
+    border-radius: 999px;
+    padding: 6px 12px;
+    margin-bottom: 12px;
+}
+
+.product-title {
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: #222;
+}
+
+.product-desc {
+    color: #666;
+    font-size: 0.9rem;
+    margin-top: 10px;
+    line-height: 1.7;
+}
+
+.price {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #f06b4f;
+}
+
+.buy-btn {
+    border-radius: 999px;
+    font-weight: bold;
+    padding: 10px 18px;
+}
+
+@media(max-width: 768px) {
+
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    .main-container {
+        padding-top: 20px;
+    }
+
+    .hero-card {
+        padding: 32px;
+    }
+}
+ 
