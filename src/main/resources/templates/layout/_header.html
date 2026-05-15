@@ -1,0 +1,199 @@
+<!-- =========================
+    HEADER
+========================== -->
+<header th:fragment="header"
+        class="main-header">
+
+    <div class="container">
+
+        <!-- 上段 -->
+        <div class="header-top">
+
+            <!-- ロゴ -->
+            <a th:href="@{/}" class="site-logo">
+
+                <img th:src="@{/images/logo_2.png}"
+                     alt="ごほうびほっかいどう">
+
+            </a>
+
+            <!-- ナビ -->
+            <nav class="main-nav">
+
+                <a th:href="@{/}">
+                    トップ
+                </a>
+
+                <!-- ドロップダウン -->
+                <div class="nav-dropdown">
+
+                    <a th:href="@{/products}"
+                       class="dropdown-trigger">
+
+                        商品一覧
+                        <i class="bi bi-chevron-down"></i>
+
+                    </a>
+
+                    <div class="dropdown-menu-custom">
+
+                        <a th:href="@{/products/agriculture}">
+                            <i class="bi bi-flower1"></i>
+                            農作物
+                        </a>
+
+                        <a th:href="@{/products/seafood}">
+                            <i class="bi bi-water"></i>
+                            海産物
+                        </a>
+
+                        <a th:href="@{/products/meat}">
+                            <i class="bi bi-egg-fried"></i>
+                            肉・畜産品
+                        </a>
+
+                        <a th:href="@{/products/dairy}">
+                            <i class="bi bi-cup-hot"></i>
+                            乳製品
+                        </a>
+
+                        <a th:href="@{/products/sweets}">
+                            <i class="bi bi-cake2"></i>
+                            スイーツ・お菓子
+                        </a>
+
+                        <a th:href="@{/products/drink}">
+                            <i class="bi bi-cup-straw"></i>
+                            酒・飲料
+                        </a>
+
+                        <a th:href="@{/products/daily}">
+                            <i class="bi bi-bag-heart"></i>
+                            消耗品
+                        </a>
+
+                    </div>
+
+                </div>
+
+                <a th:href="@{/favorites}">
+                    お気に入り一覧
+                </a>
+
+                <a th:href="@{/cart}">
+                    カート
+                    <i class="bi bi-cart3"></i>
+                </a>
+
+                <a th:href="@{/profile}">
+                    マイページ
+                </a>
+
+            </nav>
+
+            <!-- 検索 -->
+            <form class="header-search"
+                  th:action="@{/products}"
+                  method="get">
+
+                <input type="text"
+                       name="keyword"
+                       placeholder="商品を検索">
+
+                <button type="submit">
+                    検索
+                </button>
+
+            </form>
+
+            <!-- ユーザー -->
+            <a th:href="@{/mypage}"
+               class="header-user">
+
+                <div class="user-avatar">
+
+                    <img th:src="@{/images/job-icon.png}"
+                         alt="職業アイコン">
+
+                </div>
+
+                <div class="user-level">
+                    Lv. 10
+                </div>
+
+            </a>
+
+        </div>
+
+    </div>
+
+    <!-- 下段カテゴリ -->
+    <div class="category-bar">
+
+        <div class="container">
+
+            <div class="category-list">
+
+                <a th:href="@{/products/agriculture}"
+                   class="category-item">
+
+                    <i class="bi bi-flower1"></i>
+                    <span>農作物</span>
+
+                </a>
+
+                <a th:href="@{/products/seafood}"
+                   class="category-item">
+
+                    <i class="bi bi-water"></i>
+                    <span>海産物</span>
+
+                </a>
+
+                <a th:href="@{/products/meat}"
+                   class="category-item">
+
+                    <i class="bi bi-egg-fried"></i>
+                    <span>肉・畜産品</span>
+
+                </a>
+
+                <a th:href="@{/products/dairy}"
+                   class="category-item">
+
+                    <i class="bi bi-cup-hot"></i>
+                    <span>乳製品</span>
+
+                </a>
+
+                <a th:href="@{/products/sweets}"
+                   class="category-item">
+
+                    <i class="bi bi-cake2"></i>
+                    <span>スイーツ</span>
+
+                </a>
+
+                <a th:href="@{/products/drink}"
+                   class="category-item">
+
+                    <i class="bi bi-cup-straw"></i>
+                    <span>酒・飲料</span>
+
+                </a>
+
+                <a th:href="@{/products/daily}"
+                   class="category-item">
+
+                    <i class="bi bi-bag-heart"></i>
+                    <span>消耗品</span>
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</header>

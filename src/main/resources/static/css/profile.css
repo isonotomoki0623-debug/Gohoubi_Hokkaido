@@ -1,0 +1,443 @@
+@charset "UTF-8";
+
+/* =========================
+   全体
+========================= */
+
+body {
+    margin: 0;
+
+    font-family: 'Sawarabi Gothic', sans-serif;
+    color: #222;
+
+    min-height: 100vh;
+    overflow-x: hidden;
+
+    background-color: #f5faf4;
+
+    background-image:
+        url("data:image/svg+xml,%3Csvg width='220' height='220' viewBox='0 0 220 220' xmlns='http://www.w3.org/2000/svg'%3E%3Cg opacity='0.07'%3E%3Ctext x='20' y='70' font-size='42'%3E🍃%3C/text%3E%3Ctext x='140' y='180' font-size='36'%3E🐄%3C/text%3E%3Ctext x='90' y='110' font-size='38'%3E⭐%3C/text%3E%3Ctext x='25' y='190' font-size='34'%3E🌽%3C/text%3E%3C/g%3E%3C/svg%3E"),
+        linear-gradient(to bottom,
+            #eef7ef 0%,
+            #f7fbf6 45%,
+            #fcfdfb 100%);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.mypage-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 26px 22px 60px;
+}
+
+/* =========================
+   共通カード
+========================= */
+
+.level-box,
+.status-card,
+.menu-btn,
+.coupon-section,
+.profile-section,
+.coupon-card,
+.next-level-box,
+.job-icon {
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(6px);
+
+    box-shadow:
+        0 10px 28px rgba(0, 0, 0, 0.06);
+}
+
+/* =========================
+   上段
+========================= */
+
+.top-area {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 30px;
+
+    align-items: start;
+}
+
+/* =========================
+   左側
+========================= */
+
+.left-area {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+/* レベル */
+
+.level-box {
+    background:
+        linear-gradient(135deg,
+            #ffd67f,
+            #ffb98f);
+
+    border-radius: 24px;
+
+    padding: 18px 22px;
+
+    color: white;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    box-shadow:
+        0 10px 24px rgba(255, 180, 100, 0.2);
+
+    font-weight: bold;
+    font-size: 1.15rem;
+}
+
+/* 職業 */
+
+.job-area {
+    display: flex;
+    justify-content: center;
+}
+
+.job-icon {
+    width: 180px;
+    height: 180px;
+
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+    overflow: hidden;
+}
+
+.job-icon::before {
+    content: "";
+
+    position: absolute;
+
+    width: 220px;
+    height: 220px;
+
+    background: rgba(124, 191, 140, 0.08);
+
+    border-radius: 50%;
+
+    top: -60px;
+    right: -40px;
+}
+
+.job-icon img {
+    width: 105px;
+    height: 105px;
+
+    object-fit: contain;
+
+    position: relative;
+    z-index: 1;
+}
+
+/* 次レベル */
+
+.next-level-box {
+    border-radius: 24px;
+
+    padding: 18px 20px;
+}
+
+.next-level-text {
+    font-size: 1rem;
+    margin-bottom: 14px;
+}
+
+.next-level-text strong {
+    color: #f06b4f;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 18px;
+
+    background: #e8efe7;
+
+    border-radius: 999px;
+
+    overflow: hidden;
+}
+
+.progress-fill {
+    width: 45%;
+    height: 100%;
+
+    background:
+        linear-gradient(90deg,
+            #7cbf8c,
+            #98d3a5);
+}
+
+/* =========================
+   右側
+========================= */
+
+.right-area {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* ステータス */
+
+.status-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+}
+
+.status-card {
+    border-radius: 28px;
+
+    padding: 24px;
+
+    text-align: center;
+}
+
+.status-card strong {
+    display: block;
+
+    margin-top: 12px;
+
+    font-size: 1.6rem;
+
+    color: #4f8f61;
+}
+
+/* メニュー */
+
+.menu-column {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.menu-btn {
+    height: 78px;
+
+    border-radius: 24px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background:
+        linear-gradient(135deg,
+            #eef8ef,
+            #f8fffa);
+
+    font-size: 1.08rem;
+    font-weight: bold;
+
+    transition: 0.25s;
+
+    position: relative;
+    overflow: hidden;
+}
+
+.menu-btn::before {
+    content: "";
+
+    position: absolute;
+
+    width: 180px;
+    height: 180px;
+
+    background: rgba(124, 191, 140, 0.08);
+
+    border-radius: 50%;
+
+    top: -90px;
+    right: -70px;
+}
+
+.menu-btn span,
+.menu-btn {
+    position: relative;
+    z-index: 1;
+}
+
+.menu-btn:hover {
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 16px 34px rgba(0, 0, 0, 0.1);
+
+    color: #3f8c57;
+}
+
+/* =========================
+   クーポン
+========================= */
+
+.coupon-section {
+    margin-top: 36px;
+
+    border-radius: 34px;
+
+    padding: 30px;
+}
+
+.coupon-section h2 {
+    margin-top: 0;
+    margin-bottom: 22px;
+
+    font-size: 1.7rem;
+
+    color: #222;
+}
+
+.coupon-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+
+.coupon-card {
+    border-radius: 24px;
+
+    padding: 22px;
+
+    border: 2px dashed #83c88f;
+
+    background:
+        linear-gradient(135deg,
+            #ffffff,
+            #f5fff7);
+
+    transition: 0.25s;
+}
+
+.coupon-card:hover {
+    transform: translateY(-5px);
+
+    box-shadow:
+        0 16px 34px rgba(0, 0, 0, 0.1);
+}
+
+.coupon-card h3 {
+    margin-top: 0;
+    margin-bottom: 12px;
+
+    color: #3f8c57;
+
+    font-size: 1.05rem;
+}
+
+.coupon-card p {
+    color: #666;
+    line-height: 1.7;
+}
+
+/* =========================
+   登録情報
+========================= */
+
+.profile-section {
+    margin-top: 30px;
+
+    border-radius: 34px;
+
+    padding: 30px;
+}
+
+.profile-section h2 {
+    margin-top: 0;
+    margin-bottom: 22px;
+
+    font-size: 1.7rem;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    padding: 16px 12px;
+
+    border-bottom: 1px solid #edf2ed;
+
+    text-align: left;
+}
+
+th {
+    width: 190px;
+
+    color: #4f8f61;
+    font-weight: bold;
+}
+
+tr:last-child th,
+tr:last-child td {
+    border-bottom: none;
+}
+
+/* =========================
+   レスポンシブ
+========================= */
+
+@media(max-width: 900px) {
+
+    .top-area {
+        grid-template-columns: 1fr;
+    }
+
+    .coupon-list {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media(max-width: 600px) {
+
+    .mypage-container {
+        padding: 18px 14px 40px;
+    }
+
+    .status-row {
+        grid-template-columns: 1fr;
+    }
+
+    .menu-btn {
+        height: 68px;
+        font-size: 1rem;
+    }
+
+    .job-icon {
+        width: 150px;
+        height: 150px;
+    }
+
+    th,
+    td {
+        display: block;
+        width: 100%;
+    }
+
+    th {
+        border-bottom: none;
+        padding-bottom: 0;
+    }
+
+    td {
+        padding-top: 4px;
+    }
+}
