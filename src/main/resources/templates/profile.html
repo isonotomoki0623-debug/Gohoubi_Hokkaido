@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>マイページ | ごほうびほっかいどう</title>
+</head>
+
+<body>
+
+    <!-- ヘッダー -->
+    <header>
+        <div>
+            <h1>ごほうびほっかいどう</h1>
+        </div>
+
+        <nav>
+            <ul>
+                <li><a href="/">ホーム</a></li>
+                <li><a href="/products">商品一覧</a></li>
+                <li><a href="/cart">カート</a></li>
+                <li><a href="/profile">マイページ</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+
+        <!-- ページタイトル -->
+        <section>
+            <h2>マイページ</h2>
+            <p>あなたの冒険状況を確認できます。</p>
+        </section>
+
+        <!-- プレイヤー情報 -->
+        <section>
+
+            <div>
+
+                <!-- レベル -->
+                <div>
+                    <h3>レベル</h3>
+                    <!-- DBから参照 -->
+                    <p th:text="${profile.level}">Lv.12</p>
+                </div>
+
+                <!-- 職業 -->
+                <div>
+                    <h3>職業</h3>
+
+                    <div>
+                        <!-- DBの画像パス -->
+                        <img th:src="@{${profile.jobImagePath}}"
+                             alt="職業画像"
+                             width="120">
+
+                        <!-- DBから職業名 -->
+                        <p th:text="${profile.jobName}">海鮮ハンター</p>
+                    </div>
+                </div>
+
+                <!-- 累計購入金額 -->
+                <div>
+                    <h3>累計購入金額</h3>
+
+                    <p>
+                        <span th:text="${#numbers.formatInteger(profile.totalPurchaseAmount, 3, 'COMMA')}">
+                            128000
+                        </span> 円
+                    </p>
+                </div>
+
+                <!-- ランキング -->
+                <div>
+                    <h3>購入金額ランキング</h3>
+
+                    <p>
+                        <span th:text="${profile.rank}">37</span>
+                        /
+                        <span th:text="${profile.totalUsers}">800</span>
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- クーポン -->
+        <section>
+
+            <h3>所持クーポン</h3>
+
+            <!-- couponList をDBから取得 -->
+            <div th:if="${couponList != null && !couponList.isEmpty()}">
+
+                <div th:each="coupon : ${couponList}">
+
+                    <h4 th:text="${coupon.name}">
+                        北海道応援クーポン
+                    </h4>
+
+                    <p>
+                        割引額：
+                        <span th:text="${coupon.discountAmount}">
+                            500
+                        </span>
+                        円
+                    </p>
+
+                    <p>
+                        有効期限：
+                        <span th:text="${coupon.expireDate}">
+                            2026-06-30
+                        </span>
+                    </p>
+
+                </div>
+
+            </div>
+
+            <!-- クーポンがない場合 -->
+            <div th:if="${couponList == null || couponList.isEmpty()}">
+                <p>所持しているクーポンはありません。</p>
+            </div>
+
+        </section>
+
+        <!-- 登録情報 -->
+        <section>
+
+            <h3>登録情報</h3>
+
+            <table>
+
+                <tr>
+                    <th>ユーザー名</th>
+                    <td th:text="${profile.userName}">
+                        シエル
+                    </td>
+                </tr>
+
+                <tr>
+                    <th>メールアドレス</th>
+                    <td th:text="${profile.email}">
+                        sample@example.com
+                    </td>
+                </tr>
+
+                <tr>
+                    <th>電話番号</th>
+                    <td th:text="${profile.phone}">
+                        090-1234-5678
+                    </td>
+                </tr>
+
+                <tr>
+                    <th>住所</th>
+                    <td th:text="${profile.address}">
+                        北海道札幌市
+                    </td>
+                </tr>
+
+            </table>
+
+        </section>
+
+        <!-- メニュー -->
+        <section>
+
+            <h3>メニュー</h3>
+
+            <ul>
+
+                <li>
+                    <a href="/achievements">
+                        実績一覧を見る
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/orders">
+                        購入履歴を確認する
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/profile/edit">
+                        登録情報を編集する
+                    </a>
+                </li>
+
+            </ul>
+
+        </section>
+
+    </main>
+
+    <!-- フッター -->
+    <footer>
+        <p>&copy; 2026 ごほうびほっかいどう</p>
+    </footer>
+
+</body>
+
+</html>
