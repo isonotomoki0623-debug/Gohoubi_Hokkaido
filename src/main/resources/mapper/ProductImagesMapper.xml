@@ -9,7 +9,7 @@
 		resultType="com.example.demo.entity.ProductImages">
 		SELECT *
 		FROM product_images
-		WHERE product_id = #{product_id}
+		WHERE product_id = #{productId}
 	</select>
 
 </mapper>
