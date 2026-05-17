@@ -34,4 +34,30 @@
 		r.product_id = #{productId}
 	</select>
 
+	<select id="isReview"
+		resultType="com.example.demo.entity.Reviews">
+		SELECT * FROM reviews
+		WHERE user_id = #{userId} AND
+		product_id = #{productId}
+	</select>
+
+	<insert id="insert">
+		INSERT INTO reviews(
+		user_id, product_id, description,
+		star
+		) VALUES (
+		#{userId}, #{productId}, #{description}, #{star}
+		)
+	</insert>
+
+	<update id="update">
+		UPDATE reviews
+		SET
+		description = #{description},
+		star =
+		#{star}
+		WHERE
+		user_id = #{userId} AND product_id = #{productId}
+	</update>
+
 </mapper>

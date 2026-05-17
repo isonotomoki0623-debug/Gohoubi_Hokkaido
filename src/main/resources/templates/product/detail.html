@@ -44,8 +44,8 @@
 			<!-- レビュー（総合評価） -->
 			<span class="stars" th:data-rating="${averageStar}"></span>
 
-			<span th:text="${averageStar}"></span>
-
+			<span th:text="${#numbers.formatDecimal(averageStar, 1, 1)}"></span>
+			
 			<!-- 価格 -->
 			<div class="price-area">
 				¥<span th:text="${product.price}"></span>
@@ -64,6 +64,58 @@
 				北海道の厳選素材を使用した人気商品です。
 			</div>
 		</div>
+
+	</div>
+
+	<div class="review-form-container">
+
+		<h2 class="review-form-title">
+			レビューを書く
+		</h2>
+
+		<form th:action="@{/products/reviews}" method="post">
+
+			<!-- 商品ID -->
+			<input type="hidden" name="productId" th:value="${product.id}">
+
+			<!-- 星 -->
+			<div>
+
+				<label class="review-label">
+					評価
+				</label>
+
+				<select name="star" class="review-select">
+
+					<option value="5">★★★★★</option>
+					<option value="4">★★★★☆</option>
+					<option value="3">★★★☆☆</option>
+					<option value="2">★★☆☆☆</option>
+					<option value="1">★☆☆☆☆</option>
+
+				</select>
+
+			</div>
+
+			<!-- コメント -->
+			<div>
+
+				<label class="review-label">
+					コメント
+				</label>
+
+				<textarea name="description" class="review-textarea" placeholder="商品の感想を書いてください"></textarea>
+
+			</div>
+
+			<!-- 投稿ボタン -->
+			<button type="submit" class="review-submit-button">
+
+				投稿する
+
+			</button>
+
+		</form>
 
 	</div>
 
