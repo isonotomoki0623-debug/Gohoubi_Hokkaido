@@ -64,6 +64,7 @@ public class ProductController {
 		return "product/detail";
 	}
 
+	/** レビュー **/
 	@PostMapping("/products/reviews")
 	public String createReviews(@RequestParam int productId, @RequestParam double star,
 			@RequestParam String description, HttpSession session) {
@@ -94,25 +95,31 @@ public class ProductController {
 		return "redirect:/products/" + productId;
 	}
 
-	//商品一覧
+	/** 商品一覧 **/
 	@GetMapping("/products")
 	public String showList(
 			@RequestParam(defaultValue = "1") int page,
+			@RequestParam(required = false) String keyword,
+			@RequestParam(required = false) Integer categoryId,
 			Model model) {
 
 		int pageSize = 5;
-
 		int offset = (page - 1) * pageSize;
 
-		List<Product> products = productMapper.findPage(offset, pageSize);
+		List<Product> products;
+		int totalCount;
 
-		int totalCount = productMapper.countAll();
+		products = productMapper.findPage(keyword, categoryId, offset, pageSize);
+		totalCount = productMapper.countAll(keyword, categoryId);
 
 		int totalPages = (int) Math.ceil((double) totalCount / pageSize);
 
 		model.addAttribute("products", products);
 		model.addAttribute("currentPage", page);
 		model.addAttribute("totalPages", totalPages);
+		model.addAttribute("keyword", keyword);
+		model.addAttribute("categoryId", categoryId);
+		model.addAttribute("totalCount", totalCount);
 
 		return "product/list";
 	}

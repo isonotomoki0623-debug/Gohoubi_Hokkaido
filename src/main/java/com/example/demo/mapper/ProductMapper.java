@@ -3,22 +3,24 @@ package com.example.demo.mapper;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
-import org.springframework.data.repository.query.Param;
+import org.apache.ibatis.annotations.Param;
 
 import com.example.demo.entity.Product;
 
 @Mapper
 public interface ProductMapper {
-	/** IDで商品を1件取得する */
+
+	/** IDで商品を1件取得 */
 	Product findById(int id);
 
-	/** 全商品を取得する */
-	List<Product> findAll();
-
-	/** ページネーション */
+	/** ページネーション（検索対応） */
 	List<Product> findPage(
+			@Param("keyword") String keyword,
+			@Param("categoryId") Integer categoryId,
 			@Param("offset") int offset,
-			@Param("limit") int limit);
+			@Param("pageSize") int pageSize);
 
-	int countAll();
+	int countAll(
+			@Param("keyword") String keyword,
+			@Param("categoryId") Integer categoryId);
 }
