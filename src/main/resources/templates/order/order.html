@@ -15,7 +15,7 @@
         
         <div class="items-list">
             <div class="item-container" th:each="item : ${cart}">
-                <div class="item-image-box">商品画像</div>
+				<img th:src="@{${item.imagePath}}" alt="商品画像" class="item-image-box">
                 <div class="item-details">
                     <div class="product-name" th:text="'商品名 ' + ${item.name}">商品名 ~~~</div>
                     <div>単価 <span th:text="${#numbers.formatInteger(item.price, 1, 'COMMA')} + '円'">1000円</span></div>
