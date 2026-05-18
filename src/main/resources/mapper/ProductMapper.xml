@@ -5,42 +5,35 @@
 
 <mapper namespace="com.example.demo.mapper.ProductMapper">
 
-	<!--商品一覧で、商品情報とエリア名とカテゴリを表示 -->
-	<select id="findAll"
-		resultType="com.example.demo.entity.Product">
-
-		SELECT
-		p.*,
-		h.name AS hokkaido_area_name,
-		c.name AS
-		product_category_name
-		FROM products p
-		LEFT JOIN hokkaido_areas h
-		ON
-		p.hokkaido_area_id = h.id
-		LEFT JOIN product_categories c
-		ON
-		p.product_category_id = c.id
-
-	</select>
-
 	<select id="findById"
 		resultType="com.example.demo.entity.Product">
-		SELECT id, name, price, review_star, stock, product_category_id ,hokkaido_area_id
+		SELECT id, name, price, review_star, stock,
+		product_category_id ,hokkaido_area_id
 		FROM products
 		WHERE id = #{id}
-	</select> 
+	</select>
 
 	<!-- ページネーション -->
 	<select id="findPage"
 		resultType="com.example.demo.entity.Product">
 
-		SELECT *
-		FROM products
-		ORDER BY id
+		SELECT
+		p.*,
+		h.name AS hokkaido_area_name,
+		c.name AS product_category_name
+
+		FROM products p
+
+		LEFT JOIN hokkaido_areas h
+		ON p.hokkaido_area_id = h.id
+
+		LEFT JOIN product_categories c
+		ON p.product_category_id = c.id
+
+		ORDER BY p.id
+
 		LIMIT #{limit}
-		OFFSET
-		#{offset}
+		OFFSET #{offset}
 
 	</select>
 

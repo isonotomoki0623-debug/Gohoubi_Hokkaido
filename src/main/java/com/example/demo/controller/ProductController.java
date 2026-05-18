@@ -82,13 +82,13 @@ public class ProductController {
 		return "redirect:/products/" + productId;
 	}
 
-		//商品一覧
+	//商品一覧
 	@GetMapping("/products")
 	public String showList(
 			@RequestParam(defaultValue = "1") int page,
 			Model model) {
 
-		int pageSize = 8;
+		int pageSize = 4;
 
 		int offset = (page - 1) * pageSize;
 
