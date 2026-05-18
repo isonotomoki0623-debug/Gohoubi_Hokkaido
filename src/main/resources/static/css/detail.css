@@ -1,137 +1,367 @@
 body {
-	font-family: 'Sawarabi Gothic', sans-serif;
-	background-color: #f5faf4;
-	min-height: 100vh;
+    margin: 0;
+    padding: 0;
 
-	background-image:
-		url("data:image/svg+xml,%3Csvg width='220' height='220' viewBox='0 0 220 220' xmlns='http://www.w3.org/2000/svg'%3E%3Cg opacity='0.07'%3E%3Ctext x='20' y='70' font-size='42'%3E🍃%3C/text%3E%3Ctext x='140' y='180' font-size='36'%3E🐄%3C/text%3E%3Ctext x='90' y='110' font-size='38'%3E⭐%3C/text%3E%3Ctext x='25' y='190' font-size='34'%3E🌽%3C/text%3E%3C/g%3E%3C/svg%3E"),
-		linear-gradient(to bottom,
-			#eef7ef 0%,
-			#f7fbf6 45%,
-			#fcfdfb 100%);
+    font-family: 'Sawarabi Gothic', sans-serif;
+
+    background: white;
 }
 
 /* 全体 */
-.main-container {
-	padding: 60px 0;
+.product-page {
+
+    display: flex;
+
+    gap: 30px;
+
+    padding: 40px;
+
+    max-width: 1500px;
+
+    margin: auto;
 }
 
-/* 戻るリンク */
-.back-link {
-	display: inline-block;
-	margin-bottom: 20px;
-	color: #4f8f61;
-	font-weight: bold;
-	text-decoration: none;
+/* 左サムネイル */
+.thumbnail-column {
+
+    width: 90px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 12px;
 }
 
-.back-link:hover {
-	opacity: 0.8;
+/* サムネイル */
+.thumbnail-image {
+
+    width: 80px;
+
+    height: 80px;
+
+    object-fit: cover;
+
+    border: 1px solid #ccc;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    transition: 0.2s;
 }
 
-/* 商品カード */
-.detail-card {
-	background: rgba(255, 255, 255, 0.94);
-	border-radius: 32px;
-	overflow: hidden;
-	box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
+.thumbnail-image:hover {
+
+    border: 2px solid #ff9900;
+
+    transform: scale(1.05);
 }
 
-/* 商品画像 */
-.detail-image {
-	width: 100%;
-	height: 420px;
-	object-fit: cover;
+/* 中央メイン画像 */
+.main-image-area {
+
+    flex: 1;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: flex-start;
 }
 
-/* 本文 */
-.detail-body {
-	padding: 40px;
+/* メイン画像 */
+.main-image {
+
+    width: 550px;
+
+    height: 550px;
+
+    object-fit: cover;
 }
 
-/* タグ */
-.product-tag {
-	display: inline-block;
-	background: #eef8ef;
-	color: #4f8f61;
-	font-size: 0.85rem;
-	font-weight: bold;
-	border-radius: 999px;
-	padding: 6px 14px;
-	margin-bottom: 18px;
+/* 右情報 */
+.product-info {
+
+    width: 520px;
 }
 
 /* 商品名 */
 .product-title {
-	font-family: 'Yusei Magic', sans-serif;
-	font-size: 2.3rem;
-	margin-bottom: 20px;
-	color: #222;
+
+    font-size: 2.3rem;
+
+    line-height: 1.4;
+
+    margin-bottom: 20px;
+
+    font-family: 'Yusei Magic', sans-serif;
+}
+
+/* レビュー */
+.review-area {
+
+    font-size: 1.1rem;
+
+    margin-bottom: 20px;
+}
+
+.star {
+
+    color: orange;
+
+    margin-right: 10px;
 }
 
 /* 価格 */
-.product-price {
-	font-size: 2rem;
-	font-weight: bold;
-	color: #f06b4f;
-	margin-bottom: 24px;
+.price-area {
+
+    font-size: 3rem;
+
+    color: #B12704;
+
+    margin-bottom: 25px;
+
+    font-weight: bold;
 }
 
-/* 情報ボックス */
-.info-box {
-	background: #f9fcf8;
-	border-radius: 20px;
-	padding: 24px;
-	margin-bottom: 24px;
-}
+/* 在庫 */
+.stock-area {
 
-/* 情報1行 */
-.info-item {
-	display: flex;
-	justify-content: space-between;
-	padding: 12px 0;
-	border-bottom: 1px solid #ececec;
-}
+    font-size: 1.1rem;
 
-.info-item:last-child {
-	border-bottom: none;
-}
+    margin-bottom: 30px;
 
-/* ラベル */
-.info-label {
-	color: #666;
-	font-weight: bold;
-}
+    color: green;
 
-/* 値 */
-.info-value {
-	color: #222;
-	font-weight: bold;
+    font-weight: bold;
 }
 
 /* ボタン */
-.buy-btn {
-	width: 100%;
-	border-radius: 999px;
-	padding: 14px;
-	font-size: 1rem;
-	font-weight: bold;
-	box-shadow: 0 10px 20px rgba(255, 193, 7, 0.25);
+.cart-button {
+
+    width: 100%;
+
+    border: none;
+
+    background: #FFD814;
+
+    padding: 15px;
+
+    border-radius: 999px;
+
+    font-size: 1.1rem;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+
+    margin-bottom: 30px;
+}
+
+.cart-button:hover {
+
+    background: #F7CA00;
+}
+
+/* 商品説明 */
+.description-box {
+
+    background: #f7f7f7;
+
+    padding: 20px;
+
+    border-radius: 14px;
+
+    line-height: 1.8;
 }
 
 /* レスポンシブ */
-@media(max-width: 768px) {
+@media(max-width: 1100px){
 
-	.detail-body {
-		padding: 28px;
-	}
+    .product-page {
 
-	.product-title {
-		font-size: 1.8rem;
-	}
+        flex-direction: column;
 
-	.detail-image {
-		height: 280px;
-	}
+        align-items: center;
+    }
+
+    .product-info {
+
+        width: 100%;
+    }
+
+    .main-image {
+
+        width: 100%;
+
+        max-width: 500px;
+
+        height: auto;
+    }
+
+    .thumbnail-column {
+
+        flex-direction: row;
+
+        width: auto;
+    }
+
+}
+
+/* =========================
+   レビュー投稿フォーム
+========================= */
+
+.review-form-container {
+
+    max-width: 900px;
+
+    margin: 50px auto;
+
+    padding: 35px;
+
+    background: #ffffff;
+
+    border-radius: 18px;
+
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+
+/* タイトル */
+.review-form-title {
+
+    font-size: 1.8rem;
+
+    margin-bottom: 25px;
+
+    font-family: 'Yusei Magic', sans-serif;
+}
+
+/* ラベル */
+.review-label {
+
+    display: block;
+
+    margin-bottom: 10px;
+
+    font-weight: bold;
+
+    font-size: 1rem;
+}
+
+/* select */
+.review-select {
+
+    width: 180px;
+
+    padding: 12px;
+
+    border-radius: 10px;
+
+    border: 1px solid #ccc;
+
+    font-size: 1rem;
+
+    margin-bottom: 25px;
+
+    background: white;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.review-select:focus {
+
+    outline: none;
+
+    border: 1px solid #ff9900;
+
+    box-shadow: 0 0 0 4px rgba(255,153,0,0.15);
+}
+
+/* textarea */
+.review-textarea {
+
+    width: 100%;
+
+    min-height: 180px;
+
+    padding: 18px;
+
+    border-radius: 14px;
+
+    border: 1px solid #ccc;
+
+    resize: vertical;
+
+    font-size: 1rem;
+
+    line-height: 1.7;
+
+    transition: 0.2s;
+
+    margin-bottom: 25px;
+
+    background: #fafafa;
+}
+
+.review-textarea:focus {
+
+    outline: none;
+
+    border: 1px solid #ff9900;
+
+    background: white;
+
+    box-shadow: 0 0 0 4px rgba(255,153,0,0.15);
+}
+
+/* 投稿ボタン */
+.review-submit-button {
+
+    border: none;
+
+    background: #ff9900;
+
+    color: white;
+
+    padding: 14px 35px;
+
+    border-radius: 999px;
+
+    font-size: 1rem;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.review-submit-button:hover {
+
+    background: #e68a00;
+
+    transform: translateY(-2px);
+}
+
+/* レスポンシブ */
+@media(max-width: 768px){
+
+    .review-form-container {
+
+        margin: 30px 20px;
+
+        padding: 25px;
+    }
+
+    .review-form-title {
+
+        font-size: 1.5rem;
+    }
 
 }

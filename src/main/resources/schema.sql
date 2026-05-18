@@ -55,7 +55,8 @@ CREATE TABLE achievements (
     id SERIAL PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
     image_path VARCHAR NOT NULL,
-    description VARCHAR(100) NOT NULL
+    description VARCHAR(100) NOT NULL,
+    method_name VARCHAR(100) NOT NULL
 );
 
 CREATE TABLE coupons (

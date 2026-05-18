@@ -1,138 +1,148 @@
-<!--<!DOCTYPE html>-->
-<!--<html>-->
-
-<!--<head>-->
-<!--    <meta charset="UTF-8">-->
-<!--    <title>商品詳細</title>-->
-<!--</head>-->
-
-<!--<body>-->
-    
-<!--    <h1>商品詳細ページ</h1>-->
-<!--    <p>商品ID : <span th:text="${product.id}"></span></p>-->
-<!--    <p>商品名 : <span th:text="${product.name}"></span></p>-->
-<!--    <p>☆レビュー : <span th:text="${product.reviewStar}"></span></p>-->
-<!--    <p>価格 : <span th:text="${product.price}"></span><p>-->
-<!--    <p>在庫数 : <span th:text="${product.stock}"></span></p>-->
-
-<!--</body>-->
-
-<!--</html>-->
-
-
-<!DOCTYPE html>
-<html lang="ja">
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>商品詳細</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>商品詳細</title>
 
-    <!-- Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<!-- Bootstrap -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Sawarabi+Gothic&display=swap"
-        rel="stylesheet">
+	<!-- Google Fonts -->
+	<link href="https://fonts.googleapis.com/css2?family=Sawarabi+Gothic&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Yusei+Magic&display=swap" rel="stylesheet">
 
-    <link href="https://fonts.googleapis.com/css2?family=Yusei+Magic&display=swap"
-        rel="stylesheet">
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-    <!-- CSS -->
-    <link rel="stylesheet" th:href="@{/css/detail.css}">
+	<!-- CSS -->
+	<link rel="stylesheet" th:href="@{/css/detail.css}">
+	<link rel="stylesheet" th:href="@{/css/_header.css}">
 </head>
 
 <body>
+	<header th:replace="layout/_header :: header"></header>
 
-    <main class="main-container">
+	<!-- 1段目：商品メインエリア（画像と基本情報） -->
+	<div class="product-page">
 
-        <div class="container">
+		<!-- 左：サムネイル -->
+		<div class="thumbnail-column">
+			<img th:each="image : ${productImages}" th:src="@{${image.imagePath}}"
+				th:data-image-path="@{${image.imagePath}}" class="thumbnail-image">
+		</div>
 
-            <!-- 戻る -->
-            <a href="/products" class="back-link">
-                ← 商品一覧へ戻る
-            </a>
+		<!-- 中央：メイン画像 -->
+		<div class="main-image-area">
+			<img id="mainImage" th:src="@{${productImages[0].imagePath}}" class="main-image" alt="">
+		</div>
 
-            <!-- 商品カード -->
-            <div class="detail-card">
+		<!-- 右：商品情報 -->
+		<div class="product-info">
+			<h1 class="product-title" th:text="${product.name}">商品名</h1>
 
-                <!-- 商品画像 -->
-                <img src="https://images.unsplash.com/photo-1563245372-f21724e3856d?q=80&w=1200"
-                    class="detail-image">
+			<!-- レビュー（総合評価） -->
+			<span class="stars" th:data-rating="${averageStar}"></span>
 
-                <!-- 商品情報 -->
-                <div class="detail-body">
+			<span th:text="${#numbers.formatDecimal(averageStar, 1, 1)}"></span>
+			
+			<!-- 価格 -->
+			<div class="price-area">
+				¥<span th:text="${product.price}"></span>
+			</div>
 
-                    <div class="product-tag">
-                        北海道グルメ
-                    </div>
+			<!-- 在庫 -->
+			<div class="stock-area">
+				在庫数 : <span th:text="${product.stock}"></span>
+			</div>
 
-                    <!-- 商品名 -->
-                    <h1 class="product-title"
-                        th:text="${product.name}">
-                        商品名
-                    </h1>
+			<!-- ボタン -->
+			<button class="cart-button">カートに追加</button>
 
-                    <!-- 価格 -->
-                    <div class="product-price">
-                        ¥<span th:text="${product.price}"></span>
-                    </div>
+			<!-- 商品説明 -->
+			<div class="description-box">
+				北海道の厳選素材を使用した人気商品です。
+			</div>
+		</div>
 
-                    <!-- 詳細情報 -->
-                    <div class="info-box">
+	</div>
 
-                        <div class="info-item">
+	<div class="review-form-container">
 
-                            <div class="info-label">
-                                商品ID
-                            </div>
+		<h2 class="review-form-title">
+			レビューを書く
+		</h2>
 
-                            <div class="info-value"
-                                th:text="${product.id}">
-                            </div>
+		<form th:action="@{/products/reviews}" method="post">
 
-                        </div>
+			<!-- 商品ID -->
+			<input type="hidden" name="productId" th:value="${product.id}">
 
-                        <div class="info-item">
+			<!-- 星 -->
+			<div>
 
-                            <div class="info-label">
-                                レビュー
-                            </div>
+				<label class="review-label">
+					評価
+				</label>
 
-                            <div class="info-value">
-                                ⭐ <span th:text="${product.reviewStar}"></span>
-                            </div>
+				<select name="star" class="review-select">
 
-                        </div>
+					<option value="5">★★★★★</option>
+					<option value="4">★★★★☆</option>
+					<option value="3">★★★☆☆</option>
+					<option value="2">★★☆☆☆</option>
+					<option value="1">★☆☆☆☆</option>
 
-                        <div class="info-item">
+				</select>
 
-                            <div class="info-label">
-                                在庫数
-                            </div>
+			</div>
 
-                            <div class="info-value"
-                                th:text="${product.stock}">
-                            </div>
+			<!-- コメント -->
+			<div>
 
-                        </div>
+				<label class="review-label">
+					コメント
+				</label>
 
-                    </div>
+				<textarea name="description" class="review-textarea" placeholder="商品の感想を書いてください"></textarea>
 
-                    <!-- ボタン -->
-                    <button class="btn btn-warning buy-btn">
-                        カートに追加する
-                    </button>
+			</div>
 
-                </div>
+			<!-- 投稿ボタン -->
+			<button type="submit" class="review-submit-button">
 
-            </div>
+				投稿する
 
-        </div>
+			</button>
 
-    </main>
+		</form>
 
+	</div>
+
+	<!-- 2段目：カスタマーレビューエリア（画像や商品情報の下に独立して配置） -->
+	<div class="container" style="max-width: 1500px; padding: 0 40px 40px 40px; margin: auto;"
+		th:if="${not #lists.isEmpty(reviews)}">
+
+		<!-- 区切り線 -->
+		<hr style="border-top: 1px solid #ccc; margin-bottom: 40px;">
+
+		<h3
+			style="font-size: 1.6rem; margin-bottom: 25px; font-weight: bold; font-family: 'Sawarabi Gothic', sans-serif;">
+			カスタマーレビュー
+		</h3>
+
+		<!-- レビュー一覧のコンテナ（少し横幅を絞って読みやすくしています） -->
+		<div style="max-width: 800px;">
+			<!-- 各ユーザーのレビューをループ -->
+			<div th:each="review : ${reviews}" class="description-box" style="margin-bottom: 20px;">
+				<p th:text="${review.user.name}" style="margin: 0;"></p>
+				<p th:text="${review.description}" style="margin: 0;"></p>
+			</div>
+		</div>
+
+	</div>
+
+	<script th:src="@{/javascript/productdetail.js}"></script>
 </body>
 
 </html>

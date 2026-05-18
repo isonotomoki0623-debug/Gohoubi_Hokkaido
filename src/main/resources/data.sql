@@ -1,3 +1,28 @@
+/*実績*/
+INSERT INTO achievements(name, image_path, description, method_name) VALUES 
+    ('初めてのお客様', '実績1の画像パス', '実績1の説明', 'isFirstPurchase'),
+    ('常連さん', '実績2の画像パス', '実績2の説明', 'isRepeatCustomer5Times'),
+    ('北海道マスター', '実績3の画像パス', '実績3の説明', 'isHokkaidoMaster20Times'),
+    ('爆買い王', '実績4の画像パス', '実績4の説明', 'isBulkBuyer10Items'),
+    ('スイーツハンター', '実績5の画像パス', '実績5の説明', 'isSweetsHunter'),
+    ('海鮮マスター', '実績6の画像パス', '実績6の説明', 'isSeafoodMaster'),
+    ('農家さんのお友達', '実績7の画像パス', '実績7の説明', 'isFarmFriend'),
+    ('温泉好き', '実績8の画像パス', '実績8の説明', 'isOnsenLover'),
+    ('北海道グルメ制覇', '実績9の画像パス', '実績9の説明', 'isHokkaidoGourmetComplete'),
+    ('札幌制覇', '実績10の画像パス', '実績10の説明', 'isSapporoStampCompleted'),
+    ('函館グルメ旅', '実績11の画像パス', '実績11の説明', 'isHakodateStampCompleted'),
+    ('富良野マスター', '実績12の画像パス', '実績12の説明', 'isFuranoStampCompleted'),
+    ('北海道一周', '実績13の画像パス', '実績13の説明', 'isHokkaidoRoundTrip'),
+    ('最強コンボ', '実績14の画像パス', '実績14の説明', 'isBestComboJingisukanBeer'),
+    ('海の幸セット', '実績15の画像パス', '実績15の説明', 'isSeafoodComboSet'),
+    ('北海道に貢献', '実績16の画像パス', '実績16の説明', 'isTotalSpent10000'),
+    ('大富豪', '実績17の画像パス', '実績17の説明', 'isTotalSpent50000'),
+    ('伝説の支援者', '実績18の画像パス', '実績18の説明', 'isTotalSpent100000'),
+    ('奇跡の組み合わせ', '実績19の画像パス', '実績19の説明', 'isMiracleCombination'),
+    ('ランダム達成', '実績20の画像パス', '実績20の説明', 'isRandomAchievement'),
+    ('シークレット実績', '実績21の画像パス', '実績21の説明', 'isSecretAchievement');
+
+
 /*職業*/
 INSERT INTO jobs(name, image_path) VALUES
 ('農家','aaa');
@@ -44,12 +69,6 @@ VALUES
 INSERT INTO product_categories(name)
 VALUES('農作物'),('海産物'),('肉・畜産品'),('乳製品'),('スイーツ・お菓子'),('酒・飲料'),('消耗品');
 
-
-INSERT INTO achievements(name,image_path,description)
-VALUES
-('はじめの一歩','aaa','はじめて購入した'),('一人前','bbb','5回購入した'),
-('プロフェッショナル','ccc','10回購入した'),('小作人','ddd','はじめて農作物を購入した');
-
 INSERT INTO products
 (name,price,stock,review_sum,review_star,product_category_id,hokkaido_area_id,user_id,shipping_interval) 
 VALUES
@@ -66,13 +85,68 @@ INSERT INTO reviews(user_id,product_id,description,star)
 VALUES
 (1,1,'思ってたのと違った',1.0),(2,2,'発想が遅かった',2.0),(3,3,'普通',3.0),
 (4,4,'美味しかった',4.0),(5,5,'最高です',5.0),
-(1,6,'よきかな',4.0),(2,7,'サイズ選びが難しい',4.0);
+(1,6,'よきかな',4.0),(2,7,'サイズ選びが難しい',4.0),
+(2,1,'思ってたのと違った！',5.0);
+
+/* 商品画像の追加 */
+INSERT INTO product_images(image_path, image_description, product_id)
+VALUES
+('/images/poteto1.jpg', 'いも1', 1),
+('/images/poteto2.jpg', 'いも2', 1),
+('/images/poteto3.jpg', 'いも3', 1);
+
+INSERT INTO product_images(image_path, image_description, product_id)
+VALUES
+('/images/poteto1.jpg', 'いも1', 2),
+('/images/poteto2.jpg', 'いも2', 2),
+('/images/poteto3.jpg', 'いも3', 2);
+
+INSERT INTO product_images(image_path, image_description, product_id)
+VALUES
+('/images/poteto1.jpg', 'いも1', 3),
+('/images/poteto2.jpg', 'いも2', 3),
+('/images/poteto3.jpg', 'いも3', 3);
+
+INSERT INTO product_images(image_path, image_description, product_id)
+VALUES
+('/images/poteto1.jpg', 'いも1', 4),
+('/images/poteto2.jpg', 'いも2', 4),
+('/images/poteto3.jpg', 'いも3', 4);
+
+INSERT INTO product_images(image_path, image_description, product_id)
+VALUES
+('/images/poteto1.jpg', 'いも1', 5),
+('/images/poteto2.jpg', 'いも2', 5),
+('/images/poteto3.jpg', 'いも3', 5);
+
+INSERT INTO product_images(image_path, image_description, product_id)
+VALUES
+('/images/poteto1.jpg', 'いも1', 6),
+('/images/poteto2.jpg', 'いも2', 6),
+('/images/poteto3.jpg', 'いも3', 6);
+
+INSERT INTO product_images(image_path, image_description, product_id)
+VALUES
+('/images/poteto1.jpg', 'いも1', 7),
+('/images/poteto2.jpg', 'いも2', 7),
+('/images/poteto3.jpg', 'いも3', 7);
+
+/*ユーザーが所持している実績*/
+INSERT INTO users_achievements (user_id, achievement_id, unlocked_at) VALUES
+    (1, 1, CURRENT_DATE),
+    (1, 3, CURRENT_DATE),
+    (1, 5, CURRENT_DATE),
+    (1, 8, CURRENT_DATE),
+    (1, 2, CURRENT_DATE),
+    (1, 10, CURRENT_DATE),
+    (1, 15, CURRENT_DATE),
+    (1, 20, CURRENT_DATE),
+    (2, 1, CURRENT_DATE),
+    (2, 21, CURRENT_DATE);
 
 
 
 
 
 
-
-
-
+ 
