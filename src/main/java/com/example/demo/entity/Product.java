@@ -9,6 +9,7 @@ public class Product {
 	private int reviewSum;
 	private double reviewStar;
 	private int productCategoryId;
+	private String productCategoryName;
 	private int hokkaidoAreaId;
 	private String hokkaidoAreaName;
 	private int userId;
@@ -68,6 +69,14 @@ public class Product {
 
 	public void setProductCategoryId(int productCategoryId) {
 		this.productCategoryId = productCategoryId;
+	}
+
+	public String getProductCategoryName() {
+		return productCategoryName;
+	}
+
+	public void setProductCategoryName(String productCategoryName) {
+		this.productCategoryName = productCategoryName;
 	}
 
 	public int getHokkaidoAreaId() {

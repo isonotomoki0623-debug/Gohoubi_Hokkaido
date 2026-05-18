@@ -5,15 +5,22 @@
 
 <mapper namespace="com.example.demo.mapper.ProductMapper">
 
-	<!--商品一覧で、商品情報とエリア名を表示 -->
-	<select id="findAll" resultType="com.example.demo.entity.Product">
+	<!--商品一覧で、商品情報とエリア名とカテゴリを表示 -->
+	<select id="findAll"
+		resultType="com.example.demo.entity.Product">
 
 		SELECT
 		p.*,
-		h.name AS hokkaido_area_name
+		h.name AS hokkaido_area_name,
+		c.name AS
+		product_category_name
 		FROM products p
-		JOIN hokkaido_areas h
-		ON p.hokkaido_area_id = h.id
+		LEFT JOIN hokkaido_areas h
+		ON
+		p.hokkaido_area_id = h.id
+		LEFT JOIN product_categories c
+		ON
+		p.product_category_id = c.id
 
 	</select>
 

@@ -58,13 +58,10 @@
 					<div class="product-info">
 
 						<!-- カテゴリ -->
-<!--						サンプルを表示-->
-						<div class="product-category">
-							北海道グルメ
+						<div class="product-category"
+						     th:text="${product.productCategoryName}">
+							カテゴリ
 						</div>
-						<!--						<div class="product-category" th:text="${product.category}">-->
-						<!--							海産物-->
-						<!--						</div>-->
 
 						<!-- 商品名 -->
 						<h2 class="product-name" th:text="${product.name}">
