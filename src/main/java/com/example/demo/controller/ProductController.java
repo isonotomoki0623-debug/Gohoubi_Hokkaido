@@ -88,7 +88,7 @@ public class ProductController {
 			@RequestParam(defaultValue = "1") int page,
 			Model model) {
 
-		int pageSize = 4;
+		int pageSize = 5;
 
 		int offset = (page - 1) * pageSize;
 

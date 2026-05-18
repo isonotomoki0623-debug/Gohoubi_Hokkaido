@@ -30,11 +30,11 @@ a {
 ========================= */
 
 .product-list-page {
-    padding: 42px 0 90px;
+    padding: 12px 0 20px;
 }
 
 .container {
-    width: min(1200px, 92%);
+    width: min(1240px, 94%);
     margin: 0 auto;
 }
 
@@ -43,54 +43,54 @@ a {
 ========================= */
 
 .page-title-area {
-    margin-bottom: 34px;
+    margin-bottom: 14px;
 
     background:
         linear-gradient(135deg,
             #7cbf8c,
             #98d3a5);
 
-    border-radius: 30px;
-    padding: 38px;
+    border-radius: 24px;
+    padding: 18px 28px;
 
     color: white;
 
     position: relative;
     overflow: hidden;
 
-    box-shadow: 0 20px 40px rgba(60, 110, 70, 0.15);
+    box-shadow: 0 12px 28px rgba(60, 110, 70, 0.12);
 }
 
 .page-title-area::before {
     content: "";
     position: absolute;
 
-    width: 300px;
-    height: 300px;
+    width: 220px;
+    height: 220px;
 
     background: rgba(255, 255, 255, 0.12);
 
     border-radius: 50%;
 
-    top: -120px;
-    right: -120px;
+    top: -100px;
+    right: -90px;
 }
 
 .page-title-area::after {
     content: "🧀";
     position: absolute;
 
-    right: 22px;
-    bottom: 16px;
+    right: 18px;
+    bottom: 8px;
 
-    font-size: 3.8rem;
-    opacity: 0.12;
+    font-size: 2.8rem;
+    opacity: 0.1;
 }
 
 .page-title-area h1 {
     margin: 0;
 
-    font-size: 2.3rem;
+    font-size: 1.7rem;
     font-weight: bold;
 
     position: relative;
@@ -106,9 +106,9 @@ a {
 
     grid-template-columns:
         repeat(auto-fill,
-            minmax(240px, 1fr));
+            minmax(210px, 1fr));
 
-    gap: 22px;
+    gap: 14px;
 }
 
 /* =========================
@@ -129,11 +129,11 @@ a {
 
     backdrop-filter: blur(6px);
 
-    border-radius: 22px;
+    border-radius: 18px;
 
     overflow: hidden;
 
-    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.06);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
 
     transition:
         transform 0.25s ease,
@@ -147,9 +147,9 @@ a {
 
 /* hoverでカード浮く */
 .product-link:hover .product-card {
-    transform: translateY(-6px);
+    transform: translateY(-5px);
 
-    box-shadow: 0 16px 34px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
 }
 
 /* =========================
@@ -163,7 +163,7 @@ a {
 
 .product-image-wrap img {
     width: 100%;
-    height: 180px;
+    height: 125px;
 
     object-fit: cover;
 
@@ -182,7 +182,7 @@ a {
 ========================= */
 
 .product-info {
-    padding: 16px;
+    padding: 11px;
 
     display: flex;
     flex-direction: column;
@@ -198,23 +198,23 @@ a {
     background: #eef8ef;
     color: #4f8f61;
 
-    font-size: 0.72rem;
+    font-size: 0.64rem;
     font-weight: bold;
 
     border-radius: 999px;
 
-    padding: 5px 10px;
+    padding: 3px 8px;
 
-    margin-bottom: 10px;
+    margin-bottom: 6px;
 }
 
 .product-name {
     margin: 0;
 
-    font-size: 1rem;
+    font-size: 0.88rem;
     font-weight: bold;
 
-    line-height: 1.5;
+    line-height: 1.35;
 
     color: #222;
 
@@ -226,11 +226,11 @@ a {
 }
 
 .product-area {
-    margin-top: 8px;
+    margin-top: 5px;
 
     color: #5e8b67;
 
-    font-size: 0.82rem;
+    font-size: 0.72rem;
 
     display: flex;
     align-items: center;
@@ -239,7 +239,7 @@ a {
 
 .product-area::before {
     content: "📍";
-    font-size: 0.78rem;
+    font-size: 0.68rem;
 }
 
 /* =========================
@@ -248,17 +248,17 @@ a {
 
 .product-bottom {
     margin-top: auto;
-    padding-top: 16px;
+    padding-top: 10px;
 
     display: flex;
     align-items: center;
     justify-content: space-between;
 
-    gap: 10px;
+    gap: 6px;
 }
 
 .product-price {
-    font-size: 1.25rem;
+    font-size: 1rem;
     font-weight: bold;
 
     color: #f06b4f;
@@ -273,13 +273,13 @@ a {
     color: white;
 
     font-weight: bold;
-    font-size: 0.8rem;
+    font-size: 0.7rem;
 
-    padding: 8px 14px;
+    padding: 6px 10px;
 
     border-radius: 999px;
 
-    box-shadow: 0 6px 14px rgba(255, 180, 100, 0.18);
+    box-shadow: 0 4px 10px rgba(255, 180, 100, 0.16);
 
     white-space: nowrap;
 }
@@ -289,20 +289,20 @@ a {
 ========================= */
 
 .pagination-area {
-    margin-top: 48px;
+    margin-top: 18px;
 
     display: flex;
     justify-content: center;
     align-items: center;
 
-    gap: 12px;
+    gap: 8px;
 
     flex-wrap: wrap;
 }
 
 .page-button {
-    width: 44px;
-    height: 44px;
+    width: 36px;
+    height: 36px;
 
     display: flex;
     align-items: center;
@@ -312,9 +312,10 @@ a {
 
     background: rgba(255, 255, 255, 0.92);
 
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.05);
 
     font-weight: bold;
+    font-size: 0.85rem;
 
     transition: 0.2s;
 }
@@ -333,7 +334,7 @@ a {
 
     color: white;
 
-    box-shadow: 0 10px 22px rgba(80, 140, 90, 0.22);
+    box-shadow: 0 8px 18px rgba(80, 140, 90, 0.18);
 }
 
 /* =========================
@@ -341,25 +342,25 @@ a {
 ========================= */
 
 .empty-message {
-    margin-top: 50px;
+    margin-top: 26px;
 
     background: rgba(255, 255, 255, 0.92);
 
     backdrop-filter: blur(6px);
 
-    border-radius: 24px;
+    border-radius: 20px;
 
-    padding: 42px 24px;
+    padding: 28px 20px;
 
     text-align: center;
 
-    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.06);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
 }
 
 .empty-message p {
     margin: 0;
 
-    font-size: 1.05rem;
+    font-size: 0.95rem;
     color: #666;
 }
 
@@ -370,28 +371,31 @@ a {
 @media (max-width: 768px) {
 
     .product-list-page {
-        padding-top: 22px;
+        padding-top: 10px;
+        padding-bottom: 20px;
     }
 
     .page-title-area {
-        padding: 30px 24px;
+        padding: 16px 18px;
+        margin-bottom: 12px;
+        border-radius: 20px;
     }
 
     .page-title-area h1 {
-        font-size: 2rem;
+        font-size: 1.45rem;
     }
 
     .product-grid {
         grid-template-columns: repeat(2, 1fr);
-        gap: 16px;
+        gap: 10px;
     }
 
     .product-image-wrap img {
-        height: 150px;
+        height: 105px;
     }
 
     .product-info {
-        padding: 14px;
+        padding: 10px;
     }
 
     .product-bottom {
@@ -401,5 +405,14 @@ a {
 
     .detail-button {
         text-align: center;
+    }
+
+    .pagination-area {
+        margin-top: 14px;
+    }
+
+    .page-button {
+        width: 34px;
+        height: 34px;
     }
 }
