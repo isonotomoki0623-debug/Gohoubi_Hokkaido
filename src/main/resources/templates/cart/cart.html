@@ -29,29 +29,49 @@
   <!-- カートあり -->
   <th:block th:unless="${#lists.isEmpty(cart)}">
 
-    <!-- ★ここだけ白枠 -->
+    <!-- 白いカード（商品エリア） -->
     <div class="cart-box">
 
       <table>
         <tr>
+		  <th></th>
           <th>商品名</th>
           <th>単価</th>
           <th>数量</th>
           <th>小計</th>
-          <th>操作</th>
+          <th></th>
         </tr>
 
         <tr th:each="item : ${cart}">
+			<td>
+			<img th:src="@{${item.imagePath}}" alt="商品画像" class="cart-img">
+			</td>
           <td>[[${item.name}]]</td>
           <td>[[${#numbers.formatDecimal(item.price, 0, 'COMMA', 0, 'POINT')}]]円</td>
-          <td>[[${item.quantity}]]</td>
+		  <td>
+		    <div class="qty-box">
+
+		      <form th:action="@{/cart/decrease}" method="post">
+		        <input type="hidden" name="productId" th:value="${item.productId}">
+		        <button type="submit" class="qty-btn">−</button>
+		      </form>
+
+		      <span class="qty">[[${item.quantity}]]</span>
+
+		      <form th:action="@{/cart/increase}" method="post">
+		        <input type="hidden" name="productId" th:value="${item.productId}">
+		        <button type="submit" class="qty-btn">＋</button>
+		      </form>
+
+		    </div>
+		  </td>
           <td>
             [[${#numbers.formatDecimal(item.price * item.quantity, 0, 'COMMA', 0, 'POINT')}]]円
           </td>
           <td>
             <form th:action="@{/cart/remove}" method="post">
               <input type="hidden" name="productId" th:value="${item.productId}" />
-              <button type="submit" class="login-btn">削除</button>
+              <button type="submit" class="btn">削除</button>
             </form>
           </td>
         </tr>
@@ -65,17 +85,21 @@
       </p>
 
     </div>
-    <!-- ★ここまで白枠 -->
+    <!-- /cart-box -->
+
+    <!-- カードの外（操作エリア） -->
+    <div class="cart-actions">
+		<a href="/order" class="purchase-btn">
+		購入する
+		</a>
+
+      <a href="/products" class="footer-link">
+        ▶ 商品一覧に戻る
+      </a>
+
+    </div>
 
   </th:block>
-
-  <!-- 購入ボタン（外に出す） -->
-  <p style="margin-top:20px;">
-    <button type="submit" class="login-btn">購入する</button>
-  </p>
-
-  <!-- 戻るリンク -->
-  <a href="/detail" class="footer-link">▶ 商品一覧に戻る</a>
 
 </main>
 
