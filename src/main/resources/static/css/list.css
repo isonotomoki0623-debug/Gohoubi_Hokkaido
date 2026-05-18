@@ -5,24 +5,24 @@
 ========================= */
 
 body {
-    font-family: 'Sawarabi Gothic', sans-serif;
-    color: #222;
-    min-height: 100vh;
-    overflow-x: hidden;
+	font-family: 'Sawarabi Gothic', sans-serif;
+	color: #222;
+	min-height: 100vh;
+	overflow-x: hidden;
 
-    background-color: #f5faf4;
+	background-color: #f5faf4;
 
-    background-image:
-        url("data:image/svg+xml,%3Csvg width='220' height='220' viewBox='0 0 220 220' xmlns='http://www.w3.org/2000/svg'%3E%3Cg opacity='0.07'%3E%3Ctext x='20' y='70' font-size='42'%3E🍃%3C/text%3E%3Ctext x='140' y='180' font-size='36'%3E🐄%3C/text%3E%3Ctext x='90' y='110' font-size='38'%3E⭐%3C/text%3E%3Ctext x='25' y='190' font-size='34'%3E🌽%3C/text%3E%3C/g%3E%3C/svg%3E"),
-        linear-gradient(to bottom,
-            #eef7ef 0%,
-            #f7fbf6 45%,
-            #fcfdfb 100%);
+	background-image:
+		url("data:image/svg+xml,%3Csvg width='220' height='220' viewBox='0 0 220 220' xmlns='http://www.w3.org/2000/svg'%3E%3Cg opacity='0.07'%3E%3Ctext x='20' y='70' font-size='42'%3E🍃%3C/text%3E%3Ctext x='140' y='180' font-size='36'%3E🐄%3C/text%3E%3Ctext x='90' y='110' font-size='38'%3E⭐%3C/text%3E%3Ctext x='25' y='190' font-size='34'%3E🌽%3C/text%3E%3C/g%3E%3C/svg%3E"),
+		linear-gradient(to bottom,
+			#eef7ef 0%,
+			#f7fbf6 45%,
+			#fcfdfb 100%);
 }
 
 a {
-    text-decoration: none;
-    color: inherit;
+	text-decoration: none;
+	color: inherit;
 }
 
 /* =========================
@@ -30,12 +30,12 @@ a {
 ========================= */
 
 .product-list-page {
-    padding: 12px 0 20px;
+	padding: 12px 0 20px;
 }
 
 .container {
-    width: min(1240px, 94%);
-    margin: 0 auto;
+	width: min(1240px, 94%);
+	margin: 0 auto;
 }
 
 /* =========================
@@ -43,58 +43,58 @@ a {
 ========================= */
 
 .page-title-area {
-    margin-bottom: 14px;
+	margin-bottom: 14px;
 
-    background:
-        linear-gradient(135deg,
-            #7cbf8c,
-            #98d3a5);
+	background:
+		linear-gradient(135deg,
+			#7cbf8c,
+			#98d3a5);
 
-    border-radius: 24px;
-    padding: 18px 28px;
+	border-radius: 24px;
+	padding: 18px 28px;
 
-    color: white;
+	color: white;
 
-    position: relative;
-    overflow: hidden;
+	position: relative;
+	overflow: hidden;
 
-    box-shadow: 0 12px 28px rgba(60, 110, 70, 0.12);
+	box-shadow: 0 12px 28px rgba(60, 110, 70, 0.12);
 }
 
 .page-title-area::before {
-    content: "";
-    position: absolute;
+	content: "";
+	position: absolute;
 
-    width: 220px;
-    height: 220px;
+	width: 220px;
+	height: 220px;
 
-    background: rgba(255, 255, 255, 0.12);
+	background: rgba(255, 255, 255, 0.12);
 
-    border-radius: 50%;
+	border-radius: 50%;
 
-    top: -100px;
-    right: -90px;
+	top: -100px;
+	right: -90px;
 }
 
 .page-title-area::after {
-    content: "🧀";
-    position: absolute;
+	content: "🧀";
+	position: absolute;
 
-    right: 18px;
-    bottom: 8px;
+	right: 18px;
+	bottom: 8px;
 
-    font-size: 2.8rem;
-    opacity: 0.1;
+	font-size: 2.8rem;
+	opacity: 0.1;
 }
 
 .page-title-area h1 {
-    margin: 0;
+	margin: 0;
 
-    font-size: 1.7rem;
-    font-weight: bold;
+	font-size: 1.7rem;
+	font-weight: bold;
 
-    position: relative;
-    z-index: 1;
+	position: relative;
+	z-index: 1;
 }
 
 /* =========================
@@ -102,13 +102,13 @@ a {
 ========================= */
 
 .product-grid {
-    display: grid;
+	display: grid;
 
-    grid-template-columns:
-        repeat(auto-fill,
-            minmax(210px, 1fr));
+	grid-template-columns:
+		repeat(auto-fill,
+			minmax(210px, 1fr));
 
-    gap: 14px;
+	gap: 14px;
 }
 
 /* =========================
@@ -116,8 +116,8 @@ a {
 ========================= */
 
 .product-link {
-    display: block;
-    height: 100%;
+	display: block;
+	height: 100%;
 }
 
 /* =========================
@@ -125,31 +125,31 @@ a {
 ========================= */
 
 .product-card {
-    background: rgba(255, 255, 255, 0.92);
+	background: rgba(255, 255, 255, 0.92);
 
-    backdrop-filter: blur(6px);
+	backdrop-filter: blur(6px);
 
-    border-radius: 18px;
+	border-radius: 18px;
 
-    overflow: hidden;
+	overflow: hidden;
 
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+	box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
 
-    transition:
-        transform 0.25s ease,
-        box-shadow 0.25s ease;
+	transition:
+		transform 0.25s ease,
+		box-shadow 0.25s ease;
 
-    display: flex;
-    flex-direction: column;
+	display: flex;
+	flex-direction: column;
 
-    height: 100%;
+	height: 100%;
 }
 
 /* hoverでカード浮く */
 .product-link:hover .product-card {
-    transform: translateY(-5px);
+	transform: translateY(-5px);
 
-    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+	box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
 }
 
 /* =========================
@@ -157,24 +157,24 @@ a {
 ========================= */
 
 .product-image-wrap {
-    display: block;
-    overflow: hidden;
+	display: block;
+	overflow: hidden;
 }
 
 .product-image-wrap img {
-    width: 100%;
-    height: 125px;
+	width: 100%;
+	height: 125px;
 
-    object-fit: cover;
+	object-fit: cover;
 
-    display: block;
+	display: block;
 
-    transition: transform 0.35s ease;
+	transition: transform 0.35s ease;
 }
 
 /* hoverで画像ズーム */
 .product-link:hover .product-image-wrap img {
-    transform: scale(1.05);
+	transform: scale(1.05);
 }
 
 /* =========================
@@ -182,64 +182,64 @@ a {
 ========================= */
 
 .product-info {
-    padding: 11px;
+	padding: 11px;
 
-    display: flex;
-    flex-direction: column;
+	display: flex;
+	flex-direction: column;
 
-    flex-grow: 1;
+	flex-grow: 1;
 }
 
 .product-category {
-    display: inline-block;
+	display: inline-block;
 
-    width: fit-content;
+	width: fit-content;
 
-    background: #eef8ef;
-    color: #4f8f61;
+	background: #eef8ef;
+	color: #4f8f61;
 
-    font-size: 0.64rem;
-    font-weight: bold;
+	font-size: 0.64rem;
+	font-weight: bold;
 
-    border-radius: 999px;
+	border-radius: 999px;
 
-    padding: 3px 8px;
+	padding: 3px 8px;
 
-    margin-bottom: 6px;
+	margin-bottom: 6px;
 }
 
 .product-name {
-    margin: 0;
+	margin: 0;
 
-    font-size: 0.88rem;
-    font-weight: bold;
+	font-size: 0.88rem;
+	font-weight: bold;
 
-    line-height: 1.35;
+	line-height: 1.35;
 
-    color: #222;
+	color: #222;
 
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
 
-    overflow: hidden;
+	overflow: hidden;
 }
 
 .product-area {
-    margin-top: 5px;
+	margin-top: 5px;
 
-    color: #5e8b67;
+	color: #5e8b67;
 
-    font-size: 0.72rem;
+	font-size: 0.72rem;
 
-    display: flex;
-    align-items: center;
-    gap: 4px;
+	display: flex;
+	align-items: center;
+	gap: 4px;
 }
 
 .product-area::before {
-    content: "📍";
-    font-size: 0.68rem;
+	content: "📍";
+	font-size: 0.68rem;
 }
 
 /* =========================
@@ -247,41 +247,41 @@ a {
 ========================= */
 
 .product-bottom {
-    margin-top: auto;
-    padding-top: 10px;
+	margin-top: auto;
+	padding-top: 10px;
 
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
 
-    gap: 6px;
+	gap: 6px;
 }
 
 .product-price {
-    font-size: 1rem;
-    font-weight: bold;
+	font-size: 1rem;
+	font-weight: bold;
 
-    color: #f06b4f;
+	color: #f06b4f;
 }
 
 .detail-button {
-    background:
-        linear-gradient(135deg,
-            #ffd67f,
-            #ffb98f);
+	background:
+		linear-gradient(135deg,
+			#ffd67f,
+			#ffb98f);
 
-    color: white;
+	color: white;
 
-    font-weight: bold;
-    font-size: 0.7rem;
+	font-weight: bold;
+	font-size: 0.7rem;
 
-    padding: 6px 10px;
+	padding: 6px 10px;
 
-    border-radius: 999px;
+	border-radius: 999px;
 
-    box-shadow: 0 4px 10px rgba(255, 180, 100, 0.16);
+	box-shadow: 0 4px 10px rgba(255, 180, 100, 0.16);
 
-    white-space: nowrap;
+	white-space: nowrap;
 }
 
 /* =========================
@@ -289,52 +289,91 @@ a {
 ========================= */
 
 .pagination-area {
-    margin-top: 18px;
+	margin-top: 18px;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 
-    gap: 8px;
+	gap: 8px;
 
-    flex-wrap: wrap;
+	flex-wrap: nowrap;
+	/* ← 重要：ズレ防止 */
 }
 
+/* 数字ボタン */
 .page-button {
-    width: 36px;
-    height: 36px;
+	width: 36px;
+	height: 36px;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 
-    border-radius: 50%;
+	border-radius: 50%;
 
-    background: rgba(255, 255, 255, 0.92);
+	background: rgba(255, 255, 255, 0.92);
 
-    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.05);
+	box-shadow: 0 6px 14px rgba(0, 0, 0, 0.05);
 
-    font-weight: bold;
-    font-size: 0.85rem;
+	font-weight: bold;
+	font-size: 0.85rem;
 
-    transition: 0.2s;
+	transition: 0.2s;
+
+	user-select: none;
 }
 
+/* ホバー */
 .page-button:hover {
-    transform: translateY(-2px);
-
-    background: #eef8ef;
+	transform: translateY(-2px);
+	background: #eef8ef;
 }
 
+/* 現在ページ */
 .page-button.active {
-    background:
-        linear-gradient(135deg,
-            #7cbf8c,
-            #98d3a5);
+	background: linear-gradient(135deg, #7cbf8c, #98d3a5);
+	color: white;
+	box-shadow: 0 8px 18px rgba(80, 140, 90, 0.18);
+}
 
-    color: white;
+/* =========================
+   矢印ボタン（追加）
+========================= */
 
-    box-shadow: 0 8px 18px rgba(80, 140, 90, 0.18);
+.page-arrow {
+	width: 36px;
+	height: 36px;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	border-radius: 50%;
+
+	background: rgba(255, 255, 255, 0.92);
+
+	box-shadow: 0 6px 14px rgba(0, 0, 0, 0.05);
+
+	font-weight: bold;
+	font-size: 0.9rem;
+
+	transition: 0.2s;
+
+	user-select: none;
+}
+
+/* 矢印ホバー */
+.page-arrow:hover {
+	transform: translateY(-2px);
+	background: #eef8ef;
+}
+
+/* 無効状態（端ページ） */
+.page-arrow.disabled {
+	opacity: 0.35;
+	pointer-events: none;
+	transform: none;
 }
 
 /* =========================
@@ -342,26 +381,26 @@ a {
 ========================= */
 
 .empty-message {
-    margin-top: 26px;
+	margin-top: 26px;
 
-    background: rgba(255, 255, 255, 0.92);
+	background: rgba(255, 255, 255, 0.92);
 
-    backdrop-filter: blur(6px);
+	backdrop-filter: blur(6px);
 
-    border-radius: 20px;
+	border-radius: 20px;
 
-    padding: 28px 20px;
+	padding: 28px 20px;
 
-    text-align: center;
+	text-align: center;
 
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+	box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
 }
 
 .empty-message p {
-    margin: 0;
+	margin: 0;
 
-    font-size: 0.95rem;
-    color: #666;
+	font-size: 0.95rem;
+	color: #666;
 }
 
 /* =========================
@@ -370,49 +409,49 @@ a {
 
 @media (max-width: 768px) {
 
-    .product-list-page {
-        padding-top: 10px;
-        padding-bottom: 20px;
-    }
+	.product-list-page {
+		padding-top: 10px;
+		padding-bottom: 20px;
+	}
 
-    .page-title-area {
-        padding: 16px 18px;
-        margin-bottom: 12px;
-        border-radius: 20px;
-    }
+	.page-title-area {
+		padding: 16px 18px;
+		margin-bottom: 12px;
+		border-radius: 20px;
+	}
 
-    .page-title-area h1 {
-        font-size: 1.45rem;
-    }
+	.page-title-area h1 {
+		font-size: 1.45rem;
+	}
 
-    .product-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
-    }
+	.product-grid {
+		grid-template-columns: repeat(2, 1fr);
+		gap: 10px;
+	}
 
-    .product-image-wrap img {
-        height: 105px;
-    }
+	.product-image-wrap img {
+		height: 105px;
+	}
 
-    .product-info {
-        padding: 10px;
-    }
+	.product-info {
+		padding: 10px;
+	}
 
-    .product-bottom {
-        flex-direction: column;
-        align-items: stretch;
-    }
+	.product-bottom {
+		flex-direction: column;
+		align-items: stretch;
+	}
 
-    .detail-button {
-        text-align: center;
-    }
+	.detail-button {
+		text-align: center;
+	}
 
-    .pagination-area {
-        margin-top: 14px;
-    }
+	.pagination-area {
+		margin-top: 14px;
+	}
 
-    .page-button {
-        width: 34px;
-        height: 34px;
-    }
+	.page-button {
+		width: 34px;
+		height: 34px;
+	}
 }

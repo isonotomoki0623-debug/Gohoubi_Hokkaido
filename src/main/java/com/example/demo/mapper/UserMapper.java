@@ -16,4 +16,7 @@ public interface UserMapper {
 	@Insert("INSERT INTO users(name, password , email, job_id, level,prefecture_id, role)"
 			+ " VALUES(#{name}, #{password}, #{email}, #{job_id}, #{level}, #{prefecture_id}, #{role})")
 	void insert(User user);
+
+	@Select("SELECT id, name, job_id, level, prefecture_id, role FROM users WHERE id =#{userid}")
+	User findByUserid(int userid);
 }
