@@ -10,6 +10,7 @@ public class Product {
 	private double reviewStar;
 	private int productCategoryId;
 	private int hokkaidoAreaId;
+	private String hokkaidoAreaName;
 	private int userId;
 	private int shippingInterval;
 
@@ -75,6 +76,14 @@ public class Product {
 
 	public void setHokkaidoAreaId(int hokkaidoAreaId) {
 		this.hokkaidoAreaId = hokkaidoAreaId;
+	}
+
+	public String getHokkaidoAreaName() {
+		return hokkaidoAreaName;
+	}
+
+	public void setHokkaidoAreaName(String hokkaidoAreaName) {
+		this.hokkaidoAreaName = hokkaidoAreaName;
 	}
 
 	public int getUserId() {

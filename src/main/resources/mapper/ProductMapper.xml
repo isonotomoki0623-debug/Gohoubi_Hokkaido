@@ -5,11 +5,16 @@
 
 <mapper namespace="com.example.demo.mapper.ProductMapper">
 
-	<select id="findAll"
-		resultType="com.example.demo.entity.Product">
-		SELECT id, name, price
-		FROM products
-		ORDER BY id
+	<!--商品一覧で、商品情報とエリア名を表示 -->
+	<select id="findAll" resultType="com.example.demo.entity.Product">
+
+		SELECT
+		p.*,
+		h.name AS hokkaido_area_name
+		FROM products p
+		JOIN hokkaido_areas h
+		ON p.hokkaido_area_id = h.id
+
 	</select>
 
 	<select id="findById"
