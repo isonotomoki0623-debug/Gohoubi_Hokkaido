@@ -58,8 +58,10 @@ public class AuthController {
 			return "auth/login";
 		}
 
+		User real = userMapper.findByUserid(user.getId());
+
 		//ログイン成功：セッションにユーザ情報を保存する
-		session.setAttribute("loginUser", user);
+		session.setAttribute("loginUser", real);
 		return "redirect:/";
 	}
 
