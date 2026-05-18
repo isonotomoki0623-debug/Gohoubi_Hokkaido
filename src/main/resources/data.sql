@@ -143,6 +143,15 @@ INSERT INTO users_achievements (user_id, achievement_id, unlocked_at) VALUES
     (1, 20, CURRENT_DATE),
     (2, 1, CURRENT_DATE),
     (2, 21, CURRENT_DATE);
+    
+/* ユーザのお気に入り商品の追加 */
+INSERT INTO favorites(user_id, product_id) VALUES
+(1, 1),
+(1, 2),
+(2, 1), 
+(3, 1),
+(4, 1),
+(5, 1);
 
 
 
