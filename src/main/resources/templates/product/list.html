@@ -7,7 +7,7 @@
 
 	<!-- CSS -->
 	<link rel="stylesheet" th:href="@{/css/style.css}">
-	<link rel="stylesheet" th:href="@{/css/product/list.css}">
+	<link rel="stylesheet" th:href="@{/css/list.css}">
 
 	<!-- Google Font -->
 	<link rel="preconnect" href="https://fonts.googleapis.com">
@@ -35,64 +35,60 @@
 			<!-- タイトル -->
 			<div class="page-title-area">
 				<h1>商品一覧</h1>
-				<p>
-					北海道の美味しいごほうびを見つけよう
-				</p>
 			</div>
 
 			<!-- 商品一覧 -->
 			<div class="product-grid">
 
-				<!-- 商品カード -->
-				<div class="product-card" th:each="product : ${products}">
+				<a th:each="product : ${products}"
+				   th:href="@{/product/detail/{id}(id=${product.id})}"
+				   class="product-link">
 
-					<!-- 商品画像 -->
-					<a th:href="@{/product/detail/{id}(id=${product.id})}" class="product-image-wrap">
-						<!--						<img th:src="@{${product.imagePath}}"-->
-						<!--						     th:alt="${product.name}">-->
-						<!--サンプル画像を表示-->
-						<img th:src="@{/images/logo_2.jpg}" th:alt="${product.name}">
-					</a>
+					<div class="product-card">
 
-					<!-- 商品情報 -->
-					<div class="product-info">
-
-						<!-- カテゴリ -->
-						<div class="product-category"
-						     th:text="${product.productCategoryName}">
-							カテゴリ
+						<div class="product-image-wrap">
+							<img th:src="@{/images/logo_2.jpg}"
+							     th:alt="${product.name}">
 						</div>
 
-						<!-- 商品名 -->
-						<h2 class="product-name" th:text="${product.name}">
-							商品名
-						</h2>
+						<div class="product-info">
 
-						<!-- 地域名 -->
-						<p class="product-area" th:text="${product.hokkaidoAreaName}">
-							札幌
-						</p>
-
-						<!-- 下部 -->
-						<div class="product-bottom">
-
-							<!-- 価格 -->
-							<div class="product-price">
-								¥<span th:text="${#numbers.formatInteger(product.price, 1, 'COMMA')}">
-									0
-								</span>
+							<div class="product-category"
+							     th:text="${product.productCategoryName}">
+								カテゴリ
 							</div>
 
-							<!-- 詳細ボタン -->
-							<a th:href="@{/product/detail/{id}(id=${product.id})}" class="detail-button">
-								詳細を見る
-							</a>
+							<h2 class="product-name"
+							    th:text="${product.name}">
+								商品名
+							</h2>
+
+							<p class="product-area"
+							   th:text="${product.hokkaidoAreaName}">
+								札幌
+							</p>
+
+							<div class="product-bottom">
+
+								<div class="product-price">
+									¥<span th:text="${#numbers.formatInteger(product.price, 1, 'COMMA')}">
+										0
+									</span>
+								</div>
+
+								<div class="detail-button">
+									詳細を見る
+								</div>
+
+							</div>
 
 						</div>
 
 					</div>
 
-				</div>
+				</a>
+
+			</div>
 
 			</div>
 
