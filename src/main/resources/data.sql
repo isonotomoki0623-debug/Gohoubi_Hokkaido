@@ -97,39 +97,39 @@ VALUES
 
 INSERT INTO product_images(image_path, image_description, product_id)
 VALUES
-('/images/poteto1.jpg', 'いも1', 2),
-('/images/poteto2.jpg', 'いも2', 2),
-('/images/poteto3.jpg', 'いも3', 2);
+('/images/salmon1.jpg', '鮭1', 2),
+('/images/salmon2.jpg', '鮭2', 2),
+('/images/salmon3.jpg', '鮭3', 2);
 
 INSERT INTO product_images(image_path, image_description, product_id)
 VALUES
-('/images/poteto1.jpg', 'いも1', 3),
-('/images/poteto2.jpg', 'いも2', 3),
-('/images/poteto3.jpg', 'いも3', 3);
+('/images/jin1.jpg', 'ジンギスカンセット1', 3),
+('/images/jin2.jpg', 'ジンギスカンセット2', 3),
+('/images/jin3.jpg', 'ジンギスカンセット3', 3);
 
 INSERT INTO product_images(image_path, image_description, product_id)
 VALUES
-('/images/poteto1.jpg', 'いも1', 4),
-('/images/poteto2.jpg', 'いも2', 4),
-('/images/poteto3.jpg', 'いも3', 4);
+('/images/cheese1.jpg', 'チーズ1', 4),
+('/images/cheese2.jpg', 'チーズ2', 4),
+('/images/cheese3.jpg', 'チーズ3', 4);
 
 INSERT INTO product_images(image_path, image_description, product_id)
 VALUES
-('/images/poteto1.jpg', 'いも1', 5),
-('/images/poteto2.jpg', 'いも2', 5),
-('/images/poteto3.jpg', 'いも3', 5);
+('/images/cho1.jpg', 'チョコ1', 5),
+('/images/cho2.jpg', 'チョコ2', 5),
+('/images/cho3.jpg', 'チョコ3', 5);
 
 INSERT INTO product_images(image_path, image_description, product_id)
 VALUES
-('/images/poteto1.jpg', 'いも1', 6),
-('/images/poteto2.jpg', 'いも2', 6),
-('/images/poteto3.jpg', 'いも3', 6);
+('/images/sake1.jpg', '酒1', 6),
+('/images/sake2.jpg', '酒2', 6),
+('/images/sake3.jpg', '酒3', 6);
 
 INSERT INTO product_images(image_path, image_description, product_id)
 VALUES
-('/images/poteto1.jpg', 'いも1', 7),
-('/images/poteto2.jpg', 'いも2', 7),
-('/images/poteto3.jpg', 'いも3', 7);
+('/images/kuma1.jpg', '熊1', 7),
+('/images/kuma2.jpg', '熊2', 7),
+('/images/kuma3.jpg', '熊3', 7);
 
 /*ユーザーが所持している実績*/
 INSERT INTO users_achievements (user_id, achievement_id, unlocked_at) VALUES
