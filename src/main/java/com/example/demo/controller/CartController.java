@@ -23,26 +23,26 @@ public class CartController {
 	private CartService cartService;
 	@Autowired
 	private ProductMapper productMapper;
-	
+
 	/** カート一覧を表示する */
-    @GetMapping("cart")
-    public String showCart(HttpSession session, Model model) {
-        List<CartItem> cart = cartService.getCart(session);
-        int total = cart.stream()
-                .mapToInt(item -> item.getPrice() * item.getQuantity())
-                .sum();
-        model.addAttribute("cart", cart);
-        model.addAttribute("total", total);
-        return "cart/cart";
-    }
+	@GetMapping("cart")
+	public String showCart(HttpSession session, Model model) {
+		List<CartItem> cart = cartService.getCart(session);
+		int total = cart.stream()
+				.mapToInt(item -> item.getPrice() * item.getQuantity())
+				.sum();
+		model.addAttribute("cart", cart);
+		model.addAttribute("total", total);
+		return "cart/cart";
+	}
 
 	@PostMapping("cart/add")
-	public String addToCart(@RequestParam("productId") int productId,
+	public String addToCart(@RequestParam("productId") int productId, @RequestParam("imagePath") String imagePath,
 			HttpSession session,
 			HttpServletRequest request) {
 		Product product = productMapper.findById(productId);
 		if (product != null) {
-			cartService.addItem(session, product);
+			cartService.addItem(session, product, imagePath);
 		}
 		return "redirect:" + request.getHeader("Referer");
 	}

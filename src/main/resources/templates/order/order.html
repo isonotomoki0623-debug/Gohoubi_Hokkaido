@@ -11,45 +11,29 @@
 <body>
 
     <div class="order-card">
-        <h1 class="order-title">注文詳細</h1>
-        <p class="order-date">注文日: 2024年05月15日</p>
+        <h1 class="order-title">注文詳細 （<span th:text="${#dates.format(#dates.createNow(), 'yyyy/MM/dd')}">yyyy/MM/dd</span>）</h1>
         
-        <div class="order-content-wrapper">
-            <!-- 左側：商品リスト -->
-            <div class="items-list">
-                <div class="item-container">
-                    <div class="item-image-box"><span>商品画像</span></div>
-                    <div class="item-details">
-                        <span class="product-name">新鮮ほうれん草パック</span>
-                        <div class="price-info">単価：¥1,000 / 個数：3個</div>
-                    </div>
-                    <div class="item-price-total">¥3,000</div>
-                </div>
-
-                <div class="item-container">
-                    <div class="item-image-box"><span>商品画像</span></div>
-                    <div class="item-details">
-                        <span class="product-name">特選和牛セット</span>
-                        <div class="price-info">単価：¥12,000 / 個数：5個</div>
-                    </div>
-                    <div class="item-price-total">¥60,000</div>
+        <div class="items-list">
+            <div class="item-container" th:each="item : ${cart}">
+                <div class="item-image-box">商品画像</div>
+                <div class="item-details">
+                    <div class="product-name" th:text="'商品名 ' + ${item.name}">商品名 ~~~</div>
+                    <div>単価 <span th:text="${#numbers.formatInteger(item.price, 1, 'COMMA')} + '円'">1000円</span></div>
+                    <div>個数 <span th:text="${item.quantity} + '個'">3個</span></div>
+                    <div class="item-price-total" th:text="'金額 ' + ${#numbers.formatInteger(item.price * item.quantity, 1, 'COMMA')} + '円'">金額 3000円</div>
                 </div>
             </div>
+        </div>
 
-            <!-- 右側：合計・確定 -->
-            <div class="order-summary">
-                <div class="total-section">
-                    <div class="total-row">
-                        <span style="font-size: 0.9rem; color: #666;">お支払い合計</span>
-                        <span class="total-amount">¥63,000</span>
-                    </div>
-                    <p class="text-muted small" style="text-align: right;">(税込・送料込み)</p>
-                    
-                    <div class="confirm-btn-container">
-                        <button class="login-btn">購入を確定する</button>
-                    </div>
-                </div>
-            </div>
+        <div class="total-section">
+            <span class="total-label">合計金額</span>
+            <span class="total-amount" th:text="${#numbers.formatInteger(totalPrice, 1, 'COMMA')} + '円 (税込)'">63000円 (税込)</span>
+        </div>
+        
+        <div class="confirm-btn-container">
+            <form th:action="@{/Comp}" method="get">
+                <button type="submit" class="login-btn">購入を確定する</button>
+            </form>
         </div>
     </div>
 

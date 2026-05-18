@@ -26,7 +26,7 @@ public class CartService {
 	}
 
 	// カートに商品を追加する（同じ商品があれば数量を追加する）
-	public void addItem(HttpSession session, Product product) {
+	public void addItem(HttpSession session, Product product, String imagePath) {
 		List<CartItem> cart = getCart(session);
 		for (CartItem item : cart) {
 			if (item.getProductId() == product.getId()) {
@@ -35,6 +35,6 @@ public class CartService {
 			}
 		}
 		cart.add(new CartItem(product.getId(), product.getName(), product.getPrice(), product.getProductCategoryId(),
-				product.getHokkaidoAreaId()));
+				product.getHokkaidoAreaId(), imagePath));
 	}
 }

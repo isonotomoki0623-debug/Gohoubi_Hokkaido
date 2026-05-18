@@ -10,16 +10,18 @@ public class CartItem {
 	private int categoryId;
 	private int areaId;
 	private int quantity;
+	private String imagePath;
 
 	public CartItem() {
 	}
 
-	public CartItem(int productId, String name, int price, int categoryId, int areaId) {
+	public CartItem(int productId, String name, int price, int categoryId, int areaId, String imagePath) {
 		this.productId = productId;
 		this.name = name;
 		this.price = price;
 		this.categoryId = categoryId;
 		this.areaId = areaId;
+		this.imagePath = imagePath;
 		this.quantity = 1;
 	}
 
