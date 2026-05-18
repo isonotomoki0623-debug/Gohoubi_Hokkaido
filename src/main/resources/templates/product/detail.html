@@ -10,8 +10,10 @@
 
 	<!-- Google Fonts -->
 	<link href="https://fonts.googleapis.com/css2?family=Sawarabi+Gothic&display=swap" rel="stylesheet">
-
 	<link href="https://fonts.googleapis.com/css2?family=Yusei+Magic&display=swap" rel="stylesheet">
+
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
 	<!-- CSS -->
 	<link rel="stylesheet" th:href="@{/css/detail.css}">
@@ -21,79 +23,126 @@
 <body>
 	<header th:replace="layout/_header :: header"></header>
 
+	<!-- 1段目：商品メインエリア（画像と基本情報） -->
 	<div class="product-page">
 
 		<!-- 左：サムネイル -->
 		<div class="thumbnail-column">
-
 			<img th:each="image : ${productImages}" th:src="@{${image.imagePath}}"
 				th:data-image-path="@{${image.imagePath}}" class="thumbnail-image">
-
 		</div>
 
 		<!-- 中央：メイン画像 -->
 		<div class="main-image-area">
-
 			<img id="mainImage" th:src="@{${productImages[0].imagePath}}" class="main-image" alt="">
-
 		</div>
 
 		<!-- 右：商品情報 -->
 		<div class="product-info">
+			<h1 class="product-title" th:text="${product.name}">商品名</h1>
 
-			<h1 class="product-title" th:text="${product.name}">
-				商品名
-			</h1>
+			<!-- レビュー（総合評価） -->
+			<span class="stars" th:data-rating="${averageStar}"></span>
 
-			<!-- レビュー -->
-			<div class="review-area">
-
-				<span class="star">
-					★★★★☆
-				</span>
-
-				<span th:text="${product.reviewStar}">
-				</span>
-
-			</div>
-
+			<span th:text="${#numbers.formatDecimal(averageStar, 1, 1)}"></span>
+			
 			<!-- 価格 -->
 			<div class="price-area">
-
 				¥<span th:text="${product.price}"></span>
-
 			</div>
 
 			<!-- 在庫 -->
 			<div class="stock-area">
-
-				在庫数 :
-				<span th:text="${product.stock}"></span>
-
+				在庫数 : <span th:text="${product.stock}"></span>
 			</div>
 
 			<!-- ボタン -->
-			<button class="cart-button">
-
-				カートに追加
-
-			</button>
+			<button class="cart-button">カートに追加</button>
 
 			<!-- 商品説明 -->
 			<div class="description-box">
-
 				北海道の厳選素材を使用した人気商品です。
-
 			</div>
-
 		</div>
 
 	</div>
 
-<script th:src="@{/javascript/productdetail.js}"></script>
-	
-</script>
-	
+	<div class="review-form-container">
+
+		<h2 class="review-form-title">
+			レビューを書く
+		</h2>
+
+		<form th:action="@{/products/reviews}" method="post">
+
+			<!-- 商品ID -->
+			<input type="hidden" name="productId" th:value="${product.id}">
+
+			<!-- 星 -->
+			<div>
+
+				<label class="review-label">
+					評価
+				</label>
+
+				<select name="star" class="review-select">
+
+					<option value="5">★★★★★</option>
+					<option value="4">★★★★☆</option>
+					<option value="3">★★★☆☆</option>
+					<option value="2">★★☆☆☆</option>
+					<option value="1">★☆☆☆☆</option>
+
+				</select>
+
+			</div>
+
+			<!-- コメント -->
+			<div>
+
+				<label class="review-label">
+					コメント
+				</label>
+
+				<textarea name="description" class="review-textarea" placeholder="商品の感想を書いてください"></textarea>
+
+			</div>
+
+			<!-- 投稿ボタン -->
+			<button type="submit" class="review-submit-button">
+
+				投稿する
+
+			</button>
+
+		</form>
+
+	</div>
+
+	<!-- 2段目：カスタマーレビューエリア（画像や商品情報の下に独立して配置） -->
+	<div class="container" style="max-width: 1500px; padding: 0 40px 40px 40px; margin: auto;"
+		th:if="${not #lists.isEmpty(reviews)}">
+
+		<!-- 区切り線 -->
+		<hr style="border-top: 1px solid #ccc; margin-bottom: 40px;">
+
+		<h3
+			style="font-size: 1.6rem; margin-bottom: 25px; font-weight: bold; font-family: 'Sawarabi Gothic', sans-serif;">
+			カスタマーレビュー
+		</h3>
+
+		<!-- レビュー一覧のコンテナ（少し横幅を絞って読みやすくしています） -->
+		<div style="max-width: 800px;">
+			<!-- 各ユーザーのレビューをループ -->
+			<div th:each="review : ${reviews}" class="description-box" style="margin-bottom: 20px;">
+				<p th:text="${review.user.name}" style="margin: 0;"></p>
+				<p th:text="${review.description}" style="margin: 0;"></p>
+			</div>
+		</div>
+
+	</div>
+
+	<script th:src="@{/javascript/productdetail.js}"></script>
 </body>
 
 </html>

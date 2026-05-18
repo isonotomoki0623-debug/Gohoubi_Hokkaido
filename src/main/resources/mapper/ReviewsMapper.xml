@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.demo.mapper.ReviewsMapper">
+
+	<resultMap id="ReviewsWithUserResultMap"
+		type="com.example.demo.entity.Reviews">
+
+		<id property="userId" column="user_id" />
+		<id property="productId" column="product_id" />
+
+		<result property="description" column="description" />
+		<result property="star" column="star" />
+
+		<association property="user"
+			javaType="com.example.demo.entity.User">
+
+			<id property="id" column="id" />
+			<result property="name" column="name" />
+
+		</association>
+
+	</resultMap>
+
+	<select id="findById" parameterType="int"
+		resultMap="ReviewsWithUserResultMap">
+		SELECT r.user_id, r.product_id, r.description, r.star, u.id,
+		u.name
+		FROM reviews r
+		LEFT JOIN users u ON r.user_id = u.id
+		WHERE
+		r.product_id = #{productId}
+	</select>
+
+	<select id="isReview"
+		resultType="com.example.demo.entity.Reviews">
+		SELECT * FROM reviews
+		WHERE user_id = #{userId} AND
+		product_id = #{productId}
+	</select>
+
+	<insert id="insert">
+		INSERT INTO reviews(
+		user_id, product_id, description,
+		star
+		) VALUES (
+		#{userId}, #{productId}, #{description}, #{star}
+		)
+	</insert>
+
+	<update id="update">
+		UPDATE reviews
+		SET
+		description = #{description},
+		star =
+		#{star}
+		WHERE
+		user_id = #{userId} AND product_id = #{productId}
+	</update>
+
+</mapper>
