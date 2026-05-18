@@ -3,6 +3,7 @@ package com.example.demo.mapper;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.springframework.data.repository.query.Param;
 
 import com.example.demo.entity.Product;
 
@@ -13,4 +14,11 @@ public interface ProductMapper {
 
 	/** 全商品を取得する */
 	List<Product> findAll();
+
+	/** ページネーション */
+	List<Product> findPage(
+			@Param("offset") int offset,
+			@Param("limit") int limit);
+
+	int countAll();
 }

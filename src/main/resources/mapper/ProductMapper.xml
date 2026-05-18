@@ -31,4 +31,24 @@
 		WHERE id = #{id}
 	</select>
 
+	<!-- ページネーション -->
+	<select id="findPage"
+		resultType="com.example.demo.entity.Product">
+
+		SELECT *
+		FROM products
+		ORDER BY id
+		LIMIT #{limit}
+		OFFSET
+		#{offset}
+
+	</select>
+
+	<select id="countAll" resultType="int">
+
+		SELECT COUNT(*)
+		FROM products
+
+	</select>
+
 </mapper>

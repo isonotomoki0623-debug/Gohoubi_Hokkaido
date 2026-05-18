@@ -40,31 +40,26 @@
 			<!-- 商品一覧 -->
 			<div class="product-grid">
 
-				<a th:each="product : ${products}"
-				   th:href="@{/product/detail/{id}(id=${product.id})}"
-				   class="product-link">
+				<a th:each="product : ${products}" th:href="@{/product/detail/{id}(id=${product.id})}"
+					class="product-link">
 
 					<div class="product-card">
 
 						<div class="product-image-wrap">
-							<img th:src="@{/images/logo_2.jpg}"
-							     th:alt="${product.name}">
+							<img th:src="@{/images/logo_2.jpg}" th:alt="${product.name}">
 						</div>
 
 						<div class="product-info">
 
-							<div class="product-category"
-							     th:text="${product.productCategoryName}">
+							<div class="product-category" th:text="${product.productCategoryName}">
 								カテゴリ
 							</div>
 
-							<h2 class="product-name"
-							    th:text="${product.name}">
+							<h2 class="product-name" th:text="${product.name}">
 								商品名
 							</h2>
 
-							<p class="product-area"
-							   th:text="${product.hokkaidoAreaName}">
+							<p class="product-area" th:text="${product.hokkaidoAreaName}">
 								札幌
 							</p>
 
@@ -90,34 +85,33 @@
 
 			</div>
 
-			</div>
+		</div>
 
-			<!-- =========================
+		<!-- =========================
             PAGINATION
             ========================== -->
-			<nav class="pagination-area" th:if="${totalPages > 1}">
+		<nav class="pagination-area" th:if="${totalPages > 1}">
 
-				<a class="page-button" th:if="${currentPage > 1}" th:href="@{/products(page=${currentPage - 1})}">
-					‹
-				</a>
+			<a class="page-button" th:if="${currentPage > 1}" th:href="@{/products(page=${currentPage - 1})}">
+				‹
+			</a>
 
-				<a class="page-button" th:each="i : ${#numbers.sequence(1, totalPages)}"
-					th:href="@{/products(page=${i})}" th:text="${i}" th:classappend="${i == currentPage} ? ' active'">
-				</a>
+			<a class="page-button" th:each="i : ${#numbers.sequence(1, totalPages)}" th:href="@{/products(page=${i})}"
+				th:text="${i}" th:classappend="${i == currentPage} ? ' active'">
+			</a>
 
-				<a class="page-button" th:if="${currentPage < totalPages}"
-					th:href="@{/products(page=${currentPage + 1})}">
-					›
-				</a>
+			<a class="page-button" th:if="${currentPage < totalPages}" th:href="@{/products(page=${currentPage + 1})}">
+				›
+			</a>
 
-			</nav>
+		</nav>
 
-			<!-- 商品が0件 -->
-			<div class="empty-message" th:if="${#lists.isEmpty(products)}">
+		<!-- 商品が0件 -->
+		<div class="empty-message" th:if="${#lists.isEmpty(products)}">
 
-				<p>現在、商品が登録されていません。</p>
+			<p>現在、商品が登録されていません。</p>
 
-			</div>
+		</div>
 
 		</div>
 

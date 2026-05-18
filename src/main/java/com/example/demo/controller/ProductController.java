@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.entity.Product;
 import com.example.demo.entity.ProductImages;
@@ -37,9 +38,24 @@ public class ProductController {
 
 	//商品一覧
 	@GetMapping("/products")
-	public String showList(Model model) {
-		List<Product> products = productMapper.findAll();
+	public String showList(
+			@RequestParam(defaultValue = "1") int page,
+			Model model) {
+
+		int pageSize = 8;
+
+		int offset = (page - 1) * pageSize;
+
+		List<Product> products = productMapper.findPage(offset, pageSize);
+
+		int totalCount = productMapper.countAll();
+
+		int totalPages = (int) Math.ceil((double) totalCount / pageSize);
+
 		model.addAttribute("products", products);
+		model.addAttribute("currentPage", page);
+		model.addAttribute("totalPages", totalPages);
+
 		return "product/list";
 	}
 
