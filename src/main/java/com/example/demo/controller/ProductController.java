@@ -16,6 +16,7 @@ import com.example.demo.entity.Product;
 import com.example.demo.entity.ProductImages;
 import com.example.demo.entity.Reviews;
 import com.example.demo.entity.User;
+import com.example.demo.mapper.FavoriteMapper;
 import com.example.demo.mapper.ProductImagesMapper;
 import com.example.demo.mapper.ProductMapper;
 import com.example.demo.mapper.ReviewsMapper;
@@ -29,10 +30,12 @@ public class ProductController {
 	private ProductImagesMapper productImagesMapper;
 	@Autowired
 	private ReviewsMapper reviewsMapper;
+	@Autowired
+	private FavoriteMapper favoriteMapper;
 
 	//商品詳細
 	@GetMapping("/products/{id}")
-	public String showDetail(@PathVariable("id") int id, Model model) {
+	public String showDetail(@PathVariable("id") int id, HttpSession session, Model model) {
 
 		Product product = productMapper.findById(id);
 		model.addAttribute("product", product);
@@ -48,6 +51,15 @@ public class ProductController {
 				.average()
 				.orElse(0.0);
 		model.addAttribute("averageStar", averageStar);
+
+		User loginUser = (User) session.getAttribute("loginUser");
+		boolean isFavorite = false;
+
+		if (loginUser != null) {
+			int count = favoriteMapper.countFavorite(loginUser.getId(), id);
+			isFavorite = (count > 0);
+		}
+		model.addAttribute("isFavorite", isFavorite);
 
 		return "product/detail";
 	}
