@@ -94,6 +94,33 @@
 
 			</div>
 
+			<!-- =========================
+            PAGINATION
+            ========================== -->
+			<nav class="pagination-area"
+			     th:if="${totalPages > 1}">
+
+				<a class="page-button"
+				   th:if="${currentPage > 1}"
+				   th:href="@{/products(page=${currentPage - 1})}">
+					‹
+				</a>
+
+				<a class="page-button"
+				   th:each="i : ${#numbers.sequence(1, totalPages)}"
+				   th:href="@{/products(page=${i})}"
+				   th:text="${i}"
+				   th:classappend="${i == currentPage} ? ' active'">
+				</a>
+
+				<a class="page-button"
+				   th:if="${currentPage < totalPages}"
+				   th:href="@{/products(page=${currentPage + 1})}">
+					›
+				</a>
+
+			</nav>
+
 			<!-- 商品が0件 -->
 			<div class="empty-message" th:if="${#lists.isEmpty(productList)}">
 
