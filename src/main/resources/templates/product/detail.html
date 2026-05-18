@@ -56,12 +56,6 @@
 				在庫数 : <span th:text="${product.stock}"></span>
 			</div>
 
-			<!-- ボタン -->
-			<form th:action="@{/cart/add}" method="post" style="display:inline">
-				<input type="hidden" name="productId" th:value="${product.id}" />
-				<input type="hidden" name="imagePath" th:value="${productImages[0].imagePath}" />
-				<button type="submit" class="cart-button" >カートに追加</button>
-			</form>
 			<!-- ボタンエリア（カートとお気に入りを横並びに配置） -->
 			<div class="action-buttons-container"
 				style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;">
@@ -69,6 +63,7 @@
 				<!-- カート追加フォーム -->
 				<form th:action="@{/cart/add}" method="post" style="display:inline; margin: 0;">
 					<input type="hidden" name="productId" th:value="${product.id}" />
+					<input type="hidden" name="imagePath" th:value="${productImages[0].imagePath}" />
 					<button type="submit" class="cart-button">カートに追加</button>
 				</form>
 
