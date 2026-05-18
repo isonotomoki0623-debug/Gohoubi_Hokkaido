@@ -39,6 +39,10 @@
         <if test="keyword != null and keyword != ''">
             p.name LIKE CONCAT('%', #{keyword}, '%')
         </if>
+
+        <if test="categoryId != null">
+            AND p.product_category_id = #{categoryId}
+        </if>
     </where>
 
     ORDER BY p.id DESC
@@ -62,6 +66,10 @@
     <where>
         <if test="keyword != null and keyword != ''">
             p.name LIKE CONCAT('%', #{keyword}, '%')
+        </if>
+
+        <if test="categoryId != null">
+            AND p.product_category_id = #{categoryId}
         </if>
     </where>
 

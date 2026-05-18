@@ -88,6 +88,7 @@ public class ProductController {
 	public String showList(
 			@RequestParam(defaultValue = "1") int page,
 			@RequestParam(required = false) String keyword,
+			@RequestParam(required = false) Integer categoryId,
 			Model model) {
 
 		int pageSize = 5;
@@ -96,8 +97,8 @@ public class ProductController {
 		List<Product> products;
 		int totalCount;
 
-		products = productMapper.findPage(keyword, offset, pageSize);
-		totalCount = productMapper.countAll(keyword);
+		products = productMapper.findPage(keyword, categoryId, offset, pageSize);
+		totalCount = productMapper.countAll(keyword, categoryId);
 
 		int totalPages = (int) Math.ceil((double) totalCount / pageSize);
 
@@ -105,6 +106,7 @@ public class ProductController {
 		model.addAttribute("currentPage", page);
 		model.addAttribute("totalPages", totalPages);
 		model.addAttribute("keyword", keyword);
+		model.addAttribute("categoryId", categoryId);
 		model.addAttribute("totalCount", totalCount);
 
 		return "product/list";
