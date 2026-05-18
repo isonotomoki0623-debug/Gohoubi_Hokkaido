@@ -57,7 +57,10 @@
 			</div>
 
 			<!-- ボタン -->
-			<button class="cart-button">カートに追加</button>
+			<form th:action="@{/cart/add}" method="post" style="display:inline">
+				<input type="hidden" name="productId" th:value="${product.id}" />
+				<button type="submit" class="cart-button" >カートに追加</button>
+			</form>
 
 			<!-- 商品説明 -->
 			<div class="description-box">
@@ -68,6 +71,9 @@
 	</div>
 
 	<div class="review-form-container">
+		<div>
+			
+		</div>
 
 		<h2 class="review-form-title">
 			レビューを書く

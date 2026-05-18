@@ -14,9 +14,9 @@
 
 	<select id="findById"
 		resultType="com.example.demo.entity.Product">
-		SELECT id, name, price, review_star, stock
+		SELECT id, name, price, review_star, stock, product_category_id ,hokkaido_area_id
 		FROM products
 		WHERE id = #{id}
-	</select>
+	</select> 
 
 </mapper>
