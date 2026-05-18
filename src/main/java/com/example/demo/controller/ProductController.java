@@ -30,6 +30,7 @@ public class ProductController {
 	@Autowired
 	private ReviewsMapper reviewsMapper;
 
+	//商品詳細
 	@GetMapping("/products/{id}")
 	public String showDetail(@PathVariable("id") int id, Model model) {
 
@@ -79,6 +80,29 @@ public class ProductController {
 		}
 
 		return "redirect:/products/" + productId;
+	}
+
+	//商品一覧
+	@GetMapping("/products")
+	public String showList(
+			@RequestParam(defaultValue = "1") int page,
+			Model model) {
+
+		int pageSize = 5;
+
+		int offset = (page - 1) * pageSize;
+
+		List<Product> products = productMapper.findPage(offset, pageSize);
+
+		int totalCount = productMapper.countAll();
+
+		int totalPages = (int) Math.ceil((double) totalCount / pageSize);
+
+		model.addAttribute("products", products);
+		model.addAttribute("currentPage", page);
+		model.addAttribute("totalPages", totalPages);
+
+		return "product/list";
 	}
 
 }
