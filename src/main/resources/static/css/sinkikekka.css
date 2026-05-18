@@ -1,13 +1,22 @@
 /* login.css */
  
 body {
-    font-family: 'Sawarabi Gothic', sans-serif;
+    font-family: 'Sawarabi Gothic', sans-serif !important;
     background-color: #f5faf4;
-    /* 背景画像の設定 */
+	/* 背景画像の設定 */
     background-image:
         url("data:image/svg+xml,%3Csvg width='220' height='220' viewBox='0 0 220 220' xmlns='http://www.w3.org/2000/svg'%3E%3Cg opacity='0.07'%3E%3Ctext x='20' y='70' font-size='42'%3E🍃%3C/text%3E%3Ctext x='140' y='180' font-size='36'%3E🐄%3C/text%3E%3Ctext x='90' y='110' font-size='38'%3E⭐%3C/text%3E%3Ctext x='25' y='190' font-size='34'%3E🌽%3C/text%3E%3C/g%3E%3C/svg%3E"),
         linear-gradient(to bottom, #eef7ef 0%, #f7fbf6 45%, #fcfdfb 100%);
+
     background-attachment: fixed;
+
+    margin: 0;
+
+    /* ★これが重要 */
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
  
 /* ログインカード */

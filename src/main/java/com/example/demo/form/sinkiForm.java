@@ -1,8 +1,8 @@
 package com.example.demo.form;
 
 import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 
 public class sinkiForm {
 	
@@ -17,9 +17,9 @@ public class sinkiForm {
 	 //@Size(min = 6, message = "パスワードは6文字以上で入力してください")
 	 private String password;
 	 
-	 @NotNull(message = "選択してください")
+	 @Min(value = 1, message = "選択してください")
 	 private int job_id;
-	 @NotNull(message = "選択してください")
+	 @Min(value = 1, message = "選択してください")
 	 private int prefectures_id;
 	
 
