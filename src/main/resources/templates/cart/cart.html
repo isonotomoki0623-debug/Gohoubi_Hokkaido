@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <title>カート</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" th:href="@{/css/cartindex.css}" href="/css/cartindex.css">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Sawarabi+Gothic&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Yusei+Magic&display=swap" rel="stylesheet">
+  <link rel="stylesheet" th:href="@{/css/_header.css}">
+</head>
+
+<body>
+
+<header th:replace="layout/_header :: header"></header>
+
+<main>
+
+  <h1 class="login-title">カート</h1>
+
+  <!-- カートが空 -->
+  <th:block th:if="${#lists.isEmpty(cart)}">
+    <p>カートに商品が入っていません。</p>
+  </th:block>
+
+  <!-- カートあり -->
+  <th:block th:unless="${#lists.isEmpty(cart)}">
+
+    <!-- ★ここだけ白枠 -->
+    <div class="cart-box">
+
+      <table>
+        <tr>
+          <th>商品名</th>
+          <th>単価</th>
+          <th>数量</th>
+          <th>小計</th>
+          <th>操作</th>
+        </tr>
+
+        <tr th:each="item : ${cart}">
+          <td>[[${item.name}]]</td>
+          <td>[[${#numbers.formatDecimal(item.price, 0, 'COMMA', 0, 'POINT')}]]円</td>
+          <td>[[${item.quantity}]]</td>
+          <td>
+            [[${#numbers.formatDecimal(item.price * item.quantity, 0, 'COMMA', 0, 'POINT')}]]円
+          </td>
+          <td>
+            <form th:action="@{/cart/remove}" method="post">
+              <input type="hidden" name="productId" th:value="${item.productId}" />
+              <button type="submit" class="login-btn">削除</button>
+            </form>
+          </td>
+        </tr>
+
+      </table>
+
+      <p class="total-price">
+        <strong>
+          合計：[[${#numbers.formatDecimal(total, 0, 'COMMA', 0, 'POINT')}]]円
+        </strong>
+      </p>
+
+    </div>
+    <!-- ★ここまで白枠 -->
+
+  </th:block>
+
+  <!-- 購入ボタン（外に出す） -->
+  <p style="margin-top:20px;">
+    <button type="submit" class="login-btn">購入する</button>
+  </p>
+
+  <!-- 戻るリンク -->
+  <a href="/detail" class="footer-link">▶ 商品一覧に戻る</a>
+
+</main>
+
+</body>
+</html>
