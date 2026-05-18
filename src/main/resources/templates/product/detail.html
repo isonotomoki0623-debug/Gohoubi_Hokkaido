@@ -45,7 +45,7 @@
 			<span class="stars" th:data-rating="${averageStar}"></span>
 
 			<span th:text="${#numbers.formatDecimal(averageStar, 1, 1)}"></span>
-			
+
 			<!-- 価格 -->
 			<div class="price-area">
 				¥<span th:text="${product.price}"></span>
@@ -56,11 +56,33 @@
 				在庫数 : <span th:text="${product.stock}"></span>
 			</div>
 
-			<!-- ボタン -->
-			<form th:action="@{/cart/add}" method="post" style="display:inline">
-				<input type="hidden" name="productId" th:value="${product.id}" />
-				<button type="submit" class="cart-button" >カートに追加</button>
-			</form>
+			<!-- ボタンエリア（カートとお気に入りを横並びに配置） -->
+			<div class="action-buttons-container"
+				style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;">
+
+				<!-- カート追加フォーム -->
+				<form th:action="@{/cart/add}" method="post" style="display:inline; margin: 0;">
+					<input type="hidden" name="productId" th:value="${product.id}" />
+					<button type="submit" class="cart-button">カートに追加</button>
+				</form>
+
+				<!-- お気に入りトグルフォーム（新規追加） -->
+				<form th:action="@{/products/favorite/toggle}" method="post" style="display:inline; margin: 0;">
+					<input type="hidden" name="productId" th:value="${product.id}" />
+
+					<button type="submit"
+						style="background: none; border: none; cursor: pointer; padding: 5px; outline: none;">
+						<!-- お気に入り登録済みのとき（赤色の塗りつぶしハート） -->
+						<i th:if="${isFavorite}" class="fa-solid fa-heart"
+							style="color: #ff4d4d; font-size: 1.8rem;"></i>
+
+						<!-- お気に入り未登録のとき（グレーの白抜きハート） -->
+						<i th:unless="${isFavorite}" class="fa-regular fa-heart"
+							style="color: #ccc; font-size: 1.8rem;"></i>
+					</button>
+				</form>
+
+			</div>
 
 			<!-- 商品説明 -->
 			<div class="description-box">
@@ -72,7 +94,7 @@
 
 	<div class="review-form-container">
 		<div>
-			
+
 		</div>
 
 		<h2 class="review-form-title">
