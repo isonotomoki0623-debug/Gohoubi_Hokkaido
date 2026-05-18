@@ -9,7 +9,9 @@ public class Product {
 	private int reviewSum;
 	private double reviewStar;
 	private int productCategoryId;
+	private String productCategoryName;
 	private int hokkaidoAreaId;
+	private String hokkaidoAreaName;
 	private int userId;
 	private int shippingInterval;
 
@@ -69,12 +71,28 @@ public class Product {
 		this.productCategoryId = productCategoryId;
 	}
 
+	public String getProductCategoryName() {
+		return productCategoryName;
+	}
+
+	public void setProductCategoryName(String productCategoryName) {
+		this.productCategoryName = productCategoryName;
+	}
+
 	public int getHokkaidoAreaId() {
 		return hokkaidoAreaId;
 	}
 
 	public void setHokkaidoAreaId(int hokkaidoAreaId) {
 		this.hokkaidoAreaId = hokkaidoAreaId;
+	}
+
+	public String getHokkaidoAreaName() {
+		return hokkaidoAreaName;
+	}
+
+	public void setHokkaidoAreaName(String hokkaidoAreaName) {
+		this.hokkaidoAreaName = hokkaidoAreaName;
 	}
 
 	public int getUserId() {

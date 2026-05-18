@@ -58,8 +58,8 @@ INSERT INTO users(name, password , email , job_id, level, prefecture_id, role) V
 
 INSERT INTO hokkaido_areas(name,image_path)
 VALUES
-('札幌','aaa'),('室蘭登別','bbb'),('帯広','ccc'),('岩見沢','ddd'),('函館','eee'),
-('小樽','fff'),('旭川','ggg'),('夕張','hhh'),('帯広','iii'),('知床','jjj');
+('札幌','aaa'),('室蘭・登別','bbb'),('帯広','ccc'),('岩見沢','ddd'),('函館','eee'),
+('小樽','fff'),('旭川','ggg'),('夕張','hhh'),('富良野','iii');
 
 INSERT INTO producers
 (user_id, image_path,image_description,catchcopy,hokkaido_area_id)
