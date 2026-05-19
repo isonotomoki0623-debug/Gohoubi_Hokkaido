@@ -1,6 +1,8 @@
 
 package com.example.demo.mapper;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
@@ -22,4 +24,7 @@ public interface UserMapper {
 	User findByUserid(int userid);
 
 	void update(User user);
+
+	/** ユーザーランキングの取得 */
+	List<User> findUsersTop3();
 }

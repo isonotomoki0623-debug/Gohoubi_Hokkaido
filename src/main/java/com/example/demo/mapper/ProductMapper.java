@@ -23,4 +23,11 @@ public interface ProductMapper {
 	int countAll(
 			@Param("keyword") String keyword,
 			@Param("categoryId") Integer categoryId);
+
+	/** おすすめ商品 */
+	List<Product> findRecommend3();
+
+	/** 売上ランキング */
+	List<Product> findProductsTop3();
+
 }

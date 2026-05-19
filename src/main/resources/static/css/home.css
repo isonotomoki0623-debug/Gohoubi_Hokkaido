@@ -1,3 +1,9 @@
+@charset "UTF-8";
+
+/* =========================
+   全体
+========================= */
+
 body {
     font-family: 'Sawarabi Gothic', sans-serif;
     color: #222;
@@ -23,103 +29,147 @@ a {
     padding: 42px 0 90px;
 }
 
+/* =========================
+   セクションタイトル
+========================= */
+
 .section-title {
     font-size: 1.9rem;
     font-weight: bold;
     margin-bottom: 24px;
     color: #222;
+
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
-/* ヒーロー */
+/* =========================
+   ヒーロー
+========================= */
+
 .hero-card {
     background:
         linear-gradient(135deg,
             #7cbf8c,
             #98d3a5);
+
     border-radius: 34px;
     padding: 44px;
+
     color: white;
+
     position: relative;
     overflow: hidden;
+
     box-shadow: 0 20px 40px rgba(60, 110, 70, 0.15);
 }
 
 .hero-card::before {
     content: "";
+
     position: absolute;
+
     width: 340px;
     height: 340px;
+
     background: rgba(255, 255, 255, 0.12);
+
     border-radius: 50%;
+
     top: -120px;
     right: -120px;
 }
 
 .hero-card::after {
     content: "🐄";
+
     position: absolute;
+
     bottom: 18px;
     right: 24px;
+
     font-size: 4rem;
     opacity: 0.12;
 }
 
 .hero-title {
     font-family: 'Yusei Magic', sans-serif;
+
     font-size: 2.9rem;
     line-height: 1.5;
+
     position: relative;
     z-index: 1;
 }
 
 .hero-text {
     margin-top: 18px;
+
     line-height: 1.9;
     opacity: 0.96;
+
     position: relative;
     z-index: 1;
 }
 
 .hero-btn {
     margin-top: 28px;
+
     border-radius: 999px;
     padding: 14px 28px;
+
     font-weight: bold;
+
     position: relative;
     z-index: 1;
+
     border: none;
+
     box-shadow: 0 8px 18px rgba(255, 193, 7, 0.25);
 }
 
-/* カード共通 */
+/* =========================
+   カード共通
+========================= */
+
 .status-card,
 .product-card,
 .ranking-card,
 .news-card {
     background: rgba(255, 255, 255, 0.92);
+
     backdrop-filter: blur(6px);
+
     border-radius: 28px;
+
     box-shadow: 0 10px 28px rgba(0, 0, 0, 0.06);
 }
 
-/* ステータス */
+/* =========================
+   ステータス
+========================= */
+
 .status-card {
     padding: 28px;
     height: 100%;
 }
 
-/* レベル */
+/* =========================
+   レベル
+========================= */
+
 .level-box {
     background:
         linear-gradient(135deg,
             #ffd67f,
             #ffb98f);
+
     border-radius: 24px;
     padding: 24px;
+
     color: white;
+
     box-shadow: 0 10px 24px rgba(255, 180, 100, 0.2);
 }
 
@@ -133,93 +183,217 @@ a {
     font-size: 0.95rem;
 }
 
-/* ログボ */
+/* =========================
+   ログインボーナス
+========================= */
+
 .bonus-box {
     margin-top: 22px;
+
     background: #f5fff7;
+
     border: 2px dashed #83c88f;
+
     border-radius: 20px;
+
     padding: 18px;
 }
 
 .bonus-title {
     color: #3f8c57;
+
     font-weight: bold;
+
     margin-bottom: 8px;
 }
 
-/* 実績 */
+/* =========================
+   実績
+========================= */
+
 .achievement-alert {
     margin-top: 22px;
+
     background:
         linear-gradient(135deg,
             #eef4ff,
             #f7f9ff);
+
     border-left: 6px solid #7aa6ff;
+
     border-radius: 20px;
+
     padding: 18px;
 }
 
-/* 商品カード */
+/* =========================
+   商品カード
+========================= */
+
 .product-card {
+    background: rgba(255, 255, 255, 0.92);
+
+    backdrop-filter: blur(6px);
+
+    border-radius: 18px;
+
     overflow: hidden;
-    border: none;
-    transition: 0.25s;
+
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+
+    display: flex;
+    flex-direction: column;
+
     height: 100%;
 }
 
-.product-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 16px 34px rgba(0, 0, 0, 0.1);
+/* hoverでカード浮く */
+.product-link:hover .product-card {
+    transform: translateY(-5px);
+
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
 }
 
-.product-image {
-    height: 220px;
-    object-fit: cover;
+/* =========================
+   商品画像
+========================= */
+
+.product-image-wrap {
+    display: block;
+    overflow: hidden;
+}
+
+.product-image-wrap img {
     width: 100%;
+    height: 125px;
+
+    object-fit: cover;
+
+    display: block;
+
+    transition: transform 0.35s ease;
 }
 
-.product-body {
-    padding: 22px;
+/* hoverで画像ズーム */
+.product-link:hover .product-image-wrap img {
+    transform: scale(1.05);
 }
 
-.tag {
+/* =========================
+   商品情報
+========================= */
+
+.product-info {
+    padding: 11px;
+
+    display: flex;
+    flex-direction: column;
+
+    flex-grow: 1;
+}
+
+.product-category {
     display: inline-block;
+
+    width: fit-content;
+
     background: #eef8ef;
     color: #4f8f61;
-    font-size: 0.8rem;
+
+    font-size: 0.64rem;
     font-weight: bold;
+
     border-radius: 999px;
-    padding: 6px 12px;
-    margin-bottom: 12px;
+
+    padding: 3px 8px;
+
+    margin-bottom: 6px;
 }
 
-.product-title {
+.product-name {
+    margin: 0;
+
+    font-size: 0.88rem;
     font-weight: bold;
-    font-size: 1.1rem;
+
+    line-height: 1.35;
+
     color: #222;
+
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+
+    overflow: hidden;
 }
 
-.product-desc {
-    color: #666;
-    font-size: 0.9rem;
-    margin-top: 10px;
-    line-height: 1.7;
+.product-area {
+    margin-top: 5px;
+
+    color: #5e8b67;
+
+    font-size: 0.72rem;
+
+    display: flex;
+    align-items: center;
+    gap: 4px;
 }
 
-.price {
-    font-size: 1.5rem;
+.product-area::before {
+    content: "📍";
+    font-size: 0.68rem;
+}
+
+/* =========================
+   商品下部
+========================= */
+
+.product-bottom {
+    margin-top: auto;
+    padding-top: 10px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 6px;
+}
+
+.product-price {
+    font-size: 1rem;
     font-weight: bold;
+
     color: #f06b4f;
 }
 
-.buy-btn {
-    border-radius: 999px;
+.detail-button {
+    background:
+        linear-gradient(135deg,
+            #ffd67f,
+            #ffb98f);
+
+    color: white;
+
     font-weight: bold;
-    padding: 10px 18px;
+    font-size: 0.7rem;
+
+    padding: 6px 10px;
+
+    border-radius: 999px;
+
+    box-shadow: 0 4px 10px rgba(255, 180, 100, 0.16);
+
+    white-space: nowrap;
 }
 
-/* ランキング */
+/* =========================
+   ランキング
+========================= */
+
 .ranking-card {
     padding: 22px;
 }
@@ -227,8 +401,11 @@ a {
 .rank-item {
     display: flex;
     align-items: center;
+
     gap: 16px;
+
     padding: 14px 0;
+
     border-bottom: 1px solid #f0f0f0;
 }
 
@@ -239,12 +416,17 @@ a {
 .rank-number {
     width: 42px;
     height: 42px;
+
     border-radius: 50%;
+
     background: #ffe49a;
+
     display: flex;
     align-items: center;
     justify-content: center;
+
     font-weight: bold;
+
     color: #7d5b00;
 }
 
@@ -258,13 +440,17 @@ a {
     color: #777;
 }
 
-/* 新着 */
+/* =========================
+   新着
+========================= */
+
 .news-card {
     padding: 22px;
 }
 
 .news-item {
     padding: 14px 0;
+
     border-bottom: 1px solid #f1f1f1;
 }
 
@@ -274,9 +460,14 @@ a {
 
 .news-date {
     color: #4e86d8;
+
     font-size: 0.82rem;
     font-weight: bold;
 }
+
+/* =========================
+   レスポンシブ
+========================= */
 
 @media(max-width: 768px) {
 
