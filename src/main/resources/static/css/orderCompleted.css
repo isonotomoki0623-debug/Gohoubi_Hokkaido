@@ -1,27 +1,95 @@
 /* --- 注文完了画面用の追加スタイル --- */
 
 
-/* 実績解除：巻物バナー風 */
+/* =========================
+   ページ全体
+========================= */
+
+.order-card {
+    padding-top: 40px;
+}
+
+.order-title {
+    margin-top: 30px;
+    margin-bottom: 50px !important;
+    font-weight: bold;
+    color: #333;
+}
+
+
+/* =========================
+   実績解除
+========================= */
+
 .achievement-banner {
     background: #fdfdfd;
     border: 1px solid #ddd;
-    border-left: 8px solid #4f8f61; /* 左側にブランドカラーのアクセント */
-    padding: 15px;
+    border-left: 8px solid #4f8f61;
+    padding: 20px 22px;
     position: relative;
     border-radius: 4px 12px 12px 4px;
-    margin-bottom: 20px;
+    margin: 0 auto 24px;
     box-shadow: 4px 4px 0px #eef8ef;
+
+    width: 800px;
+
+    /* 縦並び */
+    display: flex;
+    flex-direction: column;
 }
 
 .achievement-label {
     font-weight: bold;
     color: #4f8f61;
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 18px;
+    letter-spacing: 0.03em;
+
+    /* 改行防止 */
+    white-space: nowrap;
 }
 
-/* スタンプエリア */
+.achievement-content {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+}
+
+.achievement-image {
+    flex-shrink: 0;
+}
+
+.achievement-image img {
+    width: 72px;
+    height: 72px;
+    object-fit: contain;
+}
+
+.achievement-info {
+    flex: 1;
+}
+
+.achievement-name {
+    font-size: 1.15rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.achievement-description {
+    font-size: 0.92rem;
+    color: #666;
+    margin: 0;
+    line-height: 1.6;
+}
+
+
+/* =========================
+   スタンプエリア
+========================= */
+
 .stamp-row {
     display: flex;
     gap: 15px;
@@ -43,7 +111,11 @@
     position: relative;
 }
 
-/* レベルアップエリア */
+
+/* =========================
+   レベルアップエリア
+========================= */
+
 .level-up-section {
     background: #f9fcf8;
     border-radius: 20px;
@@ -71,11 +143,55 @@
     font-size: 1rem;
 }
 
-/* セクションの見出し文字 */
+
+/* =========================
+   セクション見出し
+========================= */
+
 .section-caption {
     font-weight: bold;
-    color: #666;
-    margin-bottom: 10px;
+    color: #555;
+    margin-bottom: 16px;
+    margin-left: auto;
+    margin-right: auto;
     display: block;
-    font-size: 0.95rem;
+    font-size: 1rem;
+    width: 800px;
+}
+
+
+/* =========================
+   レスポンシブ対応
+========================= */
+
+@media (max-width: 900px) {
+
+    .achievement-banner,
+    .section-caption {
+        width: 100%;
+    }
+
+}
+
+@media (max-width: 576px) {
+
+    .order-title {
+        margin-top: 20px;
+        margin-bottom: 35px !important;
+    }
+
+    .achievement-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .achievement-image img {
+        width: 64px;
+        height: 64px;
+    }
+
+    .achievement-name {
+        margin-top: 8px;
+    }
+
 }
