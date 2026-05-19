@@ -28,6 +28,6 @@ public interface ProductMapper {
 	List<Product> findRecommend3();
 
 	/** 売上ランキング */
-	List<Product> findTop3();
+	List<Product> findProductsTop3();
 
 }

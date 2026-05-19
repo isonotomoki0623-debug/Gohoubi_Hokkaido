@@ -89,25 +89,34 @@
 		c.name AS product_category_name,
 		h.name AS hokkaido_area_name
 		FROM products p
-		LEFT JOIN product_categories c
+		LEFT JOIN
+		product_categories c
 		ON p.product_category_id = c.id
-		LEFT JOIN hokkaido_areas h
+		LEFT JOIN
+		hokkaido_areas h
 		ON p.hokkaido_area_id = h.id
 		ORDER BY p.id DESC
 		LIMIT 3
 	</select>
-	
+
 	<!-- ランキングを表示 -->
-	<select id="findTop3"
+	<!-- order_itemsとproductsをjoin -->
+	<!--group by を使って、product_idごとに分割する -->
+	<!--product_idが同じもののquantityを足し合わせて、合計個数sumを出す -->
+	<!--合計個数と単価priceを掛け合わせ、累計売上totalSalesを出す -->
+	<!--totalSalesを降順に並べ、大きいものから順にlimitで3つ表示する -->
+	<select id="findProductsTop3"
 		resultType="com.example.demo.entity.Product">
 		SELECT
 		p.id, SUM(o.quantity)* p.price AS total_price
 
-		FROM products p
+		FROM
+		products p
 		JOIN order_items o
 		ON p.id = o.product_id
 		GROUP BY p.id
-		ORDER BY total_price DESC
+		ORDER
+		BY total_price DESC
 		LIMIT 3
 	</select>
 

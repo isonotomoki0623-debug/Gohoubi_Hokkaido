@@ -188,60 +188,35 @@
 
 						<div class="ranking-card">
 
-							<div class="rank-item">
+							<div class="rank-item"
+							     th:each="product, stat : ${rankingProducts}">
 
-								<div class="rank-number">
+								<div class="rank-number"
+								     th:text="${stat.count}">
 									1
 								</div>
 
 								<div>
 
-									<div class="rank-name">
-										北海道いくら醤油漬け
+									<div class="rank-name"
+									     th:text="${product.name}">
+										商品名
 									</div>
 
 									<div class="rank-sales">
-										今週の人気 No.1
-									</div>
 
-								</div>
+										<span th:if="${stat.count == 1}">
+											今週の人気 No.1
+										</span>
 
-							</div>
+										<span th:if="${stat.count == 2}">
+											人気急上昇中
+										</span>
 
-							<div class="rank-item">
+										<span th:if="${stat.count == 3}">
+											リピーター多数
+										</span>
 
-								<div class="rank-number">
-									2
-								</div>
-
-								<div>
-
-									<div class="rank-name">
-										牧場ミルクチーズケーキ
-									</div>
-
-									<div class="rank-sales">
-										スイーツ部門1位
-									</div>
-
-								</div>
-
-							</div>
-
-							<div class="rank-item">
-
-								<div class="rank-number">
-									3
-								</div>
-
-								<div>
-
-									<div class="rank-name">
-										十勝和牛ハンバーグ
-									</div>
-
-									<div class="rank-sales">
-										リピーター多数
 									</div>
 
 								</div>
