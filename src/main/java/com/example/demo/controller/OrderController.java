@@ -11,7 +11,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import com.example.demo.entity.Achievement;
 import com.example.demo.entity.CartItem;
+import com.example.demo.entity.Coupon;
+import com.example.demo.entity.Order;
 import com.example.demo.entity.User;
+import com.example.demo.mapper.OrderMapper;
 import com.example.demo.service.AchievementService;
 import com.example.demo.service.CartService;
 import com.example.demo.service.UserService;
@@ -25,6 +28,8 @@ public class OrderController {
 	private CartService cartService;
 	@Autowired
 	private AchievementService achievementService;
+	@Autowired
+	private OrderMapper orderMapper;
 
 	@GetMapping("/order")
 	public String showOrder(HttpSession session, Model model) {
@@ -35,8 +40,11 @@ public class OrderController {
 		int totalPrice = cart.stream()
 				.mapToInt(item -> item.getPrice() * item.getQuantity())
 				.sum();
+		User user = userService.getLoginUser(session);
+		List<Coupon> hasCoupons = orderMapper.hasCoupons(user.getId());
 
 		//テンプレートにデータを渡す
+		model.addAttribute("coupons", hasCoupons);
 		model.addAttribute("cart", cart);
 		model.addAttribute("totalPrice", totalPrice);
 
@@ -44,9 +52,19 @@ public class OrderController {
 	}
 
 	@GetMapping("/Comp")
-	public String showComp(HttpSession session, Model model) {
+	public String showComp(Order order, HttpSession session, Model model, int couponId) {
+		List<CartItem> cart = cartService.getCart(session);
 		User user = userService.getLoginUser(session);
 		int userId = user.getId();
+		int totalPrice = cartService.getTotalPrice(session);
+		//orderテーブルに新規追加
+		orderMapper.InsertOrder(userId, totalPrice, couponId);
+		int orderId = order.getId();
+		//order_itemsテーブルに新規追加
+		for (CartItem cartItem : cart) {
+			orderMapper.InsertOrderItems(cartItem, orderId);
+		}
+		//実績解除の判断
 		List<Achievement> Achievements = achievementService.checkAchievement(userId, session);
 		model.addAttribute("Achievements", Achievements);
 		return "order/OrderCompleted";
