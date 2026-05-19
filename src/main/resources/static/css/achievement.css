@@ -1,0 +1,263 @@
+@charset "UTF-8";
+
+/* =========================
+   全体
+========================= */
+
+body {
+	font-family: 'Sawarabi Gothic', sans-serif;
+	color: #222;
+	min-height: 100vh;
+	overflow-x: hidden;
+
+	background-color: #f5faf4;
+
+	background-image:
+		url("data:image/svg+xml,%3Csvg width='220' height='220' viewBox='0 0 220 220' xmlns='http://www.w3.org/2000/svg'%3E%3Cg opacity='0.07'%3E%3Ctext x='20' y='70' font-size='42'%3E🍃%3C/text%3E%3Ctext x='140' y='180' font-size='36'%3E🐄%3C/text%3E%3Ctext x='90' y='110' font-size='38'%3E⭐%3C/text%3E%3Ctext x='25' y='190' font-size='34'%3E🌽%3C/text%3E%3C/g%3E%3C/svg%3E"),
+		linear-gradient(to bottom,
+			#eef7ef 0%,
+			#f7fbf6 45%,
+			#fcfdfb 100%);
+}
+
+a {
+	text-decoration: none;
+	color: inherit;
+}
+
+.main-container {
+	padding: 42px 0 90px;
+}
+
+/* =========================
+   タイトル
+========================= */
+
+.section-title {
+	font-size: 1.9rem;
+	font-weight: bold;
+	margin-bottom: 24px;
+
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+/* =========================
+   ヒーロー
+========================= */
+
+.hero-card {
+	background:
+		linear-gradient(135deg,
+			#7cbf8c,
+			#98d3a5);
+
+	border-radius: 34px;
+	padding: 44px;
+
+	color: white;
+
+	position: relative;
+	overflow: hidden;
+
+	box-shadow: 0 20px 40px rgba(60, 110, 70, 0.15);
+}
+
+.hero-card::before {
+	content: "";
+
+	position: absolute;
+
+	width: 340px;
+	height: 340px;
+
+	background: rgba(255, 255, 255, 0.12);
+
+	border-radius: 50%;
+
+	top: -120px;
+	right: -120px;
+}
+
+.hero-card::after {
+	content: "🏆";
+
+	position: absolute;
+
+	bottom: 18px;
+	right: 24px;
+
+	font-size: 4rem;
+	opacity: 0.12;
+}
+
+.hero-title {
+	font-family: 'Yusei Magic', sans-serif;
+
+	font-size: 2.8rem;
+	line-height: 1.5;
+
+	position: relative;
+	z-index: 1;
+}
+
+.hero-text {
+	margin-top: 18px;
+
+	line-height: 1.9;
+	opacity: 0.96;
+
+	position: relative;
+	z-index: 1;
+}
+
+/* =========================
+   実績カード
+========================= */
+
+.achievement-card {
+	background: rgba(255, 255, 255, 0.92);
+
+	backdrop-filter: blur(6px);
+
+	border-radius: 26px;
+
+	overflow: hidden;
+
+	box-shadow: 0 10px 28px rgba(0, 0, 0, 0.06);
+
+	transition:
+		transform 0.25s ease,
+		box-shadow 0.25s ease;
+
+	height: 100%;
+}
+
+.achievement-card:hover {
+	transform: translateY(-6px);
+
+	box-shadow: 0 16px 32px rgba(0, 0, 0, 0.08);
+}
+
+/* =========================
+   実績画像
+========================= */
+
+.achievement-image-wrap {
+	height: 210px;
+	overflow: hidden;
+
+	background: #f4f8f3;
+}
+
+.achievement-image-wrap img {
+	width: 100%;
+	height: 100%;
+
+	object-fit: cover;
+
+	display: block;
+
+	transition: transform 0.35s ease;
+}
+
+.achievement-card:hover .achievement-image-wrap img {
+	transform: scale(1.05);
+}
+
+/* =========================
+   実績情報
+========================= */
+
+.achievement-info {
+	padding: 20px;
+}
+
+.achievement-name {
+	font-size: 1.1rem;
+	font-weight: bold;
+
+	margin-bottom: 10px;
+}
+
+.achievement-description {
+	font-size: 0.92rem;
+	line-height: 1.7;
+
+	color: #666;
+}
+
+/* =========================
+   バッジ
+========================= */
+
+.achievement-badge {
+	display: inline-block;
+
+	padding: 6px 12px;
+
+	border-radius: 999px;
+
+	font-size: 0.75rem;
+	font-weight: bold;
+
+	margin-bottom: 12px;
+}
+
+/* =========================
+   獲得済み
+========================= */
+
+.unlocked {
+	border: 3px solid #ffd76f;
+
+	box-shadow:
+		0 12px 30px rgba(255, 215, 111, 0.22);
+}
+
+.unlocked .achievement-badge {
+	background:
+		linear-gradient(135deg,
+			#ffd67f,
+			#ffb98f);
+
+	color: white;
+}
+
+/* =========================
+   未獲得
+========================= */
+
+.locked {
+	filter: grayscale(100%);
+	opacity: 0.72;
+}
+
+.locked .achievement-badge {
+	background: #d8d8d8;
+	color: white;
+}
+
+/* =========================
+   レスポンシブ
+========================= */
+
+@media(max-width: 768px) {
+
+	.hero-title {
+		font-size: 2rem;
+	}
+
+	.hero-card {
+		padding: 32px;
+	}
+
+	.main-container {
+		padding-top: 20px;
+	}
+
+	.achievement-image-wrap {
+		height: 180px;
+	}
+}

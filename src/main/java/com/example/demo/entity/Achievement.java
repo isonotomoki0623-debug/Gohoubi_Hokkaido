@@ -9,6 +9,7 @@ public class Achievement {
 	private String imagePath;
 	private String description;
 	private String methodName;
+	private Integer userId;
 
 	public Achievement() {
 

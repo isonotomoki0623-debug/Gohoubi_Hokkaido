@@ -9,20 +9,21 @@ import com.example.demo.entity.UsersAchievement;
 
 @Mapper
 public interface AchievementMapper {
-    List<Achievement> selectUnownedAchievement(int userId);
+	List<Achievement> selectUnownedAchievement(int userId);
 
-    void insertUsersAchievements(UsersAchievement usersAchievement);
+	List<Achievement> selectAchievement(int userId);
 
-    int countUserPurchases(int userId);
+	void insertUsersAchievements(UsersAchievement usersAchievement);
 
-    int countUserPurchasesByCategory(int userId, String categoryName);
+	int countUserPurchases(int userId);
 
-    int countUserPurcahsesCategory(int userId);
+	int countUserPurchasesByCategory(int userId, String categoryName);
 
-    int countUserPurchasesByCategoryByArea(int userId, String areaName);
+	int countUserPurcahsesCategory(int userId);
 
-    int countUserPurchasesByArea(int userId);
+	int countUserPurchasesByCategoryByArea(int userId, String areaName);
 
-    int countUserPurchasesAmount(int userId);
+	int countUserPurchasesByArea(int userId);
+
+	int countUserPurchasesAmount(int userId);
 }
- 
