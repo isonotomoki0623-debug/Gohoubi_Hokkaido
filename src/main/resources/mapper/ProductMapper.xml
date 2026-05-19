@@ -21,6 +21,7 @@
         p.id,
         p.name,
         p.price,
+        p.review_sum,
         p.review_star,
         p.stock,
         p.product_category_id,
