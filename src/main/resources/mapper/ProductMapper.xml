@@ -14,65 +14,87 @@
 	</select>
 
 	<!-- ページネーション -->
-<select id="findPage"
-        resultType="com.example.demo.entity.Product">
+	<select id="findPage"
+		resultType="com.example.demo.entity.Product">
 
-    SELECT
-        p.id,
-        p.name,
-        p.price,
-        p.review_star,
-        p.stock,
-        p.product_category_id,
-        hc.name AS hokkaidoAreaName,
-        pc.name AS productCategoryName
+		SELECT
+		p.id,
+		p.name,
+		p.price,
+		p.review_star,
+		p.stock,
+		p.product_category_id,
+		hc.name AS hokkaidoAreaName,
+		pc.name AS
+		productCategoryName
 
-    FROM products p
+		FROM products p
 
-    LEFT JOIN hokkaido_areas hc
-        ON p.hokkaido_area_id = hc.id
+		LEFT JOIN hokkaido_areas hc
+		ON
+		p.hokkaido_area_id = hc.id
 
-    LEFT JOIN product_categories pc
-        ON p.product_category_id = pc.id
+		LEFT JOIN product_categories pc
+		ON
+		p.product_category_id = pc.id
 
-    <where>
-        <if test="keyword != null and keyword != ''">
-            p.name LIKE CONCAT('%', #{keyword}, '%')
-        </if>
+		<where>
+			<if test="keyword != null and keyword != ''">
+				p.name LIKE CONCAT('%', #{keyword}, '%')
+			</if>
 
-        <if test="categoryId != null">
-            AND p.product_category_id = #{categoryId}
-        </if>
-    </where>
+			<if test="categoryId != null">
+				AND p.product_category_id = #{categoryId}
+			</if>
+		</where>
 
-    ORDER BY p.id DESC
-    LIMIT #{pageSize} OFFSET #{offset}
+		ORDER BY p.id DESC
+		LIMIT #{pageSize} OFFSET #{offset}
 
-</select>
+	</select>
 
-<select id="countAll"
-        resultType="int">
+	<select id="countAll" resultType="int">
 
-    SELECT COUNT(*)
+		SELECT COUNT(*)
 
-    FROM products p
+		FROM products p
 
-    LEFT JOIN hokkaido_areas hc
-        ON p.hokkaido_area_id = hc.id
+		LEFT JOIN hokkaido_areas hc
+		ON
+		p.hokkaido_area_id = hc.id
 
-    LEFT JOIN product_categories pc
-        ON p.product_category_id = pc.id
+		LEFT JOIN product_categories pc
+		ON
+		p.product_category_id = pc.id
 
-    <where>
-        <if test="keyword != null and keyword != ''">
-            p.name LIKE CONCAT('%', #{keyword}, '%')
-        </if>
+		<where>
+			<if test="keyword != null and keyword != ''">
+				p.name LIKE CONCAT('%', #{keyword}, '%')
+			</if>
 
-        <if test="categoryId != null">
-            AND p.product_category_id = #{categoryId}
-        </if>
-    </where>
+			<if test="categoryId != null">
+				AND p.product_category_id = #{categoryId}
+			</if>
+		</where>
 
-</select>
+	</select>
+
+	<!-- おすすめ商品を表示 -->
+	<select id="findTop3"
+		resultType="com.example.demo.entity.Product">
+		SELECT
+		p.id,
+		p.name,
+		p.price,
+		c.name AS product_category_name,
+		h.name AS hokkaido_area_name
+		FROM products p
+		LEFT JOIN product_categories c
+		ON p.product_category_id = c.id
+		LEFT JOIN hokkaido_areas h
+		ON p.hokkaido_area_id = h.id
+		ORDER BY p.id DESC
+		LIMIT 3
+	</select>
 
 </mapper>
