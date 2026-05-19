@@ -23,7 +23,7 @@ public class HomeController {
 	public String home(Model model) {
 
 		// おすすめ商品を取得
-		List<Product> recommendProducts = productMapper.findTop3();
+		List<Product> recommendProducts = productMapper.findRecommend3();
 
 		model.addAttribute("recommendProducts", recommendProducts);
 

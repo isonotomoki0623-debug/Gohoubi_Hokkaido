@@ -80,7 +80,7 @@
 	</select>
 
 	<!-- おすすめ商品を表示 -->
-	<select id="findTop3"
+	<select id="findRecommend3"
 		resultType="com.example.demo.entity.Product">
 		SELECT
 		p.id,
@@ -94,6 +94,20 @@
 		LEFT JOIN hokkaido_areas h
 		ON p.hokkaido_area_id = h.id
 		ORDER BY p.id DESC
+		LIMIT 3
+	</select>
+	
+	<!-- ランキングを表示 -->
+	<select id="findTop3"
+		resultType="com.example.demo.entity.Product">
+		SELECT
+		p.id, SUM(o.quantity)* p.price AS total_price
+
+		FROM products p
+		JOIN order_items o
+		ON p.id = o.product_id
+		GROUP BY p.id
+		ORDER BY total_price DESC
 		LIMIT 3
 	</select>
 
