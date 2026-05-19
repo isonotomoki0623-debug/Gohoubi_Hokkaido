@@ -58,4 +58,10 @@ public class UserService {
 	//		System.out.println(form.getPassword());
 	//		System.out.println(form.getCategory());
 	//		System.out.println(form.getPrefectures());
+
+	// 登録情報のアップデート
+	public void updateUser(User user, HttpSession session) {
+		userMapper.update(user);
+		session.setAttribute("loginUser", user);
+	}
 }

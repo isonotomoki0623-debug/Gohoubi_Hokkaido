@@ -36,7 +36,7 @@ public class ProductController {
 	@Autowired
 	private UserService userService;
 
-	//商品詳細
+	// 商品詳細
 	@GetMapping("/products/{id}")
 	public String showDetail(@PathVariable("id") int id, HttpSession session, Model model) {
 
@@ -49,6 +49,8 @@ public class ProductController {
 		List<Reviews> reviews = reviewsMapper.findById(id);
 		model.addAttribute("reviews", reviews);
 
+		product.setReviewSum(reviews.size());
+
 		double averageStar = reviews.stream()
 				.mapToDouble(Reviews::getStar)
 				.average()
@@ -58,11 +60,19 @@ public class ProductController {
 		User loginUser = (User) session.getAttribute("loginUser");
 		boolean isFavorite = false;
 
+		Reviews myReview = null;
+
 		if (loginUser != null) {
 			int count = favoriteMapper.countFavorite(loginUser.getId(), id);
 			isFavorite = (count > 0);
+
+			List<Reviews> myReviewsList = reviewsMapper.isReview(loginUser.getId(), id);
+			if (!myReviewsList.isEmpty()) {
+				myReview = myReviewsList.get(0);
+			}
 		}
 		model.addAttribute("isFavorite", isFavorite);
+		model.addAttribute("myReview", myReview);
 
 		return "product/detail";
 	}
