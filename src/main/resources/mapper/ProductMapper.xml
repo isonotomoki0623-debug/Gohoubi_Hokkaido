@@ -14,6 +14,44 @@
 	</select>
 
 	<!-- ページネーション -->
+	<!-- <select id="findPage" -->
+	<!-- resultType="com.example.demo.entity.Product"> -->
+
+	<!-- SELECT -->
+	<!-- p.id, -->
+	<!-- p.name, -->
+	<!-- p.price, -->
+	<!-- p.review_star, -->
+	<!-- p.stock, -->
+	<!-- p.product_category_id, -->
+	<!-- hc.name AS hokkaidoAreaName, -->
+	<!-- pc.name AS -->
+	<!-- productCategoryName -->
+
+	<!-- FROM products p -->
+
+	<!-- LEFT JOIN hokkaido_areas hc -->
+	<!-- ON -->
+	<!-- p.hokkaido_area_id = hc.id -->
+
+	<!-- LEFT JOIN product_categories pc -->
+	<!-- ON -->
+	<!-- p.product_category_id = pc.id -->
+
+	<!-- <where> -->
+	<!-- <if test="keyword != null and keyword != ''"> -->
+	<!-- p.name LIKE CONCAT('%', #{keyword}, '%') -->
+	<!-- </if> -->
+
+	<!-- <if test="categoryId != null"> -->
+	<!-- AND p.product_category_id = #{categoryId} -->
+	<!-- </if> -->
+	<!-- </where> -->
+
+	<!-- ORDER BY p.id DESC -->
+	<!-- LIMIT #{pageSize} OFFSET #{offset} -->
+
+	<!-- </select> -->
 	<select id="findPage"
 		resultType="com.example.demo.entity.Product">
 
@@ -24,21 +62,29 @@
 		p.review_star,
 		p.stock,
 		p.product_category_id,
+
 		hc.name AS hokkaidoAreaName,
-		pc.name AS
-		productCategoryName
+
+		pc.name AS productCategoryName,
+
+		(
+		SELECT pi.image_path
+		FROM product_images pi
+		WHERE pi.product_id = p.id
+		ORDER BY pi.id ASC
+		LIMIT 1
+		) AS imagePath
 
 		FROM products p
 
 		LEFT JOIN hokkaido_areas hc
-		ON
-		p.hokkaido_area_id = hc.id
+		ON p.hokkaido_area_id = hc.id
 
 		LEFT JOIN product_categories pc
-		ON
-		p.product_category_id = pc.id
+		ON p.product_category_id = pc.id
 
 		<where>
+
 			<if test="keyword != null and keyword != ''">
 				p.name LIKE CONCAT('%', #{keyword}, '%')
 			</if>
@@ -46,10 +92,13 @@
 			<if test="categoryId != null">
 				AND p.product_category_id = #{categoryId}
 			</if>
+
 		</where>
 
 		ORDER BY p.id DESC
-		LIMIT #{pageSize} OFFSET #{offset}
+
+		LIMIT #{pageSize}
+		OFFSET #{offset}
 
 	</select>
 
