@@ -62,7 +62,7 @@
 				style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;">
 
 				<!-- カート追加フォーム -->
-				<form th:action="@{/cart/add}" method="post" style="display:inline; margin: 0;">
+				<form id="cartForm" style="display:inline; margin: 0;">
 					<input type="hidden" name="productId" th:value="${product.id}" />
 					<input type="hidden" name="imagePath" th:value="${productImages[0].imagePath}" />
 					<button type="submit" class="cart-button">カートに追加</button>
@@ -162,6 +162,10 @@
 			</div>
 		</div>
 
+	</div>
+
+	<div id="toast" class="toast-message">
+		カートに追加しました
 	</div>
 
 	<script th:src="@{/javascript/productdetail.js}"></script>

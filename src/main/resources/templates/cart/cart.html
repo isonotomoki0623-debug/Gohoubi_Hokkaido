@@ -1,108 +1,111 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
-  <meta charset="UTF-8" />
-  <title>カート</title>
+	<meta charset="UTF-8" />
+	<title>カート</title>
 
-  <!-- CSS -->
-  <link rel="stylesheet" th:href="@{/css/cartindex.css}" href="/css/cartindex.css">
+	<!-- CSS -->
+	<link rel="stylesheet" th:href="@{/css/cartindex.css}" href="/css/cartindex.css">
 
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Sawarabi+Gothic&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Yusei+Magic&display=swap" rel="stylesheet">
-  <link rel="stylesheet" th:href="@{/css/_header.css}">
+	<!-- Fonts -->
+	<link href="https://fonts.googleapis.com/css2?family=Sawarabi+Gothic&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Yusei+Magic&display=swap" rel="stylesheet">
+	<link rel="stylesheet" th:href="@{/css/_header.css}">
 </head>
 
 <body>
 
-<header th:replace="layout/_header :: header"></header>
+	<header th:replace="layout/_header :: header"></header>
 
-<main>
+	<main>
 
-  <h1 class="login-title">カート</h1>
+		<h1 class="login-title">カート</h1>
 
-  <!-- カートが空 -->
-  <th:block th:if="${#lists.isEmpty(cart)}">
-    <p>カートに商品が入っていません。</p>
-  </th:block>
+		<!-- カートが空 -->
+		<th:block th:if="${#lists.isEmpty(cart)}">
+			<p>カートに商品が入っていません。</p>
+		</th:block>
 
-  <!-- カートあり -->
-  <th:block th:unless="${#lists.isEmpty(cart)}">
+		<!-- カートあり -->
+		<th:block th:unless="${#lists.isEmpty(cart)}">
 
-    <!-- 白いカード（商品エリア） -->
-    <div class="cart-box">
+			<!-- 白いカード（商品エリア） -->
+			<div class="cart-box">
 
-      <table>
-        <tr>
-		  <th></th>
-          <th>商品名</th>
-          <th>単価</th>
-          <th>数量</th>
-          <th>小計</th>
-          <th></th>
-        </tr>
+				<table>
+					<tr>
+						<th></th>
+						<th>商品名</th>
+						<th>単価</th>
+						<th>数量</th>
+						<th>小計</th>
+						<th></th>
+					</tr>
 
-        <tr th:each="item : ${cart}">
-			<td>
-			<img th:src="@{${item.imagePath}}" alt="商品画像" class="cart-img">
-			</td>
-          <td>[[${item.name}]]</td>
-          <td>[[${#numbers.formatDecimal(item.price, 0, 'COMMA', 0, 'POINT')}]]円</td>
-		  <td>
-		    <div class="qty-box">
+					<tr th:each="item : ${cart}">
+						<td>
+							<img th:src="@{${item.imagePath}}" alt="商品画像" class="cart-img">
+						</td>
+						<td>[[${item.name}]]</td>
+						<td>[[${#numbers.formatDecimal(item.price, 0, 'COMMA', 0, 'POINT')}]]円</td>
+						<td>
+							<div class="qty-box">
 
-		      <form th:action="@{/cart/subtract}" method="post">
-		        <input type="hidden" name="productId" th:value="${item.productId}">
-		        <button type="submit" class="qty-btn">−</button>
-		      </form>
+								<form class="subtract-form">
+									<input type="hidden" name="productId" th:value="${item.productId}">
+									<button type="submit" class="qty-btn">−</button>
+								</form>
 
-		      <span class="qty">[[${item.quantity}]]</span>
+								<span class="qty" th:id="'qty-' + ${item.productId}">[[${item.quantity}]]</span>
 
-		      <form th:action="@{/cart/add}" method="post">
-		        <input type="hidden" name="productId" th:value="${item.productId}">
-				<input type="hidden" name="imagePath" th:value="${item.imagePath}">
-		        <button type="submit" class="qty-btn">＋</button>
-		      </form>
+								<form class="add-form">
+									<input type="hidden" name="productId" th:value="${item.productId}">
+									<input type="hidden" name="imagePath" th:value="${item.imagePath}">
+									<button type="submit" class="qty-btn">＋</button>
+								</form>
 
-		    </div>
-		  </td>
-          <td>
-            [[${#numbers.formatDecimal(item.price * item.quantity, 0, 'COMMA', 0, 'POINT')}]]円
-          </td>
-          <td>
-            <form th:action="@{/cart/remove}" method="post">
-              <input type="hidden" name="productId" th:value="${item.productId}" />
-              <button type="submit" class="btn">削除</button>
-            </form>
-          </td>
-        </tr>
+							</div>
+						</td>
+						<td th:id="'subtotal-' + ${item.productId}" th:data-price="${item.price}">
+							[[${#numbers.formatDecimal(item.price * item.quantity, 0, 'COMMA', 0, 'POINT')}]]円
+						</td>
+						<td>
+							<form th:action="@{/cart/remove}" method="post">
+								<input type="hidden" name="productId" th:value="${item.productId}" />
+								<button type="submit" class="btn">削除</button>
+							</form>
+						</td>
+					</tr>
 
-      </table>
+				</table>
 
-      <p class="total-price">
-        <strong>
-          合計：[[${#numbers.formatDecimal(total, 0, 'COMMA', 0, 'POINT')}]]円
-        </strong>
-      </p>
+				<p class="total-price" id="total-price">
+					<strong>
+						合計：[[${#numbers.formatDecimal(total, 0, 'COMMA', 0, 'POINT')}]]円
+					</strong>
+				</p>
 
-    </div>
-    <!-- /cart-box -->
+			</div>
+			<!-- /cart-box -->
 
-    <!-- カードの外（操作エリア） -->
-    <div class="cart-actions">
-		<a href="/order" class="purchase-btn">
-		購入する
-		</a>
+			<!-- カードの外（操作エリア） -->
+			<div class="cart-actions">
+				<a href="/order" class="purchase-btn">
+					購入する
+				</a>
 
-      <a href="/products" class="footer-link">
-        ▶ 商品一覧に戻る
-      </a>
+				<a href="/products" class="footer-link">
+					▶ 商品一覧に戻る
+				</a>
 
-    </div>
+			</div>
 
-  </th:block>
+		</th:block>
 
-</main>
+	</main>
 
+	<script th:src="@{/javascript/cart.js}"></script>	
 </body>
+
 </html>

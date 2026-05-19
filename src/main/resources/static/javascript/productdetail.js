@@ -50,3 +50,42 @@ document.addEventListener("DOMContentLoaded", () => {
         starElement.innerHTML = html;
     });
 });
+
+document.getElementById("cartForm")
+    .addEventListener("submit", async function(e) {
+
+        e.preventDefault();
+
+        const formData = new FormData(this);
+
+        const response = await fetch("/cart/add", {
+            method: "POST",
+            body: formData
+        });
+
+        const result = await response.text();
+
+        if (result === "ok") {
+
+            showToast();
+
+        } else {
+
+            alert("追加に失敗しました");
+        }
+
+    });
+
+
+
+function showToast() {
+
+    const toast =
+        document.getElementById("toast");
+
+    toast.classList.add("show");
+
+    setTimeout(() => {
+        toast.classList.remove("show");
+    }, 2000);
+}
