@@ -40,7 +40,8 @@ public class AchievementService {
 			if (map.get(unownedAchivement.getMethodName()).get()) {
 				achievementMapper.insertUsersAchievements(new UsersAchievement(userId, unownedAchivement.getId()));
 				unlockedAchievements
-						.add(new Achievement(unownedAchivement.getName(), unownedAchivement.getImagePath()));
+						.add(new Achievement(unownedAchivement.getName(), unownedAchivement.getImagePath(),
+								unownedAchivement.getDescription()));
 			}
 		}
 		return unlockedAchievements;
@@ -67,15 +68,16 @@ public class AchievementService {
 		map.put("isTotalSpent50000", () -> isTotalSpent50000(userId));
 		map.put("isTotalSpent100000", () -> isTotalSpent100000(userId));
 		map.put("isRandomAchievement", () -> isRandomAchievement());
+		map.put("isMiracleCombination", () -> isMiracleCombination());
 		map.put("isRepeatCustomer5Times", () -> isRepeatCustomer5Times(userId));
-		map.put("isRepeatCustomer5Times", () -> isSecretAchievement());
+		map.put("isSecretAchievement", () -> isSecretAchievement());
 		return map;
 	}
 
 	// 初めてのお客様（初回購入）用メソッド
 	public boolean isFirstPurchase(int userId) {
 		int purchaseCount = achievementMapper.countUserPurchases(userId);
-		return purchaseCount == 0;
+		return purchaseCount == 1;
 	}
 
 	// 常連さん（5回購入）用メソッド

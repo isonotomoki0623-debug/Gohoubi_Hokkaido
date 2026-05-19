@@ -20,9 +20,12 @@
 
 		<div class="mb-4">
 			<span class="section-caption">実績解除</span>
-			<div class="achievement-banner">
+			<div th:each="achievement : ${achievements}"class="achievement-banner">
 				<span class="achievement-label">Achievement Unlocked!</span>
-				<div class="text-center w-100 fw-bold" style="border:none; padding:0;">
+				<div  class="text-center w-100 fw-bold" style="border:none; padding:0;">
+					<img th:src="@{${achievement.imagePath}}">
+					<p th:text="${achievement.name}"></p>
+					<p th:text="${achievement.description}"></p>
 					初めてのお客様
 				</div>
 			</div>

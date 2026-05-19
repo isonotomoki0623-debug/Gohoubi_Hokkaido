@@ -12,7 +12,7 @@
 	
 	<insert id="InsertOrderItems">
 		INSERT INTO order_items (order_id, product_id, quantity)
-			VALUES (#{orderId}, #{productId}, #{quantity})
+			VALUES (#{orderId}, #{cart.productId}, #{cart.quantity})
 	</insert>
 
 	<select id="hasCoupons" resultType="com.example.demo.entity.Coupon">

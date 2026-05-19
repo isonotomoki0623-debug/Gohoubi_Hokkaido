@@ -6,10 +6,11 @@ import org.apache.ibatis.annotations.Mapper;
 
 import com.example.demo.entity.CartItem;
 import com.example.demo.entity.Coupon;
+import com.example.demo.entity.Order;
 
 @Mapper
 public interface OrderMapper {
-	void InsertOrder(int userId, int totalAmount, int couponId);
+	void InsertOrder(Order order);
 
 	void InsertOrderItems(CartItem cart, int orderId);
 

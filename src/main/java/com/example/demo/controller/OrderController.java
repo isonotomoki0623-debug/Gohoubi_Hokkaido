@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.demo.entity.Achievement;
 import com.example.demo.entity.CartItem;
@@ -51,23 +52,27 @@ public class OrderController {
 		return "order/order";
 	}
 
-	@GetMapping("/Comp")
+	@PostMapping("/order")
 	public String showComp(Order order, HttpSession session, Model model, int couponId) {
 		List<CartItem> cart = cartService.getCart(session);
 		User user = userService.getLoginUser(session);
 		int userId = user.getId();
 		int totalPrice = cartService.getTotalPrice(session);
+
+		order.setUserId(userId);
+		order.setTotalAmount(totalPrice);
+		order.setCouponId(couponId);
+
 		//orderテーブルに新規追加
-		orderMapper.InsertOrder(userId, totalPrice, couponId);
+		orderMapper.InsertOrder(order);
 		int orderId = order.getId();
 		//order_itemsテーブルに新規追加
 		for (CartItem cartItem : cart) {
 			orderMapper.InsertOrderItems(cartItem, orderId);
 		}
-		//実績解除の判断
-		List<Achievement> Achievements = achievementService.checkAchievement(userId, session);
-		model.addAttribute("Achievements", Achievements);
-		return "order/OrderCompleted";
+		List<Achievement> achievements = achievementService.checkAchievement(userId, session);
+		model.addAttribute("achievements", achievements);
+		return "order/orderCompleted";
 	}
 
 }
