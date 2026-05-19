@@ -1,3 +1,4 @@
+
 package com.example.demo.mapper;
 
 import org.apache.ibatis.annotations.Insert;
@@ -19,4 +20,6 @@ public interface UserMapper {
 
 	@Select("SELECT id, name, job_id, level, prefecture_id, role FROM users WHERE id =#{userid}")
 	User findByUserid(int userid);
+
+	void update(User user);
 }
