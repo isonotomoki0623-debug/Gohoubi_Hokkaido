@@ -39,7 +39,7 @@ public class FavoriteController {
 
 	// お気に入り登録・解除のトグル処理
 	@PostMapping("/products/favorite/toggle")
-	public String toggleFavorite(@RequestParam int productId, HttpSession session, HttpServletRequest request) { // ★引数を追記
+	public String toggleFavorite(@RequestParam int productId, HttpSession session, HttpServletRequest request) {
 
 		User loginUser = (User) session.getAttribute("loginUser");
 		if (loginUser == null) {
@@ -56,12 +56,11 @@ public class FavoriteController {
 			favoriteMapper.delete(userId, productId);
 		}
 
-		// ★ 遷移元のURLをチェックしてリダイレクト先を分ける
 		String referer = request.getHeader("Referer");
 		if (referer != null && referer.contains("/favorites")) {
-			return "redirect:/favorites"; // 一覧から押されたら一覧にリロード
+			return "redirect:/favorites";
 		}
 
-		return "redirect:/products/" + productId; // 詳細から押されたら詳細に戻る
+		return "redirect:/products/" + productId;
 	}
 }
