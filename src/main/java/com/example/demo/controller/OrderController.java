@@ -74,5 +74,42 @@ public class OrderController {
 		model.addAttribute("achievements", achievements);
 		return "order/orderCompleted";
 	}
+	
+	
+	@GetMapping("/orders")
+	public String showHistory(HttpSession session, Model model) {
+
+	    User user = userService.getLoginUser(session);
+
+	    if (user == null) {
+	        return "redirect:/login";
+	    }
+
+	    List<Order> orders =
+	        orderMapper.findOrdersByUserId(user.getId());
+
+	    model.addAttribute("orders", orders);
+
+	    return "order/orders";
+	}
+	
+	@GetMapping("/order/detail/{id}")
+	public String showDetail(
+	        @PathVariable("id") int id,
+	        Model model) {
+
+	    List<CartItem> items =
+	            orderMapper.findOrderItemsByOrderId(id);
+
+	    int totalPrice = items.stream()
+	            .mapToInt(i -> i.getPrice() * i.getQuantity())
+	            .sum();
+
+	    model.addAttribute("cart", items);
+	    model.addAttribute("totalPrice", totalPrice);
+
+	    return "order/detail";
+	}
+
 
 }

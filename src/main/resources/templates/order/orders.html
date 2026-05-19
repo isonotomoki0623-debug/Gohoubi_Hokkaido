@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <title>注文履歴</title>
+
+  <link rel="stylesheet"
+        th:href="@{/css/orders.css}"
+        href="/css/orders.css">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Sawarabi+Gothic&display=swap"
+        rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/css2?family=Yusei+Magic&display=swap"
+        rel="stylesheet">
+
+  <link rel="stylesheet"
+        th:href="@{/css/_header.css}">
+</head>
+
+<body>
+
+<header th:replace="layout/_header :: header"></header>
+
+<main>
+
+  <h1 class="orders-title">注文履歴</h1>
+
+  <!-- 履歴なし -->
+  <th:block th:if="${#lists.isEmpty(orders)}">
+    <p>購入履歴はまだありません。</p>
+  </th:block>
+
+  <!-- 履歴あり -->
+  <th:block th:unless="${#lists.isEmpty(orders)}">
+
+    <div class="cart-box">
+
+      <table>
+
+        <thead>
+          <tr>
+            <th>注文ID</th>
+            <th>購入日時</th>
+            <th>合計金額</th>
+            <th>ステータス</th>
+            <th>クーポンID</th>
+          </tr>
+        </thead>
+
+        <tbody>
+
+          <tr th:each="o : ${orders}">
+
+            <td>
+              <a th:href="@{/order/detail/{id}(id=${o.id})}">
+                [[${o.id}]]
+              </a>
+            </td>
+
+            <td>
+              [[${#dates.format(o.buyAt, 'yyyy-MM-dd HH:mm')}]]
+            </td>
+
+            <td>
+              [[${o.totalAmount}]]円
+            </td>
+
+            <td th:text="${o.status} ? '発送済み' : '未発送'">
+            </td>
+
+            <td>
+              [[${o.couponId}]]
+            </td>
+
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+  </th:block>
+
+</main>
+
+</body>
+</html>

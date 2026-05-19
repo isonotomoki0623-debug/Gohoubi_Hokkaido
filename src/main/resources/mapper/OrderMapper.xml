@@ -20,5 +20,39 @@
 		FROM coupons
 		WHERE id IN (SELECT id FROM coupons_users WHERE user_id = #{userId})
 	</select>
+	
+	<select id="findOrdersByUserId" resultType="com.example.demo.entity.Order">
+	SELECT
+		id,
+		user_id,
+		buy_at,
+		total_amount,
+		status,
+		coupon_id
+	FROM orders
+	WHERE user_id = #{userId}
+	ORDER BY buy_at DESC
+</select>
+	<select id="findOrderItemsByOrderId"
+        resultType="com.example.demo.entity.CartItem">
+
+    SELECT
+        p.id AS product_id,
+        p.name,
+        p.price,
+        p.category_id,
+        p.area_id,
+        p.image_path,
+        oi.quantity
+
+    FROM order_items oi
+
+    JOIN products p
+      ON oi.product_id = p.id
+
+    WHERE oi.order_id = #{orderId}
+
+</select>
+	
 
 </mapper>
