@@ -43,6 +43,10 @@ public class UserService {
 		return true;
 	}
 
+	public User getLoginUser(HttpSession session) {
+		return (User) session.getAttribute("loginUser");
+	}
+
 	//	public void register(sinkiForm form) {
 	//		User user = new User();
 	//        user.setName(form.getName());

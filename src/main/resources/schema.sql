@@ -10,6 +10,7 @@ DROP TABLE IF EXISTS users_stamps;
 DROP TABLE IF EXISTS users_achievements;
 DROP TABLE IF EXISTS product_images;
 DROP TABLE IF EXISTS order_items;
+DROP TABLE IF EXISTS orders;
 DROP TABLE IF EXISTS producers;
 
 -- 次に親テーブルを削除
@@ -92,14 +93,20 @@ CREATE TABLE products (
     shipping_interval INTEGER NOT NULL
 );
 
--- 子テーブル・中間テーブル群
-CREATE TABLE order_items (
+CREATE TABLE orders (
     id SERIAL PRIMARY KEY,
     user_id INTEGER NOT NULL REFERENCES users(id),
     buy_at DATE NOT NULL,
     total_amount INTEGER NOT NULL,
     status BOOLEAN NOT NULL,
     coupon_id INTEGER REFERENCES coupons(id)
+);
+
+-- 子テーブル・中間テーブル群
+CREATE TABLE order_items (
+    order_id INTEGER NOT NULL REFERENCES orders(id),
+    product_id INTEGER NOT NULL REFERENCES products(id),
+    quantity INTEGER NOT NULL
 );
 
 CREATE TABLE product_images (
