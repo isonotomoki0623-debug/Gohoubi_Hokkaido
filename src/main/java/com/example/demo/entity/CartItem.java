@@ -29,6 +29,10 @@ public class CartItem {
 		this.quantity++;
 	}
 
+	public void decrementQuantity() {
+		this.quantity--;
+	}
+
 	public int getSubtotal() {
 		return price * quantity;
 	}

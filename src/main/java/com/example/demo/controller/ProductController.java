@@ -20,6 +20,7 @@ import com.example.demo.mapper.FavoriteMapper;
 import com.example.demo.mapper.ProductImagesMapper;
 import com.example.demo.mapper.ProductMapper;
 import com.example.demo.mapper.ReviewsMapper;
+import com.example.demo.service.UserService;
 
 @Controller
 public class ProductController {
@@ -32,6 +33,8 @@ public class ProductController {
 	private ReviewsMapper reviewsMapper;
 	@Autowired
 	private FavoriteMapper favoriteMapper;
+	@Autowired
+	private UserService userService;
 
 	//商品詳細
 	@GetMapping("/products/{id}")
@@ -69,11 +72,11 @@ public class ProductController {
 	public String createReviews(@RequestParam int productId, @RequestParam double star,
 			@RequestParam String description, HttpSession session) {
 
-		User loginUser = (User) session.getAttribute("loginUser");
-
-		if (loginUser == null) {
+		if (!userService.isLogined(session)) {
 			return "redirect:/login";
 		}
+
+		User loginUser = (User) session.getAttribute("loginUser");
 
 		Reviews review = new Reviews();
 

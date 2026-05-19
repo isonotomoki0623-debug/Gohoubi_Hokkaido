@@ -46,4 +46,22 @@ public class CartController {
 		}
 		return "redirect:" + request.getHeader("Referer");
 	}
+
+	@PostMapping("cart/subtract")
+	public String subtractCart(@RequestParam("productId") int productId, HttpSession session,
+			HttpServletRequest request) {
+		Product product = productMapper.findById(productId);
+		if (product != null) {
+			cartService.subtractItem(session, product);
+		}
+		return "redirect:" + request.getHeader("Referer");
+
+	}
+
+	@PostMapping("cart/remove")
+	public String removeCart(@RequestParam("productId") int productId, HttpSession session,
+			HttpServletRequest request) {
+		cartService.remove(session, productId);
+		return "redirect:" + request.getHeader("Referer");
+	}
 }

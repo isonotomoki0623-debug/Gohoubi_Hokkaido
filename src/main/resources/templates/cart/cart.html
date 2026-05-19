@@ -51,15 +51,16 @@
 		  <td>
 		    <div class="qty-box">
 
-		      <form th:action="@{/cart/decrease}" method="post">
+		      <form th:action="@{/cart/subtract}" method="post">
 		        <input type="hidden" name="productId" th:value="${item.productId}">
 		        <button type="submit" class="qty-btn">−</button>
 		      </form>
 
 		      <span class="qty">[[${item.quantity}]]</span>
 
-		      <form th:action="@{/cart/increase}" method="post">
+		      <form th:action="@{/cart/add}" method="post">
 		        <input type="hidden" name="productId" th:value="${item.productId}">
+				<input type="hidden" name="imagePath" th:value="${item.imagePath}">
 		        <button type="submit" class="qty-btn">＋</button>
 		      </form>
 

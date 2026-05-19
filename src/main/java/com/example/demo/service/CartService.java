@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import jakarta.servlet.http.HttpSession;
@@ -36,5 +37,28 @@ public class CartService {
 		}
 		cart.add(new CartItem(product.getId(), product.getName(), product.getPrice(), product.getProductCategoryId(),
 				product.getHokkaidoAreaId(), imagePath));
+	}
+
+	// カート内の商品を削除（同じ商品があれば1つ削除し、0の場合はカート内から削除）
+	public void subtractItem(HttpSession session, Product product) {
+		List<CartItem> cart = getCart(session);
+		Iterator<CartItem> iterator = cart.iterator();
+		while (iterator.hasNext()) {
+			CartItem item = iterator.next();
+			if (item.getProductId() == product.getId()) {
+				item.decrementQuantity();
+				if (item.getQuantity() == 0) {
+					iterator.remove();
+				}
+
+				break;
+			}
+		}
+	}
+
+	// 商品の一括削除
+	public void remove(HttpSession session, int productId) {
+		List<CartItem> cart = getCart(session);
+		cart.removeIf(item -> item.getProductId() == productId);
 	}
 }
