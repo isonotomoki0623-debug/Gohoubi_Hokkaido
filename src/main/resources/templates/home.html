@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="ja">
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
 
 <head>
 	<meta charset="UTF-8">
@@ -18,7 +17,6 @@
 	<!-- CSS -->
 	<link rel="stylesheet" th:href="@{/css/home.css}">
 	<link rel="stylesheet" th:href="@{/css/_header.css}">
-
 </head>
 
 <body>
@@ -129,21 +127,26 @@
 
 								<div class="product-image-wrap">
 
-									<img th:src="@{/images/logo_2.jpg}" th:alt="${product.name}" class="product-image-wrap">
+									<img th:src="@{/images/logo_2.jpg}"
+										th:alt="${product.name}"
+										class="product-image">
 
 								</div>
 
 								<div class="product-info">
 
-									<div class="product-category" th:text="${product.productCategoryName}">
+									<div class="product-category"
+										th:text="${product.productCategoryName}">
 										カテゴリ
 									</div>
 
-									<h2 class="product-name" th:text="${product.name}">
+									<h2 class="product-name"
+										th:text="${product.name}">
 										商品名
 									</h2>
 
-									<p class="product-area" th:text="${product.hokkaidoAreaName}">
+									<p class="product-area"
+										th:text="${product.hokkaidoAreaName}">
 										地域名
 									</p>
 
@@ -179,7 +182,7 @@
 
 				<div class="row g-4">
 
-					<!-- ランキング -->
+					<!-- 商品ランキング -->
 					<div class="col-lg-6">
 
 						<h2 class="section-title">
@@ -189,17 +192,17 @@
 						<div class="ranking-card">
 
 							<div class="rank-item"
-							     th:each="product, stat : ${rankingProducts}">
+								th:each="product, stat : ${rankingProducts}">
 
 								<div class="rank-number"
-								     th:text="${stat.count}">
+									th:text="${stat.count}">
 									1
 								</div>
 
 								<div>
 
 									<div class="rank-name"
-									     th:text="${product.name}">
+										th:text="${product.name}">
 										商品名
 									</div>
 
@@ -227,47 +230,46 @@
 
 					</div>
 
-					<!-- 新着 -->
+					<!-- ユーザーランキング -->
 					<div class="col-lg-6">
 
 						<h2 class="section-title">
-							🆕 新着
+							👑 ユーザーランキング
 						</h2>
 
-						<div class="news-card">
+						<div class="ranking-card">
 
-							<div class="news-item">
+							<div class="rank-item"
+								th:each="user, stat : ${rankingUsers}">
 
-								<div class="news-date">
-									2026.05.14
+								<div class="rank-number"
+									th:text="${stat.count}">
+									1
 								</div>
 
-								<div class="mt-1">
-									春限定「桜ミルクラテセット」販売開始
-								</div>
+								<div>
 
-							</div>
+									<div class="rank-name"
+										th:text="${user.name}">
+										ユーザー名
+									</div>
 
-							<div class="news-item">
+									<div class="rank-sales">
 
-								<div class="news-date">
-									2026.05.13
-								</div>
+										<span th:if="${stat.count == 1}">
+											北海道王
+										</span>
 
-								<div class="mt-1">
-									新実績「ラーメンマスター」を追加
-								</div>
+										<span th:if="${stat.count == 2}">
+											爆買い中
+										</span>
 
-							</div>
+										<span th:if="${stat.count == 3}">
+											常連ユーザー
+										</span>
 
-							<div class="news-item">
+									</div>
 
-								<div class="news-date">
-									2026.05.10
-								</div>
-
-								<div class="mt-1">
-									道東エリア特集ページ公開
 								</div>
 
 							</div>
