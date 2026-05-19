@@ -61,4 +61,14 @@ public class CartService {
 		List<CartItem> cart = getCart(session);
 		cart.removeIf(item -> item.getProductId() == productId);
 	}
+
+	// カート内の合計金額を算出
+	public int getTotalPrice(HttpSession session) {
+		List<CartItem> cart = getCart(session);
+		int totalPrice = 0;
+		for(CartItem item : cart) {
+			totalPrice += item.getPrice() * item.getQuantity();
+		}
+		return totalPrice;
+	}
 }
