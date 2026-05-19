@@ -11,15 +11,18 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import com.example.demo.entity.Achievement;
 import com.example.demo.entity.CartItem;
+import com.example.demo.entity.User;
 import com.example.demo.service.AchievementService;
 import com.example.demo.service.CartService;
+import com.example.demo.service.UserService;
 
 @Controller
 public class OrderController {
 
 	@Autowired
+	private UserService userService;
+	@Autowired
 	private CartService cartService;
-
 	@Autowired
 	private AchievementService achievementService;
 
