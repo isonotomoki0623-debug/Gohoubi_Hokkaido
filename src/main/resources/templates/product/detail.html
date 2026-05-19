@@ -45,6 +45,7 @@
 			<span class="stars" th:data-rating="${averageStar}"></span>
 
 			<span th:text="${#numbers.formatDecimal(averageStar, 1, 1)}"></span>
+			<span th:text="|(${product.reviewSum})|"></span>
 
 			<!-- 価格 -->
 			<div class="price-area">
@@ -98,10 +99,11 @@
 
 		</div>
 
-		<h2 class="review-form-title">
+		<h2 class="review-form-title" th:text="${myReview != null} ? 'レビューを編集する' : 'レビューを書く'">
 			レビューを書く
 		</h2>
 
+		<!-- レビューを書くフォーム -->
 		<form th:action="@{/products/reviews}" method="post">
 
 			<!-- 商品ID -->
@@ -109,39 +111,29 @@
 
 			<!-- 星 -->
 			<div>
-
-				<label class="review-label">
-					評価
-				</label>
-
+				<label class="review-label">評価</label>
 				<select name="star" class="review-select">
-
-					<option value="5">★★★★★</option>
-					<option value="4">★★★★☆</option>
-					<option value="3">★★★☆☆</option>
-					<option value="2">★★☆☆☆</option>
-					<option value="1">★☆☆☆☆</option>
-
+					<!-- myReviewのstarの値に応じて、自動的に selected が付与されます -->
+					<option value="5" th:selected="${myReview != null && myReview.star == 5.0}">★★★★★</option>
+					<option value="4" th:selected="${myReview != null && myReview.star == 4.0}">★★★★☆</option>
+					<option value="3" th:selected="${myReview != null && myReview.star == 3.0}">★★★☆☆</option>
+					<option value="2" th:selected="${myReview != null && myReview.star == 2.0}">★★☆☆☆</option>
+					<option value="1" th:selected="${myReview != null && myReview.star == 1.0}">★☆☆☆☆</option>
 				</select>
-
 			</div>
 
 			<!-- コメント -->
 			<div>
-
-				<label class="review-label">
-					コメント
-				</label>
-
-				<textarea name="description" class="review-textarea" placeholder="商品の感想を書いてください"></textarea>
-
+				<label class="review-label">コメント</label>
+				<!-- テキストエリアの間に th:text を挟みます。未投稿なら空になります -->
+				<textarea name="description" class="review-textarea" placeholder="商品の感想を書いてください"
+					th:text="${myReview?.description}"></textarea>
 			</div>
 
 			<!-- 投稿ボタン -->
 			<button type="submit" class="review-submit-button">
-
-				投稿する
-
+				<!-- すでにレビューがある場合はボタンの文字を「更新する」に変えるとお親切です -->
+				<span th:text="${myReview != null} ? '更新する' : '投稿する'">投稿する</span>
 			</button>
 
 		</form>
@@ -162,6 +154,7 @@
 
 		<!-- レビュー一覧のコンテナ（少し横幅を絞って読みやすくしています） -->
 		<div style="max-width: 800px;">
+			<p th:text="${product.reviewSum}"></p>
 			<!-- 各ユーザーのレビューをループ -->
 			<div th:each="review : ${reviews}" class="description-box" style="margin-bottom: 20px;">
 				<p th:text="${review.user.name}" style="margin: 0;"></p>
