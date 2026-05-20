@@ -1,5 +1,7 @@
 package com.example.demo.mapper;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 
 import com.example.demo.entity.HokkaidoArea;
@@ -13,5 +15,7 @@ public interface StampMapper {
 	HokkaidoArea findAreaId(int areaId);
 
 	void insertStamp(int userId, int areaId);
+	
+	List<Stamp> findStampsByUserId(int userId);
 
 }

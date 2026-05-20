@@ -13,10 +13,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.demo.entity.Achievement;
 import com.example.demo.entity.Coupon;
+import com.example.demo.entity.Stamp;
 import com.example.demo.entity.User;
 import com.example.demo.mapper.AchievementMapper;
 import com.example.demo.mapper.MypageMapper;
 import com.example.demo.mapper.OrderMapper;
+import com.example.demo.mapper.StampMapper;
 import com.example.demo.service.UserService;
 
 @Controller
@@ -30,6 +32,8 @@ public class MyPageController {
 	private MypageMapper mypageMapper;
 	@Autowired
 	private OrderMapper orderMapper;
+	@Autowired
+	private StampMapper stampMapper;
 
 	@GetMapping("/profile")
 	public String showProfile(HttpSession session, Model model) {
@@ -115,5 +119,26 @@ public class MyPageController {
 		model.addAttribute("user", userService.getLoginUser(session));
 
 		return "achievement";
+	}
+	
+	@GetMapping("/stamp")
+	public String showStamps(HttpSession session, Model model) {
+
+	    User loginUser = (User) session.getAttribute("loginUser");
+	    if (loginUser == null) {
+	        return "redirect:/login";
+	    }
+
+	    List<Stamp> stamps = stampMapper.findStampsByUserId(loginUser.getId());
+
+	    long acquiredCount = stamps.stream()
+	            .filter(Stamp::isAcquired)
+	            .count();
+
+	    model.addAttribute("stamp", stamps);
+	    model.addAttribute("acquiredCount", acquiredCount);
+	    model.addAttribute("totalCount", stamps.size());
+
+	    return "stamp/stamp"; // HTMLファイル名
 	}
 }

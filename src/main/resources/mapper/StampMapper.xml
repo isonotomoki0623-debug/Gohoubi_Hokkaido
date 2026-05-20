@@ -22,5 +22,18 @@
 		FROM hokkaido_areas
 		WHERE id = #{areaId};
 	</select>
+	
+	<select id="findStampsByUserId" resultType="com.example.demo.entity.Stamp">
+    SELECT
+        ha.id AS areaId,
+        ha.name AS name,
+        ha.image_path AS imagePath,
+        us.user_id IS NOT NULL AS isAcquired,
+        us.unlocked_at AS unlockedAt
+    FROM hokkaido_areas ha
+    LEFT JOIN users_stamps us
+        ON ha.id = us.hokkaido_area_id
+        AND us.user_id = #{userId}
+</select>
 
 </mapper>
