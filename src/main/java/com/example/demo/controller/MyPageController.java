@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.demo.entity.User;
+import com.example.demo.mapper.MypageMapper;
 import com.example.demo.service.UserService;
 
 @Controller
@@ -17,6 +18,25 @@ public class MyPageController {
 
 	@Autowired
 	private UserService userService;
+
+	@Autowired
+	private MypageMapper mypageMapper;
+
+	@GetMapping("/profile")
+	public String showProfile(HttpSession session, Model model) {
+
+		if (!userService.isLogined(session)) {
+			return "redirect:/login";
+		}
+
+		User loginUser = (User) session.getAttribute("loginUser");
+
+		User user = mypageMapper.findByUserId(loginUser.getId());
+
+		model.addAttribute("user", user);
+
+		return "profile";
+	}
 
 	@GetMapping("/edit")
 	public String showEditForm(HttpSession session, Model model) {
