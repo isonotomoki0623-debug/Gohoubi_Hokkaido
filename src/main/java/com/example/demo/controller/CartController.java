@@ -42,6 +42,7 @@ public class CartController {
 				.sum();
 		model.addAttribute("cart", cart);
 		model.addAttribute("total", total);
+		model.addAttribute("user", userService.getLoginUser(session));
 		return "cart/cart";
 	}
 

@@ -23,13 +23,13 @@ INSERT INTO achievements(name, image_path, description, method_name) VALUES
 
 /*職業*/
 INSERT INTO jobs(name, image_path) VALUES
-('農家','aaa');
+('農家','/images/farmer.png');
 
 INSERT INTO jobs(name, image_path) VALUES
-('漁師','aaa');
+('漁師','/images/farmer.png');
 
 INSERT INTO jobs(name, image_path) VALUES
-('牧場主','aaa');
+('牧場主','/images/farmer.png');
 
 /*都道府県*/
 INSERT INTO prefectures(name) VALUES

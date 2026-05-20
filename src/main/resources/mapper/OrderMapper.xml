@@ -18,7 +18,18 @@
 	<select id="hasCoupons" resultType="com.example.demo.entity.Coupon">
 		SELECT *
 		FROM coupons
-		WHERE id IN (SELECT id FROM coupons_users WHERE user_id = #{userId})
+		WHERE id IN (SELECT coupon_id FROM coupons_users WHERE user_id = #{userId})
 	</select>
+	
+	<select id="findCoupon" resultType="com.example.demo.entity.Coupon">
+		SELECT *
+		FROM coupons
+		WHERE id = #{couponId}
+	</select>
+
+	<delete id="deleteUserCoupon">
+		DELETE FROM coupons_users
+		WHERE user_id = #{userId} AND coupon_id = #{couponId}
+	</delete>
 
 </mapper>
