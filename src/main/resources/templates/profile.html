@@ -102,18 +102,16 @@
 
 		<!-- クーポン -->
 		<section class="coupon-section">
-
-			<h2>所持クーポン</h2>
-
-			<div class="coupon-list" th:each="hasCoupon : ${hasCoupons}">
-
-				<div class="coupon-card">
-					<h3 th:text="${hasCoupon.name}">北海道応援クーポン</h3>
-				</div>
-
-			</div>
-
+		    <h2>所持クーポン</h2>
+		    <div class="coupon-list">
+		        <div class="coupon-card" th:each="hasCoupon : ${hasCoupons}">
+		            <h3 th:text="${hasCoupon.name}">
+		                北海道応援クーポン
+		            </h3>
+		        </div>
+		    </div>
 		</section>
+	
 
 		<!-- 登録情報 -->
 		<section class="profile-section">

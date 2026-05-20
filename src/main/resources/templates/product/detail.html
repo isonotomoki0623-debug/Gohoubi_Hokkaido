@@ -141,28 +141,33 @@
 	</div>
 
 	<!-- 2段目：カスタマーレビューエリア（画像や商品情報の下に独立して配置） -->
-	<div class="container" style="max-width: 1500px; padding: 0 40px 40px 40px; margin: auto;"
-		th:if="${not #lists.isEmpty(reviews)}">
+		<div class="container review-list-container" th:if="${not #lists.isEmpty(reviews)}">
 
-		<!-- 区切り線 -->
-		<hr style="border-top: 1px solid #ccc; margin-bottom: 40px;">
+			<!-- 区切り線 -->
+			<hr class="review-divider">
 
-		<h3
-			style="font-size: 1.6rem; margin-bottom: 25px; font-weight: bold; font-family: 'Sawarabi Gothic', sans-serif;">
-			カスタマーレビュー
-		</h3>
+			<h3 class="review-list-title">カスタマーレビュー</h3>
 
-		<!-- レビュー一覧のコンテナ（少し横幅を絞って読みやすくしています） -->
-		<div style="max-width: 800px;">
-			<p th:text="${product.reviewSum}"></p>
-			<!-- 各ユーザーのレビューをループ -->
-			<div th:each="review : ${reviews}" class="description-box" style="margin-bottom: 20px;">
-				<p th:text="${review.user.name}" style="margin: 0;"></p>
-				<p th:text="${review.description}" style="margin: 0;"></p>
+			<!-- レビュー一覧のコンテナ -->
+			<div class="review-cards-wrapper">
+				<!-- 各ユーザーのレビューをループ -->
+				<div th:each="review : ${reviews}" class="review-card">
+					<!-- ユーザー情報ヘッダー -->
+					<div class="review-card-header">
+						<div class="review-user-avatar">
+							<i class="fa-solid fa-user"></i>
+						</div>
+						<div class="review-user-info">
+							<span class="review-user-name" th:text="${review.user.name}">ユーザー名</span>
+							<!-- もしレビューごとの星評価（数値）があれば、ここに配置するのもおすすめです -->
+						</div>
+					</div>
+					<!-- レビュー本文 -->
+					<p class="review-card-text" th:text="${review.description}">ここにレビューのコメントが入ります。</p>
+				</div>
 			</div>
-		</div>
 
-	</div>
+		</div>
 
 	<div id="toast" class="toast-message">
 		カートに追加しました

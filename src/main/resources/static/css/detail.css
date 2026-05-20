@@ -398,3 +398,155 @@ body {
 	opacity: 1;
 	transform: translateY(0);
 }
+
+/* =========================
+   カスタマーレビュー一覧
+========================= */
+
+/* コンテナ全体の配置設定 */
+.review-list-container {
+	max-width: 1500px;
+	padding: 0 40px 60px 40px;
+	margin: auto;
+}
+
+/* 区切り線 */
+.review-divider {
+	border-top: 1px solid #e0e0e0;
+	margin-bottom: 40px;
+	opacity: 1;
+}
+
+/* セクションタイトル */
+.review-list-title {
+	font-size: 1.8rem;
+	margin-bottom: 30px;
+	font-weight: bold;
+	font-family: 'Yusei Magic', sans-serif;
+	/* フォームのタイトルと統一 */
+	color: #333;
+}
+
+/* カードを包むラッパー（読みやすい幅に制限） */
+.review-cards-wrapper {
+	max-width: 900px;
+	/* 投稿フォームの幅と統一 */
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+
+/* レビューカード単体 */
+.review-card {
+	background: #ffffff;
+	padding: 25px;
+	border-radius: 16px;
+	border: 1px solid #eaeaea;
+	box-shadow: 0 2px 12px rgba(0, 0, 0, 0.03);
+	transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.review-card:hover {
+	transform: translateY(-1px);
+	box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+}
+
+/* カード上部のユーザー情報エリア */
+.review-card-header {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	margin-bottom: 15px;
+	border-bottom: 1px dashed #eee;
+	padding-bottom: 12px;
+}
+
+/* アバターアイコンの丸い背景 */
+.review-user-avatar {
+	width: 40px;
+	height: 40px;
+	background: #f0f0f0;
+	color: #888;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 1.1rem;
+}
+
+/* ユーザー名 */
+.review-user-name {
+	font-weight: bold;
+	font-size: 1rem;
+	color: #444;
+}
+
+/* レビュー本文 */
+.review-card-text {
+	margin: 0 0 10px 0;
+	/* 下側に10pxの余白を追加 (上 右 下 左) */
+	font-size: 0.95rem;
+	line-height: 1.7;
+	color: #555;
+	white-space: pre-wrap;
+	/* 改行をそのまま反映 */
+}
+
+/* レスポンシブ対応 */
+@media(max-width: 768px) {
+	.review-list-container {
+		padding: 0 20px 40px 20px;
+	}
+
+	.review-list-title {
+		font-size: 1.5rem;
+		margin-bottom: 20px;
+	}
+
+	/* レビューカード単体 */
+	.review-card {
+		background: #ffffff;
+		padding: 25px;
+		border-radius: 16px;
+		border: 1px solid #eaeaea;
+		box-shadow: 0 2px 12px rgba(0, 0, 0, 0.03);
+		transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+		text-align: left;
+		/* 💡 これを追加！中の文字を必ず左揃えにします */
+	}
+}
+
+/* カードを包むラッパー（ここをセンターに寄せます） */
+.review-cards-wrapper {
+	max-width: 900px;
+	display: flex;
+	flex-direction: column;
+	gap: 30px;
+	margin: 0 auto 40px auto;
+	/* 上:0, 左右:自動(中央寄せ), 下:40px の余白 */
+}
+
+/* =========================
+   カスタマーレビュー位置微調整
+========================= */
+
+/* タイトルの幅を枠と統一し、左右オートで中央に寄せることで左端を揃えます */
+.review-list-title {
+	max-width: 900px;
+	/* コメント枠の max-width と同じにする */
+	margin-left: auto;
+	/* 左右を自動調整にして中央に配置 */
+	margin-right: auto;
+	margin-bottom: 30px;
+	/* 下の余白 */
+	padding-left: 0;
+	/* 余計な余白をリセット */
+	text-align: left;
+	/* 文字自体は左揃えにする */
+}
+
+/* レビューカード単体（PCサイズでも左揃えを確実に保証する記述） */
+.review-card {
+	text-align: left !important;
+}
