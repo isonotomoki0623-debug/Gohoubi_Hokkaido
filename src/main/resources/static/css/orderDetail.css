@@ -1,0 +1,180 @@
+@charset "UTF-8";
+
+/* =========================
+   全体
+========================= */
+body {
+    margin: 0;
+    font-family: 'Sawarabi Gothic', sans-serif;
+    background: #f5faf4;
+	display: flex;
+	   flex-direction: column;
+	   align-items: center;
+}
+
+/* =========================
+   タイトル
+========================= */
+.order-title {
+	font-family: 'Yusei Magic', sans-serif;
+
+	    font-size: 2rem;
+
+	    margin-top: 30px;
+	    margin-bottom: 24px;
+
+	    text-align: center;
+		font-weight: 400;
+}
+
+/* =========================
+   カード（ゆとり追加）
+========================= */
+.order-card {
+    width: fit-content;
+
+    max-width: 95%;   /* ←少し広げる（90→95） */
+
+    margin: 0 auto 30px;
+
+    background: #fff;
+
+    padding: 50px 50px; /* ←ここが一番重要（余白増やす） */
+
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+
+    text-align: left;
+}
+
+/* =========================
+   注文情報ブロック
+========================= */
+.order-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    margin-bottom: 20px;
+}
+
+/* ここが核心 */
+.order-info .row {
+    display: grid;
+
+    grid-template-columns: 120px 1fr; /* ★ラベル列固定 */
+
+    gap: 12px;
+
+    width: 360px;  /* ★塊として中央に置く */
+}
+
+/* ラベル（コロン位置を揃える） */
+.order-info .label {
+    text-align: right;
+    font-weight: bold;
+    color: #444;
+
+    white-space: nowrap;
+}
+
+/* 値 */
+.order-info .value {
+    text-align: left;
+}
+
+/* =========================
+   ヘッダー行
+========================= */
+.header-row {
+    display: grid;
+
+    grid-template-columns: minmax(0, 1fr) 110px 80px;
+
+    padding: 6px 0;
+    border-bottom: 2px solid #ddd;
+
+    font-weight: bold;
+    text-align: center;
+
+    margin-top: 18px; /* ←少し余白増やす */
+}
+
+/* =========================
+   明細行
+========================= */
+.item-row {
+    display: grid;
+
+    grid-template-columns: minmax(0, 1fr) 110px 80px;
+
+    align-items: center;
+
+    padding: 7px 0; /* ←ほんの少しゆとり */
+    border-bottom: 1px solid #eee;
+
+    font-size: 0.95rem;
+}
+
+/* =========================
+   商品セル
+========================= */
+.product {
+    display: flex;
+    align-items: center;
+
+    gap: 6px;
+
+    min-width: 0;
+}
+
+/* 画像 */
+.img {
+    width: 40px;
+    height: 40px;
+
+    object-fit: cover;
+    border-radius: 6px;
+
+    flex-shrink: 0;
+}
+
+/* 商品名 */
+.name {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.name-link{
+	color: black;
+}
+/* =========================
+   価格・数量
+========================= */
+.price,
+.qty {
+    text-align: center;
+    white-space: nowrap;
+}
+
+.footer-link {
+    color: #4f8f61;
+    font-weight: bold;
+    text-decoration: none;
+}
+.footer-link:hover {
+    text-decoration: underline;
+}
+
+.cart-actions {
+    width: 85%;
+    max-width: 900px;
+
+    margin: 0 auto;  /* ←これが超重要 */
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    gap: 12px;
+}

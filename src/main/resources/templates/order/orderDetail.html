@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <title>注文履歴詳細</title>
+
+  <link rel="stylesheet" th:href="@{/css/orderDetail.css}">
+  <link href="https://fonts.googleapis.com/css2?family=Sawarabi+Gothic&display=swap"
+          rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Yusei+Magic&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet"
+          th:href="@{/css/_header.css}">
+</head>
+
+<body>
+
+<header th:replace="layout/_header :: header"></header>
+
+<main>
+
+<h1 class="order-title">注文履歴詳細</h1>
+
+<div class="order-card">
+
+	<div class="order-info">
+
+	  <div class="row">
+	    <span class="label">注文ID：</span>
+	    <span class="value">[[${order.id}]]</span>
+	  </div>
+
+	  <div class="row">
+	    <span class="label">購入日時：</span>
+	    <span class="value">[[${#dates.format(order.buyAt, 'yyyy-MM-dd HH:mm')}]]</span>
+	  </div>
+	  
+	  <div class="row">
+	      <span class="label">クーポン名：</span>
+			<span class="value">[[${order.couponName != null ? order.couponName : 'なし'}]]</span>
+	    </div>
+
+	  <div class="row">
+	    <span class="label">合計：</span>
+	    <span class="value">[[${order.totalAmount}]]円</span>
+	  </div>
+
+	</div>
+
+  <!-- ヘッダー -->
+  <div class="header-row">
+    <div>商品</div>
+    <div>価格</div>
+    <div>数量</div>
+  </div>
+
+  <!-- 明細 -->
+  <div th:each="item : ${items}" class="item-row">
+
+    <div class="product">
+      <img class="img"
+           th:if="${item.imagePath != null}"
+           th:src="@{${item.imagePath}}">
+		   <a th:href="@{/product/{id}(id=${item.productId})}"
+		      class="name-link">
+		       [[${item.name}]]
+		   </a>
+    </div>
+
+    <div class="price">[[${item.price}]]円</div>
+
+    <div class="qty">[[${item.quantity}]]</div>
+
+  </div>
+
+</div>
+<div class="cart-actions">
+<a href="/orders" class="footer-link">▶ 戻る</a>
+	  </div>
+
+</main>
+
+</body>
+</html>

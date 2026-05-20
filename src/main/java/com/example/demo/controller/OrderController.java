@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -90,5 +91,47 @@ public class OrderController {
 		model.addAttribute("achievements", achievements);
 		return "order/orderCompleted";
 	}
+	
+	
+	@GetMapping("/orders")
+	public String showHistory(HttpSession session, Model model) {
+
+	    User user = userService.getLoginUser(session);
+
+	    if (user == null) {
+	        return "redirect:/login";
+	    }
+
+	    List<Order> orders =
+	        orderMapper.findOrdersByUserId(user.getId());
+
+	    model.addAttribute("orders", orders);
+
+	    return "order/orders";
+	}
+	
+	@GetMapping("/order/detail/{id}")
+	public String orderDetail(@PathVariable int id, Model model, HttpSession session) {
+
+	    User user = userService.getLoginUser(session);
+	    if (user == null) {
+	        return "redirect:/login";
+	    }
+
+	    Order order = orderMapper.findOrderById(id);
+
+	    // 他人の注文を見れないように制御（重要）
+	    if (order == null || order.getUserId() != user.getId()) {
+	        return "redirect:/orders";
+	    }
+
+	    List<CartItem> items = orderMapper.findOrderItemsByOrderId(id);
+
+	    model.addAttribute("order", order);
+	    model.addAttribute("items", items);
+
+	    return "order/orderDetail";
+	}
+
 
 }
