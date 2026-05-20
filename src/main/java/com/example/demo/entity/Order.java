@@ -11,5 +11,5 @@ public class Order {
 	private Date buyAt;
 	private int totalAmount;
 	private boolean status;
-	private int couponId;
+	private Integer couponId;
 }
