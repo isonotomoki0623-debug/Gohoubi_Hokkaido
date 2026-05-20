@@ -13,11 +13,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.example.demo.entity.Achievement;
 import com.example.demo.entity.CartItem;
 import com.example.demo.entity.Coupon;
+import com.example.demo.entity.HokkaidoArea;
 import com.example.demo.entity.Order;
 import com.example.demo.entity.User;
 import com.example.demo.mapper.OrderMapper;
 import com.example.demo.service.AchievementService;
 import com.example.demo.service.CartService;
+import com.example.demo.service.StampService;
 import com.example.demo.service.UserService;
 
 @Controller
@@ -31,6 +33,8 @@ public class OrderController {
 	private AchievementService achievementService;
 	@Autowired
 	private OrderMapper orderMapper;
+	@Autowired
+	private StampService stampService;
 
 	@GetMapping("/order")
 	public String showOrder(HttpSession session, Model model) {
@@ -70,7 +74,9 @@ public class OrderController {
 		for (CartItem cartItem : cart) {
 			orderMapper.InsertOrderItems(cartItem, orderId);
 		}
+		List<HokkaidoArea> hokkaidoAreas = stampService.insertStamp(cart, userId);
 		List<Achievement> achievements = achievementService.checkAchievement(userId, session);
+		model.addAttribute("hokkaidoAreas", hokkaidoAreas);
 		model.addAttribute("achievements", achievements);
 		return "order/orderCompleted";
 	}

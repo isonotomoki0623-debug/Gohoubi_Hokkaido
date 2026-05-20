@@ -59,10 +59,7 @@ VALUES
 ('札幌','/images/stamp_image/Sapporo_01.svg.png'),('室蘭・登別','/images/stamp_image/Muroran_02.svg.png'),('帯広','/images/stamp_image/Obihiro_03.svg.png'),('岩見沢','/images/stamp_image/Iwamizawa_04.svg.png'),('函館','/images/stamp_image/Hakodate_05.svg.png'),
 ('小樽','/images/stamp_image/Otaru_06.svg.png'),('旭川','/images/stamp_image/Asahikawa_07.svg.png'),('夕張','/images/stamp_image/Yubari_08.svg.png'),('富良野','/images/stamp_image/Furano_09.svg.png');
 
-INSERT INTO producers
-(user_id, image_path,image_description,catchcopy,hokkaido_area_id)
-VALUES
-(5,'a','aa','aaa',1),(2,'b','bb','bbb',2);
+
 
 INSERT INTO product_categories(name)
 VALUES('農作物'),('海産物'),('肉・畜産品'),('乳製品'),('スイーツ・お菓子'),('酒・飲料'),('消耗品');
@@ -172,6 +169,15 @@ INSERT INTO coupons_users( user_id,  coupon_id)VALUES
  
 INSERT INTO coupons_users( user_id,  coupon_id)VALUES
 (1, 4);
+
+
+/*スタンプ*/
+--INSERT INTO users_stamps( user_id, hokkaido_area_id, unlocked_at)VALUES
+--(1, 1, CURRENT_DATE );
+--
+--INSERT INTO users_stamps( user_id, hokkaido_area_id, unlocked_at)VALUES
+--(1, 5, CURRENT_DATE );
+
 
 
 
