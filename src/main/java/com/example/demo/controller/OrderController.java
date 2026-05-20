@@ -44,6 +44,10 @@ public class OrderController {
 		//サービスを使ってカートを取得
 		List<CartItem> cart = cartService.getCart(session);
 
+		if (!userService.isLogined(session)) {
+			return "redirect:/login";
+		}
+
 		//合計金額の計算
 		int totalPrice = cart.stream()
 				.mapToInt(item -> item.getPrice() * item.getQuantity())
@@ -81,10 +85,35 @@ public class OrderController {
 		for (CartItem cartItem : cart) {
 			orderMapper.InsertOrderItems(cartItem, orderId);
 		}
+
+		if (couponId != null) {
+			orderMapper.deleteUserCoupon(userId, couponId);
+		}
+
 		List<Achievement> achievements = achievementService.checkAchievement(userId, session);
 		session.removeAttribute("cart");
 		model.addAttribute("achievements", achievements);
 		return "order/orderCompleted";
+	}
+
+	@PostMapping("/order/calculate-discount")
+	@org.springframework.web.bind.annotation.ResponseBody // 画面ではなく「データそのもの」を返すアノテーション
+	public int calculateDiscount(
+			@RequestParam(value = "couponId", required = false) Integer couponId,
+			HttpSession session) {
+
+		User user = userService.getLoginUser(session);
+		// カートの合計金額を再計算
+		int totalPrice = cartService.getTotalPrice(session);
+		Coupon coupon = orderMapper.findCoupon(couponId);
+
+		if (couponId != null && user != null) {
+			// 既存の couponService を使って割引後金額を計算
+			totalPrice = (int) ((1 - coupon.getRate()) * totalPrice);
+			;
+		}
+
+		return totalPrice; // 計算後の金額（数字）だけをそのまま返す
 	}
 
 }
