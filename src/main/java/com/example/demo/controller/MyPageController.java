@@ -77,6 +77,8 @@ public class MyPageController {
 		}
 		model.addAttribute("progressPercent", progressPercent);
 
+		model.addAttribute("user", userService.getLoginUser(session));
+
 		return "profile";
 	}
 
@@ -116,6 +118,7 @@ public class MyPageController {
 		List<Achievement> achievements = achievementMapper.selectAchievement(loginUser.getId());
 
 		model.addAttribute("achievements", achievements);
+		model.addAttribute("user", userService.getLoginUser(session));
 
 		return "achievement";
 	}

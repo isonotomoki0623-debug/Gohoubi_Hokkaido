@@ -67,6 +67,7 @@ public class OrderController {
 		model.addAttribute("myCoupons", hasCoupons);
 		model.addAttribute("cart", cart);
 		model.addAttribute("totalPrice", totalPrice);
+		model.addAttribute("user", userService.getLoginUser(session));
 
 		return "order/order";
 	}
@@ -117,6 +118,7 @@ public class OrderController {
 		List<Order> orders = orderMapper.findOrdersByUserId(user.getId());
 
 		model.addAttribute("orders", orders);
+		model.addAttribute("user", userService.getLoginUser(session));
 
 		return "order/orders";
 	}
@@ -140,6 +142,7 @@ public class OrderController {
 
 		model.addAttribute("order", order);
 		model.addAttribute("items", items);
+		model.addAttribute("user", userService.getLoginUser(session));
 
 		return "order/orderDetail";
 	}
