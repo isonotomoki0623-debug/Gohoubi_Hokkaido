@@ -35,8 +35,8 @@
 				<div class="job-area">
 
 					<div class="job-icon">
-						<img th:src="@{${user.job.imagePath}}"
-						     alt="職業アイコン">					</div>
+						<img th:src="@{${user.job.imagePath}}" alt="職業アイコン">
+					</div>
 
 				</div>
 
@@ -45,11 +45,12 @@
 
 					<div class="next-level-text">
 						次のレベルまであと
-						<strong>5000円</strong>
+						<strong th:text="${remainAmount} + '円'"></strong>
 					</div>
 
 					<div class="progress-bar">
-						<div class="progress-fill"></div>
+						<div class="progress-fill" th:style="'width:' + ${progressPercent} + '%'">
+						</div>
 					</div>
 
 				</div>
@@ -80,10 +81,10 @@
 					<a href="/achievements" class="menu-btn">
 						実績一覧
 					</a>
-					
+
 					<a href="/stamp" class="menu-btn">
-											スタンプ一覧
-										</a>
+						スタンプ一覧
+					</a>
 
 					<a href="/orders" class="menu-btn">
 						購入履歴

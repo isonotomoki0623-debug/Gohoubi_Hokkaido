@@ -46,6 +46,25 @@ public class MyPageController {
 		model.addAttribute("userRank", userRank);
 		model.addAttribute("userCount", userCount);
 
+		//次のレベルまでの金額を表示
+		Integer nextLevelAmount = user.getLevel() * 10000;
+
+		Integer remainAmount = nextLevelAmount - totalAmount;
+
+		if (remainAmount < 0) {
+			remainAmount = 0;
+		}
+
+		model.addAttribute("remainAmount", remainAmount);
+
+		//プログレスバー
+		Integer progressPercent = (totalAmount * 100) / nextLevelAmount;
+
+		if (progressPercent > 100) {
+			progressPercent = 100;
+		}
+		model.addAttribute("progressPercent", progressPercent);
+
 		return "profile";
 	}
 
