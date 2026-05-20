@@ -1,0 +1,137 @@
+@charset "UTF-8";
+body {
+    margin: 0;
+    padding: 0;
+}
+/* =========================
+   タイトル
+========================= */
+.title {
+    font-family: 'Yusei Magic', sans-serif;
+    font-size: 2.3rem;
+    margin: 30px 0;
+    text-align: center;
+    font-weight: 400;
+}
+
+/* =========================
+   進捗
+========================= */
+.progress {
+    text-align: center;
+}
+
+/* =========================
+   グリッド
+========================= */
+.stamp-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 300px);
+    gap: 16px;
+	justify-content: center;
+    padding: 20px;
+}
+
+/* =========================
+   カード
+========================= */
+.stamp-card {
+    height: 240px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    padding: 16px;
+    box-sizing: border-box;
+
+    transition: 0.2s;
+}
+
+/* hover */
+.stamp-card:hover {
+    transform: scale(1.03);
+}
+
+/* =========================
+   カード背景
+========================= */
+
+/* 取得済み */
+.stamp-card.acquired {
+    background: #ffffff;
+	border: 2px solid  #ffd67f;
+	
+}
+
+/* 未取得 */
+.stamp-card.missing {
+    background: #f3f3f3;
+}
+
+/* =========================
+   画像エリア
+========================= */
+.image-box {
+    width: 120px;
+    height: 120px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 10px;
+    margin-bottom: 10px;
+
+    background: #ffffff; /* ★取得済みは白がデフォルト */
+}
+
+/* 未取得だけグレー */
+.stamp-card.missing .image-box {
+    background: #f3f3f3
+}
+
+/* =========================
+   画像
+========================= */
+.stamp-img {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+}
+
+/* 未取得だけ画像もグレー化 */
+.stamp-card.missing .stamp-img {
+    filter: grayscale(100%);
+    opacity: 0.4;
+}
+
+/* =========================
+   テキスト
+========================= */
+.name {
+    margin-top: 6px;
+    font-weight: bold;
+}
+
+.status {
+    font-size: 0.9rem;
+    margin-top: 4px;
+}
+
+.date {
+    font-size: 0.9rem;
+    margin-top: 4px;
+}
+
+.footer-link {
+    color: #4f8f61;
+    font-weight: bold;
+    text-decoration: none;
+}
+.footer-link:hover {
+    text-decoration: underline;
+}

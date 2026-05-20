@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>スタンプ一覧</title>
+
+    <link rel="stylesheet" th:href="@{/css/stamp.css}" href="/css/stamp.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Sawarabi+Gothic&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Yusei+Magic&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/_header.css}">
+</head>
+
+<body>
+	
+	<header th:replace="layout/_header :: header"></header>
+	
+	<main>
+
+<h1 class="title">スタンプ一覧</h1>
+
+<!-- 進捗 -->
+<p class="progress">
+    取得数：
+    <span th:text="${acquiredCount}"></span>
+    /
+    <span th:text="${totalCount}"></span>
+</p>
+
+<!-- スタンプ一覧 -->
+<div class="stamp-grid">
+
+    <div th:each="stamp : ${stamps}"
+         class="stamp-card"
+         th:classappend="${stamp.is_acquired} ? 'acquired' : 'missing'">
+
+        <!-- 画像エリア -->
+        <div class="image-box">
+			<img th:src="${stamp.is_acquired}
+			        ? @{${stamp.image_path}}
+			        : @{/images/logo_2.png}"
+			     class="stamp-img"/>
+          
+        </div>
+
+        <div class="name" th:text="${stamp.name}"></div>
+
+        <div class="status"
+             th:text="${stamp.is_acquired} ? 'GET!' : '未取得'"></div>
+
+        <div class="date"
+             th:if="${stamp.is_acquired}"
+             th:text="'取得日: ' + ${stamp.unlocked_at}">
+        </div>
+
+    </div>
+
+</div>
+
+</main>
+</body>
+</html>
