@@ -7,6 +7,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.entity.User;
+import com.example.demo.entity.UserLevel;
 import com.example.demo.form.sinkiForm;
 import com.example.demo.mapper.UserMapper;
 
@@ -63,5 +64,13 @@ public class UserService {
 	public void updateUser(User user, HttpSession session) {
 		userMapper.update(user);
 		session.setAttribute("loginUser", user);
+	}
+
+	public UserLevel calcLevel(User user, Integer totalamount) {
+		UserLevel userLevel = new UserLevel();
+		userLevel.setNowLevel(user.getLevel());
+		userLevel.setUpLevel(totalamount / 10000);
+		userLevel.setRemainAmount(10000 - (totalamount % 10000));
+		return userLevel;
 	}
 }

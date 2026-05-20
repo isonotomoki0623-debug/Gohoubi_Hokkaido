@@ -65,4 +65,8 @@
 		JOIN jobs j ON u.job_id = j.id
 		WHERE u.id = #{userid}
 	</select>
+	
+	<update id="updateLevel">
+		UPDATE users SET level = #{level} WHERE id = #{userId}
+	</update>
 </mapper>

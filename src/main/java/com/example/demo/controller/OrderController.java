@@ -18,8 +18,11 @@ import com.example.demo.entity.Coupon;
 import com.example.demo.entity.HokkaidoArea;
 import com.example.demo.entity.Order;
 import com.example.demo.entity.User;
+import com.example.demo.entity.UserLevel;
+import com.example.demo.mapper.MypageMapper;
 import com.example.demo.mapper.OrderMapper;
 import com.example.demo.mapper.ProductMapper;
+import com.example.demo.mapper.UserMapper;
 import com.example.demo.service.AchievementService;
 import com.example.demo.service.CartService;
 import com.example.demo.service.CouponService;
@@ -45,6 +48,10 @@ public class OrderController {
 	private CouponService couponService;
 	@Autowired
 	private ProductMapper productMapper;
+	@Autowired
+	private MypageMapper mypageMapper;
+	@Autowired
+	private UserMapper userMapper;
 
 	@GetMapping("/order")
 	public String showOrder(HttpSession session, Model model) {
@@ -98,8 +105,12 @@ public class OrderController {
 		if (couponId != null) {
 			orderMapper.deleteUserCoupon(userId, couponId);
 		}
+		UserLevel userLevel = new UserLevel();
+		userLevel = userService.calcLevel(user, mypageMapper.getTotalAmount(userId));
+		userMapper.updateLevel(userId, userLevel.getUpLevel());
 		List<HokkaidoArea> hokkaidoAreas = stampService.insertStamp(cart, userId);
 		List<Achievement> achievements = achievementService.checkAchievement(userId, session);
+		model.addAttribute("userLevel", userLevel);
 		model.addAttribute("hokkaidoAreas", hokkaidoAreas);
 		model.addAttribute("achievements", achievements);
 		session.removeAttribute("cart");
