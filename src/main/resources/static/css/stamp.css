@@ -1,5 +1,8 @@
 @charset "UTF-8";
 
+/* =========================
+   タイトル
+========================= */
 .title {
     font-family: 'Yusei Magic', sans-serif;
     font-size: 2.3rem;
@@ -8,6 +11,9 @@
     font-weight: 400;
 }
 
+/* =========================
+   進捗
+========================= */
 .progress {
     text-align: center;
 }
@@ -17,8 +23,9 @@
 ========================= */
 .stamp-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 300px);
     gap: 16px;
+	justify-content: center;
     padding: 20px;
 }
 
@@ -27,6 +34,7 @@
 ========================= */
 .stamp-card {
     height: 240px;
+
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -37,16 +45,32 @@
     padding: 16px;
     box-sizing: border-box;
 
-    background: #fff;
     transition: 0.2s;
 }
 
+/* hover */
 .stamp-card:hover {
     transform: scale(1.03);
 }
 
 /* =========================
-   画像エリア（共通）
+   カード背景
+========================= */
+
+/* 取得済み */
+.stamp-card.acquired {
+    background: #ffffff;
+	border: 2px solid yellow;
+	
+}
+
+/* 未取得 */
+.stamp-card.missing {
+    background: #f3f3f3;
+}
+
+/* =========================
+   画像エリア
 ========================= */
 .image-box {
     width: 120px;
@@ -57,36 +81,29 @@
     justify-content: center;
 
     border-radius: 10px;
-    background: #f2f2f2;
-
     margin-bottom: 10px;
+
+    background: #ffffff; /* ★取得済みは白がデフォルト */
 }
 
-/* 画像 */
+/* 未取得だけグレー */
+.stamp-card.missing .image-box {
+    background: #e0e0e0;
+}
+
+/* =========================
+   画像
+========================= */
 .stamp-img {
     max-width: 90%;
     max-height: 90%;
     object-fit: contain;
 }
 
-/* =========================
-   未取得（画像エリアごとグレー化）
-========================= */
-.stamp-card.missing .image-box {
-    background: #e0e0e0;
-}
-
+/* 未取得だけ画像もグレー化 */
 .stamp-card.missing .stamp-img {
     filter: grayscale(100%);
     opacity: 0.4;
-}
-
-/* =========================
-   取得済み
-========================= */
-.stamp-card.acquired {
-    border: 2px solid gold;
-    box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
 }
 
 /* =========================
