@@ -20,13 +20,12 @@ public class MyPageController {
 
 	@GetMapping("/edit")
 	public String showEditForm(HttpSession session, Model model) {
-		User loginUser = (User) session.getAttribute("loginUser");
 
-		if (loginUser == null) {
+		if (!userService.isLogined(session)) {
 			return "redirect:/login";
 		}
 
-		model.addAttribute("user", loginUser);
+		model.addAttribute("user", userService.getLoginUser(session));
 		return "/edit";
 	}
 
