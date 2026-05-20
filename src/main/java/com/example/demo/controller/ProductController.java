@@ -118,7 +118,7 @@ public class ProductController {
 			HttpSession session,
 			Model model) {
 
-		int pageSize = 5;
+		int pageSize = 16;
 		int offset = (page - 1) * pageSize;
 
 		List<Product> products;
