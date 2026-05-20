@@ -6,67 +6,6 @@
 <mapper namespace="com.example.demo.mapper.OrderMapper">
 
   <!-- =========================
-       注文登録（★割引後金額対応）
-  ========================== -->
-  <insert id="InsertOrder"
-          parameterType="com.example.demo.entity.Order"
-          useGeneratedKeys="true"
-          keyProperty="id">
-
-    INSERT INTO orders (
-      user_id,
-      buy_at,
-      total_amount,
-      status,
-      coupon_id
-    )
-    VALUES (
-      #{userId},
-      CURRENT_DATE,
-
-      (
-        SELECT
-          CASE
-            WHEN c.rate IS NULL THEN #{totalAmount}
-            ELSE FLOOR(#{totalAmount} * (1 - c.rate))
-          END
-        FROM coupons c
-        WHERE c.id = #{couponId}
-      ),
-
-      false,
-      #{couponId}
-    )
-
-  </insert>
-
-  <!-- =========================
-       注文明細登録
-  ========================== -->
-  <insert id="InsertOrderItems">
-
-    INSERT INTO order_items (order_id, product_id, quantity)
-    VALUES (#{orderId}, #{cart.productId}, #{cart.quantity})
-
-  </insert>
-
-  <!-- =========================
-       クーポン取得
-  ========================== -->
-  <select id="hasCoupons"
-          resultType="com.example.demo.entity.Coupon">
-
-    SELECT *
-    FROM coupons
-    WHERE id IN (
-      SELECT coupon_id
-      FROM coupons_users
-      WHERE user_id = #{userId}
-    )
-
-  </select>
-
-  <!-- =========================
        注文一覧
   ========================== -->
   <select id="findOrdersByUserId"
@@ -140,8 +79,7 @@
     WHERE oi.order_id = #{orderId}
 
   </select>
-
-</mapper>
+  
 	<insert id="InsertOrder" parameterType="com.example.demo.entity.Order" useGeneratedKeys="true" keyProperty="id">
 		INSERT INTO orders (user_id, buy_at, total_amount, status, coupon_id)
 			VALUES (#{userId}, CURRENT_DATE, #{totalAmount}, false, #{couponId})
