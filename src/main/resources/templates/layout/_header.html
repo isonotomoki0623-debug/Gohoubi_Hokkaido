@@ -1,131 +1,122 @@
 <!-- =========================
     HEADER
 ========================== -->
-<header th:fragment="header"
-        class="main-header">
+<header th:fragment="header" class="main-header">
 
-    <div class="container">
+	<div class="container">
 
-        <!-- 上段 -->
-        <div class="header-top">
+		<!-- 上段 -->
+		<div class="header-top">
 
-            <!-- ロゴ -->
-            <a th:href="@{/}" class="site-logo">
+			<!-- ロゴ -->
+			<a th:href="@{/}" class="site-logo">
 
-                <img th:src="@{/images/logo_2.png}"
-                     alt="ごほうびほっかいどう">
+				<img th:src="@{/images/logo_2.png}" alt="ごほうびほっかいどう">
 
-            </a>
+			</a>
 
 			<!-- ナビ -->
 			<nav class="main-nav">
 
-			    <a th:href="@{/}">
-			        トップ
-			    </a>
+				<a th:href="@{/}">
+					トップ
+				</a>
 
-			    <!-- ドロップダウン -->
-			    <div class="nav-dropdown">
+				<!-- ドロップダウン -->
+				<div class="nav-dropdown">
 
-			        <!-- 商品一覧（親） -->
-			        <a th:href="@{/products}"
-			           class="dropdown-trigger">
+					<!-- 商品一覧（親） -->
+					<a th:href="@{/products}" class="dropdown-trigger">
 
-			            商品一覧
-			            <i class="bi bi-chevron-down"></i>
+						商品一覧
+						<i class="bi bi-chevron-down"></i>
 
-			        </a>
+					</a>
 
-			        <!-- カテゴリ一覧 -->
-			        <div class="dropdown-menu-custom">
+					<!-- カテゴリ一覧 -->
+					<div class="dropdown-menu-custom">
 
-			            <a th:href="@{/products(categoryId=1)}">
-			                <i class="bi bi-flower1"></i>
-			                農作物
-			            </a>
+						<a th:href="@{/products(categoryId=1)}">
+							<i class="bi bi-flower1"></i>
+							農作物
+						</a>
 
-			            <a th:href="@{/products(categoryId=2)}">
-			                <i class="bi bi-water"></i>
-			                海産物
-			            </a>
+						<a th:href="@{/products(categoryId=2)}">
+							<i class="bi bi-water"></i>
+							海産物
+						</a>
 
-			            <a th:href="@{/products(categoryId=3)}">
-			                <i class="bi bi-egg-fried"></i>
-			                肉・畜産品
-			            </a>
+						<a th:href="@{/products(categoryId=3)}">
+							<i class="bi bi-egg-fried"></i>
+							肉・畜産品
+						</a>
 
-			            <a th:href="@{/products(categoryId=4)}">
-			                <i class="bi bi-cup-hot"></i>
-			                乳製品
-			            </a>
+						<a th:href="@{/products(categoryId=4)}">
+							<i class="bi bi-cup-hot"></i>
+							乳製品
+						</a>
 
-			            <a th:href="@{/products(categoryId=5)}">
-			                <i class="bi bi-cake2"></i>
-			                スイーツ・お菓子
-			            </a>
+						<a th:href="@{/products(categoryId=5)}">
+							<i class="bi bi-cake2"></i>
+							スイーツ・お菓子
+						</a>
 
-			            <a th:href="@{/products(categoryId=6)}">
-			                <i class="bi bi-cup-straw"></i>
-			                酒・飲料
-			            </a>
+						<a th:href="@{/products(categoryId=6)}">
+							<i class="bi bi-cup-straw"></i>
+							酒・飲料
+						</a>
 
-			            <a th:href="@{/products(categoryId=7)}">
-			                <i class="bi bi-bag-heart"></i>
-			                消耗品
-			            </a>
+						<a th:href="@{/products(categoryId=7)}">
+							<i class="bi bi-bag-heart"></i>
+							消耗品
+						</a>
 
-			        </div>
-			    </div>
+					</div>
+				</div>
 
-			    <a th:href="@{/favorites}">
-			        お気に入り一覧
-			    </a>
+				<a th:href="@{/favorites}">
+					お気に入り一覧
+				</a>
 
-			    <a th:href="@{/cart}">
-			        カート
-			        <i class="bi bi-cart3"></i>
-			    </a>
+				<a th:href="@{/cart}">
+					カート
+					<i class="bi bi-cart3"></i>
+				</a>
 
-			    <a th:href="@{/profile}">
-			        マイページ
-			    </a>
+				<a th:href="@{/profile}">
+					マイページ
+				</a>
 
 			</nav>
 
-            <!-- 検索 -->
-            <form class="header-search"
-                  th:action="@{/products}"
-                  method="get">
+			<!-- 検索 -->
+			<form class="header-search" th:action="@{/products}" method="get">
 
-                <input type="text"
-                       name="keyword"
-                       placeholder="商品を検索">
+				<input type="text" name="keyword" placeholder="商品を検索">
 
-                <button type="submit">
-                    検索
-                </button>
+				<button type="submit">
+					検索
+				</button>
 
-            </form>
+			</form>
 
-            <!-- ユーザー -->
-            <a th:href="@{/profile}"
-               class="header-user">
+			<!-- ユーザー -->
+			<a th:href="@{/profile}" class="header-user">
 
-                <div class="user-avatar">
+				<div class="user-avatar">
 
-                    <img th:src="@{/images/job-icon.png}"
-                         alt="職業アイコン">
+					<!-- user の中の job の中の imagePath を指定する -->
+					<img th:src="${user?.job?.imagePath}" alt="ユーザー画像">
+				</div>
 
-                </div>
+				<div class="user-level">
+					<span th:text="|Lv. ${user?.level}|"></span>
+				</div>
 
-                <div class="user-level">
-                    Lv. 10
-                </div>
+			</a>
 
-            </a>
+		</div>
 
-        </div>
-
-    </div>
+	</div>
 
 </header>
