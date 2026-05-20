@@ -39,6 +39,13 @@ public class MyPageController {
 
 		model.addAttribute("totalAmount", totalAmount);
 
+		Integer userRank = mypageMapper.getUserRank(loginUser.getId());
+
+		Integer userCount = mypageMapper.getUserCount();
+
+		model.addAttribute("userRank", userRank);
+		model.addAttribute("userCount", userCount);
+
 		return "profile";
 	}
 

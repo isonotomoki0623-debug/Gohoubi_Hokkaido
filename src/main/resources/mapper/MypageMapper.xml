@@ -32,14 +32,16 @@
 
 		SELECT
 		u.id,
-		u.name AS user_name,
+		u.name AS
+		user_name,
 		u.email,
 		u.level,
 		u.job_id,
 		u.prefecture_id,
 		u.role,
 
-		j.name AS job_name,
+		j.name AS
+		job_name,
 		j.image_path
 
 		FROM users u
@@ -47,14 +49,40 @@
 		JOIN jobs j
 		ON u.job_id = j.id
 
-		WHERE u.id = #{id}
+		WHERE
+		u.id = #{id}
 
 	</select>
 
 	<select id="getTotalAmount" resultType="Integer">
-		SELECT COALESCE(SUM(total_amount), 0)
+		SELECT
+		COALESCE(SUM(total_amount), 0)
 		FROM orders
 		WHERE user_id = #{userId}
+	</select>
+
+	<select id="getUserRank" resultType="Integer">
+
+		SELECT ranking
+		FROM (
+		SELECT
+		u.id,
+		RANK() OVER (
+		ORDER BY COALESCE(SUM(o.total_amount), 0) DESC
+		) AS
+		ranking
+		FROM users u
+		LEFT JOIN orders o
+		ON u.id = o.user_id
+		GROUP BY u.id
+		) ranked_users
+		WHERE id = #{userId}
+
+	</select>
+
+	<select id="getUserCount" resultType="Integer">
+		SELECT COUNT(*)
+		FROM users
 	</select>
 
 </mapper>

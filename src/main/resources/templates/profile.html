@@ -64,7 +64,7 @@
 
 					<div class="status-card">
 						購入金額ランキング
-						<strong>13/199</strong>
+						<strong th:text="${userRank} + '/' + ${userCount}"></strong>
 					</div>
 
 					<div class="status-card">
@@ -80,6 +80,10 @@
 					<a href="/achievements" class="menu-btn">
 						実績一覧
 					</a>
+					
+					<a href="/stamp" class="menu-btn">
+											スタンプ一覧
+										</a>
 
 					<a href="/orders" class="menu-btn">
 						購入履歴
