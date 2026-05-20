@@ -2,188 +2,192 @@
 
 /* --- 背景 --- */
 body {
-    font-family: 'Sawarabi Gothic', sans-serif;
+	font-family: 'Sawarabi Gothic', sans-serif;
 
-    margin: 0;
-    padding: 0;
+	margin: 0;
+	padding: 0;
 
-    background-color: #f5faf4;
-    background-image:
-        url("data:image/svg+xml,%3Csvg width='220' height='220' viewBox='0 0 220 220' xmlns='http://www.w3.org/2000/svg'%3E%3Cg opacity='0.07'%3E%3Ctext x='20' y='70' font-size='42'%3E🍃%3C/text%3E%3Ctext x='140' y='180' font-size='36'%3E🐄%3C/text%3E%3Ctext x='90' y='110' font-size='38'%3E⭐%3C/text%3E%3Ctext x='25' y='190' font-size='34'%3E🌽%3C/text%3E%3C/g%3E%3C/svg%3E"),
-        linear-gradient(to bottom, #eef7ef 0%, #f7fbf6 45%, #fcfdfb 100%);
+	background-color: #f5faf4;
+	background-image:
+		url("data:image/svg+xml,%3Csvg width='220' height='220' viewBox='0 0 220 220' xmlns='http://www.w3.org/2000/svg'%3E%3Cg opacity='0.07'%3E%3Ctext x='20' y='70' font-size='42'%3E🍃%3C/text%3E%3Ctext x='140' y='180' font-size='36'%3E🐄%3C/text%3E%3Ctext x='90' y='110' font-size='38'%3E⭐%3C/text%3E%3Ctext x='25' y='190' font-size='34'%3E🌽%3C/text%3E%3C/g%3E%3C/svg%3E"),
+		linear-gradient(to bottom, #eef7ef 0%, #f7fbf6 45%, #fcfdfb 100%);
 
-    background-attachment: fixed;
+	background-attachment: fixed;
 
-    min-height: 100vh;
+	min-height: 100vh;
 
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
 }
 
 /* --- カード（コンパクト化） --- */
 .order-card {
-    background: #fff;
+	background: #fff;
 
-    border-radius: 24px;
+	border-radius: 24px;
 
-    padding: 28px 24px;
+	padding: 28px 24px;
 
-    width: 100%;
-    max-width: 600px;   /* ★ここが重要（狭くする） */
+	width: 100%;
+	max-width: 600px;
+	/* ★ここが重要（狭くする） */
 
-    box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+	box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
 
-    margin: 30px auto;
+	margin: 30px auto;
 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 
 /* タイトル */
 .order-title {
-    font-family: 'Yusei Magic', sans-serif;
+	font-family: 'Yusei Magic', sans-serif;
 
-    font-size: 2rem;
+	font-size: 2rem;
 
-    margin-bottom: 20px;
+	margin-bottom: 20px;
 
-    text-align: center;
-    width: 100%;
+	text-align: center;
+	width: 100%;
 }
 
 /* --- 商品行 --- */
 .item-container {
-    display: flex;
+	display: flex;
 
-    align-items: center;
-    justify-content: flex-start;
+	align-items: center;
+	justify-content: flex-start;
 
-    gap: 12px;
+	gap: 12px;
 
-    padding: 14px 0;
+	padding: 14px 0;
 
-    border-bottom: 1px solid #eee;
+	border-bottom: 1px solid #eee;
 
-    width: 100%;
+	width: 100%;
 }
 
 /* 画像（少し小さく） */
 .item-image-box {
-    width: 85px;
-    height: 70px;
+	width: 85px;
+	height: 70px;
 
-    object-fit: cover;
+	object-fit: cover;
 
-    border-radius: 10px;
+	border-radius: 10px;
 
-    border: 1px solid #ddd;
+	border: 1px solid #ddd;
 
-    flex-shrink: 0;
+	flex-shrink: 0;
 }
 
 /* ★文字エリア（伸ばしすぎ防止） */
 .item-details {
-    flex: unset;   /* ★ここ重要：伸ばさない */
+	flex: unset;
+	/* ★ここ重要：伸ばさない */
 
-    display: flex;
-    flex-direction: column;
+	display: flex;
+	flex-direction: column;
 
-    justify-content: center;
-    align-items: center;
+	justify-content: center;
+	align-items: center;
 
-    text-align: center;
+	text-align: center;
 
-    gap: 4px;
+	gap: 4px;
 
-    width: 100%;
+	width: 100%;
 }
 
 /* 商品名 */
 .product-name {
-    font-weight: bold;
-    font-size: 1rem;
-    color: #333;
+	font-weight: bold;
+	font-size: 1rem;
+	color: #333;
 }
 
 /* 金額 */
 .item-price-total {
-    font-weight: bold;
-    color: #4f8f61;
+	font-weight: bold;
+	color: #4f8f61;
 }
 
 /* --- 合計 --- */
 .total-section {
-    margin: 20px 0;
+	margin: 20px 0;
 
-    padding: 16px;
+	padding: 16px;
 
-    border: 2px solid #4f8f61;
-    border-radius: 12px;
+	border: 2px solid #4f8f61;
+	border-radius: 12px;
 
-    background: #f9fff9;
+	background: #f9fff9;
 
-    width: 100%;
+	width: 100%;
 
-    text-align: center;
+	text-align: center;
 }
 
 /* --- クーポン --- */
 .coupon-section {
-    margin-top: 15px;
+	margin-top: 15px;
 
-    padding: 16px;
+	padding: 16px;
 
-    border: 1px solid #dcefdc;
-    border-radius: 12px;
+	border: 1px solid #dcefdc;
+	border-radius: 12px;
 
-    background-color: #f9fff9;
+	background-color: #f9fff9;
 
-    width: 100%;
+	width: 100%;
 
-    text-align: center;
+	text-align: center;
 }
 
 /* ラジオ */
 .form-check {
-    margin-bottom: 8px;
+	margin-bottom: 8px;
 
-    display: flex;
-    justify-content: center;
-    gap: 8px;
+	display: flex;
+	justify-content: center;
+	gap: 8px;
 }
 
 /* ボタン */
 .confirm-btn-container {
-    width: 100%;
-    display: flex;
-    justify-content: center;
+	width: 100%;
+	display: flex;
+	justify-content: center;
 
-    margin-top: 20px;
+	margin-top: 20px;
 }
 
 .login-btn {
-    width: 100%;
-    max-width: 360px;
+	width: 100%;
+	max-width: 360px;
 
-    background: #4f8f61;
-    color: #fff;
+	background: #4f8f61;
+	color: #fff;
 
-    border: none;
-    border-radius: 999px;
+	border: none;
+	border-radius: 999px;
 
-    padding: 14px;
+	padding: 14px;
 
-    font-size: 1rem;
-    font-weight: bold;
+	font-size: 1rem;
+	font-weight: bold;
 
-    cursor: pointer;
+	cursor: pointer;
 
-    transition: 0.3s;
+	transition: 0.3s;
+
+	text-decoration: none;
 }
 
 .login-btn:hover {
-    opacity: 0.9;
-    transform: translateY(-1px);
+	opacity: 0.9;
+	transform: translateY(-1px);
 }
