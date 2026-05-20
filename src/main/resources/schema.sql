@@ -116,13 +116,7 @@ CREATE TABLE product_images (
     product_id INTEGER REFERENCES products(id)
 );
 
-CREATE TABLE producers (
-    user_id INTEGER PRIMARY KEY REFERENCES users(id),
-    image_path VARCHAR NOT NULL,
-    image_description VARCHAR NOT NULL,
-    catchcopy VARCHAR(200) NOT NULL,
-    hokkaido_area_id INTEGER REFERENCES hokkaido_areas(id)
-);
+
 
 CREATE TABLE users_achievements (
     user_id INTEGER REFERENCES users(id),
