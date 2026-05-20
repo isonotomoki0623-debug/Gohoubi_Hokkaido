@@ -1,19 +1,16 @@
 <!DOCTYPE html>
-<html lang="ja">
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ごほうびほっかいどう</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>ごほうびほっかいどう</title>
 
-    <!-- Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-        rel="stylesheet">
+	<!-- Bootstrap -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Sawarabi+Gothic&display=swap"
-        rel="stylesheet">
+	<!-- Google Fonts -->
+	<link href="https://fonts.googleapis.com/css2?family=Sawarabi+Gothic&display=swap" rel="stylesheet">
 
     <link href="https://fonts.googleapis.com/css2?family=Yusei+Magic&display=swap"
         rel="stylesheet">
@@ -22,269 +19,279 @@
     <link rel="stylesheet" th:href="@{/css/home.css}">
     <link rel="stylesheet" th:href="@{/css/_header.css}">
 	<link rel="stylesheet" th:href="@{/css/_footer.css}">
+	<link href="https://fonts.googleapis.com/css2?family=Yusei+Magic&display=swap" rel="stylesheet">
 
+	<!-- CSS -->
+	<link rel="stylesheet" th:href="@{/css/home.css}">
+	<link rel="stylesheet" th:href="@{/css/_header.css}">
 </head>
 
 <body>
 
-    <header th:replace="layout/_header :: header"></header>
+	<header th:replace="layout/_header :: header"></header>
 
-    <main class="main-container">
+	<main class="main-container">
 
-        <div class="container">
+		<div class="container">
 
-            <!-- 上段 -->
-            <div class="row g-4 align-items-stretch">
+			<!-- 上段 -->
+			<div class="row g-4 align-items-stretch">
 
-                <!-- ヒーロー -->
-                <div class="col-lg-8">
+				<!-- ヒーロー -->
+				<div class="col-lg-8">
 
-                    <div class="hero-card">
+					<div class="hero-card">
 
-                        <h1 class="hero-title">
-                            北海道をめぐって、<br>
-                            ごほうびを集めよう。
-                        </h1>
+						<h1 class="hero-title">
+							北海道をめぐって、<br>
+							ごほうびを集めよう。
+						</h1>
 
-                        <p class="hero-text">
-                            商品を買うたびに実績解除。<br>
-                            エリアを集めて、北海道マスターを目指そう。
-                        </p>
+						<p class="hero-text">
+							商品を買うたびに実績解除。<br>
+							エリアを集めて、北海道マスターを目指そう。
+						</p>
 
-                        <a href="/login" class="btn btn-warning hero-btn">
-                            ログインして冒険を始める
-                        </a>
+						<a href="/login" class="btn btn-warning hero-btn">
+							ログインして冒険を始める
+						</a>
 
-                    </div>
+					</div>
 
-                </div>
+				</div>
 
-                <!-- ステータス -->
-                <div class="col-lg-4">
+				<!-- ステータス -->
+				<div class="col-lg-4">
 
-                    <div class="status-card">
+					<div class="status-card">
 
-                        <div class="level-box">
+						<div class="level-box">
 
-                            <div class="level-title">
-                                Lv.12 北海道トラベラー
-                            </div>
+							<div class="level-title">
+								Lv.12 北海道トラベラー
+							</div>
 
-                            <div class="money-left">
-                                次のレベルまであと
-                                <strong>¥4,800</strong>
-                            </div>
+							<div class="money-left">
+								次のレベルまであと
+								<strong>¥4,800</strong>
+							</div>
 
-                            <div class="progress mt-3" style="height: 12px;">
-                                <div class="progress-bar bg-warning"
-                                    style="width: 72%;"></div>
-                            </div>
+							<div class="progress mt-3" style="height: 12px;">
+								<div class="progress-bar bg-warning" style="width: 72%;"></div>
+							</div>
 
-                        </div>
+						</div>
 
-                        <!-- ログインボーナス -->
-                        <div class="bonus-box">
+						<!-- ログインボーナス -->
+						<div class="bonus-box">
 
-                            <div class="bonus-title">
-                                🎁 ログインボーナス
-                            </div>
+							<div class="bonus-title">
+								🎁 ログインボーナス
+							</div>
 
-                            <div class="small">
-                                このセッション限定！<br>
-                                海鮮カテゴリ 全商品5%OFF
-                            </div>
+							<div class="small">
+								このセッション限定！<br>
+								海鮮カテゴリ 全商品5%OFF
+							</div>
 
-                        </div>
+						</div>
 
-                        <!-- 実績通知 -->
-                        <div class="achievement-alert">
+						<!-- 実績通知 -->
+						<div class="achievement-alert">
 
-                            <div class="fw-bold mb-2">
-                                🏆 新しい実績を解除！
-                            </div>
+							<div class="fw-bold mb-2">
+								🏆 新しい実績を解除！
+							</div>
 
-                            <div class="small text-muted">
-                                「スイーツ探検家」<br>
-                                スイーツカテゴリを5回購入
-                            </div>
+							<div class="small text-muted">
+								「スイーツ探検家」<br>
+								スイーツカテゴリを5回購入
+							</div>
 
-                        </div>
+						</div>
 
-                    </div>
+					</div>
 
-                </div>
+				</div>
 
-            </div>
+			</div>
 
-            <!-- おすすめ商品 -->
-            <section class="mt-5">
+			<!-- おすすめ商品 -->
+			<section class="mt-5">
 
-                <h2 class="section-title">
-                    ⭐ おすすめ商品
-                </h2>
+				<h2 class="section-title">
+					⭐ おすすめ商品
+				</h2>
 
-                <div class="row g-4">
+				<div class="row g-4">
 
-                    <!-- 商品 -->
-                    <div class="col-md-4">
+					<!-- 商品 -->
+					<div class="col-md-4" th:each="product : ${recommendProducts}">
 
-                        <div class="product-card">
+						<a th:href="@{/products/{id}(id=${product.id})}" class="product-link">
 
-                            <img src="https://images.unsplash.com/photo-1563245372-f21724e3856d?q=80&w=1200"
-                                class="product-image">
+							<div class="product-card">
 
-                            <div class="product-body">
+								<div class="product-image-wrap">
 
-                                <div class="tag">
-                                    海鮮マスター対象
-                                </div>
+									<img th:src="@{/images/logo_2.jpg}"
+										th:alt="${product.name}"
+										class="product-image">
 
-                                <div class="product-title">
-                                    北海道いくら醤油漬け
-                                </div>
+								</div>
 
-                                <div class="product-desc">
-                                    濃厚な旨味とぷちぷち食感。
-                                </div>
+								<div class="product-info">
 
-                                <div class="d-flex justify-content-between align-items-center mt-4">
+									<div class="product-category"
+										th:text="${product.productCategoryName}">
+										カテゴリ
+									</div>
 
-                                    <div class="price">
-                                        ¥4,980
-                                    </div>
+									<h2 class="product-name"
+										th:text="${product.name}">
+										商品名
+									</h2>
 
-                                    <button class="btn btn-warning buy-btn">
-                                        カート
-                                    </button>
+									<p class="product-area"
+										th:text="${product.hokkaidoAreaName}">
+										地域名
+									</p>
 
-                                </div>
+									<div class="product-bottom">
 
-                            </div>
+										<div class="product-price">
+											¥
+											<span th:text="${#numbers.formatInteger(product.price, 1, 'COMMA')}">
+												0
+											</span>
+										</div>
 
-                        </div>
+										<div class="detail-button">
+											詳細を見る
+										</div>
 
-                    </div>
+									</div>
 
-                    <!-- 商品 -->
-                    <div class="col-md-4">
+								</div>
 
-                        <div class="product-card">
+							</div>
 
-                            <img src="https://images.unsplash.com/photo-1488477181946-6428a0291777?q=80&w=1200"
-                                class="product-image">
+						</a>
 
-                            <div class="product-body">
+					</div>
 
-                                <div class="tag">
-                                    スイーツ探検家対象
-                                </div>
+				</div>
 
-                                <div class="product-title">
-                                    牧場ミルクチーズケーキ
-                                </div>
+			</section>
 
-                                <div class="product-desc">
-                                    北海道ミルクの濃厚スイーツ。
-                                </div>
+			<!-- 下段 -->
+			<section class="mt-5">
 
-                                <div class="d-flex justify-content-between align-items-center mt-4">
+				<div class="row g-4">
 
-                                    <div class="price">
-                                        ¥2,980
-                                    </div>
+					<!-- 商品ランキング -->
+					<div class="col-lg-6">
 
-                                    <button class="btn btn-warning buy-btn">
-                                        カート
-                                    </button>
+						<h2 class="section-title">
+							👑 商品ランキング
+						</h2>
 
-                                </div>
+						<div class="ranking-card">
 
-                            </div>
+							<div class="rank-item"
+								th:each="product, stat : ${rankingProducts}">
 
-                        </div>
+								<div class="rank-number"
+									th:text="${stat.count}">
+									1
+								</div>
 
-                    </div>
+								<div>
 
-                    <!-- 商品 -->
-                    <div class="col-md-4">
+									<div class="rank-name"
+										th:text="${product.name}">
+										商品名
+									</div>
 
-                        <div class="product-card">
+									<div class="rank-sales">
 
-                            <img src="https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?q=80&w=1200"
-                                class="product-image">
+										<span th:if="${stat.count == 1}">
+											今週の人気 No.1
+										</span>
 
-                            <div class="product-body">
+										<span th:if="${stat.count == 2}">
+											人気急上昇中
+										</span>
 
-                                <div class="tag">
-                                    肉料理ハンター対象
-                                </div>
+										<span th:if="${stat.count == 3}">
+											リピーター多数
+										</span>
 
-                                <div class="product-title">
-                                    十勝和牛ハンバーグ
-                                </div>
+									</div>
 
-                                <div class="product-desc">
-                                    肉汁たっぷり本格グルメ。
-                                </div>
+								</div>
 
-                                <div class="d-flex justify-content-between align-items-center mt-4">
+							</div>
 
-                                    <div class="price">
-                                        ¥3,480
-                                    </div>
+						</div>
 
-                                    <button class="btn btn-warning buy-btn">
-                                        カート
-                                    </button>
+					</div>
 
-                                </div>
+					<!-- ユーザーランキング -->
+					<div class="col-lg-6">
 
-                            </div>
+						<h2 class="section-title">
+							👑 ユーザーランキング
+						</h2>
 
-                        </div>
+						<div class="ranking-card">
 
-                    </div>
+							<div class="rank-item"
+								th:each="user, stat : ${rankingUsers}">
 
-                </div>
+								<div class="rank-number"
+									th:text="${stat.count}">
+									1
+								</div>
 
-            </section>
+								<div>
 
-            <!-- 下段 -->
-            <section class="mt-5">
+									<div class="rank-name"
+										th:text="${user.name}">
+										ユーザー名
+									</div>
 
-                <div class="row g-4">
+									<div class="rank-sales">
 
-                    <!-- ランキング -->
-                    <div class="col-lg-6">
+										<span th:if="${stat.count == 1}">
+											北海道王
+										</span>
 
-                        <h2 class="section-title">
-                            👑 商品ランキング
-                        </h2>
+										<span th:if="${stat.count == 2}">
+											爆買い中
+										</span>
 
-                        <div class="ranking-card">
+										<span th:if="${stat.count == 3}">
+											常連ユーザー
+										</span>
 
-                            <div class="rank-item">
+									</div>
 
-                                <div class="rank-number">
-                                    1
-                                </div>
+								</div>
 
-                                <div>
+							</div>
 
-                                    <div class="rank-name">
-                                        北海道いくら醤油漬け
-                                    </div>
+						</div>
 
-                                    <div class="rank-sales">
-                                        今週の人気 No.1
-                                    </div>
+					</div>
 
-                                </div>
+				</div>
 
-                            </div>
+			</section>
 
-                            <div class="rank-item">
+		</div>
 
+<<<<<<< HEAD
                                 <div class="rank-number">
                                     2
                                 </div>
@@ -385,6 +392,9 @@
     </main>
 	
 	<footer th:replace="layout/_footer :: footer"></footer>
+=======
+	</main>
+>>>>>>> 30bbef3d2b8f268d225fd11151933e659e3f1496
 
 </body>
 

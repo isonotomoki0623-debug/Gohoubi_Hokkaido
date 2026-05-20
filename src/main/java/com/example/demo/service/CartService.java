@@ -50,7 +50,6 @@ public class CartService {
 				if (item.getQuantity() == 0) {
 					iterator.remove();
 				}
-
 				break;
 			}
 		}
@@ -66,7 +65,7 @@ public class CartService {
 	public int getTotalPrice(HttpSession session) {
 		List<CartItem> cart = getCart(session);
 		int totalPrice = 0;
-		for(CartItem item : cart) {
+		for (CartItem item : cart) {
 			totalPrice += item.getPrice() * item.getQuantity();
 		}
 		return totalPrice;
