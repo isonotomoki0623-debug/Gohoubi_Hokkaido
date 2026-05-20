@@ -12,9 +12,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.demo.entity.Achievement;
+import com.example.demo.entity.Coupon;
 import com.example.demo.entity.User;
-import com.example.demo.mapper.MypageMapper;
 import com.example.demo.mapper.AchievementMapper;
+import com.example.demo.mapper.MypageMapper;
+import com.example.demo.mapper.OrderMapper;
 import com.example.demo.service.UserService;
 
 @Controller
@@ -24,9 +26,10 @@ public class MyPageController {
 	private UserService userService;
 	@Autowired
 	private AchievementMapper achievementMapper;
-
 	@Autowired
 	private MypageMapper mypageMapper;
+	@Autowired
+	private OrderMapper orderMapper;
 
 	@GetMapping("/profile")
 	public String showProfile(HttpSession session, Model model) {
@@ -52,6 +55,8 @@ public class MyPageController {
 		model.addAttribute("userRank", userRank);
 		model.addAttribute("userCount", userCount);
 
+		List<Coupon> hasCoupons = orderMapper.hasCoupons(loginUser.getId());
+
 		//次のレベルまでの金額を表示
 		Integer nextLevelAmount = user.getLevel() * 10000;
 
@@ -61,6 +66,7 @@ public class MyPageController {
 			remainAmount = 0;
 		}
 
+		model.addAttribute("hasCoupons", hasCoupons);
 		model.addAttribute("remainAmount", remainAmount);
 
 		//プログレスバー

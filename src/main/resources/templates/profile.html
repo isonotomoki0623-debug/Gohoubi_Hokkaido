@@ -105,21 +105,10 @@
 
 			<h2>所持クーポン</h2>
 
-			<div class="coupon-list">
+			<div class="coupon-list" th:each="hasCoupon : ${hasCoupons}">
 
 				<div class="coupon-card">
-					<h3>北海道応援クーポン</h3>
-					<p>500円OFF</p>
-				</div>
-
-				<div class="coupon-card">
-					<h3>送料無料クーポン</h3>
-					<p>送料0円</p>
-				</div>
-
-				<div class="coupon-card">
-					<h3>海鮮フェアクーポン</h3>
-					<p>1000円OFF</p>
+					<h3 th:text="${hasCoupon.name}">北海道応援クーポン</h3>
 				</div>
 
 			</div>
