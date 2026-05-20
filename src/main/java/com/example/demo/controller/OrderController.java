@@ -17,6 +17,7 @@ import com.example.demo.entity.Coupon;
 import com.example.demo.entity.Order;
 import com.example.demo.entity.User;
 import com.example.demo.mapper.OrderMapper;
+import com.example.demo.mapper.ProductMapper;
 import com.example.demo.service.AchievementService;
 import com.example.demo.service.CartService;
 import com.example.demo.service.CouponService;
@@ -38,6 +39,8 @@ public class OrderController {
 	private OrderService orderService;
 	@Autowired
 	private CouponService couponService;
+	@Autowired
+	private ProductMapper productMapper;
 
 	@GetMapping("/order")
 	public String showOrder(HttpSession session, Model model) {
@@ -80,6 +83,7 @@ public class OrderController {
 		//order_itemsテーブルに新規追加
 		for (CartItem cartItem : cart) {
 			orderMapper.InsertOrderItems(cartItem, orderId);
+			productMapper.decrementStock(cartItem.getProductId(), cartItem.getQuantity());
 		}
 		List<Achievement> achievements = achievementService.checkAchievement(userId, session);
 		session.removeAttribute("cart");
