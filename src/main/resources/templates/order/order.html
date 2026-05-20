@@ -115,39 +115,26 @@
 
                 <h6>利用可能クーポン</h6>
 
-                <!-- 使用しない（初期値） -->
-                <div class="form-check mb-2">
-                    <input class="form-check-input"
-                           type="radio"
-                           name="couponId"
-                           id="noCoupon"
-                           value=""
-                           checked>
-                    <label class="form-check-label" for="noCoupon">
-                        使用しない
-                    </label>
-                </div>
-
                 <!-- クーポンリスト -->
                 <div class="form-check mb-2"
-                     th:each="coupon : ${coupons}">
+                     th:each="myCoupon : ${myCoupons}">
 
                     <input class="form-check-input coupon-radio"
                            type="radio"
                            name="couponId"
-                           th:id="'coupon-' + ${coupon.id}"
-                           th:value="${coupon.id}"
+                           th:id="'coupon-' + ${myCoupon.id}"
+                           th:value="${myCoupon.id}"
                            disabled>
 
                     <label class="form-check-label"
-                           th:for="'coupon-' + ${coupon.id}">
+                           th:for="'coupon-' + ${myCoupon.id}">
 
-                        <span th:text="${coupon.name}">
+                        <span th:text="${myCoupon.name}">
                             500円OFFクーポン
                         </span>
 
                         （
-                        <span th:text="${coupon.rate}">
+                        <span th:text="${myCoupon.rate}">
                             500
                         </span>
                         円OFF）
