@@ -35,6 +35,10 @@ public class MyPageController {
 
 		model.addAttribute("user", user);
 
+		Integer totalAmount = mypageMapper.getTotalAmount(loginUser.getId());
+
+		model.addAttribute("totalAmount", totalAmount);
+
 		return "profile";
 	}
 

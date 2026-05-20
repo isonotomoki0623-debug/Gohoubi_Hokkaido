@@ -9,4 +9,5 @@ public interface MypageMapper {
 
 	User findByUserId(int id);
 
+	Integer getTotalAmount(int userId);
 }

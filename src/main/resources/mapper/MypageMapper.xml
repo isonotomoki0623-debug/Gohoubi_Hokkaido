@@ -5,51 +5,56 @@
 
 <mapper namespace="com.example.demo.mapper.MypageMapper">
 
-    <resultMap id="UserWithJobResultMap"
-        type="com.example.demo.entity.User">
+	<resultMap id="UserWithJobResultMap"
+		type="com.example.demo.entity.User">
 
-        <id property="id" column="id" />
+		<id property="id" column="id" />
 
-        <result property="name" column="user_name" />
-        <result property="email" column="email" />
-        <result property="level" column="level" />
-        <result property="job_id" column="job_id" />
-        <result property="prefecture_id" column="prefecture_id" />
-        <result property="role" column="role" />
+		<result property="name" column="user_name" />
+		<result property="email" column="email" />
+		<result property="level" column="level" />
+		<result property="job_id" column="job_id" />
+		<result property="prefecture_id" column="prefecture_id" />
+		<result property="role" column="role" />
 
-        <association property="job"
-            javaType="com.example.demo.entity.Job">
+		<association property="job"
+			javaType="com.example.demo.entity.Job">
 
-            <id property="id" column="job_id" />
-            <result property="name" column="job_name" />
-            <result property="imagePath" column="image_path" />
+			<id property="id" column="job_id" />
+			<result property="name" column="job_name" />
+			<result property="imagePath" column="image_path" />
 
-        </association>
+		</association>
 
-    </resultMap>
+	</resultMap>
 
-    <select id="findByUserId"
-        resultMap="UserWithJobResultMap">
+	<select id="findByUserId" resultMap="UserWithJobResultMap">
 
-        SELECT
-            u.id,
-            u.name AS user_name,
-            u.email,
-            u.level,
-            u.job_id,
-            u.prefecture_id,
-            u.role,
+		SELECT
+		u.id,
+		u.name AS user_name,
+		u.email,
+		u.level,
+		u.job_id,
+		u.prefecture_id,
+		u.role,
 
-            j.name AS job_name,
-            j.image_path
+		j.name AS job_name,
+		j.image_path
 
-        FROM users u
+		FROM users u
 
-        JOIN jobs j
-        ON u.job_id = j.id
+		JOIN jobs j
+		ON u.job_id = j.id
 
-        WHERE u.id = #{id}
+		WHERE u.id = #{id}
 
-    </select>
+	</select>
+
+	<select id="getTotalAmount" resultType="Integer">
+		SELECT COALESCE(SUM(total_amount), 0)
+		FROM orders
+		WHERE user_id = #{userId}
+	</select>
 
 </mapper>
