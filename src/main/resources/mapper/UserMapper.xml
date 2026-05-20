@@ -22,8 +22,47 @@
 		ON u.id = o.user_id
 		GROUP BY u.id
 		ORDER
-		BY total_amount_sum DESC
+		BY
+		total_amount_sum DESC
 		LIMIT 3
 	</select>
 
+	<resultMap id="UserWithJobResultMap"
+		type="com.example.demo.entity.User">
+		<!-- ユーザー自身のすべての情報をマッピング -->
+		<id property="id" column="id" />
+		<result property="name" column="user_name" /> <!-- ※ jobs.name との重複を避けるためエイリアスに合わせる -->
+		<result property="password" column="password" />
+		<result property="email" column="email" />
+		<result property="job_id" column="job_id" />
+		<result property="level" column="level" />
+		<result property="prefecture_id" column="prefecture_id" />
+		<result property="role" column="role" />
+
+		<!-- 紐づく Job クラスの情報マッピング -->
+		<association property="job"
+			javaType="com.example.demo.entity.Job">
+			<id property="id" column="job_id" />
+			<result property="name" column="job_name" /> <!-- ※ users.name との重複を避けるためエイリアスに合わせる -->
+			<result property="imagePath" column="image_path" />
+		</association>
+	</resultMap>
+
+	<!-- すべての情報を一撃で取得するSQL -->
+	<select id="findByUserid" resultMap="UserWithJobResultMap">
+		SELECT
+		u.id,
+		u.name AS user_name,  <!-- usersのname -->
+		u.password,
+		u.email,
+		u.job_id,
+		u.level,
+		u.prefecture_id,
+		u.role,
+		j.name AS job_name,   <!-- jobsのname -->
+		j.image_path
+		FROM users u
+		JOIN jobs j ON u.job_id = j.id
+		WHERE u.id = #{id}
+	</select>
 </mapper>
