@@ -39,7 +39,7 @@
 	  
 	  <div class="row">
 	      <span class="label">クーポン名：</span>
-	      <span class="value">[[${order.couponName}]]</span>
+			<span class="value">[[${order.couponName != null ? order.couponName : 'なし'}]]</span>
 	    </div>
 
 	  <div class="row">

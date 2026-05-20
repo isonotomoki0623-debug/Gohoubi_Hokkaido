@@ -5,16 +5,44 @@
 
 <mapper namespace="com.example.demo.mapper.OrderMapper">
 
+  <!-- =========================
+       注文登録（★割引後金額対応）
+  ========================== -->
   <insert id="InsertOrder"
           parameterType="com.example.demo.entity.Order"
           useGeneratedKeys="true"
           keyProperty="id">
 
-    INSERT INTO orders (user_id, buy_at, total_amount, status, coupon_id)
-    VALUES (#{userId}, CURRENT_DATE, #{totalAmount}, false, #{couponId})
+    INSERT INTO orders (
+      user_id,
+      buy_at,
+      total_amount,
+      status,
+      coupon_id
+    )
+    VALUES (
+      #{userId},
+      CURRENT_DATE,
+
+      (
+        SELECT
+          CASE
+            WHEN c.rate IS NULL THEN #{totalAmount}
+            ELSE FLOOR(#{totalAmount} * (1 - c.rate))
+          END
+        FROM coupons c
+        WHERE c.id = #{couponId}
+      ),
+
+      false,
+      #{couponId}
+    )
 
   </insert>
 
+  <!-- =========================
+       注文明細登録
+  ========================== -->
   <insert id="InsertOrderItems">
 
     INSERT INTO order_items (order_id, product_id, quantity)
@@ -22,6 +50,9 @@
 
   </insert>
 
+  <!-- =========================
+       クーポン取得
+  ========================== -->
   <select id="hasCoupons"
           resultType="com.example.demo.entity.Coupon">
 
@@ -35,7 +66,9 @@
 
   </select>
 
-  <!-- ★ここが正解 -->
+  <!-- =========================
+       注文一覧
+  ========================== -->
   <select id="findOrdersByUserId"
           resultType="com.example.demo.entity.Order">
 
@@ -45,12 +78,8 @@
       o.buy_at,
       o.total_amount,
       o.status,
-
-      -- ★これが重要（型は絶対壊さない）
       o.coupon_id,
-
-      -- 表示専用（文字列）
-      c.name AS coupon_name
+      c.name AS couponName
 
     FROM orders o
     LEFT JOIN coupons c
@@ -61,6 +90,9 @@
 
   </select>
 
+  <!-- =========================
+       注文詳細
+  ========================== -->
   <select id="findOrderById"
           resultType="com.example.demo.entity.Order">
 
@@ -70,9 +102,8 @@
       o.buy_at,
       o.total_amount,
       o.status,
-
       o.coupon_id,
-      c.name AS coupon_name
+      c.name AS couponName
 
     FROM orders o
     LEFT JOIN coupons c
@@ -82,6 +113,9 @@
 
   </select>
 
+  <!-- =========================
+       注文明細取得
+  ========================== -->
   <select id="findOrderItemsByOrderId"
           resultType="com.example.demo.entity.CartItem">
 
