@@ -14,66 +14,159 @@
 	</select>
 
 	<!-- ページネーション -->
-<select id="findPage"
-        resultType="com.example.demo.entity.Product">
+	<!-- <select id="findPage" -->
+	<!-- resultType="com.example.demo.entity.Product"> -->
 
-    SELECT
-        p.id,
-        p.name,
-        p.price,
-        p.review_sum,
-        p.review_star,
-        p.stock,
-        p.product_category_id,
-        hc.name AS hokkaidoAreaName,
-        pc.name AS productCategoryName
+	<!-- SELECT -->
+	<!-- p.id, -->
+	<!-- p.name, -->
+	<!-- p.price, -->
+	<!-- p.review_star, -->
+	<!-- p.stock, -->
+	<!-- p.product_category_id, -->
+	<!-- hc.name AS hokkaidoAreaName, -->
+	<!-- pc.name AS -->
+	<!-- productCategoryName -->
 
-    FROM products p
+	<!-- FROM products p -->
 
-    LEFT JOIN hokkaido_areas hc
-        ON p.hokkaido_area_id = hc.id
+	<!-- LEFT JOIN hokkaido_areas hc -->
+	<!-- ON -->
+	<!-- p.hokkaido_area_id = hc.id -->
 
-    LEFT JOIN product_categories pc
-        ON p.product_category_id = pc.id
+	<!-- LEFT JOIN product_categories pc -->
+	<!-- ON -->
+	<!-- p.product_category_id = pc.id -->
 
-    <where>
-        <if test="keyword != null and keyword != ''">
-            p.name LIKE CONCAT('%', #{keyword}, '%')
-        </if>
+	<!-- <where> -->
+	<!-- <if test="keyword != null and keyword != ''"> -->
+	<!-- p.name LIKE CONCAT('%', #{keyword}, '%') -->
+	<!-- </if> -->
 
-        <if test="categoryId != null">
-            AND p.product_category_id = #{categoryId}
-        </if>
-    </where>
+	<!-- <if test="categoryId != null"> -->
+	<!-- AND p.product_category_id = #{categoryId} -->
+	<!-- </if> -->
+	<!-- </where> -->
 
-    ORDER BY p.id DESC
-    LIMIT #{pageSize} OFFSET #{offset}
+	<!-- ORDER BY p.id DESC -->
+	<!-- LIMIT #{pageSize} OFFSET #{offset} -->
 
-</select>
+	<!-- </select> -->
+	<select id="findPage"
+		resultType="com.example.demo.entity.Product">
 
-<select id="countAll"
-        resultType="int">
+		SELECT
+		p.id,
+		p.name,
+		p.price,
+		p.review_star,
+		p.stock,
+		p.product_category_id,
 
-    SELECT COUNT(*)
+		hc.name AS hokkaidoAreaName,
 
-    FROM products p
+		pc.name AS productCategoryName,
 
-    LEFT JOIN hokkaido_areas hc
-        ON p.hokkaido_area_id = hc.id
+		(
+		SELECT pi.image_path
+		FROM product_images pi
+		WHERE pi.product_id = p.id
+		ORDER BY pi.id ASC
+		LIMIT 1
+		) AS imagePath
 
-    LEFT JOIN product_categories pc
-        ON p.product_category_id = pc.id
+		FROM products p
 
-    <where>
-        <if test="keyword != null and keyword != ''">
-            p.name LIKE CONCAT('%', #{keyword}, '%')
-        </if>
+		LEFT JOIN hokkaido_areas hc
+		ON p.hokkaido_area_id = hc.id
 
-        <if test="categoryId != null">
-            AND p.product_category_id = #{categoryId}
-        </if>
-    </where>
+		LEFT JOIN product_categories pc
+		ON p.product_category_id = pc.id
 
-</select>
+		<where>
+
+			<if test="keyword != null and keyword != ''">
+				p.name LIKE CONCAT('%', #{keyword}, '%')
+			</if>
+
+			<if test="categoryId != null">
+				AND p.product_category_id = #{categoryId}
+			</if>
+
+		</where>
+
+		ORDER BY p.id DESC
+
+		LIMIT #{pageSize}
+		OFFSET #{offset}
+
+	</select>
+
+	<select id="countAll" resultType="int">
+
+		SELECT COUNT(*)
+
+		FROM products p
+
+		LEFT JOIN hokkaido_areas hc
+		ON
+		p.hokkaido_area_id = hc.id
+
+		LEFT JOIN product_categories pc
+		ON
+		p.product_category_id = pc.id
+
+		<where>
+			<if test="keyword != null and keyword != ''">
+				p.name LIKE CONCAT('%', #{keyword}, '%')
+			</if>
+
+			<if test="categoryId != null">
+				AND p.product_category_id = #{categoryId}
+			</if>
+		</where>
+
+	</select>
+
+	<!-- おすすめ商品を表示 -->
+	<select id="findRecommend3"
+		resultType="com.example.demo.entity.Product">
+		SELECT
+		p.id,
+		p.name,
+		p.price,
+		c.name AS product_category_name,
+		h.name AS hokkaido_area_name
+		FROM products p
+		LEFT JOIN
+		product_categories c
+		ON p.product_category_id = c.id
+		LEFT JOIN
+		hokkaido_areas h
+		ON p.hokkaido_area_id = h.id
+		ORDER BY p.id DESC
+		LIMIT 3
+	</select>
+
+	<!-- 商品の売上ランキングを表示 -->
+	<!-- order_itemsとproductsをjoin -->
+	<!--group by を使って、product_idごとに分割する -->
+	<!--product_idが同じもののquantityを足し合わせて、合計個数sumを出す -->
+	<!--合計個数と単価priceを掛け合わせ、累計売上totalSalesを出す -->
+	<!--totalSalesを降順に並べ、大きいものから順にlimitで3つ表示する -->
+	<select id="findProductsTop3"
+		resultType="com.example.demo.entity.Product">
+		SELECT
+		p.id, SUM(o.quantity)* p.price AS total_price
+
+		FROM
+		products p
+		JOIN order_items o
+		ON p.id = o.product_id
+		GROUP BY p.id
+		ORDER
+		BY total_price DESC
+		LIMIT 3
+	</select>
 
 </mapper>
