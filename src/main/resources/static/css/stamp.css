@@ -5,52 +5,80 @@
     font-size: 2.3rem;
     margin: 30px 0;
     text-align: center;
+    font-weight: 400;
 }
+
+.progress {
+    text-align: center;
+}
+
 /* =========================
-   スタンプグリッド
+   グリッド
 ========================= */
 .stamp-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* ★ 3×3 */
-    gap: 20px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
     padding: 20px;
 }
 
 /* =========================
-   スタンプカード
+   カード
 ========================= */
 .stamp-card {
-    height: 220px;
+    height: 240px;
     display: flex;
     flex-direction: column;
+    align-items: center;
     text-align: center;
+
     border: 1px solid #ddd;
-    padding: 12px;
     border-radius: 12px;
-    transition: 0.2s;
+    padding: 16px;
+    box-sizing: border-box;
+
     background: #fff;
+    transition: 0.2s;
 }
 
 .stamp-card:hover {
-    transform: scale(1.05);
+    transform: scale(1.03);
 }
 
 /* =========================
-   画像
+   画像エリア（共通）
 ========================= */
+.image-box {
+    width: 120px;
+    height: 120px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 10px;
+    background: #f2f2f2;
+
+    margin-bottom: 10px;
+}
+
+/* 画像 */
 .stamp-img {
-    width: 100px;
-    height: 100px;
-    object-fit: cover;
-    transition: 0.3s;
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
 }
 
 /* =========================
-   未取得（カード単位制御）
+   未取得（画像エリアごとグレー化）
 ========================= */
+.stamp-card.missing .image-box {
+    background: #e0e0e0;
+}
+
 .stamp-card.missing .stamp-img {
-    filter: grayscale(1) brightness(1.2) contrast(0.8);
-    opacity: 0.6;
+    filter: grayscale(100%);
+    opacity: 0.4;
 }
 
 /* =========================
@@ -62,20 +90,18 @@
 }
 
 /* =========================
-   名前
+   テキスト
 ========================= */
 .name {
-    margin-top: 8px;
+    margin-top: 6px;
     font-weight: bold;
 }
 
-/* =========================
-   ステータス表示
-========================= */
 .status {
     font-size: 0.9rem;
     margin-top: 4px;
 }
+
 .date {
     font-size: 0.9rem;
     margin-top: 4px;
