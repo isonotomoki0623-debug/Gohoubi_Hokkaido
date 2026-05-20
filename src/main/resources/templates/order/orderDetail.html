@@ -63,10 +63,11 @@
       <img class="img"
            th:if="${item.imagePath != null}"
            th:src="@{${item.imagePath}}">
-		   <a th:href="@{/product/{id}(id=${item.productId})}"
-		      class="name-link">
-		       [[${item.name}]]
+	
+		   <a th:href="@{/products/{id}(id=${item.productId})}" class="name-link">
+		       <span th:text="${item.name}"></span>
 		   </a>
+		 
     </div>
 
     <div class="price">[[${item.price}]]円</div>
