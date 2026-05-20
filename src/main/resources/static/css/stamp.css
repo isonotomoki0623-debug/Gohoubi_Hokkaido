@@ -60,7 +60,7 @@
 /* 取得済み */
 .stamp-card.acquired {
     background: #ffffff;
-	border: 2px solid yellow;
+	border: 2px solid  #ffd67f;
 	
 }
 
@@ -88,7 +88,7 @@
 
 /* 未取得だけグレー */
 .stamp-card.missing .image-box {
-    background: #e0e0e0;
+    background: #f3f3f3
 }
 
 /* =========================

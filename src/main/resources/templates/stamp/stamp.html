@@ -32,8 +32,11 @@
 
         <!-- 画像エリア -->
         <div class="image-box">
-            <img th:src="@{${stamp.image_path}}"
-                 class="stamp-img"/>
+			<img th:src="${stamp.is_acquired}
+			        ? @{${stamp.image_path}}
+			        : @{/images/logo_2.png}"
+			     class="stamp-img"/>
+          
         </div>
 
         <div class="name" th:text="${stamp.name}"></div>
