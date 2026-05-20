@@ -56,8 +56,8 @@ INSERT INTO users(name, password , email , job_id, level, prefecture_id, role) V
 
 INSERT INTO hokkaido_areas(name,image_path)
 VALUES
-('札幌','aaa'),('室蘭・登別','bbb'),('帯広','ccc'),('岩見沢','ddd'),('函館','eee'),
-('小樽','fff'),('旭川','ggg'),('夕張','hhh'),('富良野','iii');
+('札幌','/images/stamp_image/Sapporo_01.svg.png'),('室蘭・登別','/images/stamp_image/Muroran_02.svg.png'),('帯広','/images/stamp_image/Obihiro_03.svg.png'),('岩見沢','/images/stamp_image/Iwamizawa_04.svg.png'),('函館','/images/stamp_image/Hakodate_05.svg.png'),
+('小樽','/images/stamp_image/Otaru_06.svg.png'),('旭川','/images/stamp_image/Asahikawa_07.svg.png'),('夕張','/images/stamp_image/Yubari_08.svg.png'),('富良野','/images/stamp_image/Furano_09.svg.png');
 
 INSERT INTO producers
 (user_id, image_path,image_description,catchcopy,hokkaido_area_id)

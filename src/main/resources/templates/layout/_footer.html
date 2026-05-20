@@ -1,0 +1,54 @@
+<!-- =========================
+    FOOTER
+========================== -->
+<footer th:fragment="footer"
+        class="main-footer">
+
+    <!-- ボタンだけを .container の外側に配置することで、画面幅いっぱいに広げます -->
+    <div class="footer-top-center">
+        <a th:href="@{/}"
+           class="footer-back-to-top">
+            ↑ TOPへ戻る
+        </a>
+    </div>
+
+    <!-- 以下のコンテンツは .container に入れて余白を維持します -->
+    <div class="container footer-container">
+
+        <!-- フッター上段：ナビゲーション -->
+        <div class="footer-nav">
+
+            <div class="footer-group">
+                <h4>カテゴリ</h4>
+                <a th:href="@{/products(categoryId=1)}">農作物</a>
+                <a th:href="@{/products(categoryId=2)}">海産物</a>
+                <a th:href="@{/products(categoryId=3)}">肉・畜産品</a>
+                <a th:href="@{/products(categoryId=4)}">乳製品</a>
+                <a th:href="@{/products(categoryId=5)}">スイーツ・お菓子</a>
+                <a th:href="@{/products(categoryId=6)}">酒・飲料</a>
+                <a th:href="@{/products(categoryId=7)}">消耗品</a>
+            </div>
+
+            <div class="footer-group">
+                <h4>サポート</h4>
+                <a href="#">よくある質問</a>
+                <a href="#">お問い合わせ</a>
+                <a href="#">利用規約</a>
+                <a href="#">プライバシーポリシー</a>
+            </div>
+
+        </div>
+
+        <!-- 区切り線 -->
+        <hr class="footer-divider">
+
+        <!-- フッター下段 -->
+        <div class="footer-bottom">
+            <p class="footer-copy">
+                © ごほうびほっかいどう
+            </p>
+        </div>
+
+    </div>
+
+</footer>
