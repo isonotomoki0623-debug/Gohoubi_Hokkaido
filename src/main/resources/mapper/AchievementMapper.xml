@@ -56,5 +56,28 @@
     WHERE user_id = #{userId}
   </select>
 
+	<select id="selectOwnedAchievement"
+		resultType="com.example.demo.entity.Achievement">
+
+		SELECT achievements.*
+		FROM achievements
+		INNER JOIN users_achievements
+		ON achievements.id = users_achievements.achievement_id
+		WHERE users_achievements.user_id = #{userId}
+
+	</select>
+	
+		<select id="selectAchievement"
+		resultType="com.example.demo.entity.Achievement">
+
+		SELECT users_achievements.user_id, id, 
+		name, image_path, description, unlocked_at
+		FROM achievements
+		LEFT OUTER JOIN users_achievements
+		ON achievements.id = users_achievements.achievement_id
+		AND users_achievements.user_id = #{userId}
+		
+	</select>
+
 </mapper>
  

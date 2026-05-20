@@ -1,24 +1,24 @@
 /*実績*/
 INSERT INTO achievements(name, image_path, description, method_name) VALUES 
-    ('初めてのお客様', '/images/image_achievements/01_first_visiter.PNG', '実績1の説明', 'isFirstPurchase'),
-    ('常連さん', '/images/image_achievements/02_regular_customer.PNG', '実績2の説明', 'isRepeatCustomer5Times'),
-    ('北海道マスター', '/images/image_achievements/03_hokkaido_master.PNG', '実績3の説明', 'isHokkaidoMaster20Times'),
-    ('爆買い王', '/images/image_achievements/04_bulk_buyer_king.PNG', '実績4の説明', 'isBulkBuyer10Items'),
-    ('スイーツハンター', '/images/image_achievements/05_sweets_hunter.PNG', '実績5の説明', 'isSweetsHunter'),
-    ('海鮮マスター', '/images/image_achievements/06_seafood_master.PNG', '実績6の説明', 'isSeafoodMaster'),
-    ('農家さんのお友達', '/images/image_achievements/07_farmers_friend.PNG', '実績7の説明', 'isFarmFriend'),
-    ('北海道グルメ制覇', '/images/image_achievements/08_all_around_gourmet.PNG', '実績9の説明', 'isHokkaidoGourmetComplete'),
-    ('札幌制覇', '/images/image_achievements/09_sapporo_master.PNG', '実績10の説明', 'isSapporoStampCompleted'),
-    ('函館グルメ旅', '/images/image_achievements/10_hakodate_master.PNG', '実績11の説明', 'isHakodateStampCompleted'),
-    ('富良野マスター', '/images/image_achievements/11_furano_master.PNG', '実績12の説明', 'isFuranoStampCompleted'),
-    ('北海道一周', '/images/image_achievements/12_hokkaido_tour.PNG', '実績13の説明', 'isHokkaidoRoundTrip'),
-    ('最強コンボ', '/images/image_achievements/13_ultimate_combo.png', '実績14の説明', 'isBestComboJingisukanBeer'),
-    ('海の幸セット', '/images/image_achievements/14_seafood_set.PNG', '実績15の説明', 'isSeafoodComboSet'),
-    ('北海道に貢献', '/images/image_achievements/15_hokkaido_contributer.PNG', '実績16の説明', 'isTotalSpent10000'),
-    ('大富豪', '/images/image_achievements/16_millionaire.PNG', '実績17の説明', 'isTotalSpent50000'),
-    ('伝説の支援者', '/images/image_achievements/17_legendary_supporter.PNG', '実績18の説明', 'isTotalSpent100000'),
-    ('ランダム達成', '/images/image_achievements/18_random_achievement.PNG', '実績20の説明', 'isRandomAchievement'),
-    ('シークレット実績', '/images/image_achievements/19_secret_achievement.PNG', '実績21の説明', 'isSecretAchievement');
+    ('初めてのお客様', '/images/image_achievements/01_first_visiter.PNG', '初めて買い物をした', 'isFirstPurchase'),
+    ('常連さん', '/images/image_achievements/02_regular_customer.PNG', '5回買い物をした', 'isRepeatCustomer5Times'),
+    ('北海道マスター', '/images/image_achievements/03_hokkaido_master.PNG', '20回買い物をした', 'isHokkaidoMaster20Times'),
+    ('爆買い王', '/images/image_achievements/04_bulk_buyer_king.PNG', '1回の買い物で10商品以上購入した', 'isBulkBuyer10Items'),
+    ('スイーツハンター', '/images/image_achievements/05_sweets_hunter.PNG', 'スイーツを3種類購入した', 'isSweetsHunter'),
+    ('海鮮マスター', '/images/image_achievements/06_seafood_master.PNG', '海産物を3回購入した', 'isSeafoodMaster'),
+    ('農家さんのお友達', '/images/image_achievements/07_farmers_friend.PNG', '農作物を3回購入した', 'isFarmFriend'),
+    ('北海道グルメ制覇', '/images/image_achievements/08_all_around_gourmet.PNG', '全カテゴリから1つずつ購入', 'isHokkaidoGourmetComplete'),
+    ('札幌制覇', '/images/image_achievements/09_sapporo_master.PNG', '札幌の商品を3つ購入', 'isSapporoStampCompleted'),
+    ('函館グルメ旅', '/images/image_achievements/10_hakodate_master.PNG', '函館の商品を3つ購入', 'isHakodateStampCompleted'),
+    ('富良野マスター', '/images/image_achievements/11_furano_master.PNG', '富良野マスター', 'isFuranoStampCompleted'),
+    ('北海道一周', '/images/image_achievements/12_hokkaido_tour.PNG', '3つ以上のエリアの商品を購入', 'isHokkaidoRoundTrip'),
+    ('最強コンボ', '/images/image_achievements/13_ultimate_combo.png', 'ジンギスカンとビールを同時に購入', 'isBestComboJingisukanBeer'),
+    ('海の幸セット', '/images/image_achievements/14_seafood_set.PNG', 'カニといくらとホタテを同時に購入', 'isSeafoodComboSet'),
+    ('北海道に貢献', '/images/image_achievements/15_hokkaido_contributer.PNG', '累計1万円購入', 'isTotalSpent10000'),
+    ('大富豪', '/images/image_achievements/16_millionaire.PNG', '累計5万円購入', 'isTotalSpent50000'),
+    ('伝説の支援者', '/images/image_achievements/17_legendary_supporter.PNG', '累計10万円購入', 'isTotalSpent100000'),
+    ('ランダム達成', '/images/image_achievements/18_random_achievement.PNG', '非公開条件で達成', 'isRandomAchievement'),
+    ('シークレット実績', '/images/image_achievements/19_secret_achievement.PNG', '非公開条件で達成', 'isSecretAchievement');
 
 
 /*職業*/
