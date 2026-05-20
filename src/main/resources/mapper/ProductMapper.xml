@@ -185,4 +185,10 @@
 		LIMIT 3
 	</select>
 
+	<update id="decrementStock">
+		UPDATE products
+		SET stock = stock - #{quantity}
+		WHERE id = #{productId}
+	</update>
+
 </mapper>
