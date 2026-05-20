@@ -71,11 +71,12 @@
 		resultType="com.example.demo.entity.Achievement">
 
 		SELECT users_achievements.user_id, id, 
-		name, image_path, description
+		name, image_path, description, unlocked_at
 		FROM achievements
 		LEFT OUTER JOIN users_achievements
 		ON achievements.id = users_achievements.achievement_id
 		AND users_achievements.user_id = #{userId}
+		
 	</select>
 
 </mapper>
