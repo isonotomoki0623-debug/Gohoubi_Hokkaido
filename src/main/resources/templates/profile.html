@@ -3,155 +3,151 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>マイページ | ごほうびほっかいどう</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>マイページ | ごほうびほっかいどう</title>
 
-    <!-- CSS -->
-    <link rel="stylesheet" th:href="@{/css/profile.css}">
+	<!-- CSS -->
+	<link rel="stylesheet" th:href="@{/css/profile.css}">
 	<link rel="stylesheet" th:href="@{/css/_header.css}">
 
 </head>
 
 <body>
+
 	<header th:replace="layout/_header :: header"></header>
-<main class="mypage-container">
 
-    <!-- 上段 -->
-    <section class="top-area">
+	<main class="mypage-container">
 
-        <!-- 左 -->
-        <div class="left-area">
+		<!-- 上段 -->
+		<section class="top-area">
 
-            <!-- レベル -->
-            <div class="level-box">
-                <span>動物使い</span>
-                <span>Lv.4</span>
-            </div>
+			<!-- 左 -->
+			<div class="left-area">
 
-            <!-- 職業 -->
-            <div class="job-area">
+				<!-- レベル -->
+				<div class="level-box">
+					<span th:text="${user.job.name}"></span>
+					<span th:text="'Lv.' + ${user.level}"></span>
+				</div>
 
-                <div class="job-icon">
-                    <img src="/images/jobs/fisherman.png"
-                         alt="職業アイコン">
-                </div>
+				<!-- 職業 -->
+				<div class="job-area">
 
-            </div>
+					<div class="job-icon">
+						<img th:src="@{${user.job.imagePath}}" alt="職業アイコン">
+					</div>
 
-            <!-- 次レベル -->
-            <div class="next-level-box">
+				</div>
 
-                <div class="next-level-text">
-                    次のレベルまであと
-                    <strong>5000円</strong>
-                </div>
+				<!-- 次レベル -->
+				<div class="next-level-box">
 
-                <div class="progress-bar">
-                    <div class="progress-fill"></div>
-                </div>
+					<div class="next-level-text">
+						次のレベルまであと
+						<strong th:text="${remainAmount} + '円'"></strong>
+					</div>
 
-            </div>
+					<div class="progress-bar">
+						<div class="progress-fill" th:style="'width:' + ${progressPercent} + '%'">
+						</div>
+					</div>
 
-        </div>
+				</div>
 
-        <!-- 右 -->
-        <div class="right-area">
+			</div>
 
-            <!-- ステータス -->
-            <div class="status-row">
+			<!-- 右 -->
+			<div class="right-area">
 
-                <div class="status-card">
-                    購入金額ランキング
-                    <strong>13/199</strong>
-                </div>
+				<!-- ステータス -->
+				<div class="status-row">
 
-                <div class="status-card">
-                    累計購入金額
-                    <strong>30000円</strong>
-                </div>
+					<div class="status-card">
+						購入金額ランキング
+						<strong th:text="${userRank} + '/' + ${userCount}"></strong>
+					</div>
 
-            </div>
+					<div class="status-card">
+						累計購入金額
+						<strong th:text="${totalAmount} + '円'"></strong>
+					</div>
 
-            <!-- メニュー -->
-            <div class="menu-column">
+				</div>
 
-                <a href="/achievements" class="menu-btn">
-                    実績一覧
-                </a>
+				<!-- メニュー -->
+				<div class="menu-column">
 
-                <a href="/orders" class="menu-btn">
-                    購入履歴
-                </a>
+					<a href="/achievements" class="menu-btn">
+						実績一覧
+					</a>
 
-                <a href="/edit" class="menu-btn">
-                    登録情報の編集
-                </a>
+					<a href="/stamp" class="menu-btn">
+						スタンプ一覧
+					</a>
 
-            </div>
+					<a href="/orders" class="menu-btn">
+						購入履歴
+					</a>
 
-        </div>
+					<a href="/edit" class="menu-btn">
+						登録情報の編集
+					</a>
 
-    </section>
+				</div>
 
-    <!-- クーポン -->
-    <section class="coupon-section">
+			</div>
 
-        <h2>所持クーポン</h2>
+		</section>
 
-        <div class="coupon-list">
+		<!-- クーポン -->
+		<section class="coupon-section">
 
-            <div class="coupon-card">
-                <h3>北海道応援クーポン</h3>
-                <p>500円OFF</p>
-            </div>
+			<h2>所持クーポン</h2>
 
-            <div class="coupon-card">
-                <h3>送料無料クーポン</h3>
-                <p>送料0円</p>
-            </div>
+			<div class="coupon-list">
 
-            <div class="coupon-card">
-                <h3>海鮮フェアクーポン</h3>
-                <p>1000円OFF</p>
-            </div>
+				<div class="coupon-card">
+					<h3>北海道応援クーポン</h3>
+					<p>500円OFF</p>
+				</div>
 
-        </div>
+				<div class="coupon-card">
+					<h3>送料無料クーポン</h3>
+					<p>送料0円</p>
+				</div>
 
-    </section>
+				<div class="coupon-card">
+					<h3>海鮮フェアクーポン</h3>
+					<p>1000円OFF</p>
+				</div>
 
-    <!-- 登録情報 -->
-    <section class="profile-section">
+			</div>
 
-        <h2>登録情報</h2>
+		</section>
 
-        <table>
+		<!-- 登録情報 -->
+		<section class="profile-section">
 
-            <tr>
-                <th>ユーザー名</th>
-                <td>シエル</td>
-            </tr>
+			<h2>登録情報</h2>
 
-            <tr>
-                <th>メールアドレス</th>
-                <td>sample@example.com</td>
-            </tr>
+			<table>
 
-            <tr>
-                <th>電話番号</th>
-                <td>090-1234-5678</td>
-            </tr>
+				<tr>
+					<th>ユーザー名</th>
+					<td th:text="${user.name}"></td>
+				</tr>
 
-            <tr>
-                <th>住所</th>
-                <td>北海道札幌市中央区〇〇1-2-3</td>
-            </tr>
+				<tr>
+					<th>メールアドレス</th>
+					<td th:text="${user.email}"></td>
+				</tr>
 
-        </table>
+			</table>
 
-    </section>
+		</section>
 
-</main>
+	</main>
 
 </body>
 

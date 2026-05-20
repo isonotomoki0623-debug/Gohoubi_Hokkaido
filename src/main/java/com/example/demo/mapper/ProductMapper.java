@@ -30,4 +30,6 @@ public interface ProductMapper {
 	/** 売上ランキング */
 	List<Product> findProductsTop3();
 
+	void decrementStock(int productId, int quantity);
+
 }

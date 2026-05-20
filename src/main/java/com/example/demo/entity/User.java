@@ -10,6 +10,16 @@ public class User {
 	private int prefecture_id;
 	private String role;
 
+	private Job job;
+
+	public Job getJob() {
+		return job;
+	}
+
+	public void setJob(Job job) {
+		this.job = job;
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -73,6 +83,5 @@ public class User {
 	public void setRole(String role) {
 		this.role = role;
 	}
-	
 
 }

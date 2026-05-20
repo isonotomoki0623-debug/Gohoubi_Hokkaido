@@ -20,7 +20,7 @@ public interface UserMapper {
 			+ " VALUES(#{name}, #{password}, #{email}, #{job_id}, #{level}, #{prefecture_id}, #{role})")
 	void insert(User user);
 
-	@Select("SELECT id, name, job_id, level, prefecture_id, role FROM users WHERE id =#{userid}")
+	// @Select("SELECT id, name, job_id, level, prefecture_id, role FROM users WHERE id =#{userid}")
 	User findByUserid(int userid);
 
 	void update(User user);

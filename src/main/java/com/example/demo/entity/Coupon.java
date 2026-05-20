@@ -6,7 +6,7 @@ import lombok.Data;
 
 @Data
 public class Coupon {
-	private int id;
+	private Integer id;
 	private String name;
 	private Date expirationDate;
 	private double rate;

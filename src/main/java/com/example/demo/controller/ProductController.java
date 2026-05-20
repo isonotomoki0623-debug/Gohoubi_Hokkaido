@@ -57,7 +57,7 @@ public class ProductController {
 				.orElse(0.0);
 		model.addAttribute("averageStar", averageStar);
 
-		User loginUser = (User) session.getAttribute("loginUser");
+		User loginUser = userService.getLoginUser(session);
 		boolean isFavorite = false;
 
 		Reviews myReview = null;
@@ -73,6 +73,7 @@ public class ProductController {
 		}
 		model.addAttribute("isFavorite", isFavorite);
 		model.addAttribute("myReview", myReview);
+		model.addAttribute("user", loginUser);
 
 		return "product/detail";
 	}
@@ -114,6 +115,7 @@ public class ProductController {
 			@RequestParam(defaultValue = "1") int page,
 			@RequestParam(required = false) String keyword,
 			@RequestParam(required = false) Integer categoryId,
+			HttpSession session,
 			Model model) {
 
 		int pageSize = 5;
@@ -133,6 +135,7 @@ public class ProductController {
 		model.addAttribute("keyword", keyword);
 		model.addAttribute("categoryId", categoryId);
 		model.addAttribute("totalCount", totalCount);
+		model.addAttribute("user", userService.getLoginUser(session));
 
 		return "product/list";
 	}
