@@ -1,0 +1,82 @@
+@charset "UTF-8";
+
+.title {
+    font-family: 'Yusei Magic', sans-serif;
+    font-size: 2.3rem;
+    margin: 30px 0;
+    text-align: center;
+}
+/* =========================
+   スタンプグリッド
+========================= */
+.stamp-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* ★ 3×3 */
+    gap: 20px;
+    padding: 20px;
+}
+
+/* =========================
+   スタンプカード
+========================= */
+.stamp-card {
+    height: 220px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    border: 1px solid #ddd;
+    padding: 12px;
+    border-radius: 12px;
+    transition: 0.2s;
+    background: #fff;
+}
+
+.stamp-card:hover {
+    transform: scale(1.05);
+}
+
+/* =========================
+   画像
+========================= */
+.stamp-img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    transition: 0.3s;
+}
+
+/* =========================
+   未取得（カード単位制御）
+========================= */
+.stamp-card.missing .stamp-img {
+    filter: grayscale(1) brightness(1.2) contrast(0.8);
+    opacity: 0.6;
+}
+
+/* =========================
+   取得済み
+========================= */
+.stamp-card.acquired {
+    border: 2px solid gold;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+/* =========================
+   名前
+========================= */
+.name {
+    margin-top: 8px;
+    font-weight: bold;
+}
+
+/* =========================
+   ステータス表示
+========================= */
+.status {
+    font-size: 0.9rem;
+    margin-top: 4px;
+}
+.date {
+    font-size: 0.9rem;
+    margin-top: 4px;
+}
