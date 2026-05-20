@@ -103,14 +103,19 @@
 			<!-- ユーザー -->
 			<a th:href="@{/profile}" class="header-user">
 
-				<div class="user-avatar">
+				<div th:switch="${user?.job?.imagePath != null}">
+					<!-- 真（true）の場合 -->
+					<th:block th:case="true">
+						<div class="user-avatar">
+							<img th:src="${user?.job?.imagePath}" alt="ユーザー画像" />
+						</div>
+						<div class="user-level">
+							<span th:text="|Lv. ${user?.level}|"></span>
+						</div>
+					</th:block>
 
-					<!-- user の中の job の中の imagePath を指定する -->
-					<img th:src="${user?.job?.imagePath}" alt="ユーザー画像">
-				</div>
-
-				<div class="user-level">
-					<span th:text="|Lv. ${user?.level}|"></span>
+					<!-- 偽（false）の場合 -->
+					<button class="login-button" th:case="false" th:href="@{/login}">ログイン</button>
 				</div>
 
 			</a>
