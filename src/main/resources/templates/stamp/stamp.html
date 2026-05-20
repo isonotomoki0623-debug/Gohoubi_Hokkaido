@@ -30,14 +30,14 @@
 <!-- スタンプ一覧 -->
 <div class="stamp-grid">
 
-    <div th:each="stamp : ${stamps}"
+    <div th:each="stamp : ${stamp}"
          class="stamp-card"
-         th:classappend="${stamp.is_acquired} ? 'acquired' : 'missing'">
+         th:classappend="${stamp.isAcquired} ? 'acquired' : 'missing'">
 
         <!-- 画像エリア -->
         <div class="image-box">
-			<img th:src="${stamp.is_acquired}
-			        ? @{${stamp.image_path}}
+			<img th:src="${stamp.isAcquired}
+			        ? @{${stamp.imagePath}}
 			        : @{/images/logo_2.png}"
 			     class="stamp-img"/>
           
@@ -46,11 +46,11 @@
         <div class="name" th:text="${stamp.name}"></div>
 
         <div class="status"
-             th:text="${stamp.is_acquired} ? 'GET!' : '未取得'"></div>
+             th:text="${stamp.isAcquired} ? 'GET!' : '未取得'"></div>
 
         <div class="date"
-             th:if="${stamp.is_acquired}"
-             th:text="'取得日: ' + ${stamp.unlocked_at}">
+             th:if="${stamp.isAcquired}"
+             th:text="'取得日: ' + ${stamp.unlockedAt}">
         </div>
 
     </div>
