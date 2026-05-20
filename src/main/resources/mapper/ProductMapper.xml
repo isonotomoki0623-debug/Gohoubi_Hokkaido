@@ -132,6 +132,41 @@
 	</select>
 
 	<!-- おすすめ商品を表示 -->
+	<select id="findRecommend"
+		resultType="com.example.demo.entity.Product">
+		SELECT
+		p.id,
+		p.name,
+		p.price,
+		c.name AS product_category_name,
+		h.name AS
+		hokkaido_area_name,
+		MIN(product_images.image_path) AS image_path
+		FROM
+		products p
+		LEFT
+		JOIN
+		product_categories c
+		ON
+		p.product_category_id = c.id
+		LEFT JOIN
+		hokkaido_areas h
+		ON
+		p.hokkaido_area_id = h.id
+		LEFT JOIN
+		product_images
+		ON
+		p.id =
+		product_images.product_id
+		WHERE c.id = #{jobId}
+		group by
+		p.id, p.name,
+		p.price, c.name,
+		h.name
+		ORDER BY p.id ASC
+		<!-- ORDER BY p.id DESC -->
+	</select>
+
 	<select id="findRecommend3"
 		resultType="com.example.demo.entity.Product">
 		SELECT
@@ -141,7 +176,8 @@
 		c.name AS product_category_name,
 		h.name AS
 		hokkaido_area_name,
-		MIN(product_images.image_path) AS image_path 
+		MIN(product_images.image_path) AS
+		image_path
 		FROM products p
 		LEFT
 		JOIN
@@ -158,12 +194,12 @@
 		p.id =
 		product_images.product_id
 		group by
-		p.id, p.name, p.price, c.name,
+		p.id, p.name,
+		p.price, c.name,
 		h.name
 		ORDER BY p.id DESC
 		LIMIT 3
 	</select>
-
 	<!-- 商品の売上ランキングを表示 -->
 	<!-- order_itemsとproductsをjoin -->
 	<!--group by を使って、product_idごとに分割する -->
@@ -188,7 +224,8 @@
 	<update id="decrementStock">
 		UPDATE products
 		SET stock = stock - #{quantity}
-		WHERE id = #{productId}
+		WHERE
+		id = #{productId}
 	</update>
 
 </mapper>

@@ -34,10 +34,15 @@ public class HomeController {
 	@GetMapping("/")
 	public String home(HttpSession session, Model model) {
 
-		// おすすめ商品を取得
-		List<Product> recommendProducts = productMapper.findRecommend3();
-
-		model.addAttribute("recommendProducts", recommendProducts);
+		// おすすめ商品を取得		
+		if (!userService.isLogined(session)) {
+			List<Product> recommendProducts = productMapper.findRecommend3();
+			model.addAttribute("recommendProducts", recommendProducts);
+		} else {
+			List<Product> recommendProducts = productMapper
+					.findRecommend(userService.getLoginUser(session).getJob_id());
+			model.addAttribute("recommendProducts", recommendProducts);
+		}
 
 		//商品の売上ランキングを取得
 		List<Product> rankingProducts = productMapper.findProductsTop3();
