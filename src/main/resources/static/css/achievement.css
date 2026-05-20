@@ -5,29 +5,29 @@
 ========================= */
 
 body {
-    font-family: 'Sawarabi Gothic', sans-serif;
-    color: #222;
-    min-height: 100vh;
-    overflow-x: hidden;
+	font-family: 'Sawarabi Gothic', sans-serif;
+	color: #222;
+	min-height: 100vh;
+	overflow-x: hidden;
 
-    background-color: #f5faf4;
+	background-color: #f5faf4;
 
-    background-image:
-        url("data:image/svg+xml,%3Csvg width='220' height='220' viewBox='0 0 220 220' xmlns='http://www.w3.org/2000/svg'%3E%3Cg opacity='0.07'%3E%3Ctext x='20' y='70' font-size='42'%3E🍃%3C/text%3E%3Ctext x='140' y='180' font-size='36'%3E🐄%3C/text%3E%3Ctext x='90' y='110' font-size='38'%3E⭐%3C/text%3E%3Ctext x='25' y='190' font-size='34'%3E🌽%3C/text%3E%3C/g%3E%3C/svg%3E"),
-        linear-gradient(to bottom,
-            #eef7ef 0%,
-            #f7fbf6 45%,
-            #fcfdfb 100%);
+	background-image:
+		url("data:image/svg+xml,%3Csvg width='220' height='220' viewBox='0 0 220 220' xmlns='http://www.w3.org/2000/svg'%3E%3Cg opacity='0.07'%3E%3Ctext x='20' y='70' font-size='42'%3E🍃%3C/text%3E%3Ctext x='140' y='180' font-size='36'%3E🐄%3C/text%3E%3Ctext x='90' y='110' font-size='38'%3E⭐%3C/text%3E%3Ctext x='25' y='190' font-size='34'%3E🌽%3C/text%3E%3C/g%3E%3C/svg%3E"),
+		linear-gradient(to bottom,
+			#eef7ef 0%,
+			#f7fbf6 45%,
+			#fcfdfb 100%);
 }
 
 a {
-    text-decoration: none;
-    color: inherit;
+	text-decoration: none;
+	color: inherit;
 }
 
 .main-container {
-    padding: 42px 0 90px;
-    max-width: 1100px;
+	padding: 42px 0 90px;
+	max-width: 1100px;
 }
 
 /* =========================
@@ -35,14 +35,15 @@ a {
 ========================= */
 
 .section-title {
-    font-size: 1.9rem;
-    font-weight: bold;
-    margin-bottom: 24px;
-    color: #222;
+	font-family: 'Yusei Magic', sans-serif;
+	font-size: 1.9rem;
+	font-weight: bold;
+	margin-bottom: 24px;
+	color: #222;
 
-    display: flex;
-    align-items: center;
-    gap: 10px;
+	display: flex;
+	align-items: center;
+	gap: 10px;
 }
 
 /* =========================
@@ -50,70 +51,84 @@ a {
 ========================= */
 
 .hero-card {
-    background:
-        linear-gradient(135deg,
-            #7cbf8c,
-            #98d3a5);
+	background:
+		linear-gradient(135deg,
+			#7cbf8c,
+			#98d3a5);
 
-    border-radius: 34px;
-    padding: 44px;
+	border-radius: 34px;
+	padding: 44px;
 
-    color: white;
+	color: white;
 
-    position: relative;
-    overflow: hidden;
+	position: relative;
+	overflow: hidden;
 
-    box-shadow: 0 20px 40px rgba(60, 110, 70, 0.15);
+	box-shadow: 0 20px 40px rgba(60, 110, 70, 0.15);
 
-    margin-bottom: 40px;
+	margin-bottom: 40px;
 }
 
 .hero-card::before {
-    content: "";
+	content: "";
 
-    position: absolute;
+	position: absolute;
 
-    width: 340px;
-    height: 340px;
+	width: 340px;
+	height: 340px;
 
-    background: rgba(255, 255, 255, 0.12);
+	background: rgba(255, 255, 255, 0.12);
 
-    border-radius: 50%;
+	border-radius: 50%;
 
-    top: -120px;
-    right: -120px;
+	top: -120px;
+	right: -120px;
 }
 
 .hero-card::after {
-    content: "🏆";
+	content: "🏆";
 
-    position: absolute;
+	position: absolute;
 
-    bottom: 18px;
-    right: 24px;
+	bottom: 18px;
+	right: 24px;
 
-    font-size: 4rem;
-    opacity: 0.12;
+	font-size: 4rem;
+	opacity: 0.12;
 }
 
 .hero-title {
-    font-family: 'Yusei Magic', sans-serif;
+	font-family: 'Yusei Magic', sans-serif;
 
-    font-size: 2.9rem;
-    line-height: 1.5;
+	font-size: 2.9rem;
+	line-height: 1.5;
 
-    position: relative;
-    z-index: 1;
+	position: relative;
+	z-index: 1;
 }
 
 .hero-text {
-    margin-top: 18px;
+	margin-top: 18px;
 
-    line-height: 1.9;
-    opacity: 0.96;
+	line-height: 1.9;
+	opacity: 0.96;
 
-    position: relative;
-    z-index: 1;
+	position: relative;
+	z-index: 1;
+}
+
+/* =========================
+   実績一覧レイアウト
+========================= */
+
+.achievement-list {
+	display: flex;
+	flex-direction: column;
+	gap: 22px;
+}
+
+.achievement-row {
+	width: 100%;
 }
 
 /* =========================
@@ -121,35 +136,36 @@ a {
 ========================= */
 
 .achievement-card {
-    background: rgba(255, 255, 255, 0.92);
+	background: rgba(255, 255, 255, 0.92);
 
-    backdrop-filter: blur(6px);
+	backdrop-filter: blur(6px);
 
-    border-radius: 28px;
+	border-radius: 24px;
 
-    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.06);
+	box-shadow: 0 10px 28px rgba(0, 0, 0, 0.06);
 
-    transition:
-        transform 0.25s ease,
-        box-shadow 0.25s ease;
+	transition:
+		transform 0.25s ease,
+		box-shadow 0.25s ease;
 
-    display: flex;
-    align-items: center;
+	display: flex;
+	align-items: center;
 
-    padding: 20px;
+	padding: 16px 22px;
 
-    height: 100%;
+	position: relative;
 
-    position: relative;
+	overflow: hidden;
 
-    overflow: hidden;
+	width: 100%;
+	min-height: 110px;
 }
 
 /* hoverで浮く */
 .achievement-card:hover {
-    transform: translateY(-5px);
+	transform: translateY(-5px);
 
-    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.08);
+	box-shadow: 0 16px 32px rgba(0, 0, 0, 0.08);
 }
 
 /* =========================
@@ -157,14 +173,14 @@ a {
 ========================= */
 
 .unlocked {
-    border-left: 8px solid #ffd67f;
+	border-left: 8px solid #ffd67f;
 }
 
 .locked {
-    filter: grayscale(100%);
-    opacity: 0.72;
+	filter: grayscale(100%);
+	opacity: 0.72;
 
-    border-left: 8px solid #cccccc;
+	border-left: 8px solid #cccccc;
 }
 
 /* =========================
@@ -172,27 +188,27 @@ a {
 ========================= */
 
 .achievement-image-wrap {
-    width: 120px;
-    height: 120px;
+	width: 88px;
+	height: 88px;
 
-    flex-shrink: 0;
+	flex-shrink: 0;
 
-    border-radius: 22px;
+	border-radius: 18px;
 
-    overflow: hidden;
+	overflow: hidden;
 
-    background: #f5f5f5;
+	background: #f5f5f5;
 
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+	box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
 }
 
 .achievement-image-wrap img {
-    width: 100%;
-    height: 100%;
+	width: 100%;
+	height: 100%;
 
-    object-fit: cover;
+	object-fit: cover;
 
-    display: block;
+	display: block;
 }
 
 /* =========================
@@ -200,53 +216,77 @@ a {
 ========================= */
 
 .achievement-info {
-    padding-left: 22px;
+	padding-left: 24px;
 
-    flex-grow: 1;
+	flex-grow: 1;
+
+	display: grid;
+
+	grid-template-columns:
+		140px 320px 1fr 220px;
+
+	align-items: center;
+
+	column-gap: 28px;
+
+	width: 100%;
 }
 
 .achievement-badge {
-    display: inline-block;
+	display: inline-block;
 
-    padding: 6px 14px;
+	padding: 6px 14px;
 
-    border-radius: 999px;
+	border-radius: 999px;
 
-    font-size: 0.75rem;
-    font-weight: bold;
+	font-size: 0.75rem;
+	font-weight: bold;
 
-    margin-bottom: 12px;
+	width: fit-content;
 }
 
 .unlocked .achievement-badge {
-    background:
-        linear-gradient(135deg,
-            #ffd67f,
-            #ffb98f);
+	background:
+		linear-gradient(135deg,
+			#ffd67f,
+			#ffb98f);
 
-    color: white;
+	color: white;
 }
 
 .locked .achievement-badge {
-    background: #cfcfcf;
-    color: white;
+	background: #cfcfcf;
+	color: white;
 }
 
 .achievement-name {
-    font-size: 1.25rem;
-    font-weight: bold;
+	font-size: 1.25rem;
+	font-weight: bold;
 
-    margin-bottom: 10px;
+	margin-bottom: 0;
 
-    color: #222;
+	color: #222;
 }
 
 .achievement-description {
-    color: #666;
+	color: #666;
 
-    line-height: 1.7;
+	line-height: 1.6;
 
-    margin-bottom: 0;
+	margin-bottom: 0;
+}
+
+.unlock-date {
+	font-size: 0.88rem;
+	font-weight: bold;
+
+	color: #666;
+
+	white-space: nowrap;
+
+	margin: 0;
+
+	text-align: right;
 }
 
 /* =========================
@@ -254,16 +294,16 @@ a {
 ========================= */
 
 .achievement-card::after {
-    content: "⭐";
+	content: "⭐";
 
-    position: absolute;
+	position: absolute;
 
-    top: 16px;
-    right: 20px;
+	top: 16px;
+	right: 20px;
 
-    font-size: 1.3rem;
+	font-size: 1.3rem;
 
-    opacity: 0.12;
+	opacity: 0.12;
 }
 
 /* =========================
@@ -272,30 +312,47 @@ a {
 
 @media(max-width: 768px) {
 
-    .hero-title {
-        font-size: 2rem;
-    }
+	.hero-title {
+		font-size: 2rem;
+	}
 
-    .main-container {
-        padding-top: 20px;
-    }
+	.main-container {
+		padding-top: 20px;
+	}
 
-    .hero-card {
-        padding: 32px;
-    }
+	.hero-card {
+		padding: 32px;
+	}
 
-    .achievement-card {
-        flex-direction: column;
-        align-items: flex-start;
-    }
+	.achievement-card {
+		flex-direction: column;
+		align-items: flex-start;
 
-    .achievement-image-wrap {
-        width: 100%;
-        height: 220px;
-    }
+		padding: 20px;
+	}
 
-    .achievement-info {
-        padding-left: 0;
-        padding-top: 18px;
-    }
+	.achievement-image-wrap {
+		width: 100%;
+		height: 220px;
+
+		margin-bottom: 18px;
+	}
+
+	.achievement-info {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+
+		padding-left: 0;
+
+		gap: 12px;
+	}
+
+	.achievement-name {
+		font-size: 1.1rem;
+	}
+
+	.unlock-date {
+		text-align: left;
+	}
 }

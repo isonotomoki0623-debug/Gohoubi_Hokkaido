@@ -23,19 +23,20 @@
 	<header th:replace="layout/_header :: header"></header>
 	<div class="container main-container">
 
+		<br>
 		<!-- タイトル -->
-		<div class="hero-card mb-5">
+<!--		<div class="hero-card mb-5">-->
 
-			<h1 class="hero-title">
-				🏆 実績コレクション
-			</h1>
+<!--			<h1 class="hero-title">-->
+<!--				🏆 実績コレクション-->
+<!--			</h1>-->
 
-			<p class="hero-text">
-				北海道を巡って、限定実績を集めよう！<br>
-				カテゴリ制覇や地域制覇で特別バッジを獲得できます。
-			</p>
+<!--			<p class="hero-text">-->
+<!--				北海道を巡って、限定実績を集めよう！<br>-->
+				
+<!--			</p>-->
 
-		</div>
+<!--		</div>-->
 
 		<!-- 実績一覧 -->
 		<h2 class="section-title">
@@ -44,45 +45,58 @@
 
 		<div class="row g-4">
 
-			<!-- 実績カード -->
-			<div class="col-md-4 col-lg-3" th:each="achievement : ${achievements}">
-				<p th:if="${achievement.unlockedAt != null}">
-					解放日：
-					<span th:text="${#temporals.format(achievement.unlockedAt, 'yyyy/MM/dd')}"></span>
-				</p>
+			<div class="achievement-list">
 
-				<p th:if="${achievement.unlockedAt == null}">
-					未解放
-				</p>
-				<div th:class="${achievement.userId != null} ? 
-					'achievement-card unlocked' : 
-					'achievement-card locked'">
+				<!-- 実績カード -->
+				<div class="achievement-row" th:each="achievement : ${achievements}">
 
-					<!-- 実績画像 -->
-					<div class="achievement-image-wrap">
+					<div th:class="${achievement.userId != null} ? 
+			            'achievement-card unlocked' : 
+			            'achievement-card locked'">
 
-						<img th:src="${achievement.userId != null} ? 
-						@{${achievement.imagePath}} : @{images/logo_2.png}" alt="実績画像">
+						<!-- 実績画像 -->
+						<div class="achievement-image-wrap">
 
-					</div>
-
-					<!-- 実績情報 -->
-					<div class="achievement-info">
-
-						<div class="achievement-badge">
-
-							<span th:text="${achievement.userId != null} ? '獲得済み' : '未獲得'">
-							</span>
+							<img th:src="${achievement.userId != null} ? 
+			                @{${achievement.imagePath}} : @{/images/logo_2.png}" alt="実績画像">
 
 						</div>
 
-						<h3 class="achievement-name" th:text="${achievement.name}">
-							実績名
-						</h3>
+						<!-- 実績情報 -->
+						<div class="achievement-info">
 
-						<p class="achievement-description" th:text="${achievement.description}">
-							実績説明
-						</p>
+							<div class="achievement-badge">
+
+								<span th:text="${achievement.userId != null} ? '獲得済み' : '未獲得'">
+								</span>
+
+							</div>
+
+							<h3 class="achievement-name" th:text="${achievement.name}">
+								実績名
+							</h3>
+
+							<p class="achievement-description" th:text="${achievement.description}">
+								実績説明
+							</p>
+
+							<!-- 解放日 -->
+							<p class="unlock-date" th:if="${achievement.unlockedAt != null}">
+
+								アンロックした日：
+								<span th:text="${#temporals.format(achievement.unlockedAt, 'yyyy/MM/dd')}">
+								</span>
+
+							</p>
+
+							<!-- 未解放 -->
+							<p class="unlock-date" th:if="${achievement.unlockedAt == null}">
+
+								未解放
+
+							</p>
+
+						</div>
 
 					</div>
 
