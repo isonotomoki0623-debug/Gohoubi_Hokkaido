@@ -1,9 +1,9 @@
 @charset "UTF-8";
 
 body {
-    font-family: 'Sawarabi Gothic', sans-serif;
-    background-color: #f5faf4;
-    color: #222;
+	font-family: 'Sawarabi Gothic', sans-serif;
+	background-color: #f5faf4;
+	color: #222;
 }
 
 /* =========================
@@ -11,13 +11,13 @@ body {
 ========================= */
 
 .container {
-    width: 100%;
-    max-width: 1200px;
+	width: 100%;
+	max-width: 1200px;
 
-    margin: 0 auto;
-    padding: 0 24px;
+	margin: 0 auto;
+	padding: 0 24px;
 
-    box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 /* =========================
@@ -25,19 +25,19 @@ body {
 ========================= */
 
 .main-header {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+	position: sticky;
+	top: 0;
+	z-index: 1000;
 
-    background: rgba(255, 255, 255, 0.92);
+	background: rgba(255, 255, 255, 0.92);
 
-    backdrop-filter: blur(10px);
+	backdrop-filter: blur(10px);
 
-    box-shadow:
-        0 6px 20px rgba(0, 0, 0, 0.04);
+	box-shadow:
+		0 6px 20px rgba(0, 0, 0, 0.04);
 
-    border-bottom:
-        1px solid rgba(0, 0, 0, 0.04);
+	border-bottom:
+		1px solid rgba(0, 0, 0, 0.04);
 }
 
 /* =========================
@@ -45,11 +45,11 @@ body {
 ========================= */
 
 .header-top {
-    height: 92px;
+	height: 92px;
 
-    display: flex;
-    align-items: center;
-    gap: 32px;
+	display: flex;
+	align-items: center;
+	gap: 32px;
 }
 
 /* =========================
@@ -57,8 +57,8 @@ body {
 ========================= */
 
 .site-logo img {
-    width: 120px;
-    object-fit: contain;
+	width: 120px;
+	object-fit: contain;
 }
 
 /* =========================
@@ -66,57 +66,57 @@ body {
 ========================= */
 
 .main-nav {
-    display: flex;
-    align-items: center;
-    gap: 28px;
+	display: flex;
+	align-items: center;
+	gap: 28px;
 
-    flex-shrink: 0;
+	flex-shrink: 0;
 }
 
 .main-nav>a,
 .dropdown-trigger {
-    position: relative;
+	position: relative;
 
-    color: #444;
-    font-size: 0.97rem;
-    font-weight: 600;
+	color: #444;
+	font-size: 0.97rem;
+	font-weight: 600;
 
-    transition: 0.2s;
+	transition: 0.2s;
 
-    text-decoration: none;
+	text-decoration: none;
 }
 
 .main-nav>a:hover,
 .dropdown-trigger:hover {
-    color: #68a877;
+	color: #68a877;
 }
 
 /* 下線 */
 
 .main-nav>a::after,
 .dropdown-trigger::after {
-    content: "";
+	content: "";
 
-    position: absolute;
-    left: 0;
-    bottom: -8px;
+	position: absolute;
+	left: 0;
+	bottom: -8px;
 
-    width: 0%;
-    height: 3px;
+	width: 0%;
+	height: 3px;
 
-    background:
-        linear-gradient(to right,
-            #8bcf99,
-            #ffd37b);
+	background:
+		linear-gradient(to right,
+			#8bcf99,
+			#ffd37b);
 
-    border-radius: 999px;
+	border-radius: 999px;
 
-    transition: 0.25s;
+	transition: 0.25s;
 }
 
 .main-nav>a:hover::after,
 .dropdown-trigger:hover::after {
-    width: 100%;
+	width: 100%;
 }
 
 /* =========================
@@ -124,78 +124,78 @@ body {
 ========================= */
 
 .nav-dropdown {
-    position: relative;
+	position: relative;
 }
 
 .dropdown-trigger {
-    display: flex;
-    align-items: center;
-    gap: 6px;
+	display: flex;
+	align-items: center;
+	gap: 6px;
 }
 
 .dropdown-menu-custom {
-    position: absolute;
-    top: 42px;
-    left: -18px;
+	position: absolute;
+	top: 42px;
+	left: -18px;
 
-    width: 240px;
+	width: 240px;
 
-    background: rgba(255, 255, 255, 0.97);
+	background: rgba(255, 255, 255, 0.97);
 
-    border-radius: 24px;
+	border-radius: 24px;
 
-    padding: 14px;
+	padding: 14px;
 
-    box-shadow:
-        0 18px 40px rgba(0, 0, 0, 0.08);
+	box-shadow:
+		0 18px 40px rgba(0, 0, 0, 0.08);
 
-    backdrop-filter: blur(10px);
+	backdrop-filter: blur(10px);
 
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(10px);
+	opacity: 0;
+	visibility: hidden;
+	transform: translateY(10px);
 
-    transition: 0.22s;
+	transition: 0.22s;
 
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
 }
 
 .nav-dropdown:hover .dropdown-menu-custom {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
+	opacity: 1;
+	visibility: visible;
+	transform: translateY(0);
 }
 
 .dropdown-menu-custom a {
-    display: flex;
-    align-items: center;
-    gap: 12px;
+	display: flex;
+	align-items: center;
+	gap: 12px;
 
-    padding: 12px 14px;
+	padding: 12px 14px;
 
-    border-radius: 16px;
+	border-radius: 16px;
 
-    color: #444;
-    text-decoration: none;
+	color: #444;
+	text-decoration: none;
 
-    transition: 0.2s;
+	transition: 0.2s;
 }
 
 .dropdown-menu-custom a:hover {
-    background:
-        linear-gradient(135deg,
-            #eef8ef,
-            #f8fcf6);
+	background:
+		linear-gradient(135deg,
+			#eef8ef,
+			#f8fcf6);
 
-    color: #4f8f61;
+	color: #4f8f61;
 
-    transform: translateX(4px);
+	transform: translateX(4px);
 }
 
 .dropdown-menu-custom i {
-    font-size: 1.1rem;
+	font-size: 1.1rem;
 }
 
 /* =========================
@@ -203,63 +203,63 @@ body {
 ========================= */
 
 .header-search {
-    margin-left: auto;
+	margin-left: auto;
 
-    display: flex;
-    align-items: stretch;
+	display: flex;
+	align-items: stretch;
 
-    width: 420px;
-    max-width: 100%;
+	width: 420px;
+	max-width: 100%;
 }
 
 .header-search input {
-    flex: 1;
+	flex: 1;
 
-    border: none;
-    outline: none;
+	border: none;
+	outline: none;
 
-    padding: 14px 18px;
+	padding: 14px 18px;
 
-    background: #f7f7f7;
+	background: #f7f7f7;
 
-    border-radius: 18px 0 0 18px;
+	border-radius: 18px 0 0 18px;
 
-    font-size: 0.95rem;
+	font-size: 0.95rem;
 
-    border:
-        2px solid transparent;
+	border:
+		2px solid transparent;
 
-    transition: 0.2s;
+	transition: 0.2s;
 }
 
 .header-search input:focus {
-    border-color: #a8d7b3;
-    background: white;
+	border-color: #a8d7b3;
+	background: white;
 }
 
 .header-search button {
-    border: none;
+	border: none;
 
-    padding: 0 22px;
+	padding: 0 22px;
 
-    border-radius: 0 18px 18px 0;
+	border-radius: 0 18px 18px 0;
 
-    font-weight: bold;
-    color: white;
+	font-weight: bold;
+	color: white;
 
-    background:
-        linear-gradient(135deg,
-            #f5c04f,
-            #f0ab35);
+	background:
+		linear-gradient(135deg,
+			#f5c04f,
+			#f0ab35);
 
-    transition: 0.2s;
+	transition: 0.2s;
 }
 
 .header-search button:hover {
-    transform: translateY(-1px);
+	transform: translateY(-1px);
 
-    box-shadow:
-        0 8px 18px rgba(240, 171, 53, 0.28);
+	box-shadow:
+		0 8px 18px rgba(240, 171, 53, 0.28);
 }
 
 /* =========================
@@ -267,57 +267,72 @@ body {
 ========================= */
 
 .header-user {
-    margin-left: 18px;
+	margin-left: 18px;
 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	/* ←縦方向の中心も整える */
+	text-align: center;
+	/* ← ★中のテキスト自体を中央揃えにする */
 
-    text-decoration: none;
+	text-decoration: none;
+	width: fit-content;
+	/* ← 必要以上に幅が広がってズレるのを防ぐ */
 
-    transition: 0.2s;
+	transition: 0.2s;
 }
 
 .header-user:hover {
-    transform: translateY(-2px);
+	transform: translateY(-2px);
 }
 
 .user-avatar {
-    width: 62px;
-    height: 62px;
+	width: 62px;
+	height: 62px;
 
-    border-radius: 50%;
+	border-radius: 50%;
 
-    background:
-        linear-gradient(135deg,
-            #ffffff,
-            #eef7ef);
+	background:
+		linear-gradient(135deg,
+			#ffffff,
+			#eef7ef);
 
-    box-shadow:
-        0 8px 18px rgba(0, 0, 0, 0.08);
+	box-shadow:
+		0 8px 18px rgba(0, 0, 0, 0.08);
 
-    border: 3px solid white;
+	border: 3px solid white;
 
-    overflow: hidden;
+	overflow: hidden;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	margin: 0 auto;
+	/* ← ★左右のマージンを自動にして完全に中央に固定 */
 }
 
 .user-avatar img {
-    width: 78%;
-    height: 78%;
-    object-fit: contain;
+	width: 78%;
+	height: 78%;
+	object-fit: contain;
 }
 
 .user-level {
-    margin-top: 8px;
+	margin-top: 8px;
 
-    font-size: 0.88rem;
-    font-weight: bold;
+	font-size: 0.88rem;
+	font-weight: bold;
 
-    color: #9a771a;
+	color: #9a771a;
+
+	display: block;
+	/* ← 横幅いっぱいのブロックにして中央に揃えやすくする */
+	width: 100%;
+	text-align: center;
+	/* ← ★文字の中心を中央に強制する */
 }
 
 /* =========================
@@ -326,69 +341,113 @@ body {
 
 @media (max-width: 1200px) {
 
-    .header-top {
-        gap: 20px;
-    }
+	.header-top {
+		gap: 20px;
+	}
 
-    .main-nav {
-        gap: 18px;
-    }
+	.main-nav {
+		gap: 18px;
+	}
 
-    .header-search {
-        width: 300px;
-    }
+	.header-search {
+		width: 300px;
+	}
 }
 
 @media (max-width: 992px) {
 
-    .header-top {
-        flex-wrap: wrap;
-        height: auto;
+	.header-top {
+		flex-wrap: wrap;
+		height: auto;
 
-        padding:
-            18px 0;
-    }
+		padding:
+			18px 0;
+	}
 
-    .main-nav {
-        order: 3;
-        width: 100%;
+	.main-nav {
+		order: 3;
+		width: 100%;
 
-        justify-content: center;
+		justify-content: center;
 
-        flex-wrap: wrap;
-    }
+		flex-wrap: wrap;
+	}
 
-    .header-search {
-        margin-left: 0;
-        width: 100%;
-    }
+	.header-search {
+		margin-left: 0;
+		width: 100%;
+	}
 
-    .header-user {
-        margin-left: auto;
-    }
+	.header-user {
+		margin-left: auto;
+	}
 }
 
 @media (max-width: 768px) {
 
-    .container {
-        padding: 0 16px;
-    }
+	.container {
+		padding: 0 16px;
+	}
 
-    .main-nav {
-        gap: 14px;
-    }
+	.main-nav {
+		gap: 14px;
+	}
 
-    .main-nav>a,
-    .dropdown-trigger {
-        font-size: 0.9rem;
-    }
+	.main-nav>a,
+	.dropdown-trigger {
+		font-size: 0.9rem;
+	}
 
-    .site-logo img {
-        width: 96px;
-    }
+	.site-logo img {
+		width: 96px;
+	}
 
-    .user-avatar {
-        width: 54px;
-        height: 54px;
-    }
+	.user-avatar {
+		width: 54px;
+		height: 54px;
+	}
+}
+
+
+/* =========================
+   ログインボタン（修正版）
+========================= */
+.login-button {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+
+	/* 左右の余白を少し広げて、絶対に文字を折り返さないように指定 */
+	padding: 0 32px;
+	white-space: nowrap;
+	/* ← ★ これを追加：文字が横一列に固定されます */
+
+	height: 48px;
+	border-radius: 999px;
+
+	background: linear-gradient(135deg, #8bcf99, #ffd37b);
+
+	color: #fff;
+	font-size: 0.95rem;
+	font-weight: bold;
+	text-decoration: none;
+
+	box-shadow: 0 4px 12px rgba(139, 207, 153, 0.3);
+
+	transition: 0.25s ease;
+	cursor: pointer;
+	border: none;
+}
+
+/* ホバー時はそのまま */
+.login-button:hover {
+	transform: translateY(-2px);
+	box-shadow: 0 8px 20px rgba(139, 207, 153, 0.45);
+	color: #fff;
+	opacity: 0.95;
+}
+
+.login-button:active {
+	transform: translateY(0);
+	box-shadow: 0 4px 8px rgba(139, 207, 153, 0.3);
 }
