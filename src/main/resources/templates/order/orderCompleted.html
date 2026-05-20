@@ -32,8 +32,7 @@
 				実績解除
 			</span>
 
-			<div th:each="achievement : ${achievements}"
-				class="achievement-banner">
+			<div th:each="achievement : ${achievements}" class="achievement-banner">
 
 				<span class="achievement-label">
 					🏆 Achievement Unlocked!
@@ -42,18 +41,15 @@
 				<div class="achievement-content">
 
 					<div class="achievement-image">
-						<img th:src="@{${achievement.imagePath}}"
-							th:alt="${achievement.name}">
+						<img th:src="@{${achievement.imagePath}}" th:alt="${achievement.name}">
 					</div>
 
 					<div class="achievement-info">
 
-						<p class="achievement-name"
-							th:text="${achievement.name}">
+						<p class="achievement-name" th:text="${achievement.name}">
 						</p>
 
-						<p class="achievement-description"
-							th:text="${achievement.description}">
+						<p class="achievement-description" th:text="${achievement.description}">
 						</p>
 
 					</div>
@@ -71,14 +67,28 @@
 				スタンプ獲得
 			</span>
 
-			<div class="stamp-row">
+			<div th:each="hokkaidoArea : ${hokkaidoAreas}" class="achievement-banner">
 
-				<div class="stamp-card">
-					😊
-				</div>
+				<span class="achievement-label">
+					🏆 Achievement Unlocked!
+				</span>
 
-				<div class="stamp-card">
-					😊
+				<div class="achievement-content">
+
+					<div class="achievement-image">
+						<img th:src="@{${hokkaidoArea.imagePath}}" th:alt="${hokkaidoArea.name}">
+					</div>
+
+					<div class="achievement-info">
+
+						<p class="achievement-name" th:text="${hokkaidoArea.name}">
+						</p>
+
+						<p class="achievement-description" th:text="${hokkaidoArea.name}">
+						</p>
+
+					</div>
+
 				</div>
 
 			</div>

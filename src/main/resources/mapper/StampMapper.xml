@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.demo.mapper.StampMapper">
+
+	
+	<insert id="insertStamp">
+		INSERT INTO users_stamps (user_id, hokkaido_area_id, unlocked_at)
+			VALUES (#{userId}, #{areaId}, CURRENT_DATE)
+	</insert>
+
+	<select id="findStampByUserId" resultType="com.example.demo.entity.Stamp">
+		SELECT *
+		FROM users_stamps
+		WHERE user_id =#{userId} and hokkaido_area_id = #{areaId};
+	</select>
+	
+	<select id="findAreaId" resultType="com.example.demo.entity.HokkaidoArea">
+		SELECT *
+		FROM hokkaido_areas
+		WHERE id = #{areaId};
+	</select>
+
+</mapper>

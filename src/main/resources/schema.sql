@@ -11,7 +11,6 @@ DROP TABLE IF EXISTS users_achievements;
 DROP TABLE IF EXISTS product_images;
 DROP TABLE IF EXISTS order_items;
 DROP TABLE IF EXISTS orders;
-DROP TABLE IF EXISTS producers;
 
 -- 次に親テーブルを削除
 DROP TABLE IF EXISTS products;
@@ -116,13 +115,7 @@ CREATE TABLE product_images (
     product_id INTEGER REFERENCES products(id)
 );
 
-CREATE TABLE producers (
-    user_id INTEGER PRIMARY KEY REFERENCES users(id),
-    image_path VARCHAR NOT NULL,
-    image_description VARCHAR NOT NULL,
-    catchcopy VARCHAR(200) NOT NULL,
-    hokkaido_area_id INTEGER REFERENCES hokkaido_areas(id)
-);
+
 
 CREATE TABLE users_achievements (
     user_id INTEGER REFERENCES users(id),
