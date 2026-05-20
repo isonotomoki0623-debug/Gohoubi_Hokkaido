@@ -1,5 +1,7 @@
 package com.example.demo.entity;
 
+import java.time.LocalDate;
+
 import lombok.Data;
 
 @Data
@@ -9,6 +11,8 @@ public class Achievement {
 	private String imagePath;
 	private String description;
 	private String methodName;
+	private Integer userId;
+	private LocalDate unlockedAt;
 
 	public Achievement() {
 

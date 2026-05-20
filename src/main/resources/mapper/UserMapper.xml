@@ -63,6 +63,6 @@
 		j.image_path
 		FROM users u
 		JOIN jobs j ON u.job_id = j.id
-		WHERE u.id = #{id}
+		WHERE u.id = #{userid}
 	</select>
 </mapper>
