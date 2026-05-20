@@ -5,53 +5,84 @@
 
 <mapper namespace="com.example.demo.mapper.OrderMapper">
 
-	<insert id="InsertOrder" parameterType="com.example.demo.entity.Order" useGeneratedKeys="true" keyProperty="id">
-		INSERT INTO orders (user_id, buy_at, total_amount, status, coupon_id)
-			VALUES (#{userId}, CURRENT_DATE, #{totalAmount}, false, #{couponId})
-	</insert>
-	
-	<insert id="InsertOrderItems">
-		INSERT INTO order_items (order_id, product_id, quantity)
-			VALUES (#{orderId}, #{cart.productId}, #{cart.quantity})
-	</insert>
+  <insert id="InsertOrder"
+          parameterType="com.example.demo.entity.Order"
+          useGeneratedKeys="true"
+          keyProperty="id">
 
-	<select id="hasCoupons" resultType="com.example.demo.entity.Coupon">
-		SELECT *
-		FROM coupons
-		WHERE id IN (SELECT id FROM coupons_users WHERE user_id = #{userId})
-	</select>
-	
+    INSERT INTO orders (user_id, buy_at, total_amount, status, coupon_id)
+    VALUES (#{userId}, CURRENT_DATE, #{totalAmount}, false, #{couponId})
+
+  </insert>
+
+  <insert id="InsertOrderItems">
+
+    INSERT INTO order_items (order_id, product_id, quantity)
+    VALUES (#{orderId}, #{cart.productId}, #{cart.quantity})
+
+  </insert>
+
+  <select id="hasCoupons"
+          resultType="com.example.demo.entity.Coupon">
+
+    SELECT *
+    FROM coupons
+    WHERE id IN (
+      SELECT coupon_id
+      FROM coupons_users
+      WHERE user_id = #{userId}
+    )
+
+  </select>
+
+  <!-- ★ここが正解 -->
   <select id="findOrdersByUserId"
           resultType="com.example.demo.entity.Order">
 
     SELECT
-      id,
-      user_id,
-      buy_at,
-      total_amount,
-      status,
-      coupon_id
-    FROM orders
-    WHERE user_id = #{userId}
-    ORDER BY id ASC
+      o.id,
+      o.user_id,
+      o.buy_at,
+      o.total_amount,
+      o.status,
+
+      -- ★これが重要（型は絶対壊さない）
+      o.coupon_id,
+
+      -- 表示専用（文字列）
+      c.name AS coupon_name
+
+    FROM orders o
+    LEFT JOIN coupons c
+      ON o.coupon_id = c.id
+
+    WHERE o.user_id = #{userId}
+    ORDER BY o.id ASC
 
   </select>
- <select id="findOrderById"
+
+  <select id="findOrderById"
           resultType="com.example.demo.entity.Order">
 
     SELECT
-      id,
-      user_id,
-      buy_at,
-      total_amount,
-      status,
-      coupon_id
-    FROM orders
-    WHERE id = #{orderId}
+      o.id,
+      o.user_id,
+      o.buy_at,
+      o.total_amount,
+      o.status,
+
+      o.coupon_id,
+      c.name AS coupon_name
+
+    FROM orders o
+    LEFT JOIN coupons c
+      ON o.coupon_id = c.id
+
+    WHERE o.id = #{orderId}
 
   </select>
 
- <select id="findOrderItemsByOrderId"
+  <select id="findOrderItemsByOrderId"
           resultType="com.example.demo.entity.CartItem">
 
     SELECT
@@ -60,14 +91,20 @@
       p.name,
       p.price,
       pi.image_path AS imagePath
+
     FROM order_items oi
-    JOIN products p ON oi.product_id = p.id
+    JOIN products p
+      ON oi.product_id = p.id
+
     LEFT JOIN product_images pi
       ON pi.id = (
         SELECT MIN(id)
         FROM product_images
         WHERE product_id = oi.product_id
       )
+
     WHERE oi.order_id = #{orderId}
-      </select>
+
+  </select>
+
 </mapper>

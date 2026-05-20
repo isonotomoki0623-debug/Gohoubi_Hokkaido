@@ -45,7 +45,7 @@
             <th>購入日時</th>
             <th>合計金額</th>
             <th>ステータス</th>
-            <th>クーポンID</th>
+            <th>クーポン名</th>
           </tr>
         </thead>
 
@@ -70,9 +70,10 @@
             <td th:text="${o.status} ? '発送済み' : '未発送'">
             </td>
 
-            <td>
-              [[${o.couponId}]]
-            </td>
+           
+			<td>
+			  [[${o.couponName}]]
+			</td>
 
           </tr>
 
