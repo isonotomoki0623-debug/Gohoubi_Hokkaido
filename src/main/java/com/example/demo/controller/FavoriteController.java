@@ -15,11 +15,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.example.demo.entity.Product;
 import com.example.demo.entity.User;
 import com.example.demo.mapper.FavoriteMapper;
+import com.example.demo.service.UserService;
 
 @Controller
 public class FavoriteController {
 	@Autowired
 	private FavoriteMapper favoriteMapper;
+	@Autowired
+	private UserService userService;
 
 	// お気に入り一覧画面を表示
 	@GetMapping("/favorites")
@@ -33,6 +36,7 @@ public class FavoriteController {
 
 		List<Product> products = favoriteMapper.findFavoritesByUserId(loginUser.getId());
 		model.addAttribute("products", products);
+		model.addAttribute("user", userService.getLoginUser(session));
 
 		return "favorite";
 	}

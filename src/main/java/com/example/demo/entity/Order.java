@@ -22,4 +22,5 @@ public class Order {
     public void setCouponName(String couponName) {
         this.couponName = couponName;
     }
+	private Integer couponId;
 }

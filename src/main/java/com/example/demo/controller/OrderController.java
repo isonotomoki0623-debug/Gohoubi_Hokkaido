@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.entity.Achievement;
 import com.example.demo.entity.CartItem;
@@ -19,6 +20,8 @@ import com.example.demo.entity.User;
 import com.example.demo.mapper.OrderMapper;
 import com.example.demo.service.AchievementService;
 import com.example.demo.service.CartService;
+import com.example.demo.service.CouponService;
+import com.example.demo.service.OrderService;
 import com.example.demo.service.UserService;
 
 @Controller
@@ -32,6 +35,10 @@ public class OrderController {
 	private AchievementService achievementService;
 	@Autowired
 	private OrderMapper orderMapper;
+	@Autowired
+	private OrderService orderService;
+	@Autowired
+	private CouponService couponService;
 
 	@GetMapping("/order")
 	public String showOrder(HttpSession session, Model model) {
@@ -46,7 +53,8 @@ public class OrderController {
 		List<Coupon> hasCoupons = orderMapper.hasCoupons(user.getId());
 
 		//テンプレートにデータを渡す
-		model.addAttribute("coupons", hasCoupons);
+		model.addAttribute("coupon", new Coupon());
+		model.addAttribute("myCoupons", hasCoupons);
 		model.addAttribute("cart", cart);
 		model.addAttribute("totalPrice", totalPrice);
 
@@ -54,12 +62,15 @@ public class OrderController {
 	}
 
 	@PostMapping("/order")
-	public String showComp(Order order, HttpSession session, Model model, int couponId) {
+	public String showComp(Order order, HttpSession session, Model model,
+			@RequestParam(value = "couponId", required = false) Integer couponId) {
 		List<CartItem> cart = cartService.getCart(session);
 		User user = userService.getLoginUser(session);
 		int userId = user.getId();
 		int totalPrice = cartService.getTotalPrice(session);
 
+		//クーポン適用後の金額を計算
+		totalPrice = couponService.calculateDiscountedPrice(userId, totalPrice, couponId);
 		order.setUserId(userId);
 		order.setTotalAmount(totalPrice);
 		order.setCouponId(couponId);
@@ -72,6 +83,7 @@ public class OrderController {
 			orderMapper.InsertOrderItems(cartItem, orderId);
 		}
 		List<Achievement> achievements = achievementService.checkAchievement(userId, session);
+		session.removeAttribute("cart");
 		model.addAttribute("achievements", achievements);
 		return "order/orderCompleted";
 	}

@@ -134,7 +134,8 @@
 
 								<div class="product-image-wrap">
 
-									<img th:src="@{/images/logo_2.jpg}"
+
+									<img th:src="${product.imagePath}"
 										th:alt="${product.name}"
 										class="product-image">
 
@@ -291,110 +292,9 @@
 
 		</div>
 
-<<<<<<< HEAD
-                                <div class="rank-number">
-                                    2
-                                </div>
-
-                                <div>
-
-                                    <div class="rank-name">
-                                        牧場ミルクチーズケーキ
-                                    </div>
-
-                                    <div class="rank-sales">
-                                        スイーツ部門1位
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-                            <div class="rank-item">
-
-                                <div class="rank-number">
-                                    3
-                                </div>
-
-                                <div>
-
-                                    <div class="rank-name">
-                                        十勝和牛ハンバーグ
-                                    </div>
-
-                                    <div class="rank-sales">
-                                        リピーター多数
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                    <!-- 新着 -->
-                    <div class="col-lg-6">
-
-                        <h2 class="section-title">
-                            🆕 新着
-                        </h2>
-
-                        <div class="news-card">
-
-                            <div class="news-item">
-
-                                <div class="news-date">
-                                    2026.05.14
-                                </div>
-
-                                <div class="mt-1">
-                                    春限定「桜ミルクラテセット」販売開始
-                                </div>
-
-                            </div>
-
-                            <div class="news-item">
-
-                                <div class="news-date">
-                                    2026.05.13
-                                </div>
-
-                                <div class="mt-1">
-                                    新実績「ラーメンマスター」を追加
-                                </div>
-
-                            </div>
-
-                            <div class="news-item">
-
-                                <div class="news-date">
-                                    2026.05.10
-                                </div>
-
-                                <div class="mt-1">
-                                    道東エリア特集ページ公開
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </section>
-
-        </div>
-
     </main>
 	
 	<footer th:replace="layout/_footer :: footer"></footer>
-=======
-	</main>
->>>>>>> 30bbef3d2b8f268d225fd11151933e659e3f1496
 
 </body>
 

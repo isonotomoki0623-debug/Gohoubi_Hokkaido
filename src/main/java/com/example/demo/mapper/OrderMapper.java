@@ -19,4 +19,8 @@ public interface OrderMapper {
 	List<Order> findOrdersByUserId(int userId);
 	Order findOrderById(int orderId);
 	List<CartItem> findOrderItemsByOrderId(int orderId);
+
+	Coupon findCoupon(int couponId);
+
+	void deleteUserCoupon(int userId, int couponId);
 }
