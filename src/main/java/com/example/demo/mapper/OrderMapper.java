@@ -15,4 +15,8 @@ public interface OrderMapper {
 	void InsertOrderItems(CartItem cart, int orderId);
 
 	List<Coupon> hasCoupons(int userId);
+
+	Coupon findCoupon(int couponId);
+
+	void deleteUserCoupon(int userId, int couponId);
 }
