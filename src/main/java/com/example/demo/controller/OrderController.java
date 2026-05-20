@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.demo.entity.Achievement;
@@ -94,21 +95,26 @@ public class OrderController {
 	}
 	
 	@GetMapping("/order/detail/{id}")
-	public String showDetail(
-	        @PathVariable("id") int id,
-	        Model model) {
+	public String orderDetail(@PathVariable int id, Model model, HttpSession session) {
 
-	    List<CartItem> items =
-	            orderMapper.findOrderItemsByOrderId(id);
+	    User user = userService.getLoginUser(session);
+	    if (user == null) {
+	        return "redirect:/login";
+	    }
 
-	    int totalPrice = items.stream()
-	            .mapToInt(i -> i.getPrice() * i.getQuantity())
-	            .sum();
+	    Order order = orderMapper.findOrderById(id);
 
-	    model.addAttribute("cart", items);
-	    model.addAttribute("totalPrice", totalPrice);
+	    // 他人の注文を見れないように制御（重要）
+	    if (order == null || order.getUserId() != user.getId()) {
+	        return "redirect:/orders";
+	    }
 
-	    return "order/detail";
+	    List<CartItem> items = orderMapper.findOrderItemsByOrderId(id);
+
+	    model.addAttribute("order", order);
+	    model.addAttribute("items", items);
+
+	    return "order/orderDetail";
 	}
 
 

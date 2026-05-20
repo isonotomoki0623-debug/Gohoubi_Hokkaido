@@ -21,38 +21,53 @@
 		WHERE id IN (SELECT id FROM coupons_users WHERE user_id = #{userId})
 	</select>
 	
-	<select id="findOrdersByUserId" resultType="com.example.demo.entity.Order">
-	SELECT
-		id,
-		user_id,
-		buy_at,
-		total_amount,
-		status,
-		coupon_id
-	FROM orders
-	WHERE user_id = #{userId}
-	ORDER BY buy_at DESC
-</select>
-	<select id="findOrderItemsByOrderId"
-        resultType="com.example.demo.entity.CartItem">
+  <select id="findOrdersByUserId"
+          resultType="com.example.demo.entity.Order">
 
     SELECT
-        p.id AS product_id,
-        p.name,
-        p.price,
-        p.category_id,
-        p.area_id,
-        p.image_path,
-        oi.quantity
+      id,
+      user_id,
+      buy_at,
+      total_amount,
+      status,
+      coupon_id
+    FROM orders
+    WHERE user_id = #{userId}
+    ORDER BY id ASC
 
+  </select>
+ <select id="findOrderById"
+          resultType="com.example.demo.entity.Order">
+
+    SELECT
+      id,
+      user_id,
+      buy_at,
+      total_amount,
+      status,
+      coupon_id
+    FROM orders
+    WHERE id = #{orderId}
+
+  </select>
+
+ <select id="findOrderItemsByOrderId"
+          resultType="com.example.demo.entity.CartItem">
+
+    SELECT
+      oi.product_id,
+      oi.quantity,
+      p.name,
+      p.price,
+      pi.image_path AS imagePath
     FROM order_items oi
-
-    JOIN products p
-      ON oi.product_id = p.id
-
+    JOIN products p ON oi.product_id = p.id
+    LEFT JOIN product_images pi
+      ON pi.id = (
+        SELECT MIN(id)
+        FROM product_images
+        WHERE product_id = oi.product_id
+      )
     WHERE oi.order_id = #{orderId}
-
-</select>
-	
-
+      </select>
 </mapper>

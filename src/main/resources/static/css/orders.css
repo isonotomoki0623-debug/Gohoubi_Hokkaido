@@ -27,6 +27,12 @@ body {
     align-items: center;
 }
 
+.empty-message {
+    text-align: center;
+    margin: 40px 0;
+    font-size: 1.1rem;
+}
+
 /* =========================
    main
 ========================= */
