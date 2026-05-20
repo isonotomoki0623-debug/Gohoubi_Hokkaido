@@ -102,18 +102,18 @@
 				レベルアップ
 			</span>
 
-			<div class="level-up-section">
+			<div class="level-up-section" th:each="level : ${userLevel}">
 
 				<div class="level-text">
 					Level
-					<span style="color:#4f8f61">n</span>
+					<span style="color:#4f8f61" th:text="${level.nowLevel}">n</span>
 					&rarr;
-					<span style="color:#4f8f61">n + 1</span>
+					<span style="color:#4f8f61" th:text="${level.upLevel}">n + 1</span>
 				</div>
 
 				<div class="next-level-info">
 					次のレベルまであと
-					<span class="highlight-price">
+					<span class="highlight-price" th:text="${level.remainAmount}">
 						ooooo円
 					</span>
 				</div>

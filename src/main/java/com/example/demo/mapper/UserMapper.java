@@ -27,4 +27,6 @@ public interface UserMapper {
 
 	/** ユーザーランキングの取得 */
 	List<User> findUsersTop3();
+
+	void updateLevel(int userId, int level);
 }
