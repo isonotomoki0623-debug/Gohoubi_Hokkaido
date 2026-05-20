@@ -64,6 +64,7 @@ public class OrderController {
 		model.addAttribute("myCoupons", hasCoupons);
 		model.addAttribute("cart", cart);
 		model.addAttribute("totalPrice", totalPrice);
+		model.addAttribute("user", userService.getLoginUser(session));
 
 		return "order/order";
 	}
@@ -100,48 +101,47 @@ public class OrderController {
 		model.addAttribute("achievements", achievements);
 		return "order/orderCompleted";
 	}
-	
-	
+
 	@GetMapping("/orders")
 	public String showHistory(HttpSession session, Model model) {
 
-	    User user = userService.getLoginUser(session);
+		User user = userService.getLoginUser(session);
 
-	    if (user == null) {
-	        return "redirect:/login";
-	    }
+		if (user == null) {
+			return "redirect:/login";
+		}
 
-	    List<Order> orders =
-	        orderMapper.findOrdersByUserId(user.getId());
+		List<Order> orders = orderMapper.findOrdersByUserId(user.getId());
 
-	    model.addAttribute("orders", orders);
+		model.addAttribute("orders", orders);
+		model.addAttribute("user", userService.getLoginUser(session));
 
-	    return "order/orders";
+		return "order/orders";
 	}
-	
+
 	@GetMapping("/order/detail/{id}")
 	public String orderDetail(@PathVariable int id, Model model, HttpSession session) {
 
-	    User user = userService.getLoginUser(session);
-	    if (user == null) {
-	        return "redirect:/login";
-	    }
+		User user = userService.getLoginUser(session);
+		if (user == null) {
+			return "redirect:/login";
+		}
 
-	    Order order = orderMapper.findOrderById(id);
+		Order order = orderMapper.findOrderById(id);
 
-	    // 他人の注文を見れないように制御（重要）
-	    if (order == null || order.getUserId() != user.getId()) {
-	        return "redirect:/orders";
-	    }
+		// 他人の注文を見れないように制御（重要）
+		if (order == null || order.getUserId() != user.getId()) {
+			return "redirect:/orders";
+		}
 
-	    List<CartItem> items = orderMapper.findOrderItemsByOrderId(id);
+		List<CartItem> items = orderMapper.findOrderItemsByOrderId(id);
 
-	    model.addAttribute("order", order);
-	    model.addAttribute("items", items);
+		model.addAttribute("order", order);
+		model.addAttribute("items", items);
+		model.addAttribute("user", userService.getLoginUser(session));
 
-	    return "order/orderDetail";
+		return "order/orderDetail";
 	}
-
 
 	@PostMapping("/order/calculate-discount")
 	@org.springframework.web.bind.annotation.ResponseBody // 画面ではなく「データそのもの」を返すアノテーション

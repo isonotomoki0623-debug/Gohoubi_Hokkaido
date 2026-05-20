@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.demo.entity.Achievement;
 import com.example.demo.entity.User;
-import com.example.demo.mapper.MypageMapper;
 import com.example.demo.mapper.AchievementMapper;
+import com.example.demo.mapper.MypageMapper;
 import com.example.demo.service.UserService;
 
 @Controller
@@ -71,6 +71,8 @@ public class MyPageController {
 		}
 		model.addAttribute("progressPercent", progressPercent);
 
+		model.addAttribute("user", userService.getLoginUser(session));
+
 		return "profile";
 	}
 
@@ -110,6 +112,7 @@ public class MyPageController {
 		List<Achievement> achievements = achievementMapper.selectAchievement(loginUser.getId());
 
 		model.addAttribute("achievements", achievements);
+		model.addAttribute("user", userService.getLoginUser(session));
 
 		return "achievement";
 	}

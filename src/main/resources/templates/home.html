@@ -12,12 +12,11 @@
 	<!-- Google Fonts -->
 	<link href="https://fonts.googleapis.com/css2?family=Sawarabi+Gothic&display=swap" rel="stylesheet">
 
-    <link href="https://fonts.googleapis.com/css2?family=Yusei+Magic&display=swap"
-        rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Yusei+Magic&display=swap" rel="stylesheet">
 
-    <!-- CSS -->
-    <link rel="stylesheet" th:href="@{/css/home.css}">
-    <link rel="stylesheet" th:href="@{/css/_header.css}">
+	<!-- CSS -->
+	<link rel="stylesheet" th:href="@{/css/home.css}">
+	<link rel="stylesheet" th:href="@{/css/_header.css}">
 	<link rel="stylesheet" th:href="@{/css/_footer.css}">
 	<link href="https://fonts.googleapis.com/css2?family=Yusei+Magic&display=swap" rel="stylesheet">
 
@@ -52,9 +51,19 @@
 							エリアを集めて、北海道マスターを目指そう。
 						</p>
 
-						<a href="/login" class="btn btn-warning hero-btn">
-							ログインして冒険を始める
-						</a>
+						<div th:switch="${user?.job?.imagePath != null}">
+							<!-- 真（true）の場合 -->
+							<th:block th:case="true">
+								<a th:href="@{/products}" class="btn btn-warning hero-btn">
+									いってらっしゃい！
+								</a>
+							</th:block>
+
+							<!-- 偽（false）の場合 -->
+							<a th:href="@{/login}" th:case="false" class="btn btn-warning hero-btn">
+								ログインして冒険を始める
+							</a>
+						</div>
 
 					</div>
 
@@ -135,26 +144,21 @@
 								<div class="product-image-wrap">
 
 
-									<img th:src="${product.imagePath}"
-										th:alt="${product.name}"
-										class="product-image">
+									<img th:src="${product.imagePath}" th:alt="${product.name}" class="product-image">
 
 								</div>
 
 								<div class="product-info">
 
-									<div class="product-category"
-										th:text="${product.productCategoryName}">
+									<div class="product-category" th:text="${product.productCategoryName}">
 										カテゴリ
 									</div>
 
-									<h2 class="product-name"
-										th:text="${product.name}">
+									<h2 class="product-name" th:text="${product.name}">
 										商品名
 									</h2>
 
-									<p class="product-area"
-										th:text="${product.hokkaidoAreaName}">
+									<p class="product-area" th:text="${product.hokkaidoAreaName}">
 										地域名
 									</p>
 
@@ -199,18 +203,15 @@
 
 						<div class="ranking-card">
 
-							<div class="rank-item"
-								th:each="product, stat : ${rankingProducts}">
+							<div class="rank-item" th:each="product, stat : ${rankingProducts}">
 
-								<div class="rank-number"
-									th:text="${stat.count}">
+								<div class="rank-number" th:text="${stat.count}">
 									1
 								</div>
 
 								<div>
 
-									<div class="rank-name"
-										th:text="${product.name}">
+									<div class="rank-name" th:text="${product.name}">
 										商品名
 									</div>
 
@@ -247,18 +248,15 @@
 
 						<div class="ranking-card">
 
-							<div class="rank-item"
-								th:each="user, stat : ${rankingUsers}">
+							<div class="rank-item" th:each="user, stat : ${rankingUsers}">
 
-								<div class="rank-number"
-									th:text="${stat.count}">
+								<div class="rank-number" th:text="${stat.count}">
 									1
 								</div>
 
 								<div>
 
-									<div class="rank-name"
-										th:text="${user.name}">
+									<div class="rank-name" th:text="${user.name}">
 										ユーザー名
 									</div>
 
@@ -292,8 +290,8 @@
 
 		</div>
 
-    </main>
-	
+	</main>
+
 	<footer th:replace="layout/_footer :: footer"></footer>
 
 </body>
