@@ -19,6 +19,7 @@ import com.example.demo.mapper.AchievementMapper;
 import com.example.demo.mapper.MypageMapper;
 import com.example.demo.mapper.OrderMapper;
 import com.example.demo.mapper.StampMapper;
+import com.example.demo.service.CartService;
 import com.example.demo.service.UserService;
 
 @Controller
@@ -34,6 +35,8 @@ public class MyPageController {
 	private OrderMapper orderMapper;
 	@Autowired
 	private StampMapper stampMapper;
+	@Autowired
+	private CartService cartService;
 
 	@GetMapping("/profile")
 	public String showProfile(HttpSession session, Model model) {
@@ -75,6 +78,10 @@ public class MyPageController {
 		}
 		model.addAttribute("progressPercent", progressPercent);
 
+		int cartCount = cartService.cartItemCount(session);
+
+		model.addAttribute("cartCount", cartCount);
+
 		return "profile";
 	}
 
@@ -85,12 +92,16 @@ public class MyPageController {
 			return "redirect:/login";
 		}
 
+		int cartCount = cartService.cartItemCount(session);
+
+		model.addAttribute("cartCount", cartCount);
+
 		model.addAttribute("user", userService.getLoginUser(session));
 		return "/edit";
 	}
 
 	@PostMapping("/update")
-	public String updateUser(@ModelAttribute User user, HttpSession session) {
+	public String updateUser(@ModelAttribute User user, HttpSession session, Model model) {
 		User loginUser = (User) session.getAttribute("loginUser");
 		if (loginUser == null) {
 			return "redirect:/login";
@@ -112,7 +123,9 @@ public class MyPageController {
 		}
 
 		List<Achievement> achievements = achievementMapper.selectAchievement(loginUser.getId());
+		int cartCount = cartService.cartItemCount(session);
 
+		model.addAttribute("cartCount", cartCount);
 		model.addAttribute("achievements", achievements);
 		model.addAttribute("user", userService.getLoginUser(session));
 
@@ -133,6 +146,9 @@ public class MyPageController {
 				.filter(Stamp::isAcquired)
 				.count();
 
+		int cartCount = cartService.cartItemCount(session);
+
+		model.addAttribute("cartCount", cartCount);
 		model.addAttribute("user", userService.getLoginUser(session));
 		model.addAttribute("stamp", stamps);
 		model.addAttribute("acquiredCount", acquiredCount);
