@@ -22,6 +22,7 @@
 
 	<!-- CSS -->
 	<link rel="stylesheet" th:href="@{/css/home.css}">
+	<link rel="stylesheet" th:href="@{/css/profile.css}">
 	<link rel="stylesheet" th:href="@{/css/_header.css}">
 </head>
 
@@ -70,23 +71,24 @@
 				</div>
 
 				<!-- ステータス -->
-				<div class="col-lg-4">
+				<div class="col-lg-4"　th:if="${user != null}">
 
 					<div class="status-card">
 
-						<div class="level-box">
+						<div class="next-level-box" th:if="${user != null}">
 
 							<div class="level-title">
-								Lv.12 北海道トラベラー
+								Lv.[[${user.level}]] [[${user.job.name}]]
 							</div>
 
-							<div class="money-left">
+							<div class="next-level-text">
 								次のレベルまであと
-								<strong>¥4,800</strong>
+								<strong th:text="${remainAmount} + '円'"></strong>
 							</div>
 
-							<div class="progress mt-3" style="height: 12px;">
-								<div class="progress-bar bg-warning" style="width: 72%;"></div>
+							<div class="progress-bar">
+								<div class="progress-fill" th:style="'width:' + ${progressPercent} + '%'">
+								</div>
 							</div>
 
 						</div>
@@ -106,18 +108,23 @@
 						</div>
 
 						<!-- 実績通知 -->
-						<div class="achievement-alert">
+						<a th:href="@{/achievements}" class="text-decoration-none text-dark">
 
-							<div class="fw-bold mb-2">
-								🏆 新しい実績を解除！
+							<!-- 実績通知 -->
+							<div class="achievement-alert" th:if="${user != null and achievement != null}">
+
+								<div class="fw-bold mb-2">
+									🏆 獲得した最新の実績！
+								</div>
+
+								<div class="small text-muted">
+									「[[${achievement.name}]]」<br>
+									[[${achievement.description}]]
+								</div>
+
 							</div>
 
-							<div class="small text-muted">
-								「スイーツ探検家」<br>
-								スイーツカテゴリを5回購入
-							</div>
-
-						</div>
+						</a>
 
 					</div>
 

@@ -1,5 +1,7 @@
 package com.example.demo.controller;
 
+import jakarta.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -8,15 +10,19 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.example.demo.entity.User;
 import com.example.demo.form.sinkiForm;
+import com.example.demo.mapper.UserMapper;
 import com.example.demo.service.UserService;
 
 @Controller
 public class sinkiController {
 	private final UserService userService;
+	private final UserMapper userMapper;
 
-	public sinkiController(UserService userService) {
+	public sinkiController(UserService userService, UserMapper userMapper) {
 		this.userService = userService;
+		this.userMapper = userMapper;
 	}
 
 	@GetMapping("/register")
@@ -29,18 +35,36 @@ public class sinkiController {
 	public String submitForm(
 			@Validated @ModelAttribute("form") sinkiForm form,
 			BindingResult bindingResult,
+			HttpSession session,
 			Model model) {
-
+		// バリデーション
 		if (bindingResult.hasErrors()) {
-			return "sinki/register"; // エラー時はフォームに戻す
+			return "sinki/register";
 		}
 
-		//	@PostMapping("/register")
-		//	public String submitForm(@Validated @ModelAttribute sinkiForm form, Model model) {
-		//		// まとめて受け取れているか確認
-		userService.register(form);
+		// メール重複チェック
+		User user = userMapper.findByEmail(form.getEmail());
 
-		model.addAttribute("form", form);
+		if (user != null) {
+
+			bindingResult.rejectValue(
+					"email",
+					"duplicate",
+					"このメールアドレスは既に使用されています");
+		}
+
+		// エラー時
+		if (bindingResult.hasErrors()) {
+			return "sinki/register";
+		}
+
+		// 登録
+		userService.register(form);
+		// 登録後に再取得
+		User real = userMapper.findByEmail(form.getEmail());
+		// セッション保存
+		session.setAttribute("loginUser", real);
+
 		return "redirect:/";
 	}
 }
