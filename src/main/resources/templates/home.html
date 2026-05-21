@@ -51,8 +51,8 @@
 						</h1>
 
 						<p class="hero-text">
-							商品を買うたびに実績解除。<br>
-							エリアを集めて、北海道マスターを目指そう。
+							初めてのエリアで購入するとスタンプGET！<br>
+							条件を満たせば実績解除！実績確認はマイページから
 						</p>
 
 						<div th:switch="${user?.job?.imagePath != null}">
@@ -87,7 +87,7 @@
 
 							<div class="next-level-text">
 								次のレベルまであと
-								<strong th:text="${remainAmount} + '円'"></strong>
+								<strong th:text="|¥${#numbers.formatInteger(remainAmount, 1, 'COMMA')}|">¥0</strong>
 							</div>
 
 							<div class="progress-bar">
@@ -184,7 +184,7 @@
 											<div class="product-price">
 												¥
 												<span
-													th:text="${#numbers.formatInteger(product.price, 1, 'COMMA')}"></span>
+													th:text="${#numbers.formatInteger(product?.price, 1, 'COMMA')}"></span>
 											</div>
 
 											<div class="detail-button">
@@ -264,7 +264,8 @@
 								<div>
 
 									<div class="rank-name">
-										[[${user.name}]] (¥[[${amount[stat.index]}]])
+										<span
+											th:text="|${user.name} (¥${#numbers.formatInteger(amount[stat.index], 3, 'COMMA')})|"></span>
 									</div>
 
 
