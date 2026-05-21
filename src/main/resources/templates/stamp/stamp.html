@@ -1,62 +1,77 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
-    <meta charset="UTF-8">
-    <title>スタンプ一覧</title>
+	<meta charset="UTF-8">
+	<title>スタンプ一覧</title>
 
-    <link rel="stylesheet" th:href="@{/css/stamp.css}" href="/css/stamp.css">
+	<link rel="stylesheet" th:href="@{/css/stamp.css}" href="/css/stamp.css">
 
-    <link href="https://fonts.googleapis.com/css2?family=Sawarabi+Gothic&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Yusei+Magic&display=swap" rel="stylesheet">
-    <link rel="stylesheet" th:href="@{/css/_header.css}">
+	<link href="https://fonts.googleapis.com/css2?family=Sawarabi+Gothic&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Yusei+Magic&display=swap" rel="stylesheet">
+	<link rel="stylesheet" th:href="@{/css/_header.css}">
 </head>
 
 <body>
-	
+
 	<header th:replace="layout/_header :: header"></header>
-	
+
 	<main>
+		<div class="reward-info-box">
 
-<h1 class="title">スタンプ一覧</h1>
+			<h3>🎁 実績報酬ルール</h3>
 
-<!-- 進捗 -->
-<p class="progress">
-    取得数：
-    <span th:text="${acquiredCount}"></span>
-    /
-    <span th:text="${totalCount}"></span>
-</p>
+			<ul>
+				<li>
+					⭐ 実績 <strong>3個</strong> 達成 → <span class="reward">5%クーポン</span>
+				</li>
 
-<!-- スタンプ一覧 -->
-<div class="stamp-grid">
+				<li>
+					⭐ 実績 <strong>6個</strong> 達成 → <span class="reward">10%クーポン</span>
+				</li>
 
-    <div th:each="stamp : ${stamp}"
-         class="stamp-card"
-         th:classappend="${stamp.isAcquired} ? 'acquired' : 'missing'">
+				<li>
+					⭐ 実績 <strong>9個</strong> 達成 → <span class="reward">15%クーポン</span>
+				</li>
+			</ul>
 
-        <!-- 画像エリア -->
-        <div class="image-box">
-			<img th:src="${stamp.isAcquired}
+		</div>
+		<h1 class="title">スタンプ一覧</h1>
+
+		<!-- 進捗 -->
+		<p class="progress">
+			取得数：
+			<span th:text="${acquiredCount}"></span>
+			/
+			<span th:text="${totalCount}"></span>
+		</p>
+
+		<!-- スタンプ一覧 -->
+		<div class="stamp-grid">
+
+			<div th:each="stamp : ${stamp}" class="stamp-card"
+				th:classappend="${stamp.isAcquired} ? 'acquired' : 'missing'">
+
+				<!-- 画像エリア -->
+				<div class="image-box">
+					<img th:src="${stamp.isAcquired}
 			        ? @{${stamp.imagePath}}
-			        : @{/images/logo_2.png}"
-			     class="stamp-img"/>
-          
-        </div>
+			        : @{/images/logo_2.png}" class="stamp-img" />
 
-        <div class="name" th:text="${stamp.name}"></div>
+				</div>
 
-        <div class="status"
-             th:text="${stamp.isAcquired} ? 'GET!' : '未取得'"></div>
+				<div class="name" th:text="${stamp.name}"></div>
 
-        <div class="date"
-             th:if="${stamp.isAcquired}"
-             th:text="'取得日: ' + ${stamp.unlockedAt}">
-        </div>
+				<div class="status" th:text="${stamp.isAcquired} ? 'GET!' : '未取得'"></div>
 
-    </div>
+				<div class="date" th:if="${stamp.isAcquired}" th:text="'取得日: ' + ${stamp.unlockedAt}">
+				</div>
 
-</div>
+			</div>
 
-</main>
+		</div>
+
+	</main>
 </body>
+
 </html>
