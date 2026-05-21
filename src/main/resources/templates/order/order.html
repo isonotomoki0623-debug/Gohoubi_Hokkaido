@@ -92,7 +92,7 @@
 						<label class="form-check-label coupon-hover-label" for="useCouponYes">
 							クーポンを使用する
 
-							<span class="coupon-bubble">
+							<span class="coupon-bubble" th:if="${#lists.isEmpty(myCoupons)}">
 								💬 所持クーポンがありません
 							</span>
 						</label>
