@@ -692,3 +692,73 @@ a {
 .swiper-button-next {
 	right: 3px !important;
 }
+
+/* =========================
+   未ログイン用：新規登録案内（ヒーローエリア風）
+========================= */
+
+/* 💡 専用クラスで優先度を上げ、ヒーローカードと完全に色を統一 */
+.status-card.unlogged-card {
+	background: linear-gradient(135deg, rgb(255, 206, 157), #98d3a5) !important;
+	/* 強制的にグリーンに変更 */
+	box-shadow: 0 20px 40px rgba(60, 110, 70, 0.15) !important;
+	/* 影もヒーローと統一 */
+	border-radius: 28px;
+	padding: 28px;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+/* 登録案内エリアの内枠 */
+.status-card.unlogged-card .register-alert {
+	background: rgba(255, 255, 255, 0.12);
+	/* ヒーローの丸模様と同じ透明感ある白 */
+	border-left: 6px solid #ffd67f;
+	/* アクセントのゴールド */
+	border-radius: 20px;
+	padding: 30px 18px;
+	text-align: center;
+	transition: all 0.3s ease;
+}
+
+/* ホバー時のゲーム風エフェクト（少し浮き上がって明るくなる） */
+.status-card.unlogged-card .register-alert:hover {
+	transform: translateY(-4px);
+	background: rgba(255, 255, 255, 0.18);
+	box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+}
+
+/* テキストカラーの自動調整 */
+.status-card.unlogged-card .register-alert .fw-bold {
+	color: #ffffff !important;
+	font-size: 1.25rem;
+	text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.status-card.unlogged-card .register-alert .small {
+	color: rgba(255, 255, 255, 0.95) !important;
+	line-height: 1.6;
+}
+
+/* 登録を促すボタン */
+.status-card.unlogged-card .register-alert-btn {
+	margin-top: 24px;
+	display: inline-block;
+	background: linear-gradient(135deg, #ffd67f, #ffb98f);
+	color: #5a3d00;
+	font-weight: bold;
+	font-size: 0.95rem;
+	padding: 12px 28px;
+	border-radius: 999px;
+	border: none;
+	box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
+	transition: all 0.2s ease;
+}
+
+/* ホバー時にボタンがキュッと大きくなるエフェクト */
+.status-card.unlogged-card .register-alert:hover .register-alert-btn {
+	transform: scale(1.04);
+	box-shadow: 0 8px 20px rgba(255, 193, 7, 0.4);
+}
