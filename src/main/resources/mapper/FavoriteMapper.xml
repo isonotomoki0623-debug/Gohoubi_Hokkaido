@@ -11,6 +11,7 @@
 		JOIN
 		products p ON f.product_id = p.id
 		WHERE f.user_id = #{userId}
+		ORDER BY p.id ASC
 	</select>
 	
 	<insert id="insert">
