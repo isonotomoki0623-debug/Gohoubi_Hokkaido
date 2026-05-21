@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.example.demo.entity.Product;
 import com.example.demo.entity.User;
 import com.example.demo.mapper.FavoriteMapper;
+import com.example.demo.service.CartService;
 import com.example.demo.service.UserService;
 
 @Controller
@@ -23,6 +24,8 @@ public class FavoriteController {
 	private FavoriteMapper favoriteMapper;
 	@Autowired
 	private UserService userService;
+	@Autowired
+	private CartService cartService;
 
 	// お気に入り一覧画面を表示
 	@GetMapping("/favorites")
@@ -33,6 +36,10 @@ public class FavoriteController {
 		if (loginUser == null) {
 			return "redirect:/login";
 		}
+
+		int cartCount = cartService.cartItemCount(session);
+
+		model.addAttribute("cartCount", cartCount);
 
 		List<Product> products = favoriteMapper.findFavoritesByUserId(loginUser.getId());
 		model.addAttribute("products", products);
