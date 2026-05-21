@@ -114,6 +114,7 @@ public class OrderController {
 		model.addAttribute("userLevel", userLevel);
 		model.addAttribute("hokkaidoAreas", hokkaidoAreas);
 		model.addAttribute("achievements", achievements);
+		model.addAttribute("user", user);
 		session.removeAttribute("cart");
 		return "order/orderCompleted";
 	}

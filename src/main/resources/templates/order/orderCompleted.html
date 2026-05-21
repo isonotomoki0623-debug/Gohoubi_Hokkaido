@@ -58,20 +58,29 @@
 
 		<!-- レベルアップ -->
 		<div class="mb-4">
-			<span class="section-caption">レベルアップ</span>
-			<div class="level-up-section" th:each="level : ${userLevel}">
-				<div class="level-text">
-					Level
-					<span style="color:#4f8f61" th:text="${level.nowLevel}">n</span>
-					&rarr;
-					<span style="color:#4f8f61" th:text="${level.upLevel}">n + 1</span>
-				</div>
-				<div class="next-level-info">
-					次のレベルまであと
-					<span class="highlight-price" th:text="${level.remainAmount}">0</span>円
-				</div>
-			</div>
+		    <span class="section-caption">レベルアップ</span>
+		    
+		    <!-- ここにスタンプ表示と同じ枠のクラス（例: no-stamp-message や 共通の枠クラス）を指定します -->
+		    <div class="level-up-section no-stamp-message" th:each="level : ${userLevel}">
+		        
+		        <!-- レベルが変わった場合の表示 -->
+		        <div class="level-text1" th:if="${level.nowLevel != level.upLevel}">
+		            Level
+		            <span style="color:#4f8f61" th:text="${level.nowLevel}">n</span>
+		            &rarr;
+		            <span style="color:#4f8f61" th:text="${level.upLevel}">n + 1</span>
+		        </div>
+
+		        <!-- レベルが変わらなかった場合の表示 -->
+		        <div class="level-text2" th:unless="${level.nowLevel != level.upLevel}">
+		            レベルアップしませんでした
+		        </div>
+
+		        <div class="next-level-info">
+		            次のレベルまであと
+		            <span class="highlight-price" th:text="${level.remainAmount}">0</span>円
+		        </div>
+		    </div>
 		</div>
-	</div>
 </body>
 </html>

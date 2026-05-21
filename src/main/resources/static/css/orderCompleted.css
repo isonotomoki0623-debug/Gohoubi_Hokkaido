@@ -230,6 +230,10 @@ body {
    レベルアップ
 ========================= */
 
+/* =========================
+   レベルアップ
+========================= */
+
 .level-up-section {
 	padding: 26px;
 	background: #f9fcf8;
@@ -238,11 +242,25 @@ body {
 	text-align: center;
 }
 
-.level-text {
+.level-text1 {
 	margin-bottom: 10px;
 	font-size: 1.4rem;
 	font-weight: bold;
 	color: #333;
+}
+
+.level-text2 {
+	margin-bottom: 10px;
+	font-size: 0.95rem;
+	font-weight: bold;
+	color: #333;
+}
+
+/* レベルアップなしメッセージ：no-stamp-messageとデザインを統一 */
+.no-level-up-message {
+	margin-bottom: 10px; /* next-level-infoとの間隔 */
+	color: #666;
+	font-size: 0.95rem; /* no-stamp-messageのサイズに合わせました */
 }
 
 .next-level-info {
@@ -255,7 +273,6 @@ body {
 	font-size: 1.1rem;
 	font-weight: bold;
 }
-
 
 /* =========================
    レスポンシブ
