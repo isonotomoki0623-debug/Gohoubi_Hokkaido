@@ -281,6 +281,7 @@
 
 							<div class="rank-item" th:each="product, stat : ${rankingProducts}">
 
+								<a th:href="@{/products/{id}(id=${product.id})}">
 								<div class="rank-number" th:text="${stat.count}">
 									1
 								</div>
@@ -291,23 +292,8 @@
 										商品名
 									</div>
 
-									<div class="rank-sales">
-
-										<span th:if="${stat.count == 1}">
-											今週の人気 No.1
-										</span>
-
-										<span th:if="${stat.count == 2}">
-											人気急上昇中
-										</span>
-
-										<span th:if="${stat.count == 3}">
-											リピーター多数
-										</span>
-
-									</div>
-
 								</div>
+								</a>
 
 							</div>
 

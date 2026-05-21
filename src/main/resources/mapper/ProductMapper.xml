@@ -209,13 +209,13 @@
 	<select id="findProductsTop3"
 		resultType="com.example.demo.entity.Product">
 		SELECT
-		p.id, SUM(o.quantity)* p.price AS total_price
+		p.id, p.name, SUM(o.quantity)* p.price AS total_price
 
 		FROM
 		products p
 		JOIN order_items o
 		ON p.id = o.product_id
-		GROUP BY p.id
+		GROUP BY p.id, p.name
 		ORDER
 		BY total_price DESC
 		LIMIT 3
