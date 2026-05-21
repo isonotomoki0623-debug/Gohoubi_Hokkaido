@@ -60,8 +60,9 @@ public class sinkiController {
 
 		// 登録
 		userService.register(form);
+		user = userMapper.findByEmail(form.getEmail());
 		// 登録後に再取得
-		User real = userMapper.findByEmail(form.getEmail());
+		User real = userMapper.findByUserid(user.getId());
 		// セッション保存
 		session.setAttribute("loginUser", real);
 
