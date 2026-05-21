@@ -308,16 +308,16 @@ INSERT INTO favorites(user_id, product_id) VALUES
 
 /*クーポン*/
 INSERT INTO coupons(name, expiration_date, rate)VALUES
-('10%割引きクーポン', '2026-05-21', 0.1);
+('10%割引クーポン', '2026-05-21', 0.1);
  
 INSERT INTO coupons(name, expiration_date, rate)VALUES
-('20%割引きクーポン', '2026-05-21', 0.2);
+('20%割引クーポン', '2026-05-21', 0.2);
  
 INSERT INTO coupons(name, expiration_date, rate)VALUES
-('30%割引きクーポン', '2026-05-21', 0.3);
+('30%割引クーポン', '2026-05-21', 0.3);
  
 INSERT INTO coupons(name, expiration_date, rate)VALUES
-('100%割引きクーポン', '2026-05-15', 1.0);
+('100%割引クーポン', '2026-05-15', 1.0);
  
 INSERT INTO coupons_users( user_id,  coupon_id)VALUES
 (1, 1);
