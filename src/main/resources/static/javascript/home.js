@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     const swiper = new Swiper('.mySwiper', {
-        slidesPerView: 2,       // 画面に3つ表示
+        slidesPerView: 3,       // 画面に3つ表示
         spaceBetween: -10,       // 商品同士のすき間(px)
         loop: true,             // ループさせる
 
