@@ -82,7 +82,7 @@
   
 	<insert id="InsertOrder" parameterType="com.example.demo.entity.Order" useGeneratedKeys="true" keyProperty="id">
 		INSERT INTO orders (user_id, buy_at, total_amount, status, coupon_id)
-			VALUES (#{userId}, CURRENT_DATE, #{totalAmount}, false, #{couponId})
+			VALUES (#{userId}, CURRENT_TIMESTAMP, #{totalAmount}, false, #{couponId})
 	</insert>
 	
 	<insert id="InsertOrderItems">

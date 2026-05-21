@@ -96,7 +96,7 @@ CREATE TABLE products (
 CREATE TABLE orders (
     id SERIAL PRIMARY KEY,
     user_id INTEGER NOT NULL REFERENCES users(id),
-    buy_at DATE NOT NULL,
+    buy_at TIMESTAMP NOT NULL,
     total_amount INTEGER NOT NULL,
     status BOOLEAN NOT NULL,
     coupon_id INTEGER REFERENCES coupons(id)
