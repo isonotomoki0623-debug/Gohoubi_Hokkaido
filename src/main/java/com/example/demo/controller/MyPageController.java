@@ -75,8 +75,6 @@ public class MyPageController {
 		}
 		model.addAttribute("progressPercent", progressPercent);
 
-		model.addAttribute("user", userService.getLoginUser(session));
-
 		return "profile";
 	}
 
@@ -120,25 +118,25 @@ public class MyPageController {
 
 		return "achievement";
 	}
-	
+
 	@GetMapping("/stamp")
 	public String showStamps(HttpSession session, Model model) {
 
-	    User loginUser = (User) session.getAttribute("loginUser");
-	    if (loginUser == null) {
-	        return "redirect:/login";
-	    }
+		User loginUser = (User) session.getAttribute("loginUser");
+		if (loginUser == null) {
+			return "redirect:/login";
+		}
 
-	    List<Stamp> stamps = stampMapper.findStampsByUserId(loginUser.getId());
+		List<Stamp> stamps = stampMapper.findStampsByUserId(loginUser.getId());
 
-	    long acquiredCount = stamps.stream()
-	            .filter(Stamp::isAcquired)
-	            .count();
+		long acquiredCount = stamps.stream()
+				.filter(Stamp::isAcquired)
+				.count();
 
-	    model.addAttribute("stamp", stamps);
-	    model.addAttribute("acquiredCount", acquiredCount);
-	    model.addAttribute("totalCount", stamps.size());
+		model.addAttribute("stamp", stamps);
+		model.addAttribute("acquiredCount", acquiredCount);
+		model.addAttribute("totalCount", stamps.size());
 
-	    return "stamp/stamp"; // HTMLファイル名
+		return "stamp/stamp"; // HTMLファイル名
 	}
 }
