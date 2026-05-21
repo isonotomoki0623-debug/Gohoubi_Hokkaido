@@ -78,10 +78,10 @@
 
 					<div class="status-card">
 
-						<div class="next-level-box">
+						<div class="next-level-box" th:if="${user != null}">
 
 							<div class="level-title">
-								Lv.[[${user.level}]] [[${user.job?.name}]]
+								Lv.[[${user.level}]] [[${user.job.name}]]
 							</div>
 
 							<div class="next-level-text">
@@ -96,11 +96,13 @@
 
 						</div>
 
-						<!-- 実績通知（実績がある場合のみ表示） -->
-						<a th:href="@{/achievements}" class="text-decoration-none text-dark"
-							th:if="${achievement != null}">
+						
 
-							<div class="achievement-alert">
+						<!-- 実績通知 -->
+						<a th:href="@{/achievements}" class="text-decoration-none text-dark">
+
+							<!-- 実績通知 -->
+							<div class="achievement-alert" th:if="${user != null and achievement != null}">
 
 								<div class="fw-bold mb-2">
 									🏆 獲得した最新の実績！
@@ -119,177 +121,132 @@
 
 				</div>
 
-				<div class="col-lg-4" th:if="${user == null}">
-					<div class="status-card unlogged-card d-flex flex-column justify-content-center">
-						<a th:href="@{/register}" class="text-decoration-none text-dark">
-							<div class="fw-bold md-2 text-primary-emphasis">
-								✨ 新たな冒険を始めよう！
-							</div>
-
-							<div>
-								<div class="small text-muted">
-									「ごほうびほっかいどう」に無料登録して、<br>
-									北海道を巡る旅に出発しませんか？
-								</div>
-								<div class="register-alert-btn">
-									新規会員登録はこちら
-								</div>
-							</div>
-						</a>
-					</div>
-				</div>
+			</div>
 
 
-				<section class="mt-5">
+			<section class="mt-5">
 
-					<h2 class="section-title">
-						⭐ おすすめ商品
-					</h2>
+				<h2 class="section-title">
+					⭐ おすすめ商品
+				</h2>
 
-					<div class="swiper mySwiper">
+				<div class="swiper mySwiper">
 
-						<div class="swiper-wrapper">
+					<div class="swiper-wrapper">
 
-						<h2 class="section-title">
-							👑 商品人気ランキング
-						</h2>
-							<div class="swiper-slide" th:each="product : ${recommendProducts}">
+						<div class="swiper-slide" th:each="product : ${recommendProducts}">
 
-								<a th:href="@{/products/{id}(id=${product.id})}" class="product-link">
+							<a th:href="@{/products/{id}(id=${product.id})}" class="product-link">
 
-									<div class="product-card">
+								<div class="product-card">
 
-										<div class="product-image-wrap">
+									<div class="product-image-wrap">
 
-											<img th:src="${product.imagePath}" th:alt="${product.name}"
-												class="product-image">
+										<img th:src="${product.imagePath}" th:alt="${product.name}"
+											class="product-image">
 
+									</div>
+
+									<div class="product-info">
+
+										<div class="product-category" th:text="${product.productCategoryName}">
 										</div>
 
-										<div class="product-info">
+										<h2 class="product-name" th:text="${product.name}">
+										</h2>
 
-											<div class="product-category" th:text="${product.productCategoryName}">
+										<p class="product-area" th:text="${product.hokkaidoAreaName}">
+										</p>
+
+										<div class="product-bottom">
+
+											<div class="product-price">
+												¥
+												<span
+													th:text="${#numbers.formatInteger(product.price, 1, 'COMMA')}"></span>
 											</div>
 
-											<h2 class="product-name" th:text="${product.name}">
-											</h2>
-
-											<p class="product-area" th:text="${product.hokkaidoAreaName}">
-											</p>
-
-											<div class="product-bottom">
-
-												<div class="product-price">
-													¥
-													<span
-														th:text="${#numbers.formatInteger(product.price, 1, 'COMMA')}"></span>
-												</div>
-
-												<div class="detail-button">
-													詳細を見る
-												</div>
-
+											<div class="detail-button">
+												詳細を見る
 											</div>
 
 										</div>
 
 									</div>
 
+								</div>
+
+							</a>
+
+						</div>
+
+					</div>
+
+					<div class="swiper-button-prev"></div>
+					<div class="swiper-button-next"></div>
+
+				</div>
+
+			</section>
+
+
+			<!-- 下段 -->
+			<section class="mt-5">
+
+				<div class="row g-4">
+
+					<!-- 商品ランキング -->
+					<div class="col-lg-6">
+
+						<h2 class="section-title">
+							👑 商品人気ランキング
+						</h2>
+
+						<div class="ranking-card">
+
+							<div class="rank-item" th:each="product, stat : ${rankingProducts}">
+
+								<a th:href="@{/products/{id}(id=${product.id})}">
+								<div class="rank-number" th:text="${stat.count}">
+									1
+								</div>
+
+								<div>
+
+									<div class="rank-name" th:text="${product.name}">
+										商品名
+									</div>
+
+								</div>
 								</a>
 
 							</div>
 
 						</div>
 
-						<div class="swiper-button-prev"></div>
-						<div class="swiper-button-next"></div>
-
 					</div>
 
-				</section>
+					<!-- ユーザーランキング -->
+					<div class="col-lg-6">
 
 						<h2 class="section-title">
 							👑 購入金額ランキング
 						</h2>
 
-				<!-- 下段 -->
-				<section class="mt-5">
+						<div class="ranking-card">
 
-					<div class="row g-4">
+							<div class="rank-item" th:each="user, stat : ${rankingUsers}">
 
-						<!-- 商品ランキング -->
-						<div class="col-lg-6">
-
-							<h2 class="section-title">
-								👑 商品ランキング
-							</h2>
-
-							<div class="ranking-card">
-
-								<div class="rank-item" th:each="product, stat : ${rankingProducts}">
-
-									<a th:href="@{/products/{id}(id=${product.id})}">
-										<div class="rank-number" th:text="${stat.count}">
-											1
-										</div>
-
-										<div>
-
-											<div class="rank-name" th:text="${product.name}">
-												商品名
-											</div>
-
-										</div>
-									</a>
-
+								<div class="rank-number" th:text="${stat.count}">
+									1
 								</div>
 
-							</div>
+								<div>${#numbers.formatInteger(product.price, 1, 'COMMA')}
 
 									<div class="rank-name">
-										[[${user.name}]]  (¥[[${amount[stat.index]}]])
+										[[${user.name}]]  (¥[[${amount[stat.index].formatInteger(product.price, 1, 'COMMA')}]])
 									</div>
 
-						</div>
-
-						<!-- ユーザーランキング -->
-						<div class="col-lg-6">
-
-							<h2 class="section-title">
-								👑 ユーザーランキング
-							</h2>
-
-							<div class="ranking-card">
-
-								<div class="rank-item" th:each="user, stat : ${rankingUsers}">
-
-									<div class="rank-number" th:text="${stat.count}">
-										1
-									</div>
-
-									<div>
-
-										<div class="rank-name" th:text="${user.name}">
-											ユーザー名
-										</div>
-
-										<div class="rank-sales">
-
-											<span th:if="${stat.count == 1}">
-												北海道王
-											</span>
-
-											<span th:if="${stat.count == 2}">
-												爆買い中
-											</span>
-
-											<span th:if="${stat.count == 3}">
-												常連ユーザー
-											</span>
-
-										</div>
-
-									</div>
 
 								</div>
 
@@ -299,9 +256,11 @@
 
 					</div>
 
-				</section>
+				</div>
 
-			</div>
+			</section>
+
+		</div>
 
 	</main>
 
