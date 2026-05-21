@@ -23,13 +23,25 @@ INSERT INTO achievements(name, image_path, description, method_name) VALUES
 
 /*職業*/
 INSERT INTO jobs(name, image_path) VALUES
-('農家','/images/farmer.png');
+('農家','/images/job_image/farmar.png');
 
 INSERT INTO jobs(name, image_path) VALUES
-('漁師','/images/farmer.png');
+('釣り人','/images/job_image/fish.png');
 
 INSERT INTO jobs(name, image_path) VALUES
-('牧場主','/images/farmer.png');
+('お肉ソムリエ','/images/job_image/meat.png');
+
+INSERT INTO jobs(name, image_path) VALUES
+('牛飼い','/images/job_image/caw.png');
+
+INSERT INTO jobs(name, image_path) VALUES
+('クッキーくん','/images/job_image/cokki.png');
+
+INSERT INTO jobs(name, image_path) VALUES
+('ビール君','/images/job_image/beer.png');
+
+INSERT INTO jobs(name, image_path) VALUES
+('浮浪人','/images/job_image/soldier.png');
 
 /*都道府県*/
 INSERT INTO prefectures(name) VALUES
