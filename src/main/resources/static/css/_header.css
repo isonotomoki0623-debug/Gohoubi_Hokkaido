@@ -40,6 +40,33 @@ body {
 		1px solid rgba(0, 0, 0, 0.04);
 }
 
+.cart-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+
+    text-decoration: none;
+    color: black;
+}
+
+.cart-badge {
+
+    width: 22px;
+    height: 22px;
+
+    border-radius: 50%;
+
+    background-color: red;
+    color: white;
+
+    font-size: 12px;
+    font-weight: bold;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 /* =========================
    上段
 ========================= */

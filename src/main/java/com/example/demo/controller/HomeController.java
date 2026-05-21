@@ -4,6 +4,7 @@ import java.util.List;
 
 import jakarta.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +15,7 @@ import com.example.demo.entity.User;
 import com.example.demo.mapper.MypageMapper;
 import com.example.demo.mapper.ProductMapper;
 import com.example.demo.mapper.UserMapper;
+import com.example.demo.service.CartService;
 import com.example.demo.service.UserService;
 
 @Controller
@@ -24,6 +26,8 @@ public class HomeController {
 	private ProductMapper productMapper;
 	private UserMapper userMapper;
 	private MypageMapper mypageMapper;
+	@Autowired
+	private CartService cartService;
 
 	//マッパーインターフェースをインスタンス化
 	public HomeController(ProductMapper productMapper,
@@ -73,7 +77,9 @@ public class HomeController {
 		//商品の売上ランキングを取得
 		List<Product> rankingProducts = productMapper.findProductsTop3();
 		List<Integer> amount = userMapper.findUsersTop3Amount();
+		int cartCount = cartService.cartItemCount(session);
 
+		model.addAttribute("cartCount", cartCount);
 		model.addAttribute("rankingProducts", rankingProducts);
 		model.addAttribute("amount", amount);
 
