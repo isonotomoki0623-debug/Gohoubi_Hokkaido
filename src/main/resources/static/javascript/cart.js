@@ -50,6 +50,19 @@ function updateView(productId, change) {
 
     qtyElement.innerText = qty;
 
+    // +ボタン取得
+    const addButton =
+        document.querySelector(
+            `.add-form input[value="${productId}"]`
+        ).parentElement.querySelector(".add-btn");
+
+    // 在庫取得
+    const stock =
+        parseInt(addButton.dataset.stock);
+
+    // ボタン制御
+    addButton.disabled = qty >= stock;
+
     // 小計更新
     const subtotalElement =
         document.getElementById("subtotal-" + productId);

@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -40,6 +41,12 @@ public class CartController {
 		int total = cart.stream()
 				.mapToInt(item -> item.getPrice() * item.getQuantity())
 				.sum();
+
+		List<Product> products = new ArrayList<>();
+		for (CartItem c : cart) {
+			products.add(productMapper.findById(c.getProductId()));
+		}
+		model.addAttribute("products", products);
 		model.addAttribute("cart", cart);
 		model.addAttribute("total", total);
 		model.addAttribute("user", userService.getLoginUser(session));

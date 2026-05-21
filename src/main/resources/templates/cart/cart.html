@@ -43,7 +43,7 @@
 						<th></th>
 					</tr>
 
-					<tr th:each="item : ${cart}">
+					<tr th:each="item, stat: ${cart}">
 						<td>
 							<img th:src="@{${item.imagePath}}" alt="商品画像" class="cart-img">
 						</td>
@@ -62,7 +62,12 @@
 								<form class="add-form">
 									<input type="hidden" name="productId" th:value="${item.productId}">
 									<input type="hidden" name="imagePath" th:value="${item.imagePath}">
-									<button type="submit" class="qty-btn">＋</button>
+									<button type="submit"
+									        class="qty-btn add-btn"
+									        th:data-stock="${products[stat.index].stock}"
+									        th:disabled="${item.quantity >= products[stat.index].stock}">
+									    ＋
+									</button>
 								</form>
 
 							</div>
