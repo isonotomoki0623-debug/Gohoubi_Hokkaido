@@ -31,7 +31,7 @@ public class UserService {
 		user.setJob_id(form.getJob_id());
 		user.setPrefecture_id(form.getPrefectures_id());
 		user.setRole("User");
-		user.setLevel(1);
+		user.setLevel(0);
 
 		userMapper.insert(user);
 	}

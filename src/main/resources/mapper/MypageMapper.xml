@@ -84,5 +84,13 @@
 		SELECT COUNT(*)
 		FROM users
 	</select>
+	
+	<select id="newAchievement" resultType="com.example.demo.entity.Achievement">
+		SELECT *
+		FROM achievements
+		WHERE id IN (SELECT achievement_id FROM users_achievements WHERE user_id = #{userId})
+		ORDER BY id DESC
+		LIMIT 1
+	</select>
 
 </mapper>
