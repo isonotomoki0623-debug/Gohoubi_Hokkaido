@@ -103,14 +103,16 @@ public class OrderController {
 		}
 
 		if (couponId != null) {
-			orderMapper.deleteUserCoupon(userId, couponId);
+			orderMapper.updateUserCoupon(userId, couponId);
 		}
 		UserLevel userLevel = new UserLevel();
 		userLevel = userService.calcLevel(user, mypageMapper.getTotalAmount(userId));
+		List<Coupon> coupons = couponService.getLevelCoupons(userLevel.getNowLevel(), userLevel.getUpLevel(), userId);
 		userMapper.updateLevel(userId, userLevel.getUpLevel());
 		user.setLevel(userLevel.getUpLevel());
 		List<HokkaidoArea> hokkaidoAreas = stampService.insertStamp(cart, userId);
 		List<Achievement> achievements = achievementService.checkAchievement(userId, session);
+		model.addAttribute("coupons", coupons);
 		model.addAttribute("userLevel", userLevel);
 		model.addAttribute("hokkaidoAreas", hokkaidoAreas);
 		model.addAttribute("achievements", achievements);

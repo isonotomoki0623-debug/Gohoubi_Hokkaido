@@ -110,10 +110,26 @@
 		<section class="coupon-section">
 			<h2>所持クーポン</h2>
 			<div class="coupon-list">
-				<div class="coupon-card" th:each="hasCoupon : ${hasCoupons}">
+				<div class="coupon-card" th:each="hasCoupon : ${hasCoupons}"
+					th:classappend="${hasCoupon.used} ? ' used-coupon' : ''">
+
 					<h3 th:text="${hasCoupon.name}">
 						北海道応援クーポン
 					</h3>
+
+					<p>
+						割引率 :
+						<span th:text="${#numbers.formatInteger(hasCoupon.rate * 100, 0)}"></span>%
+					</p>
+
+					<p>
+						取得日 :
+						<span th:text="${#dates.format(hasCoupon.acquiredAt, 'yyyy/MM/dd')}"></span>
+					</p>
+
+					<p th:if="${hasCoupon.used}" class="used-text">
+						使用済み
+					</p>
 				</div>
 			</div>
 		</section>
@@ -141,7 +157,7 @@
 		</section>
 
 	</main>
-
+	
 </body>
 
 </html>

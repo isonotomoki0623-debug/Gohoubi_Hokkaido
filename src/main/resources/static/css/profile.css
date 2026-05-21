@@ -307,18 +307,20 @@ a {
 }
 
 .coupon-card {
-	border-radius: 24px;
 
-	padding: 22px;
+	width: 250px;
 
-	border: 2px dashed #83c88f;
+	padding: 16px;
 
-	background:
-		linear-gradient(135deg,
-			#ffffff,
-			#f5fff7);
+	border-radius: 12px;
 
-	transition: 0.25s;
+	background: #fff8dc;
+
+	border: 2px solid #d4af37;
+
+	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+
+	transition: 0.2s;
 }
 
 .coupon-card:hover {
@@ -340,6 +342,24 @@ a {
 .coupon-card p {
 	color: #666;
 	line-height: 1.7;
+}
+
+.used-coupon {
+
+	opacity: 0.45;
+
+	filter: grayscale(100%);
+}
+
+.used-text {
+
+	margin-top: 10px;
+
+	color: red;
+
+	font-weight: bold;
+
+	font-size: 18px;
 }
 
 /* =========================

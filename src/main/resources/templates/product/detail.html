@@ -65,7 +65,7 @@
 				<form id="cartForm" style="display:inline; margin: 0;">
 					<input type="hidden" name="productId" th:value="${product.id}" />
 					<input type="hidden" name="imagePath" th:value="${productImages[0].imagePath}" />
-					<button type="submit" class="cart-button">カートに追加</button>
+					<button type="submit" class="cart-button" th:disabled="${product.stock} <= 0">カートに追加</button>
 				</form>
 
 				<!-- お気に入りトグルフォーム（新規追加） -->

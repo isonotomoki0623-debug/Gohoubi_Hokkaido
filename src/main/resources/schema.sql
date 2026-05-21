@@ -143,6 +143,8 @@ CREATE TABLE reviews (
 CREATE TABLE coupons_users (
     user_id INTEGER REFERENCES users(id),
     coupon_id INTEGER REFERENCES coupons(id),
+    acquired_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    is_used BOOLEAN DEFAULT false,
     PRIMARY KEY (user_id, coupon_id)
 );
 

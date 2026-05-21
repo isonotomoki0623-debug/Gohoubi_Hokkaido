@@ -108,7 +108,7 @@
 					<h6>利用可能クーポン</h6>
 
 					<!-- クーポンリスト -->
-					<div class="form-check mb-2" th:each="myCoupon : ${myCoupons}">
+					<div class="form-check mb-2" th:each="myCoupon : ${myCoupons}" th:if="${!myCoupon.isUsed}">
 
 						<input class="form-check-input coupon-radio" type="radio" name="couponId"
 							th:id="'coupon-' + ${myCoupon.id}" th:value="${myCoupon.id}" disabled>

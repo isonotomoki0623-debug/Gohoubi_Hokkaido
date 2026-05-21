@@ -2,6 +2,7 @@ package com.example.demo.service;
 
 import jakarta.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -15,6 +16,8 @@ import com.example.demo.mapper.UserMapper;
 public class UserService {
 	private final UserMapper userMapper;
 	private final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+	@Autowired
+	private CouponService couponService;
 
 	public UserService(UserMapper userMapper) {
 		this.userMapper = userMapper;
@@ -68,8 +71,10 @@ public class UserService {
 
 	public UserLevel calcLevel(User user, Integer totalamount) {
 		UserLevel userLevel = new UserLevel();
-		userLevel.setNowLevel(user.getLevel());
-		userLevel.setUpLevel(totalamount / 10000);
+		int nowLevel = user.getLevel();
+		int upLevel = totalamount / 10000;
+		userLevel.setNowLevel(nowLevel);
+		userLevel.setUpLevel(upLevel);
 		userLevel.setRemainAmount(10000 - (totalamount % 10000));
 		return userLevel;
 	}

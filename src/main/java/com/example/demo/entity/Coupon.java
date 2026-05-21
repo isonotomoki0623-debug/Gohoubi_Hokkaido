@@ -10,4 +10,6 @@ public class Coupon {
 	private String name;
 	private Date expirationDate;
 	private double rate;
+	private Date acquiredAt;
+	private boolean isUsed;
 }

@@ -95,7 +95,7 @@ VALUES('農作物'),('海産物'),('肉・畜産品'),('乳製品'),('スイー�
 INSERT INTO products
 (name,price,stock,review_sum,review_star,product_category_id,hokkaido_area_id,user_id,shipping_interval) 
 VALUES
-('じゃがいも5kg',3000,50,128,3.2,1,1,1,2),
+('じゃがいも5kg',200000,50,128,3.2,1,1,1,2),
 ('冷凍鮭2kg',3000,30,95,4.1,2,2,2,5),
 ('ジンギスカンセット',5000,25,203,4.8,3,3,3,4),
 ('ナチュラルチーズ3種詰め合わせ',4500,12,74,2.9,4,4,4,3),
@@ -507,17 +507,8 @@ INSERT INTO coupons(name, expiration_date, rate)VALUES
 INSERT INTO coupons(name, expiration_date, rate)VALUES
 ('100%割引クーポン', '2026-05-15', 1.0);
  
-INSERT INTO coupons_users( user_id,  coupon_id)VALUES
-(1, 1);
+
  
-INSERT INTO coupons_users( user_id,  coupon_id)VALUES
-(1, 2);
- 
-INSERT INTO coupons_users( user_id,  coupon_id)VALUES
-(1, 3);
- 
-INSERT INTO coupons_users( user_id,  coupon_id)VALUES
-(1, 4);
 
 
 /*スタンプ*/
