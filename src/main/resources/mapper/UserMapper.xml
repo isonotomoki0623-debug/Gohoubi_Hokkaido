@@ -15,12 +15,12 @@
 	<select id="findUsersTop3"
 		resultType="com.example.demo.entity.Product">
 		SELECT
-		u.id, SUM(o.total_amount)AS total_amount_sum
+		u.id, u.name, SUM(o.total_amount)AS total_amount_sum
 		FROM
 		users u
 		JOIN orders o
 		ON u.id = o.user_id
-		GROUP BY u.id
+		GROUP BY u.id, u.name
 		ORDER
 		BY
 		total_amount_sum DESC
