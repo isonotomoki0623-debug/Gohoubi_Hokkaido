@@ -40,24 +40,40 @@ INSERT INTO prefectures(name) VALUES
 /*ユーザー情報*/
 
 INSERT INTO users(name, password  , email , job_id,level, prefecture_id,  role) VALUES
-('尊さん','$2a$10$QDgCelnzlrxcONKfVuh9meHNMs9PSxOqIV47Q89ZTd889wFZmyuWO','takeru@example.com' , 1 , 0, 1 , 'User');
+('尊さん','$2a$10$QDgCelnzlrxcONKfVuh9meHNMs9PSxOqIV47Q89ZTd889wFZmyuWO','takeru@example.com' , 1 , 1, 1 , 'User');
 
 INSERT INTO users(name, password , email , job_id, level, prefecture_id, role) VALUES
-('ゆきちゃん', '$2a$10$ThvVpqvzDNeKC32KnA3Ga.hPND2R7mJI8pYPqKb1DVN1wx1LUiLK2','yuki@example.com ', 2 , 0, 1 , 'User');
+('ゆきちゃん', '$2a$10$ThvVpqvzDNeKC32KnA3Ga.hPND2R7mJI8pYPqKb1DVN1wx1LUiLK2','yuki@example.com ', 2 , 5, 1 , 'User');
 
 INSERT INTO users(name, password , email , job_id, level, prefecture_id, role) VALUES
-('ゆりか',' $2a$10$kohxjV.rIzLhQSL/qusX2uzTM0cPAQMgEb5c.yXD0k2DPIa/Hj.8y','yurika@example.com' , 3 , 0, 1 , 'User');
+('ゆりか',' $2a$10$kohxjV.rIzLhQSL/qusX2uzTM0cPAQMgEb5c.yXD0k2DPIa/Hj.8y','yurika@example.com' , 3 , 10, 1 , 'User');
 
 INSERT INTO users(name, password , email , job_id, level, prefecture_id, role) VALUES
-('磯野倫希', '$2a$10$ZIntxJjnSDWhKkg82IaBz.k3zPPa/JmkQJnc6py7K3rcTFt9mgsgi','tomoki@example.com' , 2 , 0, 1 , 'Admin');
+('磯野倫希', '$2a$10$ZIntxJjnSDWhKkg82IaBz.k3zPPa/JmkQJnc6py7K3rcTFt9mgsgi','tomoki@example.com' , 2 , 15, 1 , 'Admin');
 
 INSERT INTO users(name, password , email , job_id, level, prefecture_id, role) VALUES
-('しゅん', '$2a$10$IGbdSmPeQXiI5Sey3u.vAeYgkQBZJseo6L.pLT3torx6m4dtLUTtW','shun@example.com' , 1, 0, 2 , 'User');
+('しゅん', '$2a$10$IGbdSmPeQXiI5Sey3u.vAeYgkQBZJseo6L.pLT3torx6m4dtLUTtW','shun@example.com' , 1, 20, 2 , 'User');
 
 INSERT INTO hokkaido_areas(name,image_path)
 VALUES
 ('札幌','/images/stamp_image/Sapporo_01.svg.png'),('室蘭・登別','/images/stamp_image/Muroran_02.svg.png'),('帯広','/images/stamp_image/Obihiro_03.svg.png'),('岩見沢','/images/stamp_image/Iwamizawa_04.svg.png'),('函館','/images/stamp_image/Hakodate_05.svg.png'),
 ('小樽','/images/stamp_image/Otaru_06.svg.png'),('旭川','/images/stamp_image/Asahikawa_07.svg.png'),('夕張','/images/stamp_image/Yubari_08.svg.png'),('富良野','/images/stamp_image/Furano_09.svg.png');
+
+INSERT INTO orders(user_id, buy_at, total_amount, status, coupon_id)VALUES
+(1, CURRENT_DATE , 12000, true, null);
+
+INSERT INTO orders(user_id, buy_at, total_amount, status, coupon_id)VALUES
+(2, CURRENT_DATE , 54000, true, null);
+
+INSERT INTO orders(user_id, buy_at, total_amount, status, coupon_id)VALUES
+(3, CURRENT_DATE , 120000, true, null);
+
+INSERT INTO orders(user_id, buy_at, total_amount, status, coupon_id)VALUES
+(4, CURRENT_DATE , 150000, true, null);
+
+INSERT INTO orders(user_id, buy_at, total_amount, status, coupon_id)VALUES
+(5, CURRENT_DATE , 250000, true, null);
+
 
 
 
@@ -97,6 +113,21 @@ VALUES
 ('ガラス細工オルゴール',4700,12,6,4.7,7,6,3,2),
 ('北海道はちみつセット',3900,18,7,4.6,1,8,4,2),
 ('十勝チーズケーキ',3500,25,8,4.8,5,3,5,1);
+
+INSERT INTO order_items(order_id, product_id, quantity)VALUES
+(1, 1, 4);
+
+INSERT INTO order_items(order_id, product_id, quantity)VALUES
+(2, 2, 18);
+
+INSERT INTO order_items(order_id, product_id, quantity)VALUES
+(3, 17, 40);
+
+INSERT INTO order_items(order_id, product_id, quantity)VALUES
+(4, 7, 30);
+
+INSERT INTO order_items(order_id, product_id, quantity)VALUES
+(5, 3, 50);
 
 INSERT INTO reviews(user_id,product_id,description,star)
 VALUES
