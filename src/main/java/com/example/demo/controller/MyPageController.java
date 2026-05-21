@@ -133,6 +133,7 @@ public class MyPageController {
 				.filter(Stamp::isAcquired)
 				.count();
 
+		model.addAttribute("user", userService.getLoginUser(session));
 		model.addAttribute("stamp", stamps);
 		model.addAttribute("acquiredCount", acquiredCount);
 		model.addAttribute("totalCount", stamps.size());
