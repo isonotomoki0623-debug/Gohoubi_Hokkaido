@@ -108,6 +108,7 @@ public class OrderController {
 		UserLevel userLevel = new UserLevel();
 		userLevel = userService.calcLevel(user, mypageMapper.getTotalAmount(userId));
 		userMapper.updateLevel(userId, userLevel.getUpLevel());
+		user.setLevel(userLevel.getUpLevel());
 		List<HokkaidoArea> hokkaidoAreas = stampService.insertStamp(cart, userId);
 		List<Achievement> achievements = achievementService.checkAchievement(userId, session);
 		model.addAttribute("userLevel", userLevel);

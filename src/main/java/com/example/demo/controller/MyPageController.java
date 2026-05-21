@@ -62,19 +62,13 @@ public class MyPageController {
 		List<Coupon> hasCoupons = orderMapper.hasCoupons(loginUser.getId());
 
 		//次のレベルまでの金額を表示
-		Integer nextLevelAmount = user.getLevel() * 10000;
-
-		Integer remainAmount = nextLevelAmount - totalAmount;
-
-		if (remainAmount < 0) {
-			remainAmount = 0;
-		}
+		Integer remainAmount = 10000 - (totalAmount % 10000);
 
 		model.addAttribute("hasCoupons", hasCoupons);
 		model.addAttribute("remainAmount", remainAmount);
 
 		//プログレスバー
-		Integer progressPercent = (totalAmount * 100) / nextLevelAmount;
+		Integer progressPercent = 100 - ((remainAmount * 100) / 10000);
 
 		if (progressPercent > 100) {
 			progressPercent = 100;

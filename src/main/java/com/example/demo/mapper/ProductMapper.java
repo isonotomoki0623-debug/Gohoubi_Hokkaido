@@ -24,7 +24,10 @@ public interface ProductMapper {
 			@Param("keyword") String keyword,
 			@Param("categoryId") Integer categoryId);
 
-	/** おすすめ商品 */
+	// userのjobId=cateIdの商品を表示
+	List<Product> findRecommend(int jobId);
+
+	// ログインしていない時のおすすめ商品
 	List<Product> findRecommend3();
 
 	/** 売上ランキング */
