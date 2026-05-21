@@ -40,19 +40,19 @@ INSERT INTO prefectures(name) VALUES
 /*ユーザー情報*/
 
 INSERT INTO users(name, password  , email , job_id,level, prefecture_id,  role) VALUES
-('尊さん','$2a$10$QDgCelnzlrxcONKfVuh9meHNMs9PSxOqIV47Q89ZTd889wFZmyuWO','takeru@example.com' , 1 , 1, 1 , 'User');
+('尊さん','$2a$10$QDgCelnzlrxcONKfVuh9meHNMs9PSxOqIV47Q89ZTd889wFZmyuWO','takeru@example.com' , 1 , 0, 1 , 'User');
 
 INSERT INTO users(name, password , email , job_id, level, prefecture_id, role) VALUES
-('ゆきちゃん', '$2a$10$ThvVpqvzDNeKC32KnA3Ga.hPND2R7mJI8pYPqKb1DVN1wx1LUiLK2','yuki@example.com ', 2 , 99, 1 , 'User');
+('ゆきちゃん', '$2a$10$ThvVpqvzDNeKC32KnA3Ga.hPND2R7mJI8pYPqKb1DVN1wx1LUiLK2','yuki@example.com ', 2 , 0, 1 , 'User');
 
 INSERT INTO users(name, password , email , job_id, level, prefecture_id, role) VALUES
-('ゆりか',' $2a$10$kohxjV.rIzLhQSL/qusX2uzTM0cPAQMgEb5c.yXD0k2DPIa/Hj.8y','yurika@example.com' , 3 , 10, 1 , 'User');
+('ゆりか',' $2a$10$kohxjV.rIzLhQSL/qusX2uzTM0cPAQMgEb5c.yXD0k2DPIa/Hj.8y','yurika@example.com' , 3 , 0, 1 , 'User');
 
 INSERT INTO users(name, password , email , job_id, level, prefecture_id, role) VALUES
-('磯野倫希', '$2a$10$ZIntxJjnSDWhKkg82IaBz.k3zPPa/JmkQJnc6py7K3rcTFt9mgsgi','tomoki@example.com' , 2 , 5, 1 , 'Admin');
+('磯野倫希', '$2a$10$ZIntxJjnSDWhKkg82IaBz.k3zPPa/JmkQJnc6py7K3rcTFt9mgsgi','tomoki@example.com' , 2 , 0, 1 , 'Admin');
 
 INSERT INTO users(name, password , email , job_id, level, prefecture_id, role) VALUES
-('しゅん', '$2a$10$IGbdSmPeQXiI5Sey3u.vAeYgkQBZJseo6L.pLT3torx6m4dtLUTtW','shun@example.com' , 1, 2, 2 , 'User');
+('しゅん', '$2a$10$IGbdSmPeQXiI5Sey3u.vAeYgkQBZJseo6L.pLT3torx6m4dtLUTtW','shun@example.com' , 1, 0, 2 , 'User');
 
 INSERT INTO hokkaido_areas(name,image_path)
 VALUES
@@ -338,6 +338,8 @@ INSERT INTO coupons_users( user_id,  coupon_id)VALUES
 --
 --INSERT INTO users_stamps( user_id, hokkaido_area_id, unlocked_at)VALUES
 --(1, 5, CURRENT_DATE );
+
+
 
 
 

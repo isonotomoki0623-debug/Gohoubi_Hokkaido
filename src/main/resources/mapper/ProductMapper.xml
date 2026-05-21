@@ -198,7 +198,7 @@
 		p.price, c.name,
 		h.name
 		ORDER BY p.id DESC
-		LIMIT 3
+		LIMIT 9
 	</select>
 	<!-- 商品の売上ランキングを表示 -->
 	<!-- order_itemsとproductsをjoin -->
