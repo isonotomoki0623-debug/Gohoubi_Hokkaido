@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.servlet.http.HttpSession;
@@ -19,9 +20,11 @@ import com.example.demo.entity.HokkaidoArea;
 import com.example.demo.entity.Order;
 import com.example.demo.entity.User;
 import com.example.demo.entity.UserLevel;
+import com.example.demo.mapper.AchievementMapper;
 import com.example.demo.mapper.MypageMapper;
 import com.example.demo.mapper.OrderMapper;
 import com.example.demo.mapper.ProductMapper;
+import com.example.demo.mapper.StampMapper;
 import com.example.demo.mapper.UserMapper;
 import com.example.demo.service.AchievementService;
 import com.example.demo.service.CartService;
@@ -52,6 +55,10 @@ public class OrderController {
 	private MypageMapper mypageMapper;
 	@Autowired
 	private UserMapper userMapper;
+	@Autowired
+	private StampMapper stampMapper;
+	@Autowired
+	private AchievementMapper achievementMapper;
 
 	@GetMapping("/order")
 	public String showOrder(HttpSession session, Model model) {
@@ -107,11 +114,23 @@ public class OrderController {
 		}
 		UserLevel userLevel = new UserLevel();
 		userLevel = userService.calcLevel(user, mypageMapper.getTotalAmount(userId));
-		List<Coupon> coupons = couponService.getLevelCoupons(userLevel.getNowLevel(), userLevel.getUpLevel(), userId);
+		//取得したクーポン格納用のリスト
+		List<Coupon> coupons = new ArrayList<>();
+		//levelupしたときのクーポン取得可否
+		couponService.getLevelCoupons(coupons, userLevel.getNowLevel(), userLevel.getUpLevel(), userId);
 		userMapper.updateLevel(userId, userLevel.getUpLevel());
 		user.setLevel(userLevel.getUpLevel());
+
+		//スタンプを取得した時のクーポン取得可否
+		int myStampCount = stampMapper.countStamp(userId);
 		List<HokkaidoArea> hokkaidoAreas = stampService.insertStamp(cart, userId);
+		couponService.getStampCoupons(coupons, myStampCount, hokkaidoAreas.size(), userId);
+
+		//実績を獲得した時のクーポン取得可否
+		int myAchievementCount = achievementMapper.countMyAchievement(userId);
 		List<Achievement> achievements = achievementService.checkAchievement(userId, session);
+		couponService.getAchievementCoupons(coupons, myAchievementCount, achievements.size(), userId);
+
 		model.addAttribute("coupons", coupons);
 		model.addAttribute("userLevel", userLevel);
 		model.addAttribute("hokkaidoAreas", hokkaidoAreas);

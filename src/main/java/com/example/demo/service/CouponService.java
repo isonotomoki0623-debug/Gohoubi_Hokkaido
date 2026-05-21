@@ -1,6 +1,5 @@
 package com.example.demo.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,9 +23,8 @@ public class CouponService {
 		return totalPrice;
 	}
 
-	public List<Coupon> getLevelCoupons(Integer nowLevel, Integer upLevel, int userId) {
-		List<Coupon> newCoupons = new ArrayList<>();
-		for (int level = nowLevel; level <= upLevel; level++) {
+	public List<Coupon> getLevelCoupons(List<Coupon> coupons, Integer nowLevel, Integer upLevel, int userId) {
+		for (int level = nowLevel + 1; level <= upLevel; level++) {
 			Integer couponId = null;
 			if (level == 20) {
 				couponId = 1;
@@ -39,10 +37,51 @@ public class CouponService {
 			}
 			if (couponId != null) {
 				orderMapper.insertCoupon(userId, couponId);
-				newCoupons.add(orderMapper.findCoupon(couponId));
+				coupons.add(orderMapper.findCoupon(couponId));
 			}
 		}
-		return newCoupons;
+		return coupons;
+	}
+
+	public List<Coupon> getStampCoupons(List<Coupon> coupons, int myStampCount, int newStampCount, int userId) {
+		for (int count = myStampCount + 1; count <= myStampCount + newStampCount; count++) {
+			Integer couponId = null;
+			if (count == 3) {
+				couponId = 4;
+			}
+			if (count == 6) {
+				couponId = 5;
+			}
+			if (count == 9) {
+				couponId = 6;
+			}
+			if (couponId != null) {
+				orderMapper.insertCoupon(userId, couponId);
+				coupons.add(orderMapper.findCoupon(couponId));
+			}
+		}
+		return coupons;
+	}
+
+	public List<Coupon> getAchievementCoupons(List<Coupon> coupons, int myAchievementCount, int newAchievementCount,
+			int userId) {
+		for (int count = myAchievementCount; count <= myAchievementCount + newAchievementCount; count++) {
+			Integer couponId = null;
+			if (count == 5) {
+				couponId = 7;
+			}
+			if (count == 10) {
+				couponId = 8;
+			}
+			if (count == 15) {
+				couponId = 9;
+			}
+			if (couponId != null) {
+				orderMapper.insertCoupon(userId, couponId);
+				coupons.add(orderMapper.findCoupon(couponId));
+			}
+		}
+		return coupons;
 	}
 
 }

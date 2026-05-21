@@ -26,4 +26,6 @@ public interface AchievementMapper {
 	int countUserPurchasesByArea(int userId);
 
 	int countUserPurchasesAmount(int userId);
+
+	int countMyAchievement(int userId);
 }

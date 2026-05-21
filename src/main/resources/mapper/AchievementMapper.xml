@@ -5,78 +5,94 @@
 
 <mapper namespace="com.example.demo.mapper.AchievementMapper">
 
- <select id="selectUnownedAchievement"
-  resultType="com.example.demo.entity.Achievement">
-  SELECT *
-  FROM achievements
-  WHERE id NOT IN (SELECT achievement_id FROM users_achievements WHERE user_id = #{id})
- </select>
+	<select id="selectUnownedAchievement"
+		resultType="com.example.demo.entity.Achievement">
+		SELECT *
+		FROM achievements
+		WHERE id NOT IN (SELECT achievement_id FROM users_achievements WHERE
+		user_id = #{id})
+	</select>
 
-  <insert id="insertUsersAchievements">
-    INSERT INTO users_achievements (user_id, achievement_id, unlocked_at) VALUES (#{userId}, #{achievementId}, CURRENT_DATE)
-  </insert>
+	<insert id="insertUsersAchievements">
+		INSERT INTO users_achievements (user_id, achievement_id, unlocked_at) VALUES
+		(#{userId}, #{achievementId}, CURRENT_DATE)
+	</insert>
 
-  <select id="countUserPurchases" resultType="int">
-    SELECT COUNT(*)
-    FROM orders
-    WHERE user_id = #{userId}
-  </select>
+	<select id="countUserPurchases" resultType="int">
+		SELECT COUNT(*)
+		FROM orders
+		WHERE user_id = #{userId}
+	</select>
 
-  <select id="countUserPurchasesByCategory" resultType="int">
-    SELECT COUNT(*)
-    FROM order_items INNER JOIN orders ON order_items.order_id = orders.id
-                     INNER JOIN products ON order_items.product_id = products.id
-    WHERE orders.user_id = #{userId} AND products.name = #{categoryName}
-  </select>
+	<select id="countUserPurchasesByCategory" resultType="int">
+		SELECT COUNT(*)
+		FROM order_items INNER JOIN orders ON order_items.order_id = orders.id
+		INNER JOIN products ON order_items.product_id = products.id
+		WHERE orders.user_id = #{userId} AND products.name = #{categoryName}
+	</select>
 
-  <select id="countUserPurcahsesCategory" resultType="int">
-    SELECT COUNT(DISTINCT products.id)
-    FROM order_items INNER JOIN orders ON order_items.order_id = orders.id
-                     INNER JOIN products ON order_items.product_id = products.id
-    WHERE orders.user_id = #{userId}
-  </select>
+	<select id="countUserPurcahsesCategory" resultType="int">
+		SELECT COUNT(DISTINCT products.id)
+		FROM order_items INNER JOIN orders ON order_items.order_id = orders.id
+		INNER JOIN products ON order_items.product_id = products.id
+		WHERE orders.user_id = #{userId}
+	</select>
 
-  <select id="countUserPurchasesByCategoryByArea" resultType="int">
-    SELECT COUNT(*)
-    FROM order_items INNER JOIN orders ON order_items.order_id = orders.id
-                     INNER JOIN products ON order_items.product_id = products.id
-    WHERE orders.user_id = #{userId} AND products.hokkaido_area_id = (SELECT id FROM hokkaido_areas WHERE name = #{areaName})
-  </select>
+	<select id="countUserPurchasesByCategoryByArea" resultType="int">
+		SELECT COUNT(*)
+		FROM order_items INNER JOIN orders ON order_items.order_id = orders.id
+		INNER JOIN products ON order_items.product_id = products.id
+		WHERE orders.user_id = #{userId} AND products.hokkaido_area_id = (SELECT id
+		FROM hokkaido_areas WHERE name = #{areaName})
+	</select>
 
-  <select id="countUserPurchasesByArea" resultType="int">
-    SELECT COUNT(DISTINCT products.hokkaido_area_id)
-    FROM order_items INNER JOIN orders ON order_items.order_id = orders.id
-                     INNER JOIN products ON order_items.product_id = products.id
-    WHERE orders.user_id = #{userId}
-  </select>
+	<select id="countUserPurchasesByArea" resultType="int">
+		SELECT COUNT(DISTINCT products.hokkaido_area_id)
+		FROM order_items INNER JOIN orders ON order_items.order_id = orders.id
+		INNER JOIN products ON order_items.product_id = products.id
+		WHERE orders.user_id = #{userId}
+	</select>
 
-  <select id="countUserPurchasesAmount" resultType="int">
-    SELECT SUM(total_amount)
-    FROM orders
-    WHERE user_id = #{userId}
-  </select>
+	<select id="countUserPurchasesAmount" resultType="int">
+		SELECT SUM(total_amount)
+		FROM orders
+		WHERE user_id = #{userId}
+	</select>
 
 	<select id="selectOwnedAchievement"
 		resultType="com.example.demo.entity.Achievement">
 
 		SELECT achievements.*
 		FROM achievements
-		INNER JOIN users_achievements
-		ON achievements.id = users_achievements.achievement_id
-		WHERE users_achievements.user_id = #{userId}
+		INNER JOIN
+		users_achievements
+		ON achievements.id =
+		users_achievements.achievement_id
+		WHERE users_achievements.user_id =
+		#{userId}
 
 	</select>
-	
-		<select id="selectAchievement"
+
+	<select id="selectAchievement"
 		resultType="com.example.demo.entity.Achievement">
 
-		SELECT users_achievements.user_id, id, 
+		SELECT users_achievements.user_id, id,
 		name, image_path, description, unlocked_at
 		FROM achievements
-		LEFT OUTER JOIN users_achievements
-		ON achievements.id = users_achievements.achievement_id
-		AND users_achievements.user_id = #{userId}
-		
+		LEFT OUTER JOIN
+		users_achievements
+		ON achievements.id =
+		users_achievements.achievement_id
+		AND users_achievements.user_id =
+		#{userId}
+
+	</select>
+
+	<select id="countMyAchievement"
+		resultType="int">
+		SELECT COUNT(*)
+		FROM users_achievements
+		WHERE user_id = #{userId}
 	</select>
 
 </mapper>

@@ -87,8 +87,6 @@ INSERT INTO orders(user_id, buy_at, total_amount, status, coupon_id)VALUES
 (5, CURRENT_DATE , 250000, true, null);
 
 
-
-
 INSERT INTO product_categories(name)
 VALUES('農作物'),('海産物'),('肉・畜産品'),('乳製品'),('スイーツ・お菓子'),('酒・飲料'),('消耗品');
 
@@ -474,16 +472,7 @@ VALUES
 ('/images/products_image/cheesecake2.webp', '十勝チーズケーキ', 30),
 ('/images/products_image/cheesecake3.jpg', '十勝チーズケーキ', 30);
 
-/*ユーザーが所持している実績*/
-INSERT INTO users_achievements (user_id, achievement_id, unlocked_at) VALUES
-    (1, 9, CURRENT_DATE),
-    (1, 3, CURRENT_DATE),
-    (1, 5, CURRENT_DATE),
-    (1, 8, CURRENT_DATE),
-    (1, 2, CURRENT_DATE),
-    (1, 10, CURRENT_DATE),
-    (1, 15, CURRENT_DATE),
-    (2, 1, CURRENT_DATE);
+
     
 /* ユーザのお気に入り商品の追加 */
 INSERT INTO favorites(user_id, product_id) VALUES
@@ -496,19 +485,45 @@ INSERT INTO favorites(user_id, product_id) VALUES
 
 /*クーポン*/
 INSERT INTO coupons(name, expiration_date, rate)VALUES
-('10%割引クーポン', '2026-05-21', 0.1);
+('<レベル20達成特典>10%割引クーポン', '2026-05-21', 0.1);
  
 INSERT INTO coupons(name, expiration_date, rate)VALUES
-('20%割引クーポン', '2026-05-21', 0.2);
+('<レベル40達成特典>20%割引クーポン', '2026-05-21', 0.2);
  
 INSERT INTO coupons(name, expiration_date, rate)VALUES
-('30%割引クーポン', '2026-05-21', 0.3);
+('<レベル60達成特典>30%割引クーポン', '2026-05-21', 0.3);
+
+INSERT INTO coupons(name, expiration_date, rate)VALUES
+('<スタンプ3個取得特典>5%割引クーポン', '2026-05-21', 0.05);
+ 
+INSERT INTO coupons(name, expiration_date, rate)VALUES
+('<スタンプ6個取得特典>10%割引クーポン', '2026-05-21', 0.1);
+ 
+INSERT INTO coupons(name, expiration_date, rate)VALUES
+('<スタンプ9個取得特典>15%割引クーポン', '2026-05-21', 0.15);
+
+INSERT INTO coupons(name, expiration_date, rate)VALUES
+('<実績5個達成特典>5%割引クーポン', '2026-05-21', 0.05);
+ 
+INSERT INTO coupons(name, expiration_date, rate)VALUES
+('<実績10個達成特典>15%割引クーポン', '2026-05-21', 0.15);
+ 
+INSERT INTO coupons(name, expiration_date, rate)VALUES
+('<実績15個達成特典>20%割引クーポン', '2026-05-21', 0.2);
  
 INSERT INTO coupons(name, expiration_date, rate)VALUES
 ('100%割引クーポン', '2026-05-15', 1.0);
  
-
- 
+INSERT INTO users_achievements(user_id, achievement_id, unlocked_at) VALUES
+(1, 1, CURRENT_DATE);
+INSERT INTO users_achievements(user_id, achievement_id, unlocked_at) VALUES
+(2, 1, CURRENT_DATE);
+INSERT INTO users_achievements(user_id, achievement_id, unlocked_at) VALUES
+(3, 1, CURRENT_DATE);
+INSERT INTO users_achievements(user_id, achievement_id, unlocked_at) VALUES
+(4, 1, CURRENT_DATE);
+INSERT INTO users_achievements(user_id, achievement_id, unlocked_at) VALUES
+(5, 1, CURRENT_DATE);
 
 
 /*スタンプ*/

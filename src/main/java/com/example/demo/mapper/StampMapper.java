@@ -15,7 +15,9 @@ public interface StampMapper {
 	HokkaidoArea findAreaId(int areaId);
 
 	void insertStamp(int userId, int areaId);
-	
+
 	List<Stamp> findStampsByUserId(int userId);
+
+	int countStamp(int userId);
 
 }

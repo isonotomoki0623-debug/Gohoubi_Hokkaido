@@ -313,7 +313,9 @@ body {
 
 .coupon-popup {
 
-    width: 420px;
+    width: 720px;
+	
+	max-width: 90vw;
 
     background: #fff8dc;
 
@@ -321,11 +323,22 @@ body {
 
     border-radius: 18px;
 
-    padding: 30px;
+    padding: 25px;
 
     text-align: center;
 
     animation: popupFade 0.3s ease;
+}
+
+.coupon-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.coupon-list.single {
+    display: flex;
+    justify-content: center;
 }
 
 .popup-coupon-card {
@@ -334,25 +347,30 @@ body {
 
     align-items: center;
 
-    gap: 16px;
+    gap: 10px;
 
     margin-top: 20px;
 
-    padding: 12px;
+    padding: 8px;
 
     background: white;
 
-    border-radius: 10px;
+    border-radius: 8px;
+}
+
+.coupon-list.single .popup-coupon-card {
+    width: 60%;
+    max-width: 260px;
 }
 
 .coupon-icon {
 
-    font-size: 40px;
+    font-size: 30px;
 }
 
 .coupon-name {
 
-    font-size: 18px;
+    font-size: 12px;
 
     font-weight: bold;
 

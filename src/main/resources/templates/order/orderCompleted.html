@@ -89,25 +89,27 @@
 			<div class="coupon-popup">
 
 				<h2>クーポン獲得！</h2>
+				<div class="coupon-list"
+				     th:classappend="${#lists.size(coupons) == 1} ? ' single' : ''">
+					<div th:each="coupon : ${coupons}" class="popup-coupon-card">
 
-				<div th:each="coupon : ${coupons}" class="popup-coupon-card">
+						<div class="coupon-icon">
+							🎫
+						</div>
 
-					<div class="coupon-icon">
-						🎫
+						<div class="coupon-info">
+
+							<p class="coupon-name" th:text="${coupon.name}">
+							</p>
+
+							<p class="coupon-rate">
+								割引率 :
+								<span th:text="${#numbers.formatInteger(coupon.rate * 100, 0)}"></span>%
+							</p>
+
+						</div>
+
 					</div>
-
-					<div class="coupon-info">
-
-						<p class="coupon-name" th:text="${coupon.name}">
-						</p>
-
-						<p class="coupon-rate">
-							割引率 :
-							<span th:text="${#numbers.formatInteger(coupon.rate * 100, 0)}"></span>%
-						</p>
-
-					</div>
-
 				</div>
 
 				<button class="popup-close-btn" onclick="closeCouponPopup()">

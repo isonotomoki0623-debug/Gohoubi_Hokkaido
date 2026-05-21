@@ -5,35 +5,46 @@
 
 <mapper namespace="com.example.demo.mapper.StampMapper">
 
-	
+
 	<insert id="insertStamp">
-		INSERT INTO users_stamps (user_id, hokkaido_area_id, unlocked_at)
-			VALUES (#{userId}, #{areaId}, CURRENT_DATE)
+		INSERT INTO users_stamps (user_id, hokkaido_area_id,
+		unlocked_at)
+		VALUES (#{userId}, #{areaId}, CURRENT_DATE)
 	</insert>
 
-	<select id="findStampByUserId" resultType="com.example.demo.entity.Stamp">
+	<select id="findStampByUserId"
+		resultType="com.example.demo.entity.Stamp">
 		SELECT *
 		FROM users_stamps
-		WHERE user_id =#{userId} and hokkaido_area_id = #{areaId};
+		WHERE user_id =#{userId} and
+		hokkaido_area_id = #{areaId};
 	</select>
-	
-	<select id="findAreaId" resultType="com.example.demo.entity.HokkaidoArea">
+
+	<select id="findAreaId"
+		resultType="com.example.demo.entity.HokkaidoArea">
 		SELECT *
 		FROM hokkaido_areas
 		WHERE id = #{areaId};
 	</select>
+
+	<select id="findStampsByUserId"
+		resultType="com.example.demo.entity.Stamp">
+		SELECT
+		ha.id AS areaId,
+		ha.name AS name,
+		ha.image_path AS imagePath,
+		us.user_id IS NOT NULL AS isAcquired,
+		us.unlocked_at AS unlockedAt
+		FROM hokkaido_areas ha
+		LEFT JOIN users_stamps us
+		ON ha.id = us.hokkaido_area_id
+		AND us.user_id = #{userId}
+	</select>
 	
-	<select id="findStampsByUserId" resultType="com.example.demo.entity.Stamp">
-    SELECT
-        ha.id AS areaId,
-        ha.name AS name,
-        ha.image_path AS imagePath,
-        us.user_id IS NOT NULL AS isAcquired,
-        us.unlocked_at AS unlockedAt
-    FROM hokkaido_areas ha
-    LEFT JOIN users_stamps us
-        ON ha.id = us.hokkaido_area_id
-        AND us.user_id = #{userId}
-</select>
+	<select id="countStamp" resultType="int">
+		SELECT COUNT(*)
+		FROM users_stamps
+		WHERE user_id =#{userId}
+	</select>
 
 </mapper>
