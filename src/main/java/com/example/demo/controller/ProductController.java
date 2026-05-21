@@ -20,6 +20,7 @@ import com.example.demo.mapper.FavoriteMapper;
 import com.example.demo.mapper.ProductImagesMapper;
 import com.example.demo.mapper.ProductMapper;
 import com.example.demo.mapper.ReviewsMapper;
+import com.example.demo.service.CartService;
 import com.example.demo.service.UserService;
 
 @Controller
@@ -35,6 +36,8 @@ public class ProductController {
 	private FavoriteMapper favoriteMapper;
 	@Autowired
 	private UserService userService;
+	@Autowired
+	private CartService cartService;
 
 	// 商品詳細
 	@GetMapping("/products/{id}")
@@ -55,7 +58,8 @@ public class ProductController {
 				.mapToDouble(Reviews::getStar)
 				.average()
 				.orElse(0.0);
-		model.addAttribute("averageStar", averageStar);
+
+		int cartCount = cartService.cartItemCount(session);
 
 		User loginUser = userService.getLoginUser(session);
 		boolean isFavorite = false;
@@ -71,6 +75,9 @@ public class ProductController {
 				myReview = myReviewsList.get(0);
 			}
 		}
+
+		model.addAttribute("averageStar", averageStar);
+		model.addAttribute("cartCount", cartCount);
 		model.addAttribute("isFavorite", isFavorite);
 		model.addAttribute("myReview", myReview);
 		model.addAttribute("user", loginUser);
@@ -129,6 +136,9 @@ public class ProductController {
 
 		int totalPages = (int) Math.ceil((double) totalCount / pageSize);
 
+		int cartCount = cartService.cartItemCount(session);
+
+		model.addAttribute("cartCount", cartCount);
 		model.addAttribute("products", products);
 		model.addAttribute("currentPage", page);
 		model.addAttribute("totalPages", totalPages);

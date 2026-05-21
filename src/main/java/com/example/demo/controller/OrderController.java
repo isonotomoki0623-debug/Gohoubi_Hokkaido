@@ -132,6 +132,9 @@ public class OrderController {
 
 		List<Order> orders = orderMapper.findOrdersByUserId(user.getId());
 
+		int cartCount = cartService.cartItemCount(session);
+
+		model.addAttribute("cartCount", cartCount);
 		model.addAttribute("orders", orders);
 		model.addAttribute("user", userService.getLoginUser(session));
 
@@ -154,7 +157,9 @@ public class OrderController {
 		}
 
 		List<CartItem> items = orderMapper.findOrderItemsByOrderId(id);
+		int cartCount = cartService.cartItemCount(session);
 
+		model.addAttribute("cartCount", cartCount);
 		model.addAttribute("order", order);
 		model.addAttribute("items", items);
 		model.addAttribute("user", userService.getLoginUser(session));

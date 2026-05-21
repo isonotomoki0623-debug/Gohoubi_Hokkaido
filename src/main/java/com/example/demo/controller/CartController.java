@@ -45,7 +45,12 @@ public class CartController {
 		List<Product> products = new ArrayList<>();
 		for (CartItem c : cart) {
 			products.add(productMapper.findById(c.getProductId()));
+
 		}
+
+		int cartCount = cartService.cartItemCount(session);
+
+		model.addAttribute("cartCount", cartCount);
 		model.addAttribute("products", products);
 		model.addAttribute("cart", cart);
 		model.addAttribute("total", total);
