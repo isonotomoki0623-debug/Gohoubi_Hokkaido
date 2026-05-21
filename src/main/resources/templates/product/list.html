@@ -70,8 +70,7 @@
 							<div class="product-bottom">
 
 								<div class="product-price">
-									¥<span th:text="${#numbers.formatInteger(product.price, 1, 'COMMA')}">
-										0
+									<span th:text="${#numbers.formatInteger(product.price, 1, 'COMMA')} + '円'">
 									</span>
 								</div>
 

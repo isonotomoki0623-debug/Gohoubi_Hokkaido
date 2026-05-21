@@ -46,8 +46,8 @@
 					<div class="hero-card">
 
 						<h1 class="hero-title">
-							北海道をめぐって、<br>
-							ごほうびを集めよう。
+							北海道をめぐって<br>
+							ごほうびを集めよう
 						</h1>
 
 						<p class="hero-text">
@@ -88,7 +88,7 @@
 
 							<div class="next-level-text">
 								次のレベルまであと
-								<strong th:text="|¥${#numbers.formatInteger(remainAmount, 1, 'COMMA')}|">¥0</strong>
+								<strong th:text="${#numbers.formatInteger(remainAmount, 1, 'COMMA')} + '円'"></strong>
 							</div>
 
 							<div class="progress-bar">
@@ -131,7 +131,7 @@
 							</div>
 							<div>
 								<div class="small text-muted">
-									「ごほうびほっかいどう」に会員登録して、<br>
+									「ごほうびほっかいどう」に会員登録して<br>
 									北海道を巡る旅に出発しませんか？
 								</div>
 								<div class="register-alert-btn">
@@ -183,9 +183,8 @@
 										<div class="product-bottom">
 
 											<div class="product-price">
-												¥
 												<span
-													th:text="${#numbers.formatInteger(product?.price, 1, 'COMMA')}"></span>
+													th:text="${#numbers.formatInteger(product?.price, 1, 'COMMA')} + '円'"></span>
 											</div>
 
 											<div class="detail-button">
@@ -266,7 +265,7 @@
 
 									<div class="rank-name">
 										<span
-											th:text="|${user.name} (¥${#numbers.formatInteger(amount[stat.index], 3, 'COMMA')})|"></span>
+											th:text="|${user.name} (${#numbers.formatInteger(amount[stat.index], 3, 'COMMA')}円)|"></span>
 									</div>
 
 

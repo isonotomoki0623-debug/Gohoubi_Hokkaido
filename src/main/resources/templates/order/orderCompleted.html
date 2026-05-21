@@ -79,7 +79,8 @@
 
 				<div class="next-level-info">
 					次のレベルまであと
-					<span class="highlight-price" th:text="${level.remainAmount}">0</span>円
+					<span class="highlight-price"
+						th:text="${#numbers.formatInteger(level.remainAmount, 1, 'COMMA')} + '円'">0</span>
 				</div>
 			</div>
 		</div>
@@ -89,8 +90,7 @@
 			<div class="coupon-popup">
 
 				<h2>クーポン獲得！</h2>
-				<div class="coupon-list"
-				     th:classappend="${#lists.size(coupons) == 1} ? ' single' : ''">
+				<div class="coupon-list" th:classappend="${#lists.size(coupons) == 1} ? ' single' : ''">
 					<div th:each="coupon : ${coupons}" class="popup-coupon-card">
 
 						<div class="coupon-icon">

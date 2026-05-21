@@ -45,7 +45,7 @@
 
 					<div class="next-level-text">
 						次のレベルまであと
-						<strong th:text="${remainAmount} + '円'"></strong>
+						<strong th:text="${#numbers.formatInteger(remainAmount, 1, 'COMMA')} + '円'"></strong>
 					</div>
 
 					<div class="progress-bar">
@@ -71,12 +71,12 @@
 
 					<div class="status-card">
 						購入金額ランキング
-						<strong>[[${userRank}]] / [[${userCount}]] 位</strong>
+						<strong>[[${userRank}]] 位</strong>
 					</div>
 
 					<div class="status-card">
 						累計購入金額
-						<strong th:text="${totalAmount} + '円'"></strong>
+						<strong th:text="${#numbers.formatInteger(totalAmount, 1, 'COMMA')} + '円'"></strong>
 					</div>
 
 				</div>
