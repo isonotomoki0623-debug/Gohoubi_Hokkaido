@@ -15,15 +15,19 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.example.demo.entity.User;
 import com.example.demo.form.LoginForm;
 import com.example.demo.mapper.UserMapper;
+import com.example.demo.service.UserService;
 
 @Controller
 public class AuthController {
 
+	private final UserService userService;
+
 	private final UserMapper userMapper;
 	private final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
-	public AuthController(UserMapper userMapper) {
+	public AuthController(UserMapper userMapper, UserService userService) {
 		this.userMapper = userMapper;
+		this.userService = userService;
 	}
 
 	//ログイン画面を表示
@@ -48,6 +52,10 @@ public class AuthController {
 
 		if (bindingResult.hasErrors()) {
 			return "auth/login";
+		}
+
+		if (userService.isLogined(session)) {
+			return "redirect:/";
 		}
 
 		//DBからユーザを検索する

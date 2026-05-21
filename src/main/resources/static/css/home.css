@@ -38,7 +38,6 @@ a {
 	font-weight: bold;
 	margin-bottom: 24px;
 	color: #222;
-	min-height: 60px;
 
 	display: flex;
 	align-items: center;
@@ -376,25 +375,9 @@ a {
 
 .ranking-card {
 	padding: 22px;
-
-	height: 100%;
-
-	display: flex;
-	flex-direction: column;
-}
-
-.col-lg-6 {
-	display: flex;
-	flex-direction: column;
-}
-
-.col-lg-6 .ranking-card {
-	flex-grow: 1;
 }
 
 .rank-item {
-	flex: 1;
-
 	display: flex;
 	align-items: center;
 
@@ -403,16 +386,6 @@ a {
 	padding: 14px 0;
 
 	border-bottom: 1px solid #f0f0f0;
-}
-
-.rank-item a {
-	display: flex;
-	align-items: center;
-
-	gap: 16px;
-
-	width: 100%;
-	height: 100%;
 }
 
 .rank-item:last-child {
@@ -492,8 +465,9 @@ a {
 
 .swiper {
 	width: 100%;
-	max-width: 1200px;
-	padding: 40px 0;
+	max-width: 1400px;
+	padding: 40px 60px;
+	position: relative;
 }
 
 /* 商品カード全体のスタイル */
@@ -518,41 +492,49 @@ a {
 }
 
 /* =========================
-   Swiper 矢印ボタンの強制表示
+   Swiper
 ========================= */
-
-/* 1. スライダー全体に左右の余白（隙間）を作って、矢印の配置スペースを確保する */
-/*.swiper.mySwiper {*/
-/*	padding-left: 50px !important;*/
-/*	padding-right: 50px !important;*/
-/*	position: relative;*/
-/*	overflow: hidden;*/
-/*	 これがないと横スクロールバーが出ちゃいます */
-/*}*/
-
-.swiper-slide {
-	height: auto;
-	display: flex;
-}
-
-.swiper-slide .product-link {
-	width: 100%;
-}
-
-
-
-
-/* 3. ボタンの「＜」「＞」のサイズを少し小さくして丸の中に収める */
-.swiper-button-prev::after,
-.swiper-button-next::after {
-	font-size: 18px !important;
-	font-weight: bold;
-}
 
 .mySwiper {
 	position: relative;
-	padding: 0 90px;
 }
+
+/* スライド */
+.swiper-slide {
+	height: auto;
+
+	display: flex;
+	justify-content: center;
+}
+
+/* 商品リンク */
+.swiper-slide .product-link {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+}
+
+/* 商品カード */
+.product-card {
+
+	/* ← ここでカード幅を制限 */
+	width: 100%;
+	max-width: 340px;
+
+	background: #fff;
+	border: 1px solid #ddd;
+	border-radius: 20px;
+
+	padding: 12px;
+
+	text-align: center;
+
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* =========================
+   矢印
+========================= */
 
 .swiper-button-prev,
 .swiper-button-next {
@@ -561,8 +543,8 @@ a {
 	align-items: center;
 	justify-content: center;
 
-	width: 40px !important;
-	height: 40px !important;
+	width: 44px !important;
+	height: 44px !important;
 
 	background: white;
 	border-radius: 50%;
@@ -573,13 +555,140 @@ a {
 
 	z-index: 9999 !important;
 
-	top: 42% !important;
+	top: 50% !important;
+	transform: translateY(-50%);
 }
 
+/* 左右位置 */
 .swiper-button-prev {
-	left: 20px !important;
+	left: 1px !important;
 }
 
 .swiper-button-next {
-	right: 20px !important;
+	right: 1px !important;
+}
+
+/* アイコンサイズ */
+.swiper-button-prev::after,
+.swiper-button-next::after {
+	font-size: 18px !important;
+	font-weight: bold;
+}
+
+
+
+
+
+/* =========================================================
+   以下は「差分のみ追記」
+   既存CSSは変更せず、異なる部分だけを追加
+========================================================= */
+
+/* =========================
+   section-title の追加差分
+========================= */
+
+.section-title {
+	min-height: 60px;
+}
+
+/* =========================
+   ランキングカード差分
+========================= */
+
+.ranking-card {
+	height: 100%;
+
+	display: flex;
+	flex-direction: column;
+}
+
+.col-lg-6 {
+	display: flex;
+	flex-direction: column;
+}
+
+.col-lg-6 .ranking-card {
+	flex-grow: 1;
+}
+
+.rank-item {
+	flex: 1;
+}
+
+.rank-item a {
+	display: flex;
+	align-items: center;
+
+	gap: 16px;
+
+	width: 100%;
+	height: 100%;
+}
+
+/* =========================
+   swiper 差分
+========================= */
+
+.swiper {
+	max-width: 1200px;
+	padding: 40px 0;
+	overflow: hidden;
+}
+
+/* =========================
+   swiper-slide 差分
+========================= */
+
+.swiper-slide {
+	justify-content: center;
+}
+
+.swiper-slide .product-link {
+	display: flex;
+	justify-content: center;
+}
+
+/* =========================
+   product-card 差分
+========================= */
+
+.product-card {
+
+	width: 100%;
+	max-width: 340px;
+
+	border-radius: 20px;
+
+	padding: 12px;
+}
+
+/* =========================
+   mySwiper 差分
+========================= */
+
+.mySwiper {
+	padding: 0 90px;
+}
+
+/* =========================
+   矢印ボタン差分
+========================= */
+
+.swiper-button-prev,
+.swiper-button-next {
+
+	width: 40px !important;
+	height: 40px !important;
+
+	top: 42% !important;
+}
+
+/* 左右位置 */
+.swiper-button-prev {
+	left: 3px !important;
+}
+
+.swiper-button-next {
+	right: 3px !important;
 }
