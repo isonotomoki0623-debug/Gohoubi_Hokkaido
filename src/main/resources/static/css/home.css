@@ -5,28 +5,28 @@
 ========================= */
 
 body {
-    font-family: 'Sawarabi Gothic', sans-serif;
-    color: #222;
-    min-height: 100vh;
-    overflow-x: hidden;
+	font-family: 'Sawarabi Gothic', sans-serif;
+	color: #222;
+	min-height: 100vh;
+	overflow-x: hidden;
 
-    background-color: #f5faf4;
+	background-color: #f5faf4;
 
-    background-image:
-        url("data:image/svg+xml,%3Csvg width='220' height='220' viewBox='0 0 220 220' xmlns='http://www.w3.org/2000/svg'%3E%3Cg opacity='0.07'%3E%3Ctext x='20' y='70' font-size='42'%3E🍃%3C/text%3E%3Ctext x='140' y='180' font-size='36'%3E🐄%3C/text%3E%3Ctext x='90' y='110' font-size='38'%3E⭐%3C/text%3E%3Ctext x='25' y='190' font-size='34'%3E🌽%3C/text%3E%3C/g%3E%3C/svg%3E"),
-        linear-gradient(to bottom,
-            #eef7ef 0%,
-            #f7fbf6 45%,
-            #fcfdfb 100%);
+	background-image:
+		url("data:image/svg+xml,%3Csvg width='220' height='220' viewBox='0 0 220 220' xmlns='http://www.w3.org/2000/svg'%3E%3Cg opacity='0.07'%3E%3Ctext x='20' y='70' font-size='42'%3E🍃%3C/text%3E%3Ctext x='140' y='180' font-size='36'%3E🐄%3C/text%3E%3Ctext x='90' y='110' font-size='38'%3E⭐%3C/text%3E%3Ctext x='25' y='190' font-size='34'%3E🌽%3C/text%3E%3C/g%3E%3C/svg%3E"),
+		linear-gradient(to bottom,
+			#eef7ef 0%,
+			#f7fbf6 45%,
+			#fcfdfb 100%);
 }
 
 a {
-    text-decoration: none;
-    color: inherit;
+	text-decoration: none;
+	color: inherit;
 }
 
 .main-container {
-    padding: 42px 0 90px;
+	padding: 42px 0 90px;
 }
 
 /* =========================
@@ -34,14 +34,14 @@ a {
 ========================= */
 
 .section-title {
-    font-size: 1.9rem;
-    font-weight: bold;
-    margin-bottom: 24px;
-    color: #222;
+	font-size: 1.9rem;
+	font-weight: bold;
+	margin-bottom: 24px;
+	color: #222;
 
-    display: flex;
-    align-items: center;
-    gap: 10px;
+	display: flex;
+	align-items: center;
+	gap: 10px;
 }
 
 /* =========================
@@ -49,84 +49,84 @@ a {
 ========================= */
 
 .hero-card {
-    background:
-        linear-gradient(135deg,
-            #7cbf8c,
-            #98d3a5);
+	background:
+		linear-gradient(135deg,
+			#7cbf8c,
+			#98d3a5);
 
-    border-radius: 34px;
-    padding: 44px;
+	border-radius: 34px;
+	padding: 44px;
 
-    color: white;
+	color: white;
 
-    position: relative;
-    overflow: hidden;
+	position: relative;
+	overflow: hidden;
 
-    box-shadow: 0 20px 40px rgba(60, 110, 70, 0.15);
+	box-shadow: 0 20px 40px rgba(60, 110, 70, 0.15);
 }
 
 .hero-card::before {
-    content: "";
+	content: "";
 
-    position: absolute;
+	position: absolute;
 
-    width: 340px;
-    height: 340px;
+	width: 340px;
+	height: 340px;
 
-    background: rgba(255, 255, 255, 0.12);
+	background: rgba(255, 255, 255, 0.12);
 
-    border-radius: 50%;
+	border-radius: 50%;
 
-    top: -120px;
-    right: -120px;
+	top: -120px;
+	right: -120px;
 }
 
 .hero-card::after {
-    content: "🐄";
+	content: "🐄";
 
-    position: absolute;
+	position: absolute;
 
-    bottom: 18px;
-    right: 24px;
+	bottom: 18px;
+	right: 24px;
 
-    font-size: 4rem;
-    opacity: 0.12;
+	font-size: 4rem;
+	opacity: 0.12;
 }
 
 .hero-title {
-    font-family: 'Yusei Magic', sans-serif;
+	font-family: 'Yusei Magic', sans-serif;
 
-    font-size: 2.9rem;
-    line-height: 1.5;
+	font-size: 2.9rem;
+	line-height: 1.5;
 
-    position: relative;
-    z-index: 1;
+	position: relative;
+	z-index: 1;
 }
 
 .hero-text {
-    margin-top: 18px;
+	margin-top: 18px;
 
-    line-height: 1.9;
-    opacity: 0.96;
+	line-height: 1.9;
+	opacity: 0.96;
 
-    position: relative;
-    z-index: 1;
+	position: relative;
+	z-index: 1;
 }
 
 .hero-btn {
-    margin-top: 28px;
+	margin-top: 28px;
 
-    border-radius: 999px;
-    padding: 14px 28px;
+	border-radius: 999px;
+	padding: 14px 28px;
 
-    font-weight: bold;
+	font-weight: bold;
 
-    position: relative;
-    z-index: 1;
+	position: relative;
+	z-index: 1;
 
-    border: none;
+	border: none;
 
-    box-shadow: 0 8px 18px rgba(255, 193, 7, 0.25);
+	box-shadow: 0 8px 18px rgba(255, 193, 7, 0.25);
 }
 
 /* =========================
@@ -137,13 +137,13 @@ a {
 .product-card,
 .ranking-card,
 .news-card {
-    background: rgba(255, 255, 255, 0.92);
+	background: rgba(255, 255, 255, 0.92);
 
-    backdrop-filter: blur(6px);
+	backdrop-filter: blur(6px);
 
-    border-radius: 28px;
+	border-radius: 28px;
 
-    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.06);
+	box-shadow: 0 10px 28px rgba(0, 0, 0, 0.06);
 }
 
 /* =========================
@@ -151,8 +151,8 @@ a {
 ========================= */
 
 .status-card {
-    padding: 28px;
-    height: 100%;
+	padding: 28px;
+	height: 100%;
 }
 
 /* =========================
@@ -160,27 +160,27 @@ a {
 ========================= */
 
 .level-box {
-    background:
-        linear-gradient(135deg,
-            #ffd67f,
-            #ffb98f);
+	background:
+		linear-gradient(135deg,
+			#ffd67f,
+			#ffb98f);
 
-    border-radius: 24px;
-    padding: 24px;
+	border-radius: 24px;
+	padding: 24px;
 
-    color: white;
+	color: white;
 
-    box-shadow: 0 10px 24px rgba(255, 180, 100, 0.2);
+	box-shadow: 0 10px 24px rgba(255, 180, 100, 0.2);
 }
 
 .level-title {
-    font-size: 1.3rem;
-    font-weight: bold;
+	font-size: 1.3rem;
+	font-weight: bold;
 }
 
 .money-left {
-    margin-top: 12px;
-    font-size: 0.95rem;
+	margin-top: 12px;
+	font-size: 0.95rem;
 }
 
 /* =========================
@@ -188,23 +188,23 @@ a {
 ========================= */
 
 .bonus-box {
-    margin-top: 22px;
+	margin-top: 22px;
 
-    background: #f5fff7;
+	background: #f5fff7;
 
-    border: 2px dashed #83c88f;
+	border: 2px dashed #83c88f;
 
-    border-radius: 20px;
+	border-radius: 20px;
 
-    padding: 18px;
+	padding: 18px;
 }
 
 .bonus-title {
-    color: #3f8c57;
+	color: #3f8c57;
 
-    font-weight: bold;
+	font-weight: bold;
 
-    margin-bottom: 8px;
+	margin-bottom: 8px;
 }
 
 /* =========================
@@ -212,50 +212,29 @@ a {
 ========================= */
 
 .achievement-alert {
-    margin-top: 22px;
+	margin-top: 22px;
 
-    background:
-        linear-gradient(135deg,
-            #eef4ff,
-            #f7f9ff);
+	background:
+		linear-gradient(135deg,
+			#eef4ff,
+			#f7f9ff);
 
-    border-left: 6px solid #7aa6ff;
+	border-left: 6px solid #7aa6ff;
 
-    border-radius: 20px;
+	border-radius: 20px;
 
-    padding: 18px;
+	padding: 18px;
 }
 
 /* =========================
    商品カード
 ========================= */
 
-.product-card {
-    background: rgba(255, 255, 255, 0.92);
-
-    backdrop-filter: blur(6px);
-
-    border-radius: 18px;
-
-    overflow: hidden;
-
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
-
-    transition:
-        transform 0.25s ease,
-        box-shadow 0.25s ease;
-
-    display: flex;
-    flex-direction: column;
-
-    height: 100%;
-}
-
 /* hoverでカード浮く */
 .product-link:hover .product-card {
-    transform: translateY(-5px);
+	transform: translateY(-5px);
 
-    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+	box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
 }
 
 /* =========================
@@ -263,24 +242,24 @@ a {
 ========================= */
 
 .product-image-wrap {
-    display: block;
-    overflow: hidden;
+	display: block;
+	overflow: hidden;
 }
 
 .product-image-wrap img {
-    width: 100%;
-    height: 125px;
+	width: 100%;
+	height: 125px;
 
-    object-fit: cover;
+	object-fit: cover;
 
-    display: block;
+	display: block;
 
-    transition: transform 0.35s ease;
+	transition: transform 0.35s ease;
 }
 
 /* hoverで画像ズーム */
 .product-link:hover .product-image-wrap img {
-    transform: scale(1.05);
+	transform: scale(1.05);
 }
 
 /* =========================
@@ -288,64 +267,64 @@ a {
 ========================= */
 
 .product-info {
-    padding: 11px;
+	padding: 11px;
 
-    display: flex;
-    flex-direction: column;
+	display: flex;
+	flex-direction: column;
 
-    flex-grow: 1;
+	flex-grow: 1;
 }
 
 .product-category {
-    display: inline-block;
+	display: inline-block;
 
-    width: fit-content;
+	width: fit-content;
 
-    background: #eef8ef;
-    color: #4f8f61;
+	background: #eef8ef;
+	color: #4f8f61;
 
-    font-size: 0.64rem;
-    font-weight: bold;
+	font-size: 0.64rem;
+	font-weight: bold;
 
-    border-radius: 999px;
+	border-radius: 999px;
 
-    padding: 3px 8px;
+	padding: 3px 8px;
 
-    margin-bottom: 6px;
+	margin-bottom: 6px;
 }
 
 .product-name {
-    margin: 0;
+	margin: 0;
 
-    font-size: 0.88rem;
-    font-weight: bold;
+	font-size: 0.88rem;
+	font-weight: bold;
 
-    line-height: 1.35;
+	line-height: 1.35;
 
-    color: #222;
+	color: #222;
 
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
 
-    overflow: hidden;
+	overflow: hidden;
 }
 
 .product-area {
-    margin-top: 5px;
+	margin-top: 5px;
 
-    color: #5e8b67;
+	color: #5e8b67;
 
-    font-size: 0.72rem;
+	font-size: 0.72rem;
 
-    display: flex;
-    align-items: center;
-    gap: 4px;
+	display: flex;
+	align-items: center;
+	gap: 4px;
 }
 
 .product-area::before {
-    content: "📍";
-    font-size: 0.68rem;
+	content: "📍";
+	font-size: 0.68rem;
 }
 
 /* =========================
@@ -353,41 +332,41 @@ a {
 ========================= */
 
 .product-bottom {
-    margin-top: auto;
-    padding-top: 10px;
+	margin-top: auto;
+	padding-top: 10px;
 
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
 
-    gap: 6px;
+	gap: 6px;
 }
 
 .product-price {
-    font-size: 1rem;
-    font-weight: bold;
+	font-size: 1rem;
+	font-weight: bold;
 
-    color: #f06b4f;
+	color: #f06b4f;
 }
 
 .detail-button {
-    background:
-        linear-gradient(135deg,
-            #ffd67f,
-            #ffb98f);
+	background:
+		linear-gradient(135deg,
+			#ffd67f,
+			#ffb98f);
 
-    color: white;
+	color: white;
 
-    font-weight: bold;
-    font-size: 0.7rem;
+	font-weight: bold;
+	font-size: 0.7rem;
 
-    padding: 6px 10px;
+	padding: 6px 10px;
 
-    border-radius: 999px;
+	border-radius: 999px;
 
-    box-shadow: 0 4px 10px rgba(255, 180, 100, 0.16);
+	box-shadow: 0 4px 10px rgba(255, 180, 100, 0.16);
 
-    white-space: nowrap;
+	white-space: nowrap;
 }
 
 /* =========================
@@ -395,49 +374,49 @@ a {
 ========================= */
 
 .ranking-card {
-    padding: 22px;
+	padding: 22px;
 }
 
 .rank-item {
-    display: flex;
-    align-items: center;
+	display: flex;
+	align-items: center;
 
-    gap: 16px;
+	gap: 16px;
 
-    padding: 14px 0;
+	padding: 14px 0;
 
-    border-bottom: 1px solid #f0f0f0;
+	border-bottom: 1px solid #f0f0f0;
 }
 
 .rank-item:last-child {
-    border-bottom: none;
+	border-bottom: none;
 }
 
 .rank-number {
-    width: 42px;
-    height: 42px;
+	width: 42px;
+	height: 42px;
 
-    border-radius: 50%;
+	border-radius: 50%;
 
-    background: #ffe49a;
+	background: #ffe49a;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 
-    font-weight: bold;
+	font-weight: bold;
 
-    color: #7d5b00;
+	color: #7d5b00;
 }
 
 .rank-name {
-    font-weight: bold;
-    color: #222;
+	font-weight: bold;
+	color: #222;
 }
 
 .rank-sales {
-    font-size: 0.85rem;
-    color: #777;
+	font-size: 0.85rem;
+	color: #777;
 }
 
 /* =========================
@@ -445,24 +424,24 @@ a {
 ========================= */
 
 .news-card {
-    padding: 22px;
+	padding: 22px;
 }
 
 .news-item {
-    padding: 14px 0;
+	padding: 14px 0;
 
-    border-bottom: 1px solid #f1f1f1;
+	border-bottom: 1px solid #f1f1f1;
 }
 
 .news-item:last-child {
-    border-bottom: none;
+	border-bottom: none;
 }
 
 .news-date {
-    color: #4e86d8;
+	color: #4e86d8;
 
-    font-size: 0.82rem;
-    font-weight: bold;
+	font-size: 0.82rem;
+	font-weight: bold;
 }
 
 /* =========================
@@ -471,15 +450,109 @@ a {
 
 @media(max-width: 768px) {
 
-    .hero-title {
-        font-size: 2rem;
-    }
+	.hero-title {
+		font-size: 2rem;
+	}
 
-    .main-container {
-        padding-top: 20px;
-    }
+	.main-container {
+		padding-top: 20px;
+	}
 
-    .hero-card {
-        padding: 32px;
-    }
+	.hero-card {
+		padding: 32px;
+	}
+}
+
+.swiper {
+	width: 100%;
+	max-width: 1200px;
+	padding: 40px 0;
+}
+
+/* 商品カード全体のスタイル */
+.product-card {
+	background: #fff;
+	border: 1px solid #ddd;
+	border-radius: 8px;
+	padding: 16px;
+	text-align: center;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* 画像が崩れないように調整 */
+.product-img {
+	width: 100%;
+	height: 200px;
+	/* 高さを統一する場合 */
+	object-fit: cover;
+	/* 画像の比率を保ったまま綺麗に収める */
+	border-radius: 4px;
+	margin-bottom: 12px;
+}
+
+/* =========================
+   Swiper 矢印ボタンの強制表示
+========================= */
+
+/* 1. スライダー全体に左右の余白（隙間）を作って、矢印の配置スペースを確保する */
+/*.swiper.mySwiper {*/
+/*	padding-left: 50px !important;*/
+/*	padding-right: 50px !important;*/
+/*	position: relative;*/
+/*	overflow: hidden;*/
+/*	 これがないと横スクロールバーが出ちゃいます */
+/*}*/
+
+.swiper-slide {
+	height: auto;
+	display: flex;
+}
+
+.swiper-slide .product-link {
+	width: 100%;
+}
+
+
+
+
+/* 3. ボタンの「＜」「＞」のサイズを少し小さくして丸の中に収める */
+.swiper-button-prev::after,
+.swiper-button-next::after {
+	font-size: 18px !important;
+	font-weight: bold;
+}
+
+.mySwiper {
+	position: relative;
+	padding: 0 90px;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+
+	display: flex !important;
+	align-items: center;
+	justify-content: center;
+
+	width: 40px !important;
+	height: 40px !important;
+
+	background: white;
+	border-radius: 50%;
+
+	box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+
+	color: #4f8f61 !important;
+
+	z-index: 9999 !important;
+
+	top: 42% !important;
+}
+
+.swiper-button-prev {
+	left: 20px !important;
+}
+
+.swiper-button-next {
+	right: 20px !important;
 }
