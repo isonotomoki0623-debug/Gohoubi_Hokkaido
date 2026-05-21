@@ -78,10 +78,11 @@
 
 					<div class="status-card">
 
-						<div class="next-level-box" th:if="${user != null}">
+
+						<div class="next-level-box">
 
 							<div class="level-title">
-								Lv.[[${user.level}]] [[${user.job.name}]]
+								Lv.[[${user.level}]] [[${user.job?.name}]]
 							</div>
 
 							<div class="next-level-text">
@@ -96,13 +97,14 @@
 
 						</div>
 
-						
+
 
 						<!-- 実績通知 -->
-						<a th:href="@{/achievements}" class="text-decoration-none text-dark">
+						<a th:href="@{/achievements}" class="text-decoration-none text-dark"
+							th:if="${achievement != null}">
 
 							<!-- 実績通知 -->
-							<div class="achievement-alert" th:if="${user != null and achievement != null}">
+							<div class="achievement-alert">
 
 								<div class="fw-bold mb-2">
 									🏆 獲得した最新の実績！
@@ -120,6 +122,25 @@
 					</div>
 
 				</div>
+				<div class="col-lg-4" th:if="${user == null}">
+					<div class="status-card unlogged-card d-flex flex-column justify-content-center">
+						<a th:href="@{/register}" class="text-decoration-none text-dark">
+							<div class="fw-bold md-2 text-primary-emphasis">
+								✨ 新たな冒険を始めよう！
+							</div>
+							<div>
+								<div class="small text-muted">
+									「ごほうびほっかいどう」に無料登録して、<br>
+									北海道を巡る旅に出発しませんか？
+								</div>
+								<div class="register-alert-btn">
+									新規会員登録はこちら
+								</div>
+							</div>
+						</a>
+					</div>
+				</div>
+
 
 			</div>
 
@@ -189,7 +210,6 @@
 
 			</section>
 
-
 			<!-- 下段 -->
 			<section class="mt-5">
 
@@ -207,17 +227,17 @@
 							<div class="rank-item" th:each="product, stat : ${rankingProducts}">
 
 								<a th:href="@{/products/{id}(id=${product.id})}">
-								<div class="rank-number" th:text="${stat.count}">
-									1
-								</div>
-
-								<div>
-
-									<div class="rank-name" th:text="${product.name}">
-										商品名
+									<div class="rank-number" th:text="${stat.count}">
+										1
 									</div>
 
-								</div>
+									<div>
+
+										<div class="rank-name" th:text="${product.name}">
+											商品名
+										</div>
+
+									</div>
 								</a>
 
 							</div>
@@ -241,10 +261,10 @@
 									1
 								</div>
 
-								<div>${#numbers.formatInteger(product.price, 1, 'COMMA')}
+								<div>
 
 									<div class="rank-name">
-										[[${user.name}]]  (¥[[${amount[stat.index].formatInteger(product.price, 1, 'COMMA')}]])
+										[[${user.name}]] (¥[[${amount[stat.index]}]])
 									</div>
 
 

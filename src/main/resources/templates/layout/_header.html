@@ -78,9 +78,16 @@
 					お気に入り一覧
 				</a>
 
-				<a th:href="@{/cart}">
-					カート
-					<i class="bi bi-cart3"></i>
+				<a th:href="@{/cart}" class="cart-link">
+
+				    カート
+				    <i class="bi bi-cart3"></i>
+
+				    <span class="cart-badge"
+				          th:if="${cartCount > 0}"
+				          th:text="${cartCount}">
+				    </span>
+
 				</a>
 
 				<a th:href="@{/profile}">

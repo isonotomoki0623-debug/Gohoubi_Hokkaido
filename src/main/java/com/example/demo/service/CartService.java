@@ -70,4 +70,9 @@ public class CartService {
 		}
 		return totalPrice;
 	}
+
+	public int cartItemCount(HttpSession session) {
+		List<CartItem> cart = getCart(session);
+		return cart.size();
+	}
 }
