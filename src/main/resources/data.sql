@@ -108,45 +108,183 @@ VALUES
 /* 商品画像の追加 */
 INSERT INTO product_images(image_path, image_description, product_id)
 VALUES
-('/images/poteto1.jpg', 'いも1', 1),
-('/images/poteto2.jpg', 'いも2', 1),
-('/images/poteto3.jpg', 'いも3', 1);
+('/images/products_image/poteto1.jpg', 'いも1', 1),
+('/images/products_image/poteto2.jpg', 'いも2', 1),
+('/images/products_image/poteto3.jpg', 'いも3', 1);
 
 INSERT INTO product_images(image_path, image_description, product_id)
 VALUES
-('/images/salmon1.jpg', '鮭1', 2),
-('/images/salmon2.jpg', '鮭2', 2),
-('/images/salmon3.jpg', '鮭3', 2);
+('/images/products_image/salmon1.jpg', '鮭1', 2),
+('/images/products_image/salmon2.jpg', '鮭2', 2),
+('/images/products_image/salmon3.jpg', '鮭3', 2);
 
 INSERT INTO product_images(image_path, image_description, product_id)
 VALUES
-('/images/jin1.jpg', 'ジンギスカンセット1', 3),
-('/images/jin2.jpg', 'ジンギスカンセット2', 3),
-('/images/jin3.jpg', 'ジンギスカンセット3', 3);
+('/images/products_image/jin1.jpg', 'ジンギスカンセット1', 3),
+('/images/products_image/jin2.jpg', 'ジンギスカンセット2', 3),
+('/images/products_image/jin3.jpg', 'ジンギスカンセット3', 3);
 
 INSERT INTO product_images(image_path, image_description, product_id)
 VALUES
-('/images/cheese1.jpg', 'チーズ1', 4),
-('/images/cheese2.jpg', 'チーズ2', 4),
-('/images/cheese3.jpg', 'チーズ3', 4);
+('/images/products_image/cheese1.jpg', 'チーズ1', 4),
+('/images/products_image/cheese2.jpg', 'チーズ2', 4),
+('/images/products_image/cheese3.jpg', 'チーズ3', 4);
 
 INSERT INTO product_images(image_path, image_description, product_id)
 VALUES
-('/images/cho1.jpg', 'チョコ1', 5),
-('/images/cho2.jpg', 'チョコ2', 5),
-('/images/cho3.jpg', 'チョコ3', 5);
+('/images/products_image/cho1.jpg', 'チョコ1', 5),
+('/images/products_image/cho2.jpg', 'チョコ2', 5),
+('/images/products_image/cho3.jpg', 'チョコ3', 5);
 
 INSERT INTO product_images(image_path, image_description, product_id)
 VALUES
-('/images/sake1.jpg', '酒1', 6),
-('/images/sake2.jpg', '酒2', 6),
-('/images/sake3.jpg', '酒3', 6);
+('/images/products_image/sake1.jpg', '酒1', 6),
+('/images/products_image/sake2.jpg', '酒2', 6),
+('/images/products_image/sake3.jpg', '酒3', 6);
 
 INSERT INTO product_images(image_path, image_description, product_id)
 VALUES
-('/images/kuma1.jpg', '熊1', 7),
-('/images/kuma2.jpg', '熊2', 7),
-('/images/kuma3.jpg', '熊3', 7);
+('/images/products_image/kuma1.jpg', '熊1', 7),
+('/images/products_image/kuma2.jpg', '熊2', 7),
+('/images/products_image/kuma3.jpg', '熊3', 7);
+
+INSERT INTO product_images(image_path, image_description, product_id)
+VALUES
+('/images/products_image/meron1.jpg', '夕張メロン秀品', 8),
+('/images/products_image/meron2.jpg', '夕張メロン秀品', 8),
+('/images/products_image/meron3.jpg', '夕張メロン秀品', 8);
+
+INSERT INTO product_images(image_path, image_description, product_id)
+VALUES
+('/images/products_image/ikura1.jpg', 'いくら醤油漬け500g', 9),
+('/images/products_image/ikura2.webp', 'いくら醤油漬け500g', 9),
+('/images/products_image/ikura3.webp', 'いくら醤油漬け500g', 9);
+
+INSERT INTO product_images(image_path, image_description, product_id)
+VALUES
+('/images/products_image/hotate1.webp', '北海道産ホタテ1kg', 10),
+('/images/products_image/hotate2.jpg', '北海道産ホタテ1kg', 10),
+('/images/products_image/hotate3.jpg', '北海道産ホタテ1kg', 10);
+
+INSERT INTO product_images(image_path, image_description, product_id)
+VALUES
+('/images/products_image/soupkare1.webp', 'スープカレーセット', 11),
+('/images/products_image/soupkare2.jpg', 'スープカレーセット', 11),
+('/images/products_image/soupkare3.webp', 'スープカレーセット', 11);
+
+INSERT INTO product_images(image_path, image_description, product_id)
+VALUES
+('/images/products_image/siroikoibito1.webp', '白い恋人36枚入り', 12),
+('/images/products_image/siroikoibito2.jpg', '白い恋人36枚入り', 12),
+('/images/products_image/siroikoibito3.jpg', '白い恋人36枚入り', 12);
+
+INSERT INTO product_images(image_path, image_description, product_id)
+VALUES
+('/images/products_image/rokkatei1.webp', '六花亭詰め合わせ', 13),
+('/images/products_image/rokkatei2.jpg', '六花亭詰め合わせ', 13),
+('/images/products_image/rokkatei3.webp', '六花亭詰め合わせ', 13);
+
+INSERT INTO product_images(image_path, image_description, product_id)
+VALUES
+('/images/products_image/hurano1.jpg', '富良野ラベンダーオイル', 14),
+('/images/products_image/hurano2.jpg', '富良野ラベンダーオイル', 14),
+('/images/products_image/hurano3.jpg', '富良野ラベンダーオイル', 14);
+
+INSERT INTO product_images(image_path, image_description, product_id)
+VALUES
+('/images/products_image/bata-1.png', '北海道バター3個セット', 15),
+('/images/products_image/bata-2.jpg', '北海道バター3個セット', 15),
+('/images/products_image/bata-3.jpg', '北海道バター3個セット', 15);
+
+INSERT INTO product_images(image_path, image_description, product_id)
+VALUES
+('/images/products_image/sisyamo1.jpg', '本ししゃも20尾', 16),
+('/images/products_image/sisyamo2.jpg', '本ししゃも20尾', 16),
+('/images/products_image/sisyamo3.jpg', '本ししゃも20尾', 16);
+
+INSERT INTO product_images(image_path, image_description, product_id)
+VALUES
+('/images/products_image/purin1.jpg', '北海道牛乳プリンセット', 17),
+('/images/products_image/purin2.jpg', '北海道牛乳プリンセット', 17),
+('/images/products_image/purin3.jpg', '北海道牛乳プリンセット', 17);
+
+INSERT INTO product_images(image_path, image_description, product_id)
+VALUES
+('/images/products_image/kegani1.jpg', '毛ガニ姿盛り', 18),
+('/images/products_image/kegani2.jpg', '毛ガニ姿盛り', 18),
+('/images/products_image/kegani3.jpg', '毛ガニ姿盛り', 18);
+
+INSERT INTO product_images(image_path, image_description, product_id)
+VALUES
+('/images/products_image/ra-men1.webp', '札幌味噌ラーメン4食セット', 19),
+('/images/products_image/ra-men2.jpg', '札幌味噌ラーメン4食セット', 19),
+('/images/products_image/ra-men3.jpg', '札幌味噌ラーメン4食セット', 19);
+
+INSERT INTO product_images(image_path, image_description, product_id)
+VALUES
+('/images/products_image/wain1.jpg', '小樽ワイン赤白セット', 20),
+('/images/products_image/wain2.jpg', '小樽ワイン赤白セット', 20),
+('/images/products_image/wain3.jpg', '小樽ワイン赤白セット', 20);
+
+INSERT INTO product_images(image_path, image_description, product_id)
+VALUES
+('/images/products_image/asupara.webp', '北海道産アスパラ1kg', 21),
+('/images/products_image/asupara2.jpg', '北海道産アスパラ1kg', 21),
+('/images/products_image/asupara3.jpg', '北海道産アスパラ1kg', 21);
+
+INSERT INTO product_images(image_path, image_description, product_id)
+VALUES
+('/images/products_image/be-kon1.jpg', '燻製ベーコンブロック', 22),
+('/images/products_image/be-kon2.jpg', '燻製ベーコンブロック', 22),
+('/images/products_image/be-kon3.jpg', '燻製ベーコンブロック', 22);
+
+INSERT INTO product_images(image_path, image_description, product_id)
+VALUES
+('/images/products_image/konbu1.jpg', '知床昆布セット', 23),
+('/images/products_image/konbu2.jpg', '知床昆布セット', 23),
+('/images/products_image/konbu3.jpg', '知床昆布セット', 23);
+
+INSERT INTO product_images(image_path, image_description, product_id)
+VALUES
+('/images/products_image/jam1.webp', '北海道ミルクジャム3種', 24),
+('/images/products_image/jam2.jpg', '北海道ミルクジャム3種', 24),
+('/images/products_image/jam3.jpg', '北海道ミルクジャム3種', 24);
+
+INSERT INTO product_images(image_path, image_description, product_id)
+VALUES
+('/images/products_image/sute-ki1.jpg', '宗谷黒牛ステーキセット', 25),
+('/images/products_image/sute-ki2.jpg', '宗谷黒牛ステーキセット', 25),
+('/images/products_image/sute-ki3.jpg', '宗谷黒牛ステーキセット', 25);
+
+INSERT INTO product_images(image_path, image_description, product_id)
+VALUES
+('/images/products_image/toumorokosi1.avif', '北海道とうもろこし10本', 26),
+('/images/products_image/toumorokosi2.jpg', '北海道とうもろこし10本', 26),
+('/images/products_image/toumorokosi3.jpg', '北海道とうもろこし10本', 26);
+
+INSERT INTO product_images(image_path, image_description, product_id)
+VALUES
+('/images/products_image/saketoba1.webp', '鮭とば詰め合わせ', 27),
+('/images/products_image/saketoba2.jpg', '鮭とば詰め合わせ', 27),
+('/images/products_image/saketoba3.jpg', '鮭とば詰め合わせ', 27);
+
+INSERT INTO product_images(image_path, image_description, product_id)
+VALUES
+('/images/products_image/orugo-ru1.jpg', 'ガラス細工オルゴール', 28),
+('/images/products_image/orugo-ru2.jpg', 'ガラス細工オルゴール', 28),
+('/images/products_image/orugo-ru3.jpg', 'ガラス細工オルゴール', 28);
+
+INSERT INTO product_images(image_path, image_description, product_id)
+VALUES
+('/images/products_image/hatimitu1.jpg', '北海道はちみつセット', 29),
+('/images/products_image/hatimitu2.webp', '北海道はちみつセット', 29),
+('/images/products_image/hatimitu3.jpg', '北海道はちみつセット', 29);
+
+INSERT INTO product_images(image_path, image_description, product_id)
+VALUES
+('/images/products_image/cheesecake1.webp', '十勝チーズケーキ', 30),
+('/images/products_image/cheesecake2.webp', '十勝チーズケーキ', 30),
+('/images/products_image/cheesecake3.jpg', '十勝チーズケーキ', 30);
 
 /*ユーザーが所持している実績*/
 INSERT INTO users_achievements (user_id, achievement_id, unlocked_at) VALUES
@@ -170,16 +308,16 @@ INSERT INTO favorites(user_id, product_id) VALUES
 
 /*クーポン*/
 INSERT INTO coupons(name, expiration_date, rate)VALUES
-('10%割引きクーポン', '2026-05-21', 0.1);
+('10%割引クーポン', '2026-05-21', 0.1);
  
 INSERT INTO coupons(name, expiration_date, rate)VALUES
-('20%割引きクーポン', '2026-05-21', 0.2);
+('20%割引クーポン', '2026-05-21', 0.2);
  
 INSERT INTO coupons(name, expiration_date, rate)VALUES
-('30%割引きクーポン', '2026-05-21', 0.3);
+('30%割引クーポン', '2026-05-21', 0.3);
  
 INSERT INTO coupons(name, expiration_date, rate)VALUES
-('100%割引きクーポン', '2026-05-15', 1.0);
+('100%割引クーポン', '2026-05-15', 1.0);
  
 INSERT INTO coupons_users( user_id,  coupon_id)VALUES
 (1, 1);
