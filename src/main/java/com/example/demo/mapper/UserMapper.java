@@ -29,4 +29,6 @@ public interface UserMapper {
 	List<User> findUsersTop3();
 
 	void updateLevel(int userId, int level);
+
+	List<Integer> findUsersTop3Amount();
 }

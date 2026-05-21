@@ -72,8 +72,10 @@ public class HomeController {
 
 		//商品の売上ランキングを取得
 		List<Product> rankingProducts = productMapper.findProductsTop3();
+		List<Integer> amount = userMapper.findUsersTop3Amount();
 
 		model.addAttribute("rankingProducts", rankingProducts);
+		model.addAttribute("amount", amount);
 
 		//ユーザーの購入金額ランキングを取得
 		List<User> rankingUsers = userMapper.findUsersTop3();

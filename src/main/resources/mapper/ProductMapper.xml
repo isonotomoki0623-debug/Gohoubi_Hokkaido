@@ -209,7 +209,7 @@
 	<select id="findProductsTop3"
 		resultType="com.example.demo.entity.Product">
 		SELECT
-		p.id, p.name, SUM(o.quantity)* p.price AS total_price
+		p.id, p.name, SUM(o.quantity) AS total_price
 
 		FROM
 		products p

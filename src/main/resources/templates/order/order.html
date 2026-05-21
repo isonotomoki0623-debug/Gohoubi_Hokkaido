@@ -84,7 +84,7 @@
 				<div class="mb-3">
 
 					<div class="form-check">
-						<input class="form-check-input" type="radio" name="useCoupon" id="useCouponYes" value="true">
+						<input class="form-check-input" type="radio" name="useCoupon" id="useCouponYes" value="true" th:disabled="${myCoupons == null}">
 
 						<label class="form-check-label" for="useCouponYes">
 							クーポンを使用する

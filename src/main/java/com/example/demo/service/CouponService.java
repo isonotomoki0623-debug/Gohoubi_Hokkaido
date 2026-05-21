@@ -11,13 +11,14 @@ public class CouponService {
 	@Autowired
 	private OrderMapper orderMapper;
 
-	public int calculateDiscountedPrice(int userId,int totalPrice, Integer couponId) {
+	public int calculateDiscountedPrice(int userId, int totalPrice, Integer couponId) {
 		if (couponId != null) {
 			Coupon coupon = orderMapper.findCoupon(couponId);
 			totalPrice = (int) ((1 - coupon.getRate()) * totalPrice);
 			System.out.println(coupon.getRate());
-            orderMapper.deleteUserCoupon(userId, couponId);
+			orderMapper.deleteUserCoupon(userId, couponId);
 		}
 		return totalPrice;
 	}
+
 }

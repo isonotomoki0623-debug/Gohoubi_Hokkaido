@@ -199,7 +199,7 @@
 					<div class="col-lg-6">
 
 						<h2 class="section-title">
-							👑 商品ランキング
+							👑 商品人気ランキング
 						</h2>
 
 						<div class="ranking-card">
@@ -230,7 +230,7 @@
 					<div class="col-lg-6">
 
 						<h2 class="section-title">
-							👑 ユーザーランキング
+							👑 購入金額ランキング
 						</h2>
 
 						<div class="ranking-card">
@@ -243,25 +243,10 @@
 
 								<div>
 
-									<div class="rank-name" th:text="${user.name}">
-										ユーザー名
+									<div class="rank-name">
+										[[${user.name}]]  (¥[[${amount[stat.index]}]])
 									</div>
 
-									<div class="rank-sales">
-
-										<span th:if="${stat.count == 1}">
-											北海道王
-										</span>
-
-										<span th:if="${stat.count == 2}">
-											爆買い中
-										</span>
-
-										<span th:if="${stat.count == 3}">
-											常連ユーザー
-										</span>
-
-									</div>
 
 								</div>
 
